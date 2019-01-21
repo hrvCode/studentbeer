@@ -20,6 +20,14 @@ const Input = Styled.input`
     border-bottom: 1px solid black;
     display: block;
     padding-top:2%;
+
+    &::placeholder{
+        text-align:center;
+    }
+
+    &:focus{
+        outline: none;
+    }
 `;
 
 const InputContainer = Styled.div`
@@ -48,6 +56,9 @@ const Button = Styled.button `
 
     &:hover{
         background:${props => props.backgroundHover};
+    }
+    &:focus{
+        outline: none;
     }
 `;
 
