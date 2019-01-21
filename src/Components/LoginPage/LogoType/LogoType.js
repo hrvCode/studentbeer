@@ -6,7 +6,7 @@ const Logotype = Styled.div`
    
     height:auto;
     margin-top:10px;
-    background-color:SaddleBrown;
+    background-color:transparent;
 
 `;
 
