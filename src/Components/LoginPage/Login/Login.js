@@ -73,6 +73,11 @@ const Atag = Styled.a `
     margin:auto;
     margin-bottom:25px;
     margin-top:8%;
+    text-decoration:none;
+
+    &:hover{
+        color:black;
+    }
    
 `;
 
@@ -92,7 +97,7 @@ const login = () =>(
         <ButtonContainer>
             <Button background="#1D4717" backgroundHover="#3E8E32" color="white">Login</Button>
             <Button background="#FAD338" backgroundHover="#F9E48F" color="black">SignUp</Button>
-            <Atag href="#">Forgot Password </Atag>
+            <Atag href="#">Forgot Password?</Atag>
         </ButtonContainer>
 
     </Login>
