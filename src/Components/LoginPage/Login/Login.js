@@ -16,7 +16,7 @@ const Login = Styled.div`
 `;
 
 const Input = Styled.input`
-    width:80%;
+    width:60%;
     margin:20px auto;
     border: none;
     border-bottom: 1px solid black;
