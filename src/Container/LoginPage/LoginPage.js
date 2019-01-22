@@ -19,13 +19,12 @@ class loginPage extends Component {
         loginState:true,
     }
 
-    signUpState(){
-
-      this.setState({
-          loginState:false,
-      })
-    
+    signUpState = () =>{
+       this.setState({
+        loginState: !this.state.loginState
+        });
     }
+      
 
     render(){
        
@@ -41,3 +40,4 @@ class loginPage extends Component {
 
 
 export default loginPage;
+

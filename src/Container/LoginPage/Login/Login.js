@@ -5,6 +5,7 @@ const Login = Styled.div`
     width: 100%;
     @media(min-width: 700px){
         width: 50%;
+        border-radius:5px;
     }
     background-color:white;
     display:flex;
@@ -19,6 +20,7 @@ const Input = Styled.input`
     width:60%;
     margin:20px auto;
     border: none;
+    
     border-bottom: 1px solid black;
     display: block;
     padding-top:2%;
@@ -35,6 +37,7 @@ const Input = Styled.input`
 `;
 
 const InputContainer = Styled.div`
+    
     width: 100%;
 `;
 
@@ -85,12 +88,6 @@ const Atag = Styled.a `
    
 `;
 
-
-
-
-
-
-
 const login = (props) =>( 
     <Login>
         <InputContainer>
@@ -99,6 +96,7 @@ const login = (props) =>(
         </InputContainer>
 
         <ButtonContainer>
+            <div>{console.log(props.loginState)}</div>
             <Button background="#1D4717" backgroundHover="#3E8E32" color="white">Login</Button>
             <Button onClick={props.loginState} background="#FAD338" backgroundHover="#F9E48F" color="black">SignUp</Button>
             <Atag href="#">Forgot Password?</Atag>
