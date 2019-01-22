@@ -3,6 +3,9 @@ import Styled from 'styled-components';
 
 const Login = Styled.div`
     width: 100%;
+    @media(min-width: 700px){
+        width: 50%;
+    }
     background-color:white;
     display:flex;
     flex-direction:column;
@@ -13,12 +16,15 @@ const Login = Styled.div`
 `;
 
 const Input = Styled.input`
-    width:150px;
+    width:80%;
+    margin:20px auto;
     border: none;
     border-bottom: 1px solid black;
     display: block;
     padding-top:2%;
-
+    @media(min-width: 1024px){
+        width: 50%;
+    }
     &::placeholder{
         text-align:center;
     }
@@ -29,7 +35,7 @@ const Input = Styled.input`
 `;
 
 const InputContainer = Styled.div`
-    margin:10px 0 10px 0;
+    width: 100%;
 `;
 
 const ButtonContainer = Styled.div`
@@ -45,8 +51,8 @@ const Button = Styled.button `
     font-size: 16px;
     border:none;
     border-radius: 5px;
-    display: block;
-    margin:auto;
+    display: inline-block;
+    margin:0 20px;
     margin-top:4%;
     width: 130px;
     height:30px; 
