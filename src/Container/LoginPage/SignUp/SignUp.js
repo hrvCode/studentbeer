@@ -59,7 +59,7 @@ const Button = Styled.button `
     }
 `;
 
-const signup = () =>( 
+const signup = (props) =>( 
     <SignUp>
 
         <InputContainer>
@@ -70,7 +70,7 @@ const signup = () =>(
 
         <ButtonContainer>
             <Button background="#1D4717"  backgroundHover="#3E8E32" color="white">Create account</Button>
-            <Button background="#FAD338" backgroundHover="#F9E48F" color="black">Back</Button>
+            <Button onClick={props.loginState} background="#FAD338" backgroundHover="#F9E48F" color="black">Back</Button>
         </ButtonContainer>
     </SignUp>
 )
