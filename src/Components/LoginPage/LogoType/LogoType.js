@@ -10,10 +10,9 @@ const Logotype = Styled.div`
 
 `;
 
-
 const logotype = () =>( 
     <Logotype>
-       <img src={LogotypeImg }/>
+       <img alt="logo" src={LogotypeImg }/>
     </Logotype>
 )
 

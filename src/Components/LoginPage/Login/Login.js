@@ -3,13 +3,11 @@ import Styled from 'styled-components';
 
 const Login = Styled.div`
     width: 100%;
-    height: auto;
     background-color:white;
     display:flex;
     flex-direction:column;
     justify-items:center;
     align-items:center;
-    margin-bottom:100%;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.4);
     
 `;

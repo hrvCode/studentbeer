@@ -4,7 +4,7 @@ import Login from "./Login/Login";
 import Logotype from "./LogoType/LogoType";
 
 const LoginPage = Styled.div`
-  
+    height: 100vh;
     background-color:SaddleBrown;
     display:flex;
     flex-direction:column;
