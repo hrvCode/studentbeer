@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LoginPage from "../../Components/LoginPage/LoginPage"
+import LoginPage from "./../LoginPage/LoginPage"
 
 class Layout extends Component {
     render(){
