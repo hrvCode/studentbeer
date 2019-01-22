@@ -1,6 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components';
 import Login from "./Login/Login";
+import SignUp from "./SignUp/SignUp";
 import Logotype from "./LogoType/LogoType";
 
 const LoginPage = Styled.div`
@@ -12,10 +13,12 @@ const LoginPage = Styled.div`
     align-items:center;
 `;
 
+
 const loginPage = () =>( 
     <LoginPage>
         <Logotype/>
-        <Login />
+         <Login />
+       {/* <SignUp/>*/}
     </LoginPage>
 )
 
