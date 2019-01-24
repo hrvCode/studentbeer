@@ -3,6 +3,7 @@ import Styled from 'styled-components';
 import Login from "../../Components/Login/Login";
 import SignUp from "../../Components/SignUp/SignUp";
 import Logotype from "./LogoType/LogoType";
+import Firebase  from '../../firebase/firebase';
 
 const LoginPage = Styled.div`
     height: 100vh;
@@ -23,15 +24,20 @@ class loginPage extends Component {
        this.setState({
         loginState: !this.state.loginState
         });
+        Firebase.auth().signOut().then(function() {
+            console.log('Signed Out');
+          }, function(error) {
+            console.error('Sign Out Error', error);
+          });
+
     }
       
-
     render(){
-       
         return(
             <LoginPage>
                 <Logotype/>
-                { this.state.loginState ? < Login loginState = {this.signUpState} /> :  < SignUp loginState = {this.signUpState} /> }
+                { this.state.loginState ? < Login login={this.props.login} loginState = {this.signUpState} /> 
+                :  < SignUp loginState = {this.signUpState} /> }
             </LoginPage>
         );
     }

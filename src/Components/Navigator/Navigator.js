@@ -7,7 +7,7 @@ const Main = Styled.div`
 
 `;
 
-const navigator = () => (
+const navigator = (props) => (
     <Main>
         <ul>
             <li>
@@ -21,6 +21,9 @@ const navigator = () => (
             </li>
             <li>
                 <NavLink to="/friendlist">Friendlist</NavLink>
+            </li>
+            <li>
+                <NavLink to="/"><span onClick={props.signOut}>X</span></NavLink>
             </li>
         </ul>
     </Main>

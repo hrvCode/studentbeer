@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
+import Firebase from '../../firebase/firebase';
 
 const SignUp = Styled.div`
      width: 100%;
@@ -66,19 +67,36 @@ const Button = Styled.button `
     &:focus{
         outline: none;
     }
-`;
+`;  
+
+    let email;
+    let password;
+    const userEmail = (event) => {
+        email = event.target.value;
+    }
+    const passWord = (event) => {
+        password = event.target.value;
+    }
+
+    const signing =  (props) => (
+        Firebase.auth().createUserWithEmailAndPassword( email, password).catch(function(error){
+            let errorCode = error.code;
+            let errorMessage = error.errorMessage;
+            console.log(errorCode + " error code")
+            console.log(errorMessage + " message code")
+        })
+    )
 
 const signup = (props) =>( 
     <SignUp>
-
         <InputContainer>
-            <Input type="text" placeholder="Username"></Input>
-            <Input type="email" placeholder="Email"></Input>
-            <Input type="password" placeholder="Password"></Input>
+            <Input  type="text" placeholder="Username"></Input>
+            <Input  onChange={(event) => userEmail(event)} type="email" name="password" placeholder="Email"></Input>
+            <Input  onChange={(event) => passWord(event)} type="password" placeholder="Password"></Input>
         </InputContainer>
 
         <ButtonContainer>
-            <Button background="#1D4717"  backgroundHover="#3E8E32" color="white">Create account</Button>
+            <Button background="#1D4717" onClick={signing} backgroundHover="#3E8E32" color="white">Create account</Button>
             <Button onClick={props.loginState} background="#FAD338" backgroundHover="#F9E48F" color="black">Back</Button>
         </ButtonContainer>
     </SignUp>

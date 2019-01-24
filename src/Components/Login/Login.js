@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
+import Firebase  from '../../firebase/firebase';
 
 const Login = Styled.div`
     width: 100%;
@@ -88,20 +89,48 @@ const Atag = Styled.a `
    
 `;
 
-const login = (props) =>( 
-    <Login>
-        <InputContainer>
-            <Input type="text" placeholder="Username"></Input>
-            <Input type="password" placeholder="Password"></Input>
-        </InputContainer>
+        
+const login = (props) =>{
+    let password;
+    let email;
 
-        <ButtonContainer>
-            <Button background="#1D4717" backgroundHover="#3E8E32" color="white">Login</Button>
-            <Button onClick={props.loginState} background="#FAD338" backgroundHover="#F9E48F" color="black">SignUp</Button>
-            <Atag href="#">Forgot Password?</Atag>
-        </ButtonContainer>
+    const emailHandler = (event) => {
+        email = event.target.value
+    }
 
-    </Login>
-)
+    const passwordHandler = (event) => {
+        password = event.target.value
+    }
+    const loginAction = (email, password) => {
+        try{
+            Firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error){
+                let errorCode = error.code;
+                let errorMessage = error.errorMessage;
+                console.log(errorCode)
+                console.log(errorMessage)
+            })
+        }catch(error){
+            let errorCode = error.code;
+            let errorMessage = error.errorMessage;
+            console.log(errorCode)
+            console.log(errorMessage)
+        }
+        props.login()
+    }
+    return(
+            <Login>
+            <InputContainer>
+                <Input type="text" onChange={(event) => emailHandler(event)} placeholder="Username"></Input>
+                <Input type="password"  onChange={(event) => passwordHandler(event)} placeholder="Password"></Input>
+            </InputContainer>
+
+            <ButtonContainer>
+                <Button background="#1D4717" onClick={() => loginAction(email, password)}  backgroundHover="#3E8E32" color="white">Login</Button>
+                <Button onClick={props.loginState} background="#FAD338" backgroundHover="#F9E48F" color="black">SignUp</Button>
+                <Atag href="#">Forgot Password?</Atag>
+            </ButtonContainer>
+        </Login>
+    )
+}
 
 export default login;
