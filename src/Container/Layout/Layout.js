@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import LoginPage from "./../LoginPage/LoginPage"
 import Main from '../../Components/Main/Main';
 import Navigator from '../../Components/Navigator/Navigator'
-import Auxi from '../../Components/Auxi/Auxi'
+
 
 class Layout extends Component {
     render(){
@@ -15,10 +15,10 @@ class Layout extends Component {
                 { loginState ?  
                   <LoginPage />
         
-               :<Auxi>
+               :<Fragment>
                     <Main /> 
                     <Navigator/>
-               </Auxi>}
+               </Fragment>}
             </div>
         );
     }
