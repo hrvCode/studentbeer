@@ -96,7 +96,6 @@ const login = (props) =>(
         </InputContainer>
 
         <ButtonContainer>
-            <div>{console.log(props.loginState)}</div>
             <Button background="#1D4717" backgroundHover="#3E8E32" color="white">Login</Button>
             <Button onClick={props.loginState} background="#FAD338" backgroundHover="#F9E48F" color="black">SignUp</Button>
             <Atag href="#">Forgot Password?</Atag>
