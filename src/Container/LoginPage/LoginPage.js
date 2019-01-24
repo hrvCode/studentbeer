@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Styled from 'styled-components';
-import Login from "./Login/Login";
-import SignUp from "./SignUp/SignUp";
+import Login from "../../Components/Login/Login";
+import SignUp from "../../Components/SignUp/SignUp";
 import Logotype from "./LogoType/LogoType";
 
 const LoginPage = Styled.div`
