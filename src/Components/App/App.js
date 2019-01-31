@@ -16,8 +16,7 @@ import SignUp from '../SignUp/SignUp'
 const App = () =>(
     <Router>
         <div>
-        <Navigation/>
-        <hr />
+       
             <Route exact path={ROUTES.LANDING} component={Landing} />
             <Route path={ROUTES.PROFILE} component={Profile} />
             <Route path={ROUTES.MAP} component={GeoMap} />
@@ -26,6 +25,9 @@ const App = () =>(
             <Route path={ROUTES.SIGNIN} component={SignIn} />
             <Route path={ROUTES.SIGNUP} component={SignUp} />
 {/*             <Route render={() => <h1>404 page doesnt exist</h1>} /> */}
+            <hr />
+            <Navigation/>
+        
         </div>
     </Router>
 

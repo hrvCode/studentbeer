@@ -4,9 +4,10 @@ import SignOutPage from '../SignOut/SignOut'
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../../constats/routes'
 
+import {Main} from './NavigationStyle';
 
 const Navigation = (props) => (
-    <div>
+    <Main>
         <ul>
              <li>
                 <Link to={ROUTES.LANDING}>Home</Link>
@@ -33,7 +34,7 @@ const Navigation = (props) => (
                 <SignOutPage/>
             </li>
         </ul>
-    </div>
+    </Main>
 )
 
 export default Navigation;

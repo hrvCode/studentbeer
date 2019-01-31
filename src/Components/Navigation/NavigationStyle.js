@@ -1,6 +1,8 @@
 
 import Styled from 'styled-components';
-const Main = Styled.div`
+
+
+export const Main = Styled.nav`
 
 display:flex;
 flex-direction:row;
@@ -9,11 +11,11 @@ height:20vh;
 justify-content:space-evenly;
 align-items:center;
 
-
 ul{
   margin:0;
   padding:0;
-     li{
+  
+    li{
         margin:15px;
         display: inline;
         color:white;
@@ -35,6 +37,4 @@ ul{
     }   
 
 }
-
-
 `;
