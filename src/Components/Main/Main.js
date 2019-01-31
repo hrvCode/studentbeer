@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch, Router} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import Profile from './Profile/Profile';
 import Map from './Map/Map';
 import Offers from './Offers/Offers';

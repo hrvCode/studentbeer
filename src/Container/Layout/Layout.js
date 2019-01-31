@@ -1,9 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import LoginPage from "./../LoginPage/LoginPage"
 import Main from '../../Components/Main/Main';
 import Navigator from '../../Components/Navigator/Navigator'
+<<<<<<< HEAD
 import Auxi from '../../Components/Auxi/Auxi'
 import Firebase from '../../firebase/firebase';
+=======
+
+>>>>>>> master
 
 class Layout extends Component {
     state = {
@@ -43,6 +47,7 @@ class Layout extends Component {
     render(){        
         return(
             <div>
+<<<<<<< HEAD
                 {
                     this.state.loginState ?  
                     <LoginPage login={this.login}/>
@@ -50,6 +55,15 @@ class Layout extends Component {
                         <Main /> 
                         <Navigator signOut={this.signOut}/>
                     </Auxi>}
+=======
+                { loginState ?  
+                  <LoginPage />
+        
+               :<Fragment>
+                    <Main /> 
+                    <Navigator/>
+               </Fragment>}
+>>>>>>> master
             </div>
         );
     }
