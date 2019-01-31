@@ -1,6 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 
+
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -15,12 +16,12 @@ const config = {
           app.initializeApp(config)
           this.auth = app.auth();
       }
-
+        
         doCreateUserWIthEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
 
         doSignInWithEmailAndPassword = (email, password ) =>
-        this.auth.doSignInWithEmailAndPassword(email, password);
+        this.auth.signInWithEmailAndPassword(email, password);
 
         doSignOut = () => this.auth.signOut();
 

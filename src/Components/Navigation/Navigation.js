@@ -1,4 +1,5 @@
 import React from 'react';
+import SignOutPage from '../SignOut/SignOut'
 
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../../constats/routes'
@@ -27,6 +28,9 @@ const Navigation = (props) => (
             </li>
             <li>
                 <Link to={ROUTES.SIGNUP}>Sign up</Link>
+            </li>
+            <li>
+                <SignOutPage/>
             </li>
         </ul>
     </div>
