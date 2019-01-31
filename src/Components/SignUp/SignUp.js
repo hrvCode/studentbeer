@@ -6,8 +6,11 @@ import {FirebaseContext} from '../Firebase'
 
 
 
+
+
 const SignUpPage = () => (
     <div>
+        
         <h1>sign up</h1>
         <FirebaseContext.Consumer>
             {Firebase => <SignUpForm  Firebase={Firebase}/>} 
@@ -87,7 +90,7 @@ class SignUpFormBase extends Component{
                 placeholder="confirm password"
                  />
 
-                <button type="submit" disabled={isInvalid}>Sign Up</button>
+                <button  type="submit" disabled={isInvalid}>Sign Up</button>
 
                 {error && <p>{error.message}</p>}
             </form>
