@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import * as ROUTES from '../../constats/routes';
+import {Link} from 'react-router-dom'
 
 
 
@@ -22,7 +24,7 @@ class SignUpForm extends Component{
     }
 
     onSubmit = event => {
-        const { username, email, passwordOne} = this.state;
+        const { username , email, passwordOne} = this.state;
 
         this.props.Firebase
         .doSignUpWithEmailAndPassword(email, passwordOne)
@@ -56,7 +58,6 @@ class SignUpForm extends Component{
 
         <div>
             <form onSubmit={this.onSubmit}>
-
                 <input 
                 type="text"
                 name="username"
@@ -83,14 +84,19 @@ class SignUpForm extends Component{
                 onChange={this.onChange}
                 placeholder="confirm password"
                  />
-                <div>
                     <button type="submit" disabled={isInvalid}>Sign Up</button>
-                </div>
-
+                    
                 {error && <p>{error.message}</p>}
             </form>
         </div>
         )
     }
 }
+const SignUpLink = () =>(
+    <p> 
+        Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    </p>
+)
+export {SignUpLink};
+
 export default SignUpPage;
