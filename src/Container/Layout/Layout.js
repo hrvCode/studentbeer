@@ -7,7 +7,7 @@ import Navigator from '../../Components/Navigator/Navigator'
 class Layout extends Component {
     render(){
 
-        let loginState = false;
+        let loginState = true;
 
         return(
             
