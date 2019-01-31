@@ -15,7 +15,7 @@ const config = {
           app.initializeApp(config)
       }
 
-      doCreateUserWIthEmailAndPassword = (email, password) =>
+        doCreateUserWIthEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
 
         doSignInWithEmailAndPassword = (email, password ) =>
