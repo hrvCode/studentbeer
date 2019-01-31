@@ -1,13 +1,13 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 
-var config = {
-    apiKey: "AIzaSyDiDk7wh8JBwMAInA76kCBb2xfmSeyGrjk",
-    authDomain: "beerhunter-d5aab.firebaseapp.com",
-    databaseURL: "https://beerhunter-d5aab.firebaseio.com",
-    projectId: "beerhunter-d5aab",
-    storageBucket: "beerhunter-d5aab.appspot.com",
-    messagingSenderId: "257542183951"
+const config = {
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   };
 
   class Firebase {
@@ -15,7 +15,7 @@ var config = {
           app.initializeApp(config)
       }
 
-        doCreateUserWIthEmailAndPassword = (email, password) =>
+      doCreateUserWIthEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
 
         doSignInWithEmailAndPassword = (email, password ) =>
@@ -28,6 +28,7 @@ var config = {
 
         doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password)
+        
   }
 
   export default Firebase;
