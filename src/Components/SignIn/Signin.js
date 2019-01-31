@@ -1,9 +1,6 @@
 import React from 'react';
-
-
-
-        
-const login = (props) =>{
+import * as ROUTES from '../../constats/routes'
+const Signin = (props) =>{
 
     return(
             <div>
@@ -26,4 +23,4 @@ const login = (props) =>{
     )
 }
 
-export default login;
+export default Signin;

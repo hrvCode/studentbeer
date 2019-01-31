@@ -1,13 +1,17 @@
 import React,{Component} from 'react';
 import * as ROUTES from '../../constats/routes';
 import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
+import {FirebaseContext} from '../Firebase'
 
 
 
 const SignUpPage = () => (
     <div>
         <h1>sign up</h1>
-        <SignUpForm />
+        <FirebaseContext.Consumer>
+            {Firebase => <SignUpForm  Firebase={Firebase}/>} 
+        </FirebaseContext.Consumer>
     </div>
 )
 const INITIAL_STATE = {
@@ -17,34 +21,34 @@ const INITIAL_STATE = {
     passwordTwo: '',
     error: null,
 }
-class SignUpForm extends Component{
+class SignUpFormBase extends Component{
 
     state={
         ...INITIAL_STATE
     }
 
     onSubmit = event => {
+        event.preventDefault();
         const { username , email, passwordOne} = this.state;
 
         this.props.Firebase
-        .doSignUpWithEmailAndPassword(email, passwordOne)
+        .doCreateUserWIthEmailAndPassword(email, passwordOne)
         .then(authUser =>{
-            this.setState({...INITIAL_STATE})
-            console.log(authUser)
+            this.setState({...INITIAL_STATE});
+            this.props.history.push(ROUTES.PROFILE)
         })
         .catch(error => { 
             this.setState({
                 error
-            })
+            });
         })
-        event.preventDefault();
-    }
+    };
     
-    onChange = event => (
+    onChange = event => {
         this.setState({
             [event.target.name]: event.target.value,
         })
-    )
+    }
 
     render(){
         const {email, passwordOne, passwordTwo, username, error} = this.state;
@@ -54,9 +58,8 @@ class SignUpForm extends Component{
         passwordOne === '' ||
         email === '' ||
         username === '';
-        return(
 
-        <div>
+        return(
             <form onSubmit={this.onSubmit}>
                 <input 
                 type="text"
@@ -64,7 +67,6 @@ class SignUpForm extends Component{
                 onChange={this.onChange}
                 placeholder="Username" />
                                 
-
                 <input 
                 type="text"
                 name="email"
@@ -84,19 +86,22 @@ class SignUpForm extends Component{
                 onChange={this.onChange}
                 placeholder="confirm password"
                  />
-                    <button type="submit" disabled={isInvalid}>Sign Up</button>
-                    
+
+                <button type="submit" disabled={isInvalid}>Sign Up</button>
+
                 {error && <p>{error.message}</p>}
             </form>
-        </div>
         )
     }
 }
 const SignUpLink = () =>(
     <p> 
-        Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+        Don't have an account? <Link to={ROUTES.SIGNUP}>Sign Up</Link>
     </p>
 )
-export {SignUpLink};
 
+
+const SignUpForm = withRouter(SignUpFormBase); 
+
+export {SignUpLink};
 export default SignUpPage;
