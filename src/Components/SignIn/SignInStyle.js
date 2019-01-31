@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Styled from 'styled-components';
 
 const Login = Styled.div`
@@ -88,20 +88,4 @@ const Atag = Styled.a `
    
 `;
 
-const login = (props) =>( 
-    <Login>
-        <InputContainer>
-            <Input type="text" placeholder="Username"></Input>
-            <Input type="password" placeholder="Password"></Input>
-        </InputContainer>
-
-        <ButtonContainer>
-            <Button background="#1D4717" backgroundHover="#3E8E32" color="white">Login</Button>
-            <Button onClick={props.loginState} background="#FAD338" backgroundHover="#F9E48F" color="black">SignUp</Button>
-            <Atag href="#">Forgot Password?</Atag>
-        </ButtonContainer>
-
-    </Login>
-)
-
-export default login;
+       
