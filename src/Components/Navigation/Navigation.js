@@ -2,7 +2,7 @@ import React from 'react';
 import SignOutPage from '../SignOut/SignOut'
 
 import {Link} from 'react-router-dom';
-import * as ROUTES from '../../constats/routes'
+import * as ROUTES from '../../Constats/routes'
 
 
 const Navigation = ({authUser}) => (

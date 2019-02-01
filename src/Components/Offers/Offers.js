@@ -1,4 +1,5 @@
 import React from 'react';
+import {withAuthorization} from '../Session'
 
 const map = () => (
     <div>
@@ -7,4 +8,5 @@ const map = () => (
         </header>
     </div>
 )
-export default map;
+const condition = authUser => authUser != null;
+export default withAuthorization(condition)(map);

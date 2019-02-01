@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
+import {withAuthorization} from '../Session'
 
 const Main = Styled.div`
     display:flex;
@@ -16,4 +17,5 @@ const FriendList = () => (
         </header>
     </Main>
 )
-export default FriendList;
+const condition = authUser => authUser != null;
+export default withAuthorization(condition)(FriendList);
