@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 import 'leaflet/dist/leaflet.css'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -40,15 +39,3 @@ class GeoMap extends Component {
     }
 
 export default GeoMap;
-=======
-import React from 'react'
-import {withAuthorization} from '../Session'
-
-const Map = () => (
-    <h1>
-        hello Map Site
-    </h1>
-)
-const condition = authUser => authUser != null;
-export default withAuthorization(condition)(Map);
->>>>>>> devJOnte2
