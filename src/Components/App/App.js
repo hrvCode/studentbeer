@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 
-import * as ROUTES from '../../constats/routes';
+import * as ROUTES from '../../Constats/routes';
 import Navigation from '../Navigation/Navigation'
 import Profile from '../Profile/Profile'
 import GeoMap from '../Map/Map'
@@ -11,13 +11,15 @@ import Friendlist from '../FriendList/FriendList'
 import Landing from '../Landing/Landing'
 import SignIn from '../SignIn/Signin'
 import SignUp from '../SignUp/SignUp'
-import {withAuthentication} from '../Session';
+import {withAuthentication, AuthUserContext} from '../Session';
 
 
-const  App = (props) =>( 
+const  App = () =>( 
         <Router>
             <div>
-            <Navigation authUser={props.authUser}/>
+                <AuthUserContext.Consumer>
+                {authUser => <Navigation authUser={authUser} /> }
+                </AuthUserContext.Consumer>
             <hr />
                 <Route exact path={ROUTES.LANDING} component={Landing} />
                 <Route path={ROUTES.PROFILE} component={Profile} />
@@ -29,6 +31,5 @@ const  App = (props) =>(
     {/*             <Route render={() => <h1>404 page doesnt exist</h1>} /> */}
             </div>
         </Router>
-    
         )
 export default withAuthentication(App);

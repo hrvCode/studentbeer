@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
+import {withAuthorization} from '../Session'
 
 const Main = Styled.div`
 display:flex;
@@ -9,11 +10,12 @@ background-color:white;
 height:80vh;
 `;
 
-const profil = () => (
+const profile = () => (
     <Main>
         <header>
             <h2>Profil sidan</h2>
         </header>
     </Main>
 )
-export default profil;
+const condition = authUser => authUser != null;
+export default withAuthorization(condition)(profile);
