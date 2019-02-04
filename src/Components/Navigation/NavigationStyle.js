@@ -1,6 +1,6 @@
 
 import Styled from 'styled-components';
-const Main = Styled.div`
+export const Main = Styled.div`
 
 display:flex;
 flex-direction:row;
@@ -19,7 +19,7 @@ ul{
         color:white;
         text-decoration:none;
 
-        i{
+        a{
             font-size:36px;
             color:white;  
 
@@ -35,6 +35,4 @@ ul{
     }   
 
 }
-
-
 `;
