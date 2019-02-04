@@ -1,22 +1,24 @@
 
 import Styled from 'styled-components';
 
-const Login = Styled.div`
-    width: 100%;
-    @media(min-width: 700px){
-        width: 50%;
-        border-radius:5px;
-    }
-    background-color:white;
+export const Main = Styled.div`
+    
+    height:80vh;
+    background-color:red;
     display:flex;
     flex-direction:column;
     justify-items:center;
-    align-items:center;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.4);
-    
+    align-items:center;    
 `;
 
-const Input = Styled.input`
+
+export const Container = Styled.div`
+    
+ 
+    background-color:white;
+      
+`;
+export const Input = Styled.input`
     width:60%;
     margin:20px auto;
     border: none;
@@ -36,16 +38,16 @@ const Input = Styled.input`
     }
 `;
 
-const InputContainer = Styled.div`
+export const InputContainer = Styled.div`
     
     width: 100%;
 `;
 
-const ButtonContainer = Styled.div`
+export const ButtonContainer = Styled.div`
     margin:0 0 3% 0;
 `;
 
-const Button = Styled.button `
+export const Button = Styled.button `
     background:${props => props.background};
     color:${props => props.color};
     box-shadow: 0 1px 1px 0 grey;
@@ -69,7 +71,7 @@ const Button = Styled.button `
     }
 `;
 
-const Atag = Styled.a `
+export const Atag = Styled.a `
     
     font-family:Arial;
     font-weight:bold;

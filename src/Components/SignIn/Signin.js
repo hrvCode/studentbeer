@@ -3,14 +3,17 @@ import {withRouter} from 'react-router-dom'
 import {SignUpLink} from '../SignUp/SignUp';
 import {withFirebase} from '../Firebase'
 import * as ROUTES from '../../Constats/routes';
-
+import {Main, Container} from './SignInStyle';
 
 const SignInPage = () =>(
-    <div>
-        <h1>Sign in</h1>
-        <SignInForm />
-        <SignUpLink/>
-    </div>
+    <Main>
+        
+        <Container>
+            <h1>Sign in</h1>
+            <SignInForm />
+            <SignUpLink/>
+        </Container>
+    </Main>
 )
 
 const INITIAL_STATE ={
