@@ -9,7 +9,6 @@ const Navigation = ({authUser}) => (
    <Main>
    <ReactTooltip />
        {authUser ? <NavigationAuth />  : <NavigationNoneAuth/>}
-       {console.log(authUser)}
    </Main> 
 
 )

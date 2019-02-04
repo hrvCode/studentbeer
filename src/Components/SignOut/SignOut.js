@@ -4,7 +4,7 @@ import {Button} from './SignOutStyle';
 
 const SingOutButton = ({Firebase}) => (
     <Button type="button" onClick={Firebase.doSignOut}>
-    <i data-tip="Sign out" class="fas fa-sign-out-alt"></i>
+    <i data-tip="Sign out" className="fas fa-sign-out-alt"></i>
     </Button>
 );
 

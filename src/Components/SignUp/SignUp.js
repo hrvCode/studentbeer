@@ -2,18 +2,17 @@ import React,{Component} from 'react';
 import * as ROUTES from '../../Constats/routes';
 import {Link} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
-import {FirebaseContext} from '../Firebase'
-
+import {withFirebase} from '../Firebase'
 
 
 const SignUpPage = () => (
     <div>
         <h1>sign up</h1>
-        <FirebaseContext.Consumer>
-            {Firebase => <SignUpForm  Firebase={Firebase}/>} 
-        </FirebaseContext.Consumer>
+            <SignUpForm/> 
     </div>
 )
+
+// initinal state till signupform baser state.
 const INITIAL_STATE = {
     username: '',
     email: '',
@@ -21,23 +20,30 @@ const INITIAL_STATE = {
     passwordTwo: '',
     error: null,
 }
+
+
 class SignUpFormBase extends Component{
 
     state={
         ...INITIAL_STATE
     }
 
+    // skapa ny användare.
     onSubmit = event => {
         event.preventDefault();
         const { username , email, passwordOne} = this.state;
-
+    
+        // anropar på firebase classen i firebase contexten.
+        // för att skapa ny användare.
         this.props.Firebase
-        .doCreateUserWIthEmailAndPassword(email, passwordOne)
+        .doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser =>{
             this.setState({...INITIAL_STATE});
+            // withRouter redirectar till profile
             this.props.history.push(ROUTES.PROFILE)
         })
         .catch(error => { 
+            // om det blir error sätter vi error objekt i state
             this.setState({
                 error
             });
@@ -45,14 +51,18 @@ class SignUpFormBase extends Component{
     };
     
     onChange = event => {
+        // sätter värde till state för varje knapptryckning.
         this.setState({
             [event.target.name]: event.target.value,
         })
     }
 
     render(){
+        // hämtar variabler från state.
         const {email, passwordOne, passwordTwo, username, error} = this.state;
 
+        // isInvalid kontrollerar formens input,
+        // disablar submit ifall isInvalid retunerar false,
         const isInvalid =
         passwordOne !== passwordTwo ||
         passwordOne === '' ||
@@ -89,6 +99,8 @@ class SignUpFormBase extends Component{
 
                 <button type="submit" disabled={isInvalid}>Sign Up</button>
 
+                {/* om det finns error i this.state.false så körs kodsnutten */}
+
                 {error && <p>{error.message}</p>}
             </form>
         )
@@ -100,8 +112,8 @@ const SignUpLink = () =>(
     </p>
 )
 
-
-const SignUpForm = withRouter(SignUpFormBase); 
+// wrappar SignUpForm variablen med withrouter och withfirebase.
+const SignUpForm = withRouter(withFirebase(SignUpFormBase)); 
 
 export {SignUpLink};
 export default SignUpPage;
