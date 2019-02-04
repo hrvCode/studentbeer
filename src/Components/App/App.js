@@ -27,7 +27,7 @@ const  App = () =>(
                 <Route path={ROUTES.SIGNUP} component={SignUp} />
     {/*             <Route render={() => <h1>404 page doesnt exist</h1>} /> */}
   
-    <AuthUserContext.Consumer>
+                <AuthUserContext.Consumer>
                 {authUser => <Navigation authUser={authUser} /> }
                 </AuthUserContext.Consumer>
             

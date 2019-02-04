@@ -8,10 +8,11 @@ const withAuthentication = Component => {
             state={
                 authUser: null,
             }
-     
+    //  när Component mountas kollar den genom firebase om det finns ett User objekt
         componentDidMount(){
             this.listener = this.props.Firebase.auth.onAuthStateChanged(
                 authUser => {
+                    // Finns authUser så sätts state, annars Null
                     authUser ? this.setState({authUser}): 
                     this.setState({authUser: null});
                 }

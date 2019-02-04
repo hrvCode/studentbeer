@@ -32,12 +32,15 @@ class SignInFormBase extends Component{
 
         const {email, password} = this.state;
 
+        // ropar på funktioner från Firebase context för att kunna logga in. 
+
         this.props.Firebase
         .doSignInWithEmailAndPassword(email, password)
         .then(() =>{
             this.setState({...INITIAL_STATE})
             this.props.history.push(ROUTES.PROFILE);
         })
+        // Vid error sätts error stare till error objekt.
         .catch(error =>{
             this.setState({error});
         })

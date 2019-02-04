@@ -11,5 +11,8 @@ const FriendList = () => (
         </header>
     </Main>
 )
+
+// condition kollar om användaren är behörig då "authUser" inte ska vara null
+
 const condition = authUser => authUser != null;
 export default withAuthorization(condition)(FriendList);
