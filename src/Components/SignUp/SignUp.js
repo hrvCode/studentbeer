@@ -18,6 +18,7 @@ const INITIAL_STATE = {
     email: '',
     passwordOne: '',
     passwordTwo: '',
+    isAdmin: 'false',
     error: null,
 }
 
@@ -25,12 +26,12 @@ const INITIAL_STATE = {
 class SignUpFormBase extends Component{
 
     state={
-        ...INITIAL_STATE
+        ...INITIAL_STATE,
+        isLoading: true,
     }
 
     // skapa ny användare.
     onSubmit = event => {
-        event.preventDefault();
         const { username , email, passwordOne} = this.state;
     
         // anropar på firebase classen i firebase contexten.
@@ -38,9 +39,22 @@ class SignUpFormBase extends Component{
         this.props.Firebase
         .doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser =>{
-            this.setState({...INITIAL_STATE});
-            // withRouter redirectar till profile
-            this.props.history.push(ROUTES.PROFILE)
+            return (
+                this.props.Firebase.user(authUser.user.uid)
+                .set({
+                    username,
+                    email,
+                    comments: '',
+                    img: '',
+                    civilStatus: '',
+                })
+                .then(() =>{
+                    this.setState({...INITIAL_STATE});
+                    // withRouter redirectar till profile
+                    this.props.history.push(ROUTES.PROFILE) 
+                })
+            )
+
         })
         .catch(error => { 
             // om det blir error sätter vi error objekt i state
@@ -48,6 +62,7 @@ class SignUpFormBase extends Component{
                 error
             });
         })
+        event.preventDefault();
     };
     
     onChange = event => {
@@ -56,7 +71,11 @@ class SignUpFormBase extends Component{
             [event.target.name]: event.target.value,
         })
     }
-
+    componentDidMount(){
+        this.setState({
+            isLoading: false
+        })
+    }
     render(){
         // hämtar variabler från state.
         const {email, passwordOne, passwordTwo, username, error} = this.state;
@@ -68,8 +87,9 @@ class SignUpFormBase extends Component{
         passwordOne === '' ||
         email === '' ||
         username === '';
-
+        
         return(
+            this.state.isLoading ? <div>loading</div> :
             <form onSubmit={this.onSubmit}>
                 <input 
                 type="text"
