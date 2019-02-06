@@ -4,7 +4,10 @@ import {withAuthorization} from '../Session'
 import 'leaflet/dist/leaflet.css'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import './MapStyle.css';
+// import './MapStyle.css';
+
+import Mapp from './MapStyle'
+
 
 
 const myIcon = L.icon ({
@@ -37,7 +40,7 @@ class GeoMap extends Component {
         },
         // Uppdaterar haveUsersLocation till true och ändrar zoom efter att position hämtats
         haveUsersLocation: true,
-        zoom: 12
+        zoom: 15
       });
       // Anonym funktion
     }, ()=> {
@@ -62,6 +65,7 @@ class GeoMap extends Component {
       render(){
         const position = [this.state.location.lat, this.state.location.lng]
         return (
+          <Mapp>
             <Map className="map" center={position} zoom={this.state.zoom}>
                 <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -73,11 +77,12 @@ class GeoMap extends Component {
                 position={position}
                 icon={myIcon}>
                 <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
+                    Här är din position.
                 </Popup>
                 </Marker> : ''
                 }
             </Map>
+          </Mapp> 
         )
       }
     }
