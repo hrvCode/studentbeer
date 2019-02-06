@@ -16,35 +16,34 @@ const Navigation = ({authUser}) => (
 const NavigationNoneAuth = () => (
     
     <Main>
-    <ReactTooltip />
         <ul>
              <li>
-                <Link to={ROUTES.LANDING}><i data-tip="Home" className="fas fa-home"></i></Link>
+                <Link to={ROUTES.LANDING}><i className="fas fa-home"></i></Link>
             </li>
             <li>
-                <Link to={ROUTES.SIGNIN}><i data-tip="Sign in" className="fas fa-sign-in-alt"></i></Link>
+                <Link to={ROUTES.SIGNIN}><i className="fas fa-sign-in-alt"></i></Link>
             </li>
         </ul>
     </Main>
 )
 const NavigationAuth = () => (
     <Main>
-    <ReactTooltip />
+    
         <ul>
-             <li>
-                <Link to={ROUTES.LANDING}><i data-tip="Home" className="fas fa-home"></i></Link>
+            <li>
+                <Link to={ROUTES.LANDING}><i className="fas fa-home"></i></Link>
             </li>
             <li>
-                <Link to={ROUTES.PROFILE}><i data-tip="Profile" className="fas fa-user"></i></Link>
+                <Link to={ROUTES.PROFILE}><i className="fas fa-user"></i></Link>
             </li>
             <li>
-                <Link to={ROUTES.MAP}><i data-tip="Map" className="fas fa-map-marked-alt"></i></Link>
+                <Link to={ROUTES.MAP}><i className="fas fa-map-marked-alt"></i></Link>
             </li>
             <li>
-                <Link to={ROUTES.OFFERS}><i data-tip="Offers" className="fas fa-gift"></i></Link>
+                <Link to={ROUTES.OFFERS}><i className="fas fa-gift"></i></Link>
             </li>
             <li>
-                <Link to={ROUTES.FRIENDLIST}><i data-tip="Friend list" className="fas fa-user-friends"></i></Link>
+                <Link to={ROUTES.FRIENDLIST}><i className="fas fa-user-friends"></i></Link>
             </li>
             <li>
                 <SignOutPage/>
