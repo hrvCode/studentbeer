@@ -3,14 +3,13 @@ import {withRouter} from 'react-router-dom'
 import {SignUpLink} from '../SignUp/SignUp';
 import {withFirebase} from '../Firebase'
 import * as ROUTES from '../../Constats/routes';
-import {Main, Container} from './SignInStyle';
+import {Main, Container,ButtonContainer} from './SignInStyle';
 
 const SignInPage = () =>(
     <Main>
-        
         <Container>
             <h1>Sign in</h1>
-            <SignInForm />
+            <SignInForm/>
             <SignUpLink/>
         </Container>
     </Main>
@@ -40,7 +39,7 @@ class SignInFormBase extends Component{
             this.setState({...INITIAL_STATE})
             this.props.history.push(ROUTES.PROFILE);
         })
-        // Vid error sätts error stare till error objekt.
+        // Vid error sätts error state till error objekt.
         .catch(error =>{
             this.setState({error});
         })
@@ -71,11 +70,13 @@ class SignInFormBase extends Component{
                             placeholder="Password"
                         />
                     </div>
-
-                    <div>
+                    {error && <p>{error.message}</p>}
+                    <ButtonContainer>
                         <button type="submit" disabled={isInvalid}>Login</button>
-                        {error && <p>{error.message}</p>}
-                    </div>
+
+                        <button>SignUp</button>
+                        
+                    </ButtonContainer>
                 </div>
             </form>
         )

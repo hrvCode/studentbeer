@@ -9,7 +9,7 @@ import GeoMap from '../Map/Map'
 import Offers from '../Offers/Offers'
 import Friendlist from '../FriendList/FriendList'
 import Landing from '../Landing/Landing'
-import SignIn from '../SignIn/Signin'
+import SignIn from '../SignIn/SignIn'
 import SignUp from '../SignUp/SignUp'
 import {withAuthentication, AuthUserContext} from '../Session';
 
