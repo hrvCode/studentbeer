@@ -1,5 +1,6 @@
 import app from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/database'
 
 
 const config = {
@@ -16,6 +17,7 @@ const config = {
       constructor(){
           app.initializeApp(config)
           this.auth = app.auth();
+          this.db = app.database();
       }
         
         doCreateUserWithEmailAndPassword = (email, password) =>
@@ -31,7 +33,15 @@ const config = {
 
         doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password)
-        
+
+        // skapa user i databas
+        user = uid => this.db.ref(`users/${uid}`);
+        users = () => this.db.ref('users');
+
+
+
+
+
   }
 
   export default Firebase;

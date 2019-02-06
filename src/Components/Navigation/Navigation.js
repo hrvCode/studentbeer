@@ -29,9 +29,6 @@ const NavigationAuth = () => (
     
         <ul>
             <li>
-                <Link to={ROUTES.LANDING}><i className="fas fa-home"></i></Link>
-            </li>
-            <li>
                 <Link to={ROUTES.PROFILE}><i className="fas fa-user"></i></Link>
             </li>
             <li>
