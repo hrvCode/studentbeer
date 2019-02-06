@@ -2,15 +2,18 @@ import Styled from 'styled-components';
 
 export const Container = Styled.div`
     background-color:#F8F8F8;
-    height:80vh;
+    height:90vh;
 `;
 
 
 export const Header = Styled.div`
     text-align: center;
-    padding: 5% 0 5% 0;
+    padding: 2% 0 2% 0;
     width: 100%;
-    background: #E0E0E0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
    
 `;
 
@@ -52,6 +55,8 @@ export const Friend = Styled.div`
                         padding-left:3%;
                         font-size: 0.9em;
                         width:100%;
+                        font-family: 'open-sans';
+                        font-weight: 100;
                     }
     }
     &:hover{

@@ -45,7 +45,8 @@ const Header = () => {
     return (
       <Style.Header>
       <i className="fas fa-search"></i>
-        SÖK VÄNNER
+      <h2>Sök</h2>
+        
       </Style.Header>
     )
 }

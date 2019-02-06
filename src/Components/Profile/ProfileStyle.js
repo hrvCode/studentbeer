@@ -6,5 +6,5 @@ display:flex;
 justify-content:center;
 align-items:center;
 background-color:white;
-height:80vh;
+height:90vh;
 `;

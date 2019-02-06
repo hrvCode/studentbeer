@@ -5,8 +5,8 @@ export const Main = Styled.div`
 display:flex;
 flex-direction:row;
 background-color:Dimgrey;
-height:20vh;
-justify-content:space-evenly;
+height:10vh;
+justify-content:center;
 align-items:center;
 
 

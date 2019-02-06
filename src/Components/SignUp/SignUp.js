@@ -3,13 +3,15 @@ import * as ROUTES from '../../Constats/routes';
 import {Link} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 import {withFirebase} from '../Firebase'
-
+import {Main, Container,Paragraph} from './SignUpStyle';
 
 const SignUpPage = () => (
-    <div>
-        <h1>sign up</h1>
+    <Main>
+    <Container>
+        <h1>Sign up</h1>
             <SignUpForm/> 
-    </div>
+            </Container>
+    </Main>
 )
 
 // initinal state till signupform baser state.
@@ -39,14 +41,17 @@ class SignUpFormBase extends Component{
         this.props.Firebase
         .doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser =>{
+            console.log(authUser)
             return (
+               
                 this.props.Firebase.user(authUser.user.uid)
                 .set({
                     username,
                     email,
-                    comments: '',
+                    bioText: '',
                     img: '',
                     civilStatus: '',
+                    isAdmin: false,
                 })
                 .then(() =>{
                     this.setState({...INITIAL_STATE});
@@ -116,20 +121,20 @@ class SignUpFormBase extends Component{
                 onChange={this.onChange}
                 placeholder="confirm password"
                  />
-
+                {error && <p>{error.message}</p>}
                 <button type="submit" disabled={isInvalid}>Sign Up</button>
 
                 {/* om det finns error i this.state.false så körs kodsnutten */}
 
-                {error && <p>{error.message}</p>}
+                
             </form>
         )
     }
 }
 const SignUpLink = () =>(
-    <p> 
+    <Paragraph> 
         Don't have an account? <Link to={ROUTES.SIGNUP}>Sign Up</Link>
-    </p>
+    </Paragraph>
 )
 
 // wrappar SignUpForm variablen med withrouter och withfirebase.
