@@ -31,9 +31,6 @@ const NavigationAuth = () => (
     <Main>
     <ReactTooltip />
         <ul>
-             <li>
-                <Link to={ROUTES.LANDING}><i data-tip="Home" className="fas fa-home"></i></Link>
-            </li>
             <li>
                 <Link to={ROUTES.PROFILE}><i data-tip="Profile" className="fas fa-user"></i></Link>
             </li>
