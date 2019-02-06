@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 export const Main = Styled.div`
     text-align: center;
-    height:80vh;
+    height:90vh;
     overflow-y: scroll;
     font-size: 17px;
 `;
