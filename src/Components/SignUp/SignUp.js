@@ -39,14 +39,17 @@ class SignUpFormBase extends Component{
         this.props.Firebase
         .doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser =>{
+            console.log(authUser)
             return (
+               
                 this.props.Firebase.user(authUser.user.uid)
                 .set({
                     username,
                     email,
-                    comments: '',
+                    bioText: '',
                     img: '',
                     civilStatus: '',
+                    isAdmin: false,
                 })
                 .then(() =>{
                     this.setState({...INITIAL_STATE});

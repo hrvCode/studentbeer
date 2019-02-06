@@ -7,3 +7,11 @@ export const Main = Styled.div`
     background-color:white;
     height:80vh;
 `;
+
+export const Far = Styled.div`
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:white;
+    height:80vh;
+`;

@@ -1,12 +1,12 @@
 import React from 'react';
 import {withAuthorization} from '../Session'
-import {Main} from './OffersStyle';
+import * as Styles from './OffersStyle';
 const map = () => (
-    <Main>
+    <Styles.Main>
         <header>
             <h2>Offers sidan</h2>
         </header>
-    </Main>
+    </Styles.Main>
 )
 const condition = authUser => authUser != null;
 export default withAuthorization(condition)(map);
