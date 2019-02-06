@@ -6,7 +6,7 @@ display:flex;
 flex-direction:row;
 background-color:Dimgrey;
 height:10vh;
-justify-content:space-evenly;
+justify-content:center;
 align-items:center;
 
 

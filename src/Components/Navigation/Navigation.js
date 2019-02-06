@@ -1,13 +1,11 @@
 import React from 'react';
 import SignOutPage from '../SignOut/SignOut';
-import ReactTooltip from 'react-tooltip';
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../../Constats/routes';
 import {Main} from './NavigationStyle';
 
 const Navigation = ({authUser}) => (
    <Main>
-   <ReactTooltip />
        {authUser ? <NavigationAuth />  : <NavigationNoneAuth/>}
    </Main> 
 
