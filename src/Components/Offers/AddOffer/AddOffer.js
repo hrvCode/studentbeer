@@ -3,6 +3,8 @@ import {Link, withRouter} from 'react-router-dom'
 import { withAuthorization } from '../../Session';
 import * as ROUTES from '../../../Constats/routes'
 import * as Styles from '../AddOffer/AddOfferStyle';
+import {withFirebase} from '../../Firebase/index';
+import {AuthUserContext} from '../../Session';
 
 const addOffer = () => (
     <Styles.Main>
@@ -15,29 +17,45 @@ class AddOfferBase extends React.Component{
     state={
         bioText: "",
     }
-    onSubmit = event => {
+    onSubmit = (event, authUser) => {
         event.preventDefault()
         this.setState({
             bioText: ""
+            
         })
+        this.props.Firebase.offers()
+        .push({
+         text: this.state.bioText,
+         user: authUser.uid,
+        //  user: 
+        })
+        
         this.props.history.push(ROUTES.OFFERS)
 
-        const offerObject = {
-            pub: "Irish brewery",
-            Puid: "PUB UNIK IDENTIFIER",
-            bioText: this.state.bioText,
-        }
+        // const offerObject = {
+        //     pub: "Irish brewery",
+        //     Puid: "PUB UNIK IDENTIFIER",
+        //     bioText: this.state.bioText,
+        // }
+      console.log(authUser)
     }
+
+
     onChange = event =>{
         this.setState({
             [event.target.name]: event.target.value,
         })
     }
+
+    
+
     render(){
         const {bioText} = this.state
         const isInvalid = bioText === "";
         return(
-            <form onSubmit={this.onSubmit}>
+            <AuthUserContext.Consumer>{
+                authUser => (
+                    <form onSubmit={(event)=>this.onSubmit(event, authUser)}>
                 <Styles.TextArea type="text"
                 name="bioText"
                 onChange={this.onChange}
@@ -45,6 +63,9 @@ class AddOfferBase extends React.Component{
                 />
                 <Styles.Button type="submit" disabled={isInvalid}> Skapa </Styles.Button>
             </form>
+                )}
+            </AuthUserContext.Consumer>
+            
         )
     }   
 }
@@ -54,7 +75,7 @@ const AddOfferLink = () =>(
     )
 
 
-const AddOfferForm = withRouter(AddOfferBase);
+const AddOfferForm = withRouter(withFirebase(AddOfferBase));
 
 
 const condition = authUser => authUser != null;

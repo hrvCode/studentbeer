@@ -38,6 +38,13 @@ const config = {
         // skapa user i databas **USER API**
         user = uid => this.db.ref(`users/${uid}`);
         users = () => this.db.ref('users');
+
+        // Offers API
+
+        offer = uid => this.db.ref(`offers/${uid}`);
+        offers = () => this.db.ref('offers');
+
+
         
       // MERGE AUTH AND DB USER API **
 
