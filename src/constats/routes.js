@@ -6,3 +6,4 @@ export const FRIENDLIST = '/friendlist';
 export const SIGNIN = '/signin';
 export const SIGNUP = '/signup';
 export const PASSWORD_FORGETG = '/password-forget';
+export const ADD_OFFER = "/add-offer";

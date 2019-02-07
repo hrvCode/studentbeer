@@ -39,9 +39,6 @@ const config = {
         users = () => this.db.ref('users');
 
 
-
-
-
   }
 
   export default Firebase;
