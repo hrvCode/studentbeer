@@ -1,12 +1,14 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom'
-import { withAuthorization } from '../Session';
-import * as ROUTES from '../../Constats/routes'
+import { withAuthorization } from '../../Session';
+import * as ROUTES from '../../../Constats/routes'
+import * as Styles from '../AddOffer/AddOfferStyle';
 
 const addOffer = () => (
-    <div>
+    <Styles.Main>
+        <h2>Skapa ett nytt erbjudande!</h2>
         <AddOfferForm/>
-    </div>
+    </Styles.Main>
 )
 
 class AddOfferBase extends React.Component{
@@ -36,13 +38,12 @@ class AddOfferBase extends React.Component{
         const isInvalid = bioText === "";
         return(
             <form onSubmit={this.onSubmit}>
-                <input
-                type="text"
+                <Styles.TextArea type="text"
                 name="bioText"
                 onChange={this.onChange}
-                placeholder="Skriv ner erat erbjuande här"
+                placeholder="... "
                 />
-                <button type="submit" disabled={isInvalid} >Skapa</button>
+                <Styles.Button type="submit" disabled={isInvalid}> Skapa </Styles.Button>
             </form>
         )
     }   
@@ -56,5 +57,6 @@ const AddOfferLink = () =>(
 const AddOfferForm = withRouter(AddOfferBase);
 
 
+const condition = authUser => authUser != null;
 export {AddOfferLink};
-export default addOffer;
+export default withAuthorization(condition)(addOffer);

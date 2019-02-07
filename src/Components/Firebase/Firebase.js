@@ -35,12 +35,39 @@ const config = {
         doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password)
 
-        // skapa user i databas
+        // skapa user i databas **USER API**
         user = uid => this.db.ref(`users/${uid}`);
         users = () => this.db.ref('users');
         
+      // MERGE AUTH AND DB USER API **
 
 
-  }
+      onAuthUserListener = (next, fallback) => 
+        this.auth.onAuthStateChanged(authUser => {
+          if(authUser){
+            this.user(authUser.uid)
+            .once('value')
+            .then(snapshot => {
+              const dbUser = snapshot.val()
+
+              // checks roles array or asign it empty.
+              if(!dbUser.roles){
+                dbUser.roles = [];
+              }
+
+              // merge authUser with dbUser
+              authUser = {
+                uid: authUser.uid,
+                email: authUser.email,
+                ...dbUser
+              }
+
+              next(authUser)
+            });
+          }else{
+            fallback();
+          }
+        });
+  };
 
   export default Firebase;

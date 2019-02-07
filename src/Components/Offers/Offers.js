@@ -1,7 +1,8 @@
 import React from 'react';
 import {withAuthorization} from '../Session'
 import * as Styles from './OffersStyle';
-import {AddOfferLink} from './NewOffer'
+import {AddOfferLink} from './AddOffer/AddOffer'
+import * as ROLES from '../../Constats/roles'
 const map = () => (
     <Styles.Main>
         <Styles.Header>
@@ -32,5 +33,5 @@ const map = () => (
         </Styles.MainContent>
     </Styles.Main>
 )
-const condition = authUser => authUser != null;
+const condition = authUser => authUser;
 export default withAuthorization(condition)(map);
