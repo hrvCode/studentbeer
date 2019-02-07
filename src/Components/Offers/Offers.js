@@ -1,11 +1,14 @@
 import React from 'react';
 import {withAuthorization} from '../Session'
 import * as Styles from './OffersStyle';
+import {AddOfferLink} from './AddOffer/AddOffer'
+import * as ROLES from '../../Constats/roles'
 const map = () => (
     <Styles.Main>
-        <header>
+        <Styles.Header>
             <h2>Erbjudanden</h2>
-        </header>
+            <AddOfferLink/>
+        </Styles.Header>
         <Styles.MainContent>
             <Styles.List>
                 <li>
@@ -15,20 +18,20 @@ const map = () => (
                     </div>
                 </li>
                 <li>
-                <div>   
-                        <span><h4>Hamre Bar</h4> <span>Icon</span></span>
-                        <p><strong>25%</strong> t är så många gör sägs det, de har kvar sql där det passar bäst, och sen nosql där det passar. Ska se om jag kan hitta några exempel på fördelningar, det är en intressant tanke</p>               
+                    <div>   
+                            <span><h4>Hamre Bar</h4> <span>Icon</span></span>
+                            <p><strong>25%</strong> t är så många gör sägs det, de har kvar sql där det passar bäst, och sen nosql där det passar. Ska se om jag kan hitta några exempel på fördelningar, det är en intressant tanke</p>               
                     </div>
                 </li>
                 <li>
-                <div>   
-                        <span><h4>Djungelvrål Bar</h4> <span>Icon</span></span>
-                        <p><strong>25%</strong> t är så många gör sägs det, de har kvar sql där det passar bäst, och sen nosql där det passar. Ska se om jag kan hitta några exempel på fördelningar, det är en intressant tanke</p>               
+                    <div>   
+                            <span><h4>Djungelvrål Bar</h4> <span>Icon</span></span>
+                            <p><strong>25%</strong> t är så många gör sägs det, de har kvar sql där det passar bäst, och sen nosql där det passar. Ska se om jag kan hitta några exempel på fördelningar, det är en intressant tanke</p>               
                     </div>
                 </li>
             </Styles.List>
         </Styles.MainContent>
     </Styles.Main>
 )
-const condition = authUser => authUser != null;
+const condition = authUser => authUser;
 export default withAuthorization(condition)(map);

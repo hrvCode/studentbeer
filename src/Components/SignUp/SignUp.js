@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
 import * as ROUTES from '../../Constats/routes';
-import {Link} from 'react-router-dom'
-import {withRouter} from 'react-router-dom'
-import {withFirebase} from '../Firebase'
+import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
+import {withFirebase} from '../Firebase';
 import {Main, Container,Paragraph} from './SignUpStyle';
+import * as ROLES from '../../Constats/roles';
 
 const SignUpPage = () => (
     <Main>
@@ -34,14 +35,16 @@ class SignUpFormBase extends Component{
 
     // skapa ny användare.
     onSubmit = event => {
-        const { username , email, passwordOne} = this.state;
-    
+        const { username , email, passwordOne, isAdmin} = this.state;
+        const roles = [];
+        if(isAdmin){
+            roles.push(ROLES.ADMIN)
+        }
         // anropar på firebase classen i firebase contexten.
         // för att skapa ny användare.
         this.props.Firebase
         .doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser =>{
-            console.log(authUser)
             return (
                
                 this.props.Firebase.user(authUser.user.uid)
@@ -51,7 +54,7 @@ class SignUpFormBase extends Component{
                     bioText: '',
                     img: '',
                     civilStatus: '',
-                    isAdmin: false,
+                    roles,
                 })
                 .then(() =>{
                     this.setState({...INITIAL_STATE});
@@ -76,11 +79,21 @@ class SignUpFormBase extends Component{
             [event.target.name]: event.target.value,
         })
     }
+
+    onChangeCheckBox = event => {
+        this.setState({
+            [event.target.name]: event.target.checked
+        })
+    }
+
     componentDidMount(){
         this.setState({
             isLoading: false
         })
     }
+
+
+
     render(){
         // hämtar variabler från state.
         const {email, passwordOne, passwordTwo, username, error} = this.state;
@@ -121,6 +134,14 @@ class SignUpFormBase extends Component{
                 onChange={this.onChange}
                 placeholder="confirm password"
                  />
+                <label>
+                    admin:
+                    <input 
+                    type="checkbox"
+                    name="isAdmin"
+                    onChange={this.onChangeCheckBox}
+                    />
+                    </label>
                 {error && <p>{error.message}</p>}
                 <button type="submit" disabled={isInvalid}>Sign Up</button>
 
