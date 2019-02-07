@@ -18,6 +18,7 @@ const config = {
           app.initializeApp(config)
           this.auth = app.auth();
           this.db = app.database();
+          
       }
         
         doCreateUserWithEmailAndPassword = (email, password) =>
@@ -37,6 +38,7 @@ const config = {
         // skapa user i databas
         user = uid => this.db.ref(`users/${uid}`);
         users = () => this.db.ref('users');
+        
 
 
 

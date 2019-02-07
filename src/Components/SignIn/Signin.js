@@ -32,7 +32,7 @@ class SignInFormBase extends Component{
         const {email, password} = this.state;
 
         // ropar på funktioner från Firebase context för att kunna logga in. 
-
+        
         this.props.Firebase
         .doSignInWithEmailAndPassword(email, password)
         .then(() =>{
@@ -70,7 +70,9 @@ class SignInFormBase extends Component{
                             placeholder="Password"
                         />
                     </div>
+
                     {error && <p>{error.message}</p>}
+
                     <ButtonContainer>
                         <button type="submit" disabled={isInvalid}>Login</button>
                     </ButtonContainer>
