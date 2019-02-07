@@ -9,7 +9,7 @@ import GeoMap from '../Map/Map'
 import Offers from '../Offers/Offers'
 import Friendlist from '../FriendList/FriendList'
 import Landing from '../Landing/Landing'
-import SignIn from '../SignIn/SignIn';
+import SignIn from '../SignIn/Signin';
 import SignUp from '../SignUp/SignUp'
 import NewOffer from '../Offers/NewOffer';
 import {withAuthentication, AuthUserContext} from '../Session';
@@ -29,7 +29,7 @@ const App = () =>(
                 <Route exact path={ROUTES.ADD_OFFER} component={NewOffer} />
     {/*             <Route render={() => <h1>404 page doesnt exist</h1>} /> */}
   
-    <           AuthUserContext.Consumer>
+                <AuthUserContext.Consumer>
                 {authUser => <Navigation authUser={authUser} /> }
                 </AuthUserContext.Consumer>
             
