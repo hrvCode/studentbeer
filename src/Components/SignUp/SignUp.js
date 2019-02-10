@@ -11,6 +11,7 @@ const SignUpPage = () => (
         <h1>Sign up</h1>
             <SignUpForm/> 
             </Container>
+            
     </Main>
 )
 
@@ -131,14 +132,9 @@ class SignUpFormBase extends Component{
         )
     }
 }
-const SignUpLink = () =>(
-    <Paragraph> 
-        Don't have an account? <Link to={ROUTES.SIGNUP}>Sign Up</Link>
-    </Paragraph>
-)
+
 
 // wrappar SignUpForm variablen med withrouter och withfirebase.
 const SignUpForm = withRouter(withFirebase(SignUpFormBase)); 
 
-export {SignUpLink};
 export default SignUpPage;

@@ -1,45 +1,58 @@
 
 import Styled from 'styled-components';
-import Background from '../../Graphics/Backgorunds/mnm-all-551345-unsplash.jpg'
+import Background from '../../Graphics/Backgorunds/rawpixel-795617-unsplash.jpg'
+
+
+export const ButtonContainer = Styled.div`
+    
+ 
+   display:flex;
+   justify-content:center;
+      
+`;
+
 
 export const Main = Styled.div`
-    height:90vh;
-    background-image:url(${Background});
     display:flex;
+    justify-content:flex-start;
+    align-items:center;
     flex-direction:column;
-    justify-content:center;
-    align-items:center;  
-    
-    h1{text-align:center;}
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(255,255,255,0.5)), url(${Background});
+    background-size:cover;
+    height:90vh;
+`;
 
-    button{
-        background:${props => props.background};
-        color:${props => props.color};
-        box-shadow: 0 1px 1px 0 grey;
-        font-family:Arial;
-        font-weight:bold;
-        font-size: 16px;
-        border:none;
-        border-radius: 5px;
-        display: inline-block;
-        margin:0 20px;
-        margin-top:4%;
-        width: 100px;
-        height:30px; 
-        cursor:pointer;
+export const ContainerTop = Styled.div`
+display:flex;
+flex-direction:column;
+
+margin-top:50px;
+    h1{
+       
+        font-family: 'Berkshire Swash', cursive;
+        font-size:45px;
+        color:Black;
+        margin:0;
+        border-top:8px solid red;
+        padding-top:5px;
+        width:100%;
         
-        &:hover{
-            background:${props => props.backgroundHover};
-        }
-        &:focus{
-            outline: none;
-        }
+        
     }
+
+    h3{
+        text-align:center;
+        color:red;
+        font-weight:bold;
+    }
+
     input{
-        width:60%;
+        font-size:24px;
+        color:red;
+        width:80%;
         margin:20px auto;
         border: none;
-        
+        background-color:transparent;
         border-bottom: 1px solid black;
         display: block;
         padding-top:2%;
@@ -55,49 +68,65 @@ export const Main = Styled.div`
         }
     }
 
-    a{
+`;
 
-        font-family:Arial;
-        font-weight:bold;
-        font-size: 20px;
-        color:red;
+export const ContainerBottom = Styled.div`
+display:flex;
+flex-direction:column;
+    h1{
+       
+        font-family: 'Berkshire Swash', cursive;
+        font-size:45px;
+        color:Black;
+        margin:0;
+        border-top:8px solid red;
+        padding-top:5px;
+        width:100%;
+        
+        
+    }
+
+    h3{
+        margin-top:80px;
         text-align:center;
-        display: block;
-        margin:25px auto 25px auto;
-        text-decoration:none;
+        color:red;
+        font-weight:bold;
+    }
 
-        &:hover{
-            color:black;
+    input{
+        font-size:24px;
+        width:80%;
+        margin:20px auto;
+        border: none;
+        background-color:transparent;
+        border-bottom: 1px solid black;
+        display: block;
+        padding-top:2%;
+        @media(min-width: 1024px){
+            width: 50%;
+        }
+        &::placeholder{
+            text-align:center;
+        }
+
+        &:focus{
+            outline: none;
         }
     }
 
-    p{
-        text-align:center;
-        color:red;
-        font-weight:bold;
+`;
+
+export const Logotype = Styled.div`
+
+   
+  
+    text-align:center;
+    img{
+        height:200px;
+        margin-bottom:10px;
     }
-`;
-
-export const Container = Styled.div`
     
- 
-    background-color:white;
-    border:2px solid white;
-    border-radius:10px;
-    width:80%;
-      
 `;
-
-export const ButtonContainer = Styled.div`
-    
- 
-   display:flex;
-   justify-content:center;
-      
-`;
-
-
-
 
 
        

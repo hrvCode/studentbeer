@@ -2,7 +2,7 @@ import React from 'react';
 import SignOutPage from '../SignOut/SignOut';
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../../Constats/routes';
-import {Main} from './NavigationStyle';
+import {Main,Button} from './NavigationStyle';
 
 const Navigation = ({authUser}) => (
    <Main>
@@ -14,14 +14,9 @@ const Navigation = ({authUser}) => (
 const NavigationNoneAuth = () => (
     
     <Main>
-        <ul>
-             <li>
-                <Link to={ROUTES.LANDING}><i className="fas fa-home"></i></Link>
-            </li>
-            <li>
-                <Link to={ROUTES.SIGNIN}><i className="fas fa-sign-in-alt"></i></Link>
-            </li>
-        </ul>
+        
+                <Link to={ROUTES.SIGNUP}><button>Sign up</button></Link>
+       
     </Main>
 )
 const NavigationAuth = () => (

@@ -8,7 +8,7 @@ const withAuthorization = (condition) => Component => {
             this.listener = this.props.Firebase.auth.onAuthStateChanged(
                 authuser =>{
                     if(!condition(authuser)){
-                        this.props.history.push(ROUTES.LANDING)
+                        this.props.history.push(ROUTES.SIGNIN)
                     }
                 }
             )
