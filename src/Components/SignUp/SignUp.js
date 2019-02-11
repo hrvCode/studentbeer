@@ -5,6 +5,8 @@ import {withRouter} from 'react-router-dom'
 import {withFirebase} from '../Firebase'
 import {Main, Container,Paragraph} from './SignUpStyle';
 
+
+
 const SignUpPage = () => (
     <Main>
     <Container>

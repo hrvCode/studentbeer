@@ -13,7 +13,6 @@ height:10vh;
 justify-content:center;
 align-items:center;
 
-
 ul{
   margin:0;
   padding:0;
