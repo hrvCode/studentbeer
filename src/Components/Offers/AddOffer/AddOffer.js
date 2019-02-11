@@ -16,7 +16,20 @@ const addOffer = () => (
 class AddOfferBase extends React.Component{
     state={
         bioText: "",
+        authUser: null,
+        timeStamp: null,
     }
+
+    componentDidMount(){
+        this.props.Firebase.onAuthUserListener((authUser) => {
+            this.setState({
+                authUser,
+                timeStamp: this.props.Firebase.timeStamp(),
+            })
+        },
+        () => this.props.history.push(ROUTES.SIGNIN))
+    }
+
     onSubmit = (event, authUser) => {
 
         event.preventDefault()
@@ -28,7 +41,9 @@ class AddOfferBase extends React.Component{
 
         .push({
          text: this.state.bioText,
-         user: authUser.uid,
+         uid: authUser.uid,
+         name: authUser.username,
+         createdAt: this.state.timeStamp,
         //  user: 
         })
         
@@ -53,20 +68,17 @@ class AddOfferBase extends React.Component{
     render(){
         const {bioText} = this.state
         const isInvalid = bioText === "";
+        const authUser = this.state.authUser;
         return(
-            <AuthUserContext.Consumer>{
-                authUser => (
-                    <form onSubmit={(event)=>this.onSubmit(event, authUser)}>
-                <Styles.TextArea type="text"
-                name="bioText"
-                onChange={this.onChange}
-                placeholder="... "
-                />
+                <form onSubmit={(event)=>this.onSubmit(event, authUser)}>
+                    <Styles.TextArea type="text"
+                        name="bioText"
+                        onChange={this.onChange}
+                        placeholder="... "
+                    />
                 <Styles.Button type="submit" disabled={isInvalid}> Skapa </Styles.Button>
             </form>
-                )}
-            </AuthUserContext.Consumer>
-            
+             
         )
     }   
 }

@@ -15,14 +15,22 @@ const Offer = () => (
 )
 
 
-const OffersListItem = (props) => (
-    <li>
-        <div>
-            <span><h4>{props.user}</h4></span>
-            <p>{props.text}</p>
-        </div>
-    </li>
-)
+const OffersListItem = (props) => {
+    const timeStamp = props.createdAt;
+    const createdAt = new Date(timeStamp).getFullYear() 
+    + "/" + new Date(timeStamp).getDate() 
+    + "/" + (new Date(timeStamp).getMonth() +1);
+
+    return(
+        <li>
+            <div>
+                <span><h4>{props.name}</h4></span>
+                <p>{props.text}</p>
+                <p>{timeStamp ? "skapad: " + createdAt : null}</p>
+            </div>
+        </li>
+    )
+}
 
 class OfferBase extends Component {
     state = {
@@ -35,39 +43,46 @@ class OfferBase extends Component {
 
         this.props.Firebase.offers().on('value', snapshot => {
             const offersObject = snapshot.val()
+            if(offersObject){
+                const offersList = Object.keys(offersObject).map(key => ({
+                    ...offersObject[key],
+                    uid: key,
+                    }));
 
-            const offersList = Object.keys(offersObject).map(key => ({
-                ...offersObject[key],
-                uid: key,
-                }));
-
-
-            this.setState({
-                loading:false,
-                offers:offersList,
-            })    
+                    this.setState({
+                        loading:false,
+                        offers:offersList,
+                    })  
+            }else{
+                this.setState({
+                    loading:true,
+                    offers: null,
+                })  
+            }  
         })
     }
 
     componentWillUnmount(){
         this.props.Firebase.offers().off();
     }
+
     render(){
         return(
             <Styles.MainContent>
                 <Styles.List>
-                    {this.state.offers.map(item => {
-                        console.log(item)
+                    { this.state.offers ?
+                        this.state.offers.map(item => {
                         return(
-                    <OffersListItem 
-                    user={item.user} 
-                    text={item.text} 
-                    key={item.uid}/>
+                            <OffersListItem 
+                            name={item.name}
+                            uid={item.uid} 
+                            text={item.text} 
+                            key={item.uid}
+                            createdAt={item.createdAt}
+                            /> 
                         )
                     }
-
-
-                     )}
+                    ): <p>No offers atm</p>}
                 </Styles.List>
             </Styles.MainContent>
         )
