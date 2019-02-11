@@ -18,12 +18,14 @@ class AddOfferBase extends React.Component{
         bioText: "",
     }
     onSubmit = (event, authUser) => {
+
         event.preventDefault()
         this.setState({
             bioText: ""
-            
         })
+
         this.props.Firebase.offers()
+
         .push({
          text: this.state.bioText,
          user: authUser.uid,
@@ -37,7 +39,6 @@ class AddOfferBase extends React.Component{
         //     Puid: "PUB UNIK IDENTIFIER",
         //     bioText: this.state.bioText,
         // }
-
     }
 
 

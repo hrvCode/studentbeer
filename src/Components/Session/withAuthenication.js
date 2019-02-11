@@ -3,7 +3,7 @@ import AuthUserContext from './context';
 import {withFirebase} from '../Firebase';
 
 const withAuthentication = Component => {
-    
+
     class WithAuthentication extends React.Component{
             state={
                 authUser: null,
@@ -11,16 +11,12 @@ const withAuthentication = Component => {
     //  när Component mountas kollar den genom firebase om det finns ett User objekt
     
         componentDidMount(){
-            this.listener = this.props.Firebase.onAuthUserListener(
+            this.props.Firebase.onAuthUserListener(
                 authUser => {
                    this.setState({ authUser});
                 },
                 () => this.setState({authUser: null})
             );
-        }
-
-        componentWillUnmount(){
-            this.listener();
         }
 
         render(){

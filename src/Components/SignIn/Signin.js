@@ -37,7 +37,7 @@ class SignInFormBase extends Component{
         ...INITIAL_STATE
     })
     
-    componentdidmount(){
+    componentDidMount(){
        this.listener = this.props.Firebase.auth.onAuthStateChanged(
            authUser =>{
                if(authUser){
