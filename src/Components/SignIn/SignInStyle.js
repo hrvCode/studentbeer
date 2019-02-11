@@ -69,8 +69,9 @@ flex-direction:column;
     h3{
         margin-top:70px;
         text-align:center;
-        color:red;
-        font-weight:bold;
+        color:black;
+        font-size:16px;
+        
     }
 
     input{
