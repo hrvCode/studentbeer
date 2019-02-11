@@ -2,8 +2,9 @@ import React from 'react';
 import SignOutPage from '../SignOut/SignOut';
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../../Constats/routes';
-import {Main,Button} from './NavigationStyle';
+import {Main,MainNoneAuth} from './NavigationStyle';
 
+//Kollar om användaren är godkänd och anger navbar beroende på
 const Navigation = ({authUser}) => (
    <Main>
        {authUser ? <NavigationAuth />  : <NavigationNoneAuth/>}
@@ -13,11 +14,11 @@ const Navigation = ({authUser}) => (
     
 const NavigationNoneAuth = () => (
     
-    <Main>
-        
+    <MainNoneAuth>
+                
                 <Link to={ROUTES.SIGNUP}><button>Sign up</button></Link>
        
-    </Main>
+    </MainNoneAuth>
 )
 const NavigationAuth = () => (
     <Main>

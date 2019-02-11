@@ -17,7 +17,7 @@ export const Main = Styled.div`
     justify-content:flex-start;
     align-items:center;
     flex-direction:column;
-    background:linear-gradient(rgba(0,0,0,0.5),rgba(255,255,255,0.5)), url(${Background});
+    background:linear-gradient(rgba(0,0,0,0.9),rgba(80,80,80,0.8),rgba(255,255,255,0.5)), url(${Background});
     background-size:cover;
     height:90vh;
 `;
@@ -46,27 +46,7 @@ margin-top:50px;
         font-weight:bold;
     }
 
-    input{
-        font-size:24px;
-        color:red;
-        width:80%;
-        margin:20px auto;
-        border: none;
-        background-color:transparent;
-        border-bottom: 1px solid black;
-        display: block;
-        padding-top:2%;
-        @media(min-width: 1024px){
-            width: 50%;
-        }
-        &::placeholder{
-            text-align:center;
-        }
-
-        &:focus{
-            outline: none;
-        }
-    }
+   
 
 `;
 
@@ -76,7 +56,7 @@ flex-direction:column;
     h1{
        
         font-family: 'Berkshire Swash', cursive;
-        font-size:45px;
+        font-size:55px;
         color:Black;
         margin:0;
         border-top:8px solid red;
@@ -87,14 +67,14 @@ flex-direction:column;
     }
 
     h3{
-        margin-top:80px;
+        margin-top:70px;
         text-align:center;
         color:red;
         font-weight:bold;
     }
 
     input{
-        font-size:24px;
+        font-size:18px;
         width:80%;
         margin:20px auto;
         border: none;
@@ -103,16 +83,39 @@ flex-direction:column;
         display: block;
         padding-top:2%;
         @media(min-width: 1024px){
-            width: 50%;
+            width: 100%;
         }
         &::placeholder{
             text-align:center;
+            color:white;
+            font-size:24px;
         }
 
         &:focus{
             outline: none;
         }
     }
+
+    button{
+         border:none;
+         cursor:pointer;
+         width:180px;
+         height:40px;
+         background-color:white;
+         color:black;
+         border-radius:4px;
+         font-weight:bold;
+         font-size:18px;
+         transition:0.4s;
+         box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.55);
+
+         &:hover{
+            background-color:#cccccc;
+        }
+
+    }
+
+    
 
 `;
 

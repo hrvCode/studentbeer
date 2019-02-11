@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom';
+
 import {withRouter} from 'react-router-dom'
 import {withFirebase} from '../Firebase'
 import * as ROUTES from '../../Constats/routes';
@@ -13,13 +15,13 @@ const SignInPage = () =>(
             </Logotype>
             
             <h1>
-            BeerHunter
+                BeerHunter
             </h1>
         </ContainerTop>
 
         <ContainerBottom>
             <SignInForm/>
-            <h3>Dont have an account?</h3>
+            <h3>Don't have an account?</h3>
         </ContainerBottom>
     </Main>
 )
