@@ -1,17 +1,28 @@
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom';
+
 import {withRouter} from 'react-router-dom'
-import {SignUpLink} from '../SignUp/SignUp';
 import {withFirebase} from '../Firebase'
 import * as ROUTES from '../../Constats/routes';
-import {Main, Container,ButtonContainer} from './SignInStyle';
-
+import {Main, ContainerTop,ContainerBottom,ButtonContainer,Logotype} from './SignInStyle';
+import Logo from '../../Graphics/bottle.png'
 const SignInPage = () =>(
     <Main>
-        <Container>
-            <h1>Sign in</h1>
+
+        <ContainerTop>
+            <Logotype>
+            <img src={Logo}></img>
+            </Logotype>
+            
+            <h1>
+                BeerHunter
+            </h1>
+        </ContainerTop>
+
+        <ContainerBottom>
             <SignInForm/>
-            <SignUpLink/>
-        </Container>
+            <h3>Don't have an account?</h3>
+        </ContainerBottom>
     </Main>
 )
 
@@ -26,6 +37,20 @@ class SignInFormBase extends Component{
         ...INITIAL_STATE
     })
     
+    componentDidMount(){
+       this.listener = this.props.Firebase.auth.onAuthStateChanged(
+           authUser =>{
+               if(authUser){
+                   this.props.history.push(ROUTES.PROFILE)
+               }
+           }
+       )
+    }
+
+    componentWillUnmount(){
+        this.listener();
+    }
+
     onSubmit = (event) =>{
         event.preventDefault();
 
@@ -74,7 +99,7 @@ class SignInFormBase extends Component{
                     {error && <p>{error.message}</p>}
 
                     <ButtonContainer>
-                        <button type="submit" disabled={isInvalid}>Login</button>
+                        <button type="submit" disabled={isInvalid}>Sign in</button>
                     </ButtonContainer>
                 </div>
             </form>
@@ -83,5 +108,4 @@ class SignInFormBase extends Component{
 }
 
 const SignInForm = withRouter(withFirebase(SignInFormBase));
-
 export default SignInPage;

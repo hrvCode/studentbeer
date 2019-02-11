@@ -8,8 +8,7 @@ import Profile from '../Profile/Profile'
 import GeoMap from '../Map/Map'
 import Offers from '../Offers/Offers'
 import Friendlist from '../FriendList/FriendList'
-import Landing from '../Landing/Landing'
-import SignIn from '../SignIn/Signin';
+import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp'
 import NewOffer from '../Offers/AddOffer/AddOffer';
 import {withAuthentication, AuthUserContext} from '../Session';
@@ -18,13 +17,11 @@ import {withAuthentication, AuthUserContext} from '../Session';
 const App = () =>( 
         <Router>
             <div>
-          
-                <Route exact path={ROUTES.LANDING} component={Landing} />
+                <Route exact path={ROUTES.SIGNIN} component={SignIn} />
                 <Route path={ROUTES.PROFILE} component={Profile} />
                 <Route path={ROUTES.MAP} component={GeoMap} />
                 <Route path={ROUTES.OFFERS} component={Offers} />
                 <Route path={ROUTES.FRIENDLIST} component={Friendlist} />
-                <Route path={ROUTES.SIGNIN} component={SignIn} />
                 <Route path={ROUTES.SIGNUP} component={SignUp} />
                 <Route exact path={ROUTES.ADD_OFFER} component={NewOffer} />
     {/*             <Route render={() => <h1>404 page doesnt exist</h1>} /> */}

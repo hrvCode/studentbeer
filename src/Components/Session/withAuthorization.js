@@ -8,15 +8,12 @@ import {AuthUserContext} from './index';
 
 const withAuthorization = (condition) => Component => {
     class WithAutorization extends React.Component{
-
-        componentDidMount(){ 
-            this.listener = this.props.Firebase.onAuthUserListener(
-                authUser =>{
-                    if(!condition(authUser))
-                    this.props.history.push(ROUTES.LANDING);
-                },
-                () => {
-                    this.props.history.push(ROUTES.LANDING);
+        componentDidMount(){
+            this.listener = this.props.Firebase.auth.onAuthStateChanged(
+                authuser =>{
+                    if(!condition(authuser)){
+                        this.props.history.push(ROUTES.SIGNIN)
+                    }
                 }
             )
         }
