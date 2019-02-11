@@ -10,10 +10,11 @@ import Offers from '../Offers/Offers'
 import Friendlist from '../FriendList/FriendList'
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp'
+import NewOffer from '../Offers/AddOffer/AddOffer';
 import {withAuthentication, AuthUserContext} from '../Session';
 
 
-const  App = () =>( 
+const App = () =>( 
         <Router>
             <div>
                 <Route exact path={ROUTES.SIGNIN} component={SignIn} />
@@ -22,6 +23,7 @@ const  App = () =>(
                 <Route path={ROUTES.OFFERS} component={Offers} />
                 <Route path={ROUTES.FRIENDLIST} component={Friendlist} />
                 <Route path={ROUTES.SIGNUP} component={SignUp} />
+                <Route exact path={ROUTES.ADD_OFFER} component={NewOffer} />
     {/*             <Route render={() => <h1>404 page doesnt exist</h1>} /> */}
   
                 <AuthUserContext.Consumer>

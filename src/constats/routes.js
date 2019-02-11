@@ -5,3 +5,4 @@ export const OFFERS = '/offers';
 export const FRIENDLIST = '/friendlist';
 export const SIGNUP = '/signup';
 export const PASSWORD_FORGETG = '/password-forget';
+export const ADD_OFFER = "/add-offer";
