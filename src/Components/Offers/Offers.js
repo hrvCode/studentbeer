@@ -3,7 +3,7 @@ import {withAuthorization} from '../Session'
 import * as Styles from './OffersStyle';
 import {AddOfferLink} from './AddOffer/AddOffer'
 import * as ROLES from '../../Constats/roles'
-const map = () => (
+const Offer = () => (
     <Styles.Main>
         <Styles.Header>
             <h2>Erbjudanden</h2>
@@ -33,5 +33,6 @@ const map = () => (
         </Styles.MainContent>
     </Styles.Main>
 )
+
 const condition = authUser => authUser;
-export default withAuthorization(condition)(map);
+export default withAuthorization(condition)(Offer);
