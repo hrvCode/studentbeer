@@ -8,7 +8,7 @@ import Profile from '../Profile/Profile'
 import GeoMap from '../Map/Map'
 import Offers from '../Offers/Offers'
 import Friendlist from '../FriendList/FriendList'
-import SignIn from '../SignIn/SignIn';
+import SignIn from '../SignIn/Signin';
 import SignUp from '../SignUp/SignUp'
 import NewOffer from '../Offers/AddOffer/AddOffer';
 import {withAuthentication, AuthUserContext} from '../Session';
