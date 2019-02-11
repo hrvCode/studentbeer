@@ -37,7 +37,7 @@ class AddOfferBase extends React.Component{
         //     Puid: "PUB UNIK IDENTIFIER",
         //     bioText: this.state.bioText,
         // }
-      console.log(authUser)
+
     }
 
 

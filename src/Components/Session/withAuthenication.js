@@ -1,9 +1,9 @@
 import React from 'react';
-import * as ROUTES from '../../Constats/routes';
 import AuthUserContext from './context';
 import {withFirebase} from '../Firebase';
 
 const withAuthentication = Component => {
+    
     class WithAuthentication extends React.Component{
             state={
                 authUser: null,
@@ -19,7 +19,6 @@ const withAuthentication = Component => {
             );
         }
 
-
         componentWillUnmount(){
             this.listener();
         }
@@ -33,7 +32,10 @@ const withAuthentication = Component => {
             )
         }
     }
+
     return withFirebase(WithAuthentication);
+
 }
+
 export {AuthUserContext};
 export default withAuthentication;

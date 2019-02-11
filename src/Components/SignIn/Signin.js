@@ -37,6 +37,20 @@ class SignInFormBase extends Component{
         ...INITIAL_STATE
     })
     
+    componentdidmount(){
+       this.listener = this.props.Firebase.auth.onAuthStateChanged(
+           authUser =>{
+               if(authUser){
+                   this.props.history.push(ROUTES.PROFILE)
+               }
+           }
+       )
+    }
+
+    componentWillUnmount(){
+        this.listener();
+    }
+
     onSubmit = (event) =>{
         event.preventDefault();
 
@@ -94,5 +108,4 @@ class SignInFormBase extends Component{
 }
 
 const SignInForm = withRouter(withFirebase(SignInFormBase));
-
 export default SignInPage;
