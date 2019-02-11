@@ -6,6 +6,8 @@ import {withFirebase} from '../Firebase';
 import {Main, Container,Paragraph} from './SignUpStyle';
 import * as ROLES from '../../Constats/roles';
 
+
+
 const SignUpPage = () => (
     <Main>
     <Container>
