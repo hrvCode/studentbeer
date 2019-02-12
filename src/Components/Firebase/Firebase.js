@@ -18,9 +18,8 @@ const config = {
           app.initializeApp(config)
           this.auth = app.auth();
           this.db = app.database();
-          
+
       }
-        
         doCreateUserWithEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
 
@@ -35,6 +34,13 @@ const config = {
         doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password)
 
+
+        // return timestamp
+
+        timeStamp = () => (
+          app.database.ServerValue.TIMESTAMP
+        )     
+        
         // skapa user i databas **USER API**
         user = uid => this.db.ref(`users/${uid}`);
         users = () => this.db.ref('users');
