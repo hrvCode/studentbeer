@@ -27,7 +27,6 @@ const App = () =>(
                 <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
                 <Route exact path={ROUTES.ADD_OFFER} component={NewOffer} />
   
-  
                 <AuthUserContext.Consumer>
                 {authUser => <Navigation authUser={authUser} /> }
                 </AuthUserContext.Consumer>

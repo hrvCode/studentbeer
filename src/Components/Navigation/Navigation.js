@@ -15,9 +15,7 @@ const Navigation = ({authUser}) => (
 const NavigationNoneAuth = () => (
     
     <MainNoneAuth>
-                
                 <Link to={ROUTES.SIGNUP}><button>Sign up</button></Link>
-       
     </MainNoneAuth>
 )
 const NavigationAuth = () => (
