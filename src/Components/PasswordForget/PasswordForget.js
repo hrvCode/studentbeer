@@ -29,10 +29,8 @@ class PasswordForgetFormBase extends Component {
 
     onSubmit = event => {
         const { email } = this.state;
-        
-        this.props.Firebase
-            .doPasswordReset(email)
-            .then(() => {
+        console.log(this.state.email);
+        this.props.Firebase.doPasswordReset(email).then(() => {
                 this.setState({...INITIAL_STATE})
             })
         .catch(error => {
@@ -45,7 +43,7 @@ class PasswordForgetFormBase extends Component {
     onChange = event => {
 
         this.setState({[event.target.name]: event.target.value});
-        console.log(this.state);
+        
     };
 
   render() {
