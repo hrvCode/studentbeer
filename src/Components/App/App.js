@@ -8,7 +8,8 @@ import Profile from '../Profile/Profile'
 import GeoMap from '../Map/Map'
 import Offers from '../Offers/Offers'
 import Friendlist from '../FriendList/FriendList'
-import SignIn from '../SignIn/Signin';
+import PasswordForgetPage from '../PasswordForget/PasswordForget';
+import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp'
 import NewOffer from '../Offers/AddOffer/AddOffer';
 import {withAuthentication, AuthUserContext} from '../Session';
@@ -23,8 +24,9 @@ const App = () =>(
                 <Route path={ROUTES.OFFERS} component={Offers} />
                 <Route path={ROUTES.FRIENDLIST} component={Friendlist} />
                 <Route path={ROUTES.SIGNUP} component={SignUp} />
+                <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
                 <Route exact path={ROUTES.ADD_OFFER} component={NewOffer} />
-    {/*             <Route render={() => <h1>404 page doesnt exist</h1>} /> */}
+  
   
                 <AuthUserContext.Consumer>
                 {authUser => <Navigation authUser={authUser} /> }

@@ -45,6 +45,7 @@ margin-top:50px;
         color:red;
         font-weight:bold;
     }
+   
 
    
 
@@ -74,9 +75,20 @@ flex-direction:column;
         
     }
 
+    p{  
+        text-align:center;
+
+        a{
+            text-decoration:none;
+            color:DarkSlateGray;
+            font-size:12px;
+            font-weight:bold;
+        }    
+    }
+
     input{
-        font-size:18px;
-        width:80%;
+        font-size:16px;
+        width:300px;
         margin:20px auto;
         border: none;
         background-color:transparent;
@@ -89,7 +101,7 @@ flex-direction:column;
         &::placeholder{
             text-align:center;
             color:white;
-            font-size:24px;
+            font-size:18px;
         }
 
         &:focus{
