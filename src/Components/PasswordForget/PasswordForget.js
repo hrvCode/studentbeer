@@ -31,6 +31,7 @@ class PasswordForgetFormBase extends Component {
         const { email } = this.state;
         console.log(this.state.email);
         this.props.Firebase.doPasswordReset(email).then(() => {
+
                 this.setState({...INITIAL_STATE})
             })
         .catch(error => {
