@@ -16,6 +16,7 @@ const Offer = () => (
 
 
 const OffersListItem = (props) => {
+    const admin = props.isAdmin
     const timeStamp = props.createdAt;
     const createdAt = new Date(timeStamp).getFullYear() 
     + "/" + new Date(timeStamp).getDate() 
@@ -24,7 +25,7 @@ const OffersListItem = (props) => {
     return(
         <li>
             <div>
-                <span><h4>{props.name}</h4></span>
+                <span><h4>{props.name}</h4> {admin ? <span><i className="far fa-trash-alt"></i></span>:<p>hej</p>} </span>
                 <p>{props.text}</p>
                 <p>{timeStamp ? "skapad: " + createdAt : null}</p>
             </div>
@@ -35,7 +36,8 @@ const OffersListItem = (props) => {
 class OfferBase extends Component {
     state = {
         loading:false,
-        offers: []
+        offers: [],
+        isAdmin: false
     }
 
     componentDidMount(){
@@ -60,13 +62,23 @@ class OfferBase extends Component {
                 })  
             }  
         })
+
+        this.props.Firebase.onAuthUserListener((authUser) => { 
+            if(authUser.roles){
+
+                this.setState({
+                    isAdmin: true
+                })
+            } 
+        })
+      
     }
 
     componentWillUnmount(){
         this.props.Firebase.offers().off();
     }
 
-    render(){
+    render(props){
         return(
             <Styles.MainContent>
                 <Styles.List>
