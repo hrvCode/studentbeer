@@ -3,6 +3,7 @@ import {withAuthorization} from '../Session'
 import * as Styles from './OffersStyle';
 import {AddOfferLink} from './AddOffer/AddOffer';
 import {withFirebase} from '../Firebase';
+import * as ROLES from '../../Constats/roles';
 
 const Offer = () => (
     <Styles.Main>
@@ -16,7 +17,6 @@ const Offer = () => (
 
 
 const OffersListItem = (props) => {
-    const admin = props.isAdmin
     const timeStamp = props.createdAt;
     const createdAt = new Date(timeStamp).getFullYear() 
     + "/" + new Date(timeStamp).getDate() 
@@ -25,7 +25,13 @@ const OffersListItem = (props) => {
     return(
         <li>
             <div>
-                <span><h4>{props.name}</h4> {admin ? <span><i className="far fa-trash-alt"></i></span>:<p>hej</p>} </span>
+                <span>
+                    <h4>{props.name}</h4>
+                    <span>
+                        {props.isAdmin ? <i className="far fa-trash-alt" onClick={()=> props.onDelete(props.offerUid)}></i> : null }
+                    </span> 
+                </span>
+
                 <p>{props.text}</p>
                 <p>{timeStamp ? "skapad: " + createdAt : null}</p>
             </div>
@@ -37,7 +43,8 @@ class OfferBase extends Component {
     state = {
         loading:false,
         offers: [],
-        isAdmin: false
+        isAdmin: false,
+        currentUid: ''
     }
 
     componentDidMount(){
@@ -48,9 +55,10 @@ class OfferBase extends Component {
             if(offersObject){
                 const offersList = Object.keys(offersObject).map(key => ({
                     ...offersObject[key],
-                    uid: key,
+                    OfferUid: key,
+                   
                     }));
-
+                    console.log(offersList)
                     this.setState({
                         loading:false,
                         offers:offersList,
@@ -60,22 +68,29 @@ class OfferBase extends Component {
                     loading:true,
                     offers: null,
                 })  
-            }  
-        })
-
-        this.props.Firebase.onAuthUserListener((authUser) => { 
-            if(authUser.roles){
-
-                this.setState({
-                    isAdmin: true
-                })
             } 
+            this.props.Firebase.auth.onAuthStateChanged((authUser) => { 
+                this.setState({
+                    currentUid: authUser.uid
+                    
+                })
+            }) 
+           
         })
+
+     
       
     }
 
     componentWillUnmount(){
         this.props.Firebase.offers().off();
+    }
+
+
+    deleteOffer = (id) => {
+        // ref.child(key).remove();
+        this.props.Firebase.offer(id).remove()
+        console.log(id)
     }
 
     render(props){
@@ -84,14 +99,19 @@ class OfferBase extends Component {
                 <Styles.List>
                     { this.state.offers ?
                         this.state.offers.map(item => {
+                            let uidMatch = this.state.currentUid === item.uid ? true : false;
                         return(
-                            <OffersListItem 
+                            <OffersListItem
+                            isAdmin={uidMatch} 
                             name={item.name}
                             uid={item.uid} 
                             text={item.text} 
-                            key={item.uid}
+                            key={item.OfferUid}
                             createdAt={item.createdAt}
+                            offerUid={item.OfferUid}
+                            onDelete={this.deleteOffer}
                             /> 
+                        
                         )
                     }
                     ): <p>No offers atm</p>}
