@@ -64,6 +64,7 @@ const config = {
               const dbUser = snapshot.val()
 
               // checks roles array or asign it empty.
+              console.log(authUser)
               if(!dbUser.roles){
                 dbUser.roles = [];
               }

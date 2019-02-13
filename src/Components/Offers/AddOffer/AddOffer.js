@@ -1,15 +1,20 @@
 import React from 'react';
-import {Link, withRouter} from 'react-router-dom'
-import { withAuthorization } from '../../Session';
+import {Link} from 'react-router-dom'
+import { withAuthorization, AuthUserContext } from '../../Session';
 import * as ROUTES from '../../../Constats/routes'
 import * as Styles from '../AddOffer/AddOfferStyle';
+import {withRouter} from 'react-router-dom';
 import {withFirebase} from '../../Firebase/index';
-import {AuthUserContext} from '../../Session';
 
 const addOffer = () => (
     <Styles.Main>
         <h2>Skapa ett nytt erbjudande!</h2>
-        <AddOfferForm/>
+        <AuthUserContext.Consumer>
+        {
+            authUser => <AddOfferForm authUser={authUser}/>
+        }
+        </AuthUserContext.Consumer>
+        
     </Styles.Main>
 )
 
@@ -21,13 +26,11 @@ class AddOfferBase extends React.Component{
     }
 
     componentDidMount(){
-        this.props.Firebase.onAuthUserListener((authUser) => {
+        const authUser = this.props.authUser;
             this.setState({
                 authUser,
                 timeStamp: this.props.Firebase.timeStamp(),
             })
-        },
-        () => this.props.history.push(ROUTES.SIGNIN))
     }
 
     onSubmit = (event, authUser) => {
@@ -38,22 +41,16 @@ class AddOfferBase extends React.Component{
         })
 
         this.props.Firebase.offers()
-
         .push({
          text: this.state.bioText,
          uid: authUser.uid,
          name: authUser.username,
          createdAt: this.state.timeStamp,
-        //  user: 
-        })
-        
-        this.props.history.push(ROUTES.OFFERS)
 
-        // const offerObject = {
-        //     pub: "Irish brewery",
-        //     Puid: "PUB UNIK IDENTIFIER",
-        //     bioText: this.state.bioText,
-        // }
+        })
+        .then(
+            this.props.history.push(ROUTES.OFFERS)
+        )
     }
 
 

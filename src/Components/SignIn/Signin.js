@@ -1,29 +1,29 @@
 import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
-
-import {withRouter} from 'react-router-dom'
-import {withFirebase} from '../Firebase'
+import {PasswordForgetLink} from '../PasswordForget/PasswordForget';
+import {withRouter} from 'react-router-dom';
+import {withFirebase} from '../Firebase';
 import * as ROUTES from '../../Constats/routes';
-import {Main, ContainerTop,ContainerBottom,ButtonContainer,Logotype} from './SignInStyle';
-import Logo from '../../Graphics/bottle.png'
-const SignInPage = () =>(
-    <Main>
+import * as Styles from './SignInStyle';
+import Logo from '../../Graphics/bottle.png';
 
-        <ContainerTop>
-            <Logotype>
-            <img src={Logo}></img>
-            </Logotype>
+const SignInPage = () =>(
+    <Styles.Main>
+
+        <Styles.ContainerTop>
+            <Styles.Logotype>
+            <img src={Logo} alt="Logotype"></img>
+            </Styles.Logotype>
             
             <h1>
                 BeerHunter
             </h1>
-        </ContainerTop>
+        </Styles.ContainerTop>
 
-        <ContainerBottom>
+        <Styles.ContainerBottom>
             <SignInForm/>
-            <h3>Don't have an account?</h3>
-        </ContainerBottom>
-    </Main>
+            <PasswordForgetLink/>
+        </Styles.ContainerBottom>
+    </Styles.Main>
 )
 
 const INITIAL_STATE ={
@@ -70,6 +70,7 @@ class SignInFormBase extends Component{
         })
     }
 
+    //Vid ändring sätts berörd fälts värde i motsvarande state.
     onChange = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -98,9 +99,13 @@ class SignInFormBase extends Component{
 
                     {error && <p>{error.message}</p>}
 
-                    <ButtonContainer>
-                        <button type="submit" disabled={isInvalid}>Sign in</button>
-                    </ButtonContainer>
+                    <Styles.ButtonContainer>
+                        <button 
+                            type="submit" 
+                            disabled={isInvalid}>
+                            Sign in
+                        </button>
+                    </Styles.ButtonContainer>
                 </div>
             </form>
         )
