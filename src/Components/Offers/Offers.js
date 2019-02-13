@@ -74,12 +74,8 @@ class OfferBase extends Component {
                     currentUid: authUser.uid
                     
                 })
-            }) 
-           
+            })  
         })
-
-     
-      
     }
 
     componentWillUnmount(){
@@ -90,7 +86,6 @@ class OfferBase extends Component {
     deleteOffer = (id) => {
         // ref.child(key).remove();
         this.props.Firebase.offer(id).remove()
-        console.log(id)
     }
 
     render(props){
@@ -104,7 +99,7 @@ class OfferBase extends Component {
                             <OffersListItem
                             isAdmin={uidMatch} 
                             name={item.name}
-                            uid={item.uid} 
+                            uid={item.uidFromCreator} 
                             text={item.text} 
                             key={item.OfferUid}
                             createdAt={item.createdAt}
