@@ -18,12 +18,16 @@ const myIcon = L.icon ({
     popupAnchor: [0, -41],
 });
 
+
+
 class GeoMap extends Component {
     state = {
         location: {
             lat: 59.340990,
             lng: 18.048470,
           },
+
+          
     haveUsersLocation: false,
     // Destolängre värde, destohögre utzoomning.
     zoom: 2,
