@@ -78,10 +78,7 @@ class OfferBase extends Component {
                 this.setState({
                     currentUid: authUser.uid     
                 })
-<<<<<<< HEAD
-            })  
-=======
->>>>>>> 366d999b965be492f0c5e69ed2e2a8d64c26609d
+                console.log(this.state.currentUid)
         })
     }
 
@@ -94,8 +91,6 @@ class OfferBase extends Component {
     deleteOffer = (id) => {
         // tar bort Offer från offer objekt i firebase
         this.props.Firebase.offer(id).remove()
-<<<<<<< HEAD
-=======
 
         // hämtar offer object från specifik användare.
         this.props.Firebase.userOffers(this.props.authUser.uid)
@@ -111,7 +106,6 @@ class OfferBase extends Component {
             }
 
         })
->>>>>>> 366d999b965be492f0c5e69ed2e2a8d64c26609d
     }
 
     render(props){
@@ -120,7 +114,7 @@ class OfferBase extends Component {
                 <Styles.List>
                     { this.state.offers ?
                         this.state.offers.map(item => {
-                            let uidMatch = this.state.currentUid === item.uid ? true : false;
+                            let uidMatch = this.state.currentUid === item.uidFromCreator ? true : false;
                         return(
                             <OffersListItem
                             isAdmin={uidMatch} 
