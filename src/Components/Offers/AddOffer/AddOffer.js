@@ -43,7 +43,7 @@ class AddOfferBase extends React.Component{
         this.props.Firebase.offers()
         .push({
          text: this.state.bioText,
-         uid: authUser.uid,
+         uidFromCreator: authUser.uid,
          name: authUser.username,
          createdAt: this.state.timeStamp,
 
