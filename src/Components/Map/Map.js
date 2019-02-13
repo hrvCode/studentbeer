@@ -29,10 +29,11 @@ class GeoMap extends Component {
     zoom: 2,
   }
 
-  componentDidMount() {
+  componentDidMount(){
+    console.log("hello")
     // Hämtar användarens position genom browser (browsewr:n måste tillåtas att hämta position)
     // Uppdaterat state med användarens position
-    navigator.geolocation.getCurrentPosition((position) => {
+    navigator.geolocation.watchPosition((position) => {
       this.setState({
         location: {
           lat: position.coords.latitude,

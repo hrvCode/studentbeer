@@ -5,11 +5,11 @@ import {AddOfferLink} from './AddOffer/AddOffer';
 import {withFirebase} from '../Firebase';
 import * as ROLES from '../../Constats/roles';
 
-const Offer = () => (
+const Offer = (props) => (
     <Styles.Main>
          <Styles.Header>
              <h2>Erbjudanden</h2>
-             <AddOfferLink/>
+            {props.authUser.roles.includes(ROLES.ADMIN) ? <AddOfferLink/>: null} 
          </Styles.Header>
 
          <AuthUserContext.Consumer>
@@ -49,7 +49,6 @@ class OfferBase extends Component {
     state = {
         loading:false,
         offers: [],
-        isAdmin: false,
         currentUid: ''
     }
 
@@ -106,14 +105,14 @@ class OfferBase extends Component {
 
         })
     }
-
+    
     render(props){
         return(
             <Styles.MainContent>
                 <Styles.List>
                     { this.state.offers ?
                         this.state.offers.map(item => {
-                            let uidMatch = this.state.currentUid === item.uid ? true : false;
+                            const uidMatch = this.state.currentUid === item.uid ? true : false;
                         return(
                             <OffersListItem
                             isAdmin={uidMatch} 
