@@ -81,7 +81,7 @@ class AddOfferBase extends React.Component{
 }
 
 const AddOfferLink = () =>(
-        <Link to="/add-offer">Lägg till ett Erbjudanden</Link>
+        <Link to="/add-offer">Lägg till erbjudanden</Link>
     )
 
 

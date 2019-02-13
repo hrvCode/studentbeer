@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import {withAuthorization} from '../Session'
+import {withAuthorization,AuthUserContext} from '../Session'
+import {compose} from "recompose";
+import LocatedTwo from "./LocatedTwo";
 
 import 'leaflet/dist/leaflet.css'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-// import './MapStyle.css';
 
 import Mapp from './MapStyle'
+import { withFirebase } from '../Firebase';
 
 
 
@@ -69,7 +71,16 @@ class GeoMap extends Component {
       render(){
         const position = [this.state.location.lat, this.state.location.lng]
         return (
+          
           <Mapp>
+
+          <AuthUserContext.Consumer>
+            {authUser => (
+
+            <LocatedTwo userId={authUser.uid} firebase={this.props.Firebase} />
+            )}
+          </AuthUserContext.Consumer>
+
             <Map className="map" center={position} zoom={this.state.zoom}>
                 <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -91,4 +102,4 @@ class GeoMap extends Component {
       }
     }
 const condition = authUser => authUser != null;
-export default withAuthorization(condition)(GeoMap);
+export default compose (withFirebase, withAuthorization(condition))(GeoMap);
