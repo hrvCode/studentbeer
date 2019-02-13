@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withAuthorization} from '../Session'
+import {withAuthorization, AuthUserContext} from '../Session'
 import * as Styles from './OffersStyle';
 import {AddOfferLink} from './AddOffer/AddOffer';
 import {withFirebase} from '../Firebase';
@@ -11,7 +11,13 @@ const Offer = () => (
              <h2>Erbjudanden</h2>
              <AddOfferLink/>
          </Styles.Header>
-        <OffersList />
+
+         <AuthUserContext.Consumer>
+            {
+                authUser => <OffersList authUser={authUser} />
+            }
+         </AuthUserContext.Consumer>
+        
     </Styles.Main>
 )
 
@@ -28,7 +34,7 @@ const OffersListItem = (props) => {
                 <span>
                     <h4>{props.name}</h4>
                     <span>
-                        {props.isAdmin ? <i className="far fa-trash-alt" onClick={()=> props.onDelete(props.offerUid)}></i> : null }
+                        {props.isAdmin ? <i className="fas fa-times" onClick={()=> props.onDelete(props.offerUid)}></i> : null }
                     </span> 
                 </span>
 
@@ -56,9 +62,8 @@ class OfferBase extends Component {
                 const offersList = Object.keys(offersObject).map(key => ({
                     ...offersObject[key],
                     OfferUid: key,
-                   
                     }));
-                    console.log(offersList)
+
                     this.setState({
                         loading:false,
                         offers:offersList,
@@ -69,28 +74,37 @@ class OfferBase extends Component {
                     offers: null,
                 })  
             } 
-            this.props.Firebase.auth.onAuthStateChanged((authUser) => { 
+            const authUser = this.props.authUser;
                 this.setState({
-                    currentUid: authUser.uid
-                    
+                    currentUid: authUser.uid     
                 })
-            }) 
-           
         })
-
-     
-      
     }
 
     componentWillUnmount(){
         this.props.Firebase.offers().off();
+
     }
 
 
     deleteOffer = (id) => {
-        // ref.child(key).remove();
+        // tar bort Offer från offer objekt i firebase
         this.props.Firebase.offer(id).remove()
-        console.log(id)
+
+        // hämtar offer object från specifik användare.
+        this.props.Firebase.userOffers(this.props.authUser.uid)
+        .once('value', snapshot =>{
+            const offerList = snapshot.val()
+            //loopar igenom användarens offerlist
+            for(var x in offerList){
+                // om keyn i offer-offeruid matchar user-offeruid i firebase.
+               if(offerList[x].offerUid === id){
+                   //om match hittas tas user-offeruid bort ifrån databasen
+                this.props.Firebase.userOffers(this.props.authUser.uid).child(x).remove()
+               }
+            }
+
+        })
     }
 
     render(props){
