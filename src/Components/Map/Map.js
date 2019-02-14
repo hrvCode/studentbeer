@@ -38,7 +38,7 @@ class GeoMap extends Component {
   componentDidMount() {
     // Hämtar användarens position genom browser (browsewr:n måste tillåtas att hämta position)
     // Uppdaterat state med användarens position
-    navigator.geolocation.getCurrentPosition((position) => {
+    navigator.geolocation.watchPosition((position) => {
       this.setState({
         location: {
           lat: position.coords.latitude,
@@ -73,14 +73,14 @@ class GeoMap extends Component {
         return (
           
           <Mapp>
-
+{/*
           <AuthUserContext.Consumer>
             {authUser => (
 
             <LocatedTwo userId={authUser.uid} firebase={this.props.Firebase} />
             )}
           </AuthUserContext.Consumer>
-
+*/}
             <Map className="map" center={position} zoom={this.state.zoom}>
                 <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
