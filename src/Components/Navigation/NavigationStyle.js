@@ -10,6 +10,10 @@ display:flex;
 flex-direction:row;
 background-color:grey;
 height:10vh;
+position:fixed;
+bottom:0;
+left:0;
+right:0;
 justify-content:center;
 align-items:center;
 

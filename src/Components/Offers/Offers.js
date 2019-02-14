@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import {withAuthorization} from '../Session'
+import {withAuthorization, AuthUserContext} from '../Session'
 import * as Styles from './OffersStyle';
 import {AddOfferLink} from './AddOffer/AddOffer';
 import {withFirebase} from '../Firebase';
+import * as ROLES from '../../Constats/roles';
 
-const Offer = () => (
+const Offer = (props) => (
     <Styles.Main>
          <Styles.Header>
              <h2>Erbjudanden</h2>
-             <AddOfferLink/>
+            {props.authUser.roles.includes(ROLES.ADMIN) ? <AddOfferLink/>: null} 
          </Styles.Header>
-        <OffersList />
+
+         <AuthUserContext.Consumer>
+            {
+                authUser => <OffersList authUser={authUser} />
+            }
+         </AuthUserContext.Consumer>
+        
     </Styles.Main>
 )
 
@@ -24,7 +31,13 @@ const OffersListItem = (props) => {
     return(
         <li>
             <div>
-                <span><h4>{props.name}</h4></span>
+                <span>
+                    <h4>{props.name}</h4>
+                    <span>
+                        {props.isAdmin ? <i className="fas fa-times" onClick={()=> props.onDelete(props.offerUid)}></i> : null }
+                    </span> 
+                </span>
+
                 <p>{props.text}</p>
                 <p>{timeStamp ? "skapad: " + createdAt : null}</p>
             </div>
@@ -35,7 +48,8 @@ const OffersListItem = (props) => {
 class OfferBase extends Component {
     state = {
         loading:false,
-        offers: []
+        offers: [],
+        currentUid: ''
     }
 
     componentDidMount(){
@@ -46,7 +60,7 @@ class OfferBase extends Component {
             if(offersObject){
                 const offersList = Object.keys(offersObject).map(key => ({
                     ...offersObject[key],
-                    uid: key,
+                    OfferUid: key,
                     }));
 
                     this.setState({
@@ -58,28 +72,60 @@ class OfferBase extends Component {
                     loading:true,
                     offers: null,
                 })  
-            }  
+            } 
+            const authUser = this.props.authUser;
+                this.setState({
+                    currentUid: authUser.uid     
+                })
+                console.log(this.state.currentUid)
         })
     }
 
     componentWillUnmount(){
         this.props.Firebase.offers().off();
+
     }
 
-    render(){
+
+    deleteOffer = (id) => {
+        // tar bort Offer från offer objekt i firebase
+        this.props.Firebase.offer(id).remove()
+
+        // hämtar offer object från specifik användare.
+        this.props.Firebase.userOffers(this.props.authUser.uid)
+        .once('value', snapshot =>{
+            const offerList = snapshot.val()
+            //loopar igenom användarens offerlist
+            for(var x in offerList){
+                // om keyn i offer-offeruid matchar user-offeruid i firebase.
+               if(offerList[x].offerUid === id){
+                   //om match hittas tas user-offeruid bort ifrån databasen
+                this.props.Firebase.userOffers(this.props.authUser.uid).child(x).remove()
+               }
+            }
+
+        })
+    }
+    
+    render(props){
         return(
             <Styles.MainContent>
                 <Styles.List>
                     { this.state.offers ?
                         this.state.offers.map(item => {
+                            let uidMatch = this.state.currentUid === item.uidFromCreator ? true : false;
                         return(
-                            <OffersListItem 
+                            <OffersListItem
+                            isAdmin={uidMatch} 
                             name={item.name}
-                            uid={item.uid} 
+                            uid={item.uidFromCreator} 
                             text={item.text} 
-                            key={item.uid}
+                            key={item.OfferUid}
                             createdAt={item.createdAt}
+                            offerUid={item.OfferUid}
+                            onDelete={this.deleteOffer}
                             /> 
+                        
                         )
                     }
                     ): <p>No offers atm</p>}

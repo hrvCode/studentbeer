@@ -24,7 +24,7 @@ const INITIAL_STATE = {
     email: '',
     passwordOne: '',
     passwordTwo: '',
-    isAdmin: 'false',
+    isAdmin: false,
     error: null,
 }
 

@@ -43,12 +43,19 @@ class AddOfferBase extends React.Component{
         this.props.Firebase.offers()
         .push({
          text: this.state.bioText,
-         uid: authUser.uid,
+         uidFromCreator: authUser.uid,
          name: authUser.username,
          createdAt: this.state.timeStamp,
 
         })
+        .then((snap) => {
+            const key = snap.key;
+            this.props.Firebase.userOffers(authUser.uid).push({
+                offerUid: key
+            })
+        })
         .then(
+            
             this.props.history.push(ROUTES.OFFERS)
         )
     }
