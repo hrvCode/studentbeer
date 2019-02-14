@@ -113,11 +113,7 @@ class OfferBase extends Component {
                 <Styles.List>
                     { this.state.offers ?
                         this.state.offers.map(item => {
-<<<<<<< HEAD
-                            const uidMatch = this.state.currentUid === item.uid ? true : false;
-=======
                             let uidMatch = this.state.currentUid === item.uidFromCreator ? true : false;
->>>>>>> 3b46a9b20c3d20220b49c8384ddf59c5657217ba
                         return(
                             <OffersListItem
                             isAdmin={uidMatch} 
