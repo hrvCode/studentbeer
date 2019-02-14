@@ -30,10 +30,9 @@ class GeoMap extends Component {
   }
 
   componentDidMount(){
-    console.log("hello")
     // Hämtar användarens position genom browser (browsewr:n måste tillåtas att hämta position)
     // Uppdaterat state med användarens position
-    navigator.geolocation.watchPosition((position) => {
+    this.listener = navigator.geolocation.watchPosition((position) => {
       this.setState({
         location: {
           lat: position.coords.latitude,
@@ -62,6 +61,9 @@ class GeoMap extends Component {
         });
       })
     });
+  }
+  componentWillUnmount(){
+    this.listener();
   }
       render(){
         const position = [this.state.location.lat, this.state.location.lng]
