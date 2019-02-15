@@ -4,7 +4,7 @@ import {withAuthorization} from '../Session'
 import 'leaflet/dist/leaflet.css'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-// import './MapStyle.css';
+import Dummy from './AdminDummys';
 
 import Mapp from './MapStyle'
 
@@ -88,13 +88,33 @@ class GeoMap extends Component {
                 </Marker> : ''
                 }
 
-                <Marker 
-                 position={[59.315764031962374, 18.033337954492254]}
-                icon={myIcon}>
-                <Popup>
-                   2222
-                </Popup>
-                </Marker> : '
+                <Dummy 
+                position = {[59.316659403640784, 18.033692836761475]} 
+                name = 'Hornhuset'/>
+
+                <Dummy 
+                position = {[59.3247235, 18.0738668]} 
+                name = 'Bistro & Grill Ruby'/>
+
+                <Dummy 
+                position = {[59.3139639, 18.1057867]} 
+                name = 'Boule & Berså'/>
+
+                <Dummy 
+                position = {[59.3144622, 18.0745471]} 
+                name = 'Kellys bar'/>  
+
+                <Dummy 
+                position = {[59.3392438, 18.0813002]} 
+                name = 'The Londoner'/>  
+
+                <Dummy 
+                position = {[59.3431683, 18.049093]} 
+                name = 'Tranan'/>  
+
+                <Dummy 
+                position = {[59.3315633, 18.0312097]} 
+                name = 'Hirschenkeller'/> 
 
             </Map>
 
