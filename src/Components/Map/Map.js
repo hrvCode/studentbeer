@@ -43,7 +43,9 @@ class GeoMap extends Component {
         zoom: 15
       });
       // Anonym funktion
-    }, ()=> {
+    }, 
+      ()=> 
+    {
       // Hämtar API från ipapi.co
       fetch('https://ipapi.co/json')
       // Skapar json objekt
@@ -59,6 +61,7 @@ class GeoMap extends Component {
           haveUsersLocation: true,
           zoom: 12
         });
+        console.log(this.state.location)
       })
     });
   }
@@ -84,7 +87,18 @@ class GeoMap extends Component {
                 </Popup>
                 </Marker> : ''
                 }
+
+                <Marker 
+                 position={[59.315764031962374, 18.033337954492254]}
+                icon={myIcon}>
+                <Popup>
+                   2222
+                </Popup>
+                </Marker> : '
+
             </Map>
+
+            
           </Mapp> 
         )
       }
