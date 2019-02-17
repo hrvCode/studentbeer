@@ -1,6 +1,6 @@
 import Styled from 'styled-components';
 
-const Mapp = Styled.div `
+export const Mapp = Styled.div `
 height: 90vh;
 width: 100wv;
    .map {
@@ -9,5 +9,3 @@ width: 100wv;
     }
 
 `
-
-export default Mapp
