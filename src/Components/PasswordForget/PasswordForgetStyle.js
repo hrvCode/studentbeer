@@ -3,14 +3,15 @@ import Background from '../../Graphics/Backgorunds/mnm-all-551345-unsplash.jpg'
 
 export const Main = Styled.div`
     display:flex;
-    justify-content:center;
+    
     align-items:center;
     flex-direction:column;
-    background:linear-gradient(rgba(0,0,0,0.9),rgba(80,80,80,0.8),rgba(255,255,255,0.5)), url(${Background});
+    background:url(${Background});
     background-size:cover;
-    height:90vh;
+    height:100vh;
+    justify-content:center;
 
-    h1{color:white;}
+    h1{color:gold;text-align:center;}
 
     button{
         background:${props => props.background};
@@ -23,7 +24,7 @@ export const Main = Styled.div`
         border-radius: 5px;
         display:block;
        
-        margin:20px auto;
+        margin:30px auto;
         width: 150px;
         height:30px; 
         cursor:pointer;
@@ -37,15 +38,17 @@ export const Main = Styled.div`
     }
 
     input{
-        width:250px;
+        font-size:14px;
+        width:80%;
         margin:10px auto;
-        font-size:16px;
         border: none;
         background-color:transparent;
         border-bottom: 1px solid black;
         display: block;
-        border-bottom:1px solid red;
+        border-bottom:1px solid white;
         transition:0.6s;
+        caret-color:white;
+        color:white;
         
         &::placeholder{
             text-align:center;
@@ -55,8 +58,43 @@ export const Main = Styled.div`
 
         &:focus{
             outline: none;
-            border-bottom:1px solid black;
+            border-bottom:1px solid red;
             
         }
     }
+`;
+
+export const Container = Styled.div`
+      background-color:rgba(0,0,0, 0.7); 
+      border:2px solid white;
+      border-radius:4px;
+      width:80%;
+      height:60%;
+      margin-top:40px;
+      padding: 20px 0px 0px 0px;
+`;
+
+export const BottomButton = Styled.div`
+
+    width:81%;
+    z-index:5;
+    button{border:none;
+        
+         cursor:pointer;
+         width:100%;
+         height:50px;
+         background-color:rgba(0,0,0, 0.7); 
+         color:white;
+         border-radius:4px;
+         border:2px solid white;
+         font-weight:bold;
+         font-size:18px;
+         transition:0.4s;
+         box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.55);}
+         
+         a{text-decoration:none;}
+
+         &:hover{
+            background-color:#cccccc;
+        }
 `;
