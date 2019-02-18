@@ -2,9 +2,14 @@ import Styled from 'styled-components';
 
 export const Mapp = Styled.div `
 height: 90vh;
+
+
+`
+export const MappBase = Styled.div `
+height: 10vh;
 width: 100wv;
    .map {
-    height: 100%;
+    height: 75vh;
     width: 100%;
     }
 

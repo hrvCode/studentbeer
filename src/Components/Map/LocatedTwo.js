@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
+import Dummy from './AdminDummys';
+import * as Styles from './MapStyle';
 
 
 const myIcon = L.icon ({
@@ -102,16 +104,17 @@ class LocatedTwo extends Component {
   
     
     return (
-      <div>
+      <Styles.Mapp>
+      <h1>Map</h1>
         {this.state.browserCoords ? (
           <MyMap
             
             position={Object.values(this.state.browserCoords)}
-            zoom={13}
+            zoom={15}
           />
         ) : null}
         
-      </div>
+      </Styles.Mapp>
     );
   }
 }
@@ -138,87 +141,36 @@ const MyMap = props => (
                 </Popup>
                 </Marker>
                 }
+
+
+                <Dummy 
+                position = {[59.316659403640784, 18.033692836761475]} 
+                name = 'Hornhuset'/>
+
+                <Dummy 
+                position = {[59.3247235, 18.0738668]} 
+                name = 'Bistro & Grill Ruby'/>
+
+                <Dummy 
+                position = {[59.3139639, 18.1057867]} 
+                name = 'Boule & Berså'/>
+
+                <Dummy 
+                position = {[59.3144622, 18.0745471]} 
+                name = 'Kellys bar'/>  
+
+                <Dummy 
+                position = {[59.3392438, 18.0813002]} 
+                name = 'The Londoner'/>  
+
+                <Dummy 
+                position = {[59.3431683, 18.049093]} 
+                name = 'Tranan'/>  
+
+                <Dummy 
+                position = {[59.3315633, 18.0312097]} 
+                name = 'Hirschenkeller'/> import * as Styles from './MapStyle';
   </Map>
 );
 export default LocatedTwo;
 
-
-/*render() {
-    const markers = [
-      { latitude: 59.316607, longitude: 18.034689 },
-      { latitude: 59.307496, longitude: 17.985272 },
-      { latitude: 59.305496, longitude: 17.985272 }
-    ];
-    return (
-      <div>
-        {this.state.browserCoords ? (
-          <MyMap
-            markers={markers}
-            position={Object.values(this.state.browserCoords)}
-            zoom={13}
-          />
-        ) : null}
-        <div>Geolocation</div>
-        <div>
-          <p>Coords from Browser</p>
-          <Coords position={this.state.browserCoords} />
-          <p>Coords from DB</p>
-          <Coords position={this.state.dbCoords} />
-        </div>
-      </div>
-    );
-  }
-}
-
-const Coords = props => (
-  <div>
-    {props.position ? (
-      <div>
-        <div>{props.position.latitude}</div>
-        <div>{props.position.longitude}</div>
-      </div>
-    ) : null}
-  </div>
-);
-
-const MyMap = props => (
-  <Map
-    zoomControl={false}
-    scrollWheelZoom={false}
-    center={props.position}
-    zoom={props.zoom}
-  >
-    <TileLayer
-      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-    />
-    {props.markers.map(marker => (
-      <Marker position={Object.values(marker)}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-    ))}
-  </Map> 
-  
-  const Coords = props => (
-  <div>
-    {props.position ? (
-      <div>
-        <div>{props.position.latitude}</div>
-        <div>{props.position.longitude}</div>
-      </div>
-    ) : null}
-  </div>
-);
-  
-  <div>Geolocation</div>
-        <div>
-          <p>Coords from DB</p>
-          <Coords position={this.state.dbCoords} />
-          <p>Coords from Browser</p>
-          <Coords position={this.state.browserCoords } />
-          
-        </div>
-  
-  */
