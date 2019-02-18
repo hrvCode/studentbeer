@@ -7,6 +7,8 @@ export const Main = Styled.div`
     margin: auto;
     overflow-y: scroll;
 
+  
+
 `
 export const TextArea = Styled.textarea`
     margin: 25px auto 0 auto;
@@ -23,6 +25,7 @@ export const Button = Styled.button`
     font-size: 19px;
     padding: 15px 0;
     border:none;
+    border-radius:4px;
     &:hover{
         background: #18b318;
     }

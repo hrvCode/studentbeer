@@ -5,6 +5,26 @@ export const Main = Styled.div`
     overflow-y: scroll;
     font-size: 17px;
     font-color: #333333;
+    
+
+    a{
+        color:white;
+        text-decoration:none;
+        margin-left:20px;
+        padding:0px 8px 0px 8px;
+        height:40px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:14px;
+        font-weight:bold;
+        background-color:grey;
+        border-radius:4px;
+
+        &:hover{
+            background-color:silver;
+        } 
+    }
 `;
 export const MainContent = Styled.div`
     display:flex;

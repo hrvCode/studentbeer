@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import {withAuthorization} from '../Session'
+import React, { Component } from "react";
+import { compose } from "recompose";
+import * as Styles from './MapStyle';
+import { AuthUserContext, withAuthorization } from "../Session";
+import { withFirebase } from "../Firebase";
+import GeoMap from './LocatedTwo';
 
 import 'leaflet/dist/leaflet.css'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
-import Dummy from './AdminDummys';
 
-import Mapp from './MapStyle'
 
+<<<<<<< HEAD
 
 
 
@@ -112,17 +113,26 @@ class GeoMap extends Component {
                 <Dummy 
                 position = {[59.3431683, 18.049093]} 
                 name = 'Tranan'/>  
+=======
+class MapPage extends Component {
+ 
 
-                <Dummy 
-                position = {[59.3315633, 18.0312097]} 
-                name = 'Hirschenkeller'/> 
+  render() {
+    return (
+      <Styles.MappBase>
+        
+        <AuthUserContext.Consumer>
+          {authUser => (
+            <GeoMap userId={authUser.uid} Firebase={this.props.Firebase} />
+          )}
+        </AuthUserContext.Consumer>
+      </Styles.MappBase>
+    );
+  }
+}
+>>>>>>> master
 
-            </Map>
+const condition = authUser => !!authUser;
 
-            
-          </Mapp> 
-        )
-      }
-    }
-const condition = authUser => authUser != null;
-export default withAuthorization(condition)(GeoMap);
+export default compose(withFirebase,withAuthorization(condition))(MapPage);
+
