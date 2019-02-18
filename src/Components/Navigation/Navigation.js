@@ -1,7 +1,7 @@
 import React from 'react';
 import SignOutPage from '../SignOut/SignOut';
 import {Link} from 'react-router-dom';
-import * as ROUTES from '../../Constats/routes';
+import * as ROUTES from '../../Constants/routes';
 import {Main,MainNoneAuth} from './NavigationStyle';
 
 //Kollar om användaren är godkänd och anger navbar beroende på

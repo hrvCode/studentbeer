@@ -20,14 +20,4 @@ width: 100wv;
         }
     }
 
-<<<<<<< HEAD
-
-
-   
-
 `
-
-export default Mapp
-=======
-`
->>>>>>> master

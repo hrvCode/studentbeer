@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 
-import * as ROUTES from '../../Constats/routes';
+import * as ROUTES from '../../Constants/routes';
 import Navigation from '../Navigation/Navigation'
 import Profile from '../Profile/Profile'
 import GeoMap from '../Map/Map'

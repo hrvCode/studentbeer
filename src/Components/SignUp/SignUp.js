@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
-import * as ROUTES from '../../Constats/routes';
+import * as ROUTES from '../../Constants/routes';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import {withFirebase} from '../Firebase';
 import {Main, Container,Paragraph} from './SignUpStyle';
-import * as ROLES from '../../Constats/roles'
+import * as ROLES from '../../Constants/roles'
 
 
 

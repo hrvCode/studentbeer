@@ -3,7 +3,7 @@ import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import iconUrl from '../../Graphics/icons/beer.svg'; 
 import {Link} from 'react-router-dom';
-import * as ROUTES from '../../Constats/routes';
+import * as ROUTES from '../../Constants/routes';
 
 const AdminIcon = L.icon ({
     iconUrl,

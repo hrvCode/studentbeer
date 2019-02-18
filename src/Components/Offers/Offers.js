@@ -3,7 +3,7 @@ import {withAuthorization, AuthUserContext} from '../Session'
 import * as Styles from './OffersStyle';
 import {AddOfferLink} from './AddOffer/AddOffer';
 import {withFirebase} from '../Firebase';
-import * as ROLES from '../../Constats/roles';
+import * as ROLES from '../../Constants/roles';
 
 const Offer = (props) => (
     <Styles.Main>

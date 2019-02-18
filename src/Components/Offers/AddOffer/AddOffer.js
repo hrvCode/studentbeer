@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import { withAuthorization, AuthUserContext } from '../../Session';
-import * as ROUTES from '../../../Constats/routes'
+import * as ROUTES from '../../../Constants/routes'
 import * as Styles from '../AddOffer/AddOfferStyle';
 import {withRouter} from 'react-router-dom';
 import {withFirebase} from '../../Firebase/index';
