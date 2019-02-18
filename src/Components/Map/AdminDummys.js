@@ -2,7 +2,8 @@ import React from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import iconUrl from '../../Graphics/icons/beer.svg'; 
-
+import {Link} from 'react-router-dom';
+import * as ROUTES from '../../Constats/routes';
 
 const AdminIcon = L.icon ({
     iconUrl,
@@ -18,7 +19,8 @@ const Dummy = (props) => (
         position={props.position}
         icon={AdminIcon}>
         <Popup>
-            {props.name}
+            {props.name} <br/>
+            <Link to={ROUTES.PROFILE}>Checka in?</Link>
         </Popup>
    </Marker>
 ) 

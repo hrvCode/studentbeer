@@ -6,7 +6,18 @@ width: 100wv;
    .map {
     height: 100%;
     width: 100%;
+    text-align:center;
+
+        .marker {
+            .popUp{
+            color:green !important;
+            }
+        }
     }
+
+
+
+   
 
 `
 
