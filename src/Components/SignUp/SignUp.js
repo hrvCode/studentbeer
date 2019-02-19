@@ -61,6 +61,7 @@ class SignUpFormBase extends Component{
                     bioText: '',
                     img: '',
                     civilStatus: '',
+                    online: false, 
                     roles,
                 })
                 .then(() =>{

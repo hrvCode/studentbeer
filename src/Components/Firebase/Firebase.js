@@ -45,11 +45,14 @@ const config = {
         user = uid => this.db.ref(`users/${uid}`);
         users = () => this.db.ref('users');
         userOffers = uid => this.db.ref(`users/${uid}/offers`)
+        userStatus = uid => this.db.ref(`users/${uid}/online`)
 
         // Offers API
 
         offer = uid => this.db.ref(`offers/${uid}`);
         offers = () => this.db.ref('offers');
+
+        // statusOnline API
 
 
         

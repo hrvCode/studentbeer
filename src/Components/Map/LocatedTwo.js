@@ -3,6 +3,7 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
 import Dummy from './AdminDummys';
 import * as Styles from './MapStyle';
+import { auth } from "firebase";
 
 
 const myIcon = L.icon ({
@@ -66,6 +67,12 @@ class LocatedTwo extends Component {
       });
   };
 
+  userOnline = () => {
+    this.props.Firebase
+      .userStatus(this.props.userId)
+      .set({online:true});
+  };
+
   writeUserPositionToDB = position => {
     const { latitude, longitude } = position;
 
@@ -77,6 +84,8 @@ class LocatedTwo extends Component {
   };
 
   componentDidMount() {
+    this.userOnline()
+
     this.getUserPositionFromDB();
     this.watchId = navigator.geolocation.watchPosition(
 
@@ -105,12 +114,11 @@ class LocatedTwo extends Component {
     
     return (
       <Styles.Mapp>
-      <h1>Map</h1>
         {this.state.browserCoords ? (
           <MyMap
             
             position={Object.values(this.state.browserCoords)}
-            zoom={15}
+            zoom={19}
           />
         ) : null}
         
