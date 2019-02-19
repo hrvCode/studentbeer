@@ -7,7 +7,7 @@ import {Main,MainNoneAuth} from './NavigationStyle';
 //Kollar om användaren är godkänd och anger navbar beroende på
 const Navigation = ({authUser}) => (
    <Main>
-       {authUser ? <NavigationAuth />  : <NavigationNoneAuth/>}
+       {authUser ? <NavigationAuth authUser = {authUser}  />  : <NavigationNoneAuth/>}
    </Main> 
 
 )
@@ -18,7 +18,7 @@ const NavigationNoneAuth = () => (
                 <Link to={ROUTES.SIGNUP}><button>Sign up</button></Link>
     </MainNoneAuth>
 )
-const NavigationAuth = () => (
+const NavigationAuth = ({authUser}) => (
     <Main>
     
         <ul>
@@ -35,7 +35,7 @@ const NavigationAuth = () => (
                 <Link to={ROUTES.FRIENDLIST}><i className="fas fa-user-friends"></i></Link>
             </li>
             <li>
-                <SignOutPage/>
+                <SignOutPage userId={authUser.uid}/>
             </li>
         </ul>
     </Main>
