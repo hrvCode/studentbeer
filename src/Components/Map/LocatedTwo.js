@@ -79,7 +79,6 @@ class LocatedTwo extends Component {
   };
 
   componentDidMount() {
-/*     this.userStatus() */
 
     this.getUserPositionFromDB();
     this.watchId = navigator.geolocation.watchPosition(
@@ -99,16 +98,6 @@ class LocatedTwo extends Component {
 
     );
   }
-
-/* userStatus = () =>(
-    this.props.Firebase
-    .connectedRef().on('value', snap =>{
-        if(snap.val() === true){
-            let con = this.props.Firebase.myConnectionRef(this.props.userId).push(true);
-            con.onDisconnect().remove();
-        }
-    })
-  ) */
 
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchId);
