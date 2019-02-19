@@ -127,7 +127,7 @@ const MyMap = props => (
 
   
   <Map className="map" center={props.position} zoom={12}>
-    
+    Loading
                 <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -140,8 +140,6 @@ const MyMap = props => (
                     Här är din position.
                 </Popup>
                 </Marker>
-                }
-
 
                 <Dummy 
                 position = {[59.316659403640784, 18.033692836761475]} 
@@ -169,7 +167,7 @@ const MyMap = props => (
 
                 <Dummy 
                 position = {[59.3315633, 18.0312097]} 
-                name = 'Hirschenkeller'/> import * as Styles from './MapStyle';
+                name = 'Hirschenkeller'/>
   </Map>
 );
 export default LocatedTwo;
