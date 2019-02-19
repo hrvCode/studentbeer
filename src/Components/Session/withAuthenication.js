@@ -14,11 +14,18 @@ const withAuthentication = Component => {
             this.props.Firebase.onAuthUserListener(
                 authUser => {
                    this.setState({ authUser});
+                   this.props.Firebase
+                   .connectedRef().on('value', snap =>{
+                       if(snap.val() === true){
+                           let con = this.props.Firebase.myConnectionRef(this.state.authUser.uid).push(true);
+                           con.onDisconnect().remove();
+                       }
+                   })
                 },
                 () => this.setState({authUser: null})
             )
         }
-          
+
         render(){
             const {authUser} = this.state;
             return (
