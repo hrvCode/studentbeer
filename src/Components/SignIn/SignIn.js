@@ -5,25 +5,29 @@ import {withFirebase} from '../Firebase';
 import * as ROUTES from '../../Constants/routes';
 import * as Styles from './SignInStyle';
 import Logo from '../../Graphics/bottle.png';
-
+import {Link} from 'react-router-dom';
 const SignInPage = () =>(
-    <Styles.Main>
-
-        <Styles.ContainerTop>
-            <Styles.Logotype>
-            <img src={Logo} alt="Logotype"></img>
-            </Styles.Logotype>
-            
-            <h1>
-                BeerHunter
-            </h1>
-        </Styles.ContainerTop>
-
-        <Styles.ContainerBottom>
-            <SignInForm/>
-            <PasswordForgetLink/>
-        </Styles.ContainerBottom>
-    </Styles.Main>
+   <Styles.Main>
+   
+   <Styles.ContainerTop>
+       <Styles.Logotype>
+       <img src={Logo} alt="Logotype"></img>
+       </Styles.Logotype>
+       
+       <h1>
+           BeerHunter
+       </h1>
+   </Styles.ContainerTop>
+   <Styles.Container>
+   <Styles.ContainerBottom>
+       <SignInForm/>
+       <PasswordForgetLink/>
+   </Styles.ContainerBottom>
+   </Styles.Container>
+   <Styles.BottomButton>
+       <Link to={ROUTES.SIGNUP}><button>Sign up</button></Link>
+   </Styles.BottomButton>
+</Styles.Main>
 )
 
 const INITIAL_STATE ={

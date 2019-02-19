@@ -8,7 +8,7 @@ import Styled from 'styled-components';
 export const Main = Styled.nav`
 display:flex;
 flex-direction:row;
-background-color:grey;
+background-color:transparent;
 height:10vh;
 position:fixed;
 bottom:0;
@@ -29,7 +29,7 @@ ul{
           
         i{
             font-size:36px;
-            color:white;  
+            color:grey;  
             &:hover{
                 color: Silver;
             } 
