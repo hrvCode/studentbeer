@@ -2,6 +2,7 @@ import {withAuthorization} from '../Session'
 import * as Style from './FriendListStyle';
 import React, { Component } from 'react'
 import {withFirebase} from '../Firebase'
+import { auth } from "firebase";
 
 
 const FriendPage = () => (
@@ -61,7 +62,7 @@ class FriendListBase extends Component {
           online={friend.online}
         />
       )
-    })
+    }).sort(function(x,y){ return (x === y)? 0 : x? -1 : 1;})
     return (
        
        <div>
@@ -96,9 +97,9 @@ const Friend = (props) => {
   const {latitude, longitude} = props.position
   return (
     <Style.Friend>
-        <i className="far fa-user-circle" > </i>
+        <i style={color} className="far fa-user-circle" > </i>
         <div>
-          <p style={color}>{status}</p>
+          <p >{status}</p>
             <p> <strong> {props.username}</strong></p>
             <i className="fas fa-map-pin" >
                 <p className="locationText">{latitude + '   ' + longitude}</p>

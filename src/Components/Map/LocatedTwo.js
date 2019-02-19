@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
-import Dummy from './AdminDummys';
+import Admin from './AdminDummys';
 import * as Styles from './MapStyle';
 import { auth } from "firebase";
 
@@ -63,16 +63,11 @@ class LocatedTwo extends Component {
       .child("position")
       .once("value", snapshot => {
         const userPosition = snapshot.val();
+        
         this.setState({ dbCoords: userPosition });
       });
   };
 
-/*   userOnline = () => {
-    this.props.Firebase
-      .userStatus(this.props.userId)
-      .set(true);
-  };
- */
   writeUserPositionToDB = position => {
     const { latitude, longitude } = position;
 
@@ -159,31 +154,31 @@ const MyMap = props => (
                 </Popup>
                 </Marker>
 
-                <Dummy 
+                <Admin 
                 position = {[59.316659403640784, 18.033692836761475]} 
                 name = 'Hornhuset'/>
 
-                <Dummy 
+                <Admin 
                 position = {[59.3247235, 18.0738668]} 
                 name = 'Bistro & Grill Ruby'/>
 
-                <Dummy 
+                <Admin 
                 position = {[59.3139639, 18.1057867]} 
                 name = 'Boule & Berså'/>
 
-                <Dummy 
+                <Admin 
                 position = {[59.3144622, 18.0745471]} 
                 name = 'Kellys bar'/>  
 
-                <Dummy 
+                <Admin 
                 position = {[59.3392438, 18.0813002]} 
                 name = 'The Londoner'/>  
 
-                <Dummy 
+                <Admin 
                 position = {[59.3431683, 18.049093]} 
                 name = 'Tranan'/>  
 
-                <Dummy 
+                <Admin 
                 position = {[59.3315633, 18.0312097]} 
                 name = 'Hirschenkeller'/>
   </Map>
