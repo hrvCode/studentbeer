@@ -45,7 +45,11 @@ const config = {
         user = uid => this.db.ref(`users/${uid}`);
         users = () => this.db.ref('users');
         userOffers = uid => this.db.ref(`users/${uid}/offers`)
-        userStatus = uid => this.db.ref(`users/${uid}/online`)
+
+        // manage users state
+        myConnectionRef = uid => this.db.ref(`users/${uid}/online`)
+        connectedRef = () => this.db.ref(`.info/connected`)
+
 
         // Offers API
 

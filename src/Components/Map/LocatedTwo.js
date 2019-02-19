@@ -67,12 +67,12 @@ class LocatedTwo extends Component {
       });
   };
 
-  userOnline = () => {
+/*   userOnline = () => {
     this.props.Firebase
       .userStatus(this.props.userId)
-      .set({online:true});
+      .set(true);
   };
-
+ */
   writeUserPositionToDB = position => {
     const { latitude, longitude } = position;
 
@@ -84,7 +84,7 @@ class LocatedTwo extends Component {
   };
 
   componentDidMount() {
-    this.userOnline()
+    this.userStatus()
 
     this.getUserPositionFromDB();
     this.watchId = navigator.geolocation.watchPosition(
@@ -104,7 +104,17 @@ class LocatedTwo extends Component {
 
     );
   }
-  
+
+userStatus = () =>(
+    this.props.Firebase
+    .connectedRef().on('value', snap =>{
+        if(snap.val() === true){
+            let con = this.props.Firebase.myConnectionRef(this.props.userId).push(true);
+            con.onDisconnect().remove();
+        }
+    })
+  )
+
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchId);
   }
@@ -134,7 +144,7 @@ class LocatedTwo extends Component {
 const MyMap = props => (
 
   
-  <Map className="map" center={props.position} zoom={12}>
+  <Map className="map" center={props.position} zoom={16}>
     Loading
                 <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

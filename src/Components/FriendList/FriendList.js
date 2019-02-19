@@ -26,7 +26,7 @@ class FriendListBase extends Component {
             username: friendObject[friend].username,
             uid: friend,
             position: friendObject[friend].position,
-            
+            online: friendObject[friend].online,
           }))
           
           this.setState({
@@ -42,9 +42,9 @@ class FriendListBase extends Component {
         }
       
       })
-      
     }
 
+    
     componentWillUnmount(){
       this.props.Firebase.users()
       .off()
@@ -58,7 +58,7 @@ class FriendListBase extends Component {
           key={friend.uid}
           username={friend.username}
           position={friend.position}
-
+          online={friend.online}
         />
       )
     })
@@ -84,11 +84,21 @@ const Header = () => {
 }
 
 const Friend = (props) => {
+  let status = "Offline"
+  let color = {
+    color: "red",
+  }
+  if(props.online){
+    status = "Online";
+    color.color = "green";
+  }
+
   const {latitude, longitude} = props.position
   return (
     <Style.Friend>
         <i className="far fa-user-circle" > </i>
         <div>
+          <p style={color}>{status}</p>
             <p> <strong> {props.username}</strong></p>
             <i className="fas fa-map-pin" >
                 <p className="locationText">{latitude + '   ' + longitude}</p>
