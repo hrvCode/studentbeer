@@ -3,20 +3,23 @@ import * as ROUTES from '../../Constants/routes';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import {withFirebase} from '../Firebase';
-import {Main, Container,Paragraph} from './SignUpStyle';
+import * as Styles from './SignUpStyle';
 import * as ROLES from '../../Constants/roles'
 
 
 
 const SignUpPage = () => (
-    <Main>
-    <Container>
-        <h1>Sign up</h1>
+    <Styles.Main>
+        <Styles.Container>
+            <h1>Sign up</h1>
             <SignUpForm/> 
-            </Container>
-            
-    </Main>
+        </Styles.Container>
+        <Styles.BottomButton>
+            <Link to={ROUTES.SIGNIN}><button>Back</button></Link>
+        </Styles.BottomButton>
+    </Styles.Main>
 )
+
 
 // initinal state till signupform baser state.
 const INITIAL_STATE = {
@@ -139,14 +142,14 @@ class SignUpFormBase extends Component{
                 onChange={this.onChange}
                 placeholder="confirm password"
                  />
-                <label>
-                    admin:
+                 <Styles.AdminChoice>
+                    <label>Admin</label>
                     <input 
-                    type="checkbox"
-                    name="isAdmin"
-                    onChange={this.onChangeCheckBox}
+                        type="checkbox"
+                        name="isAdmin"
+                        onChange={this.onChangeCheckBox}
                     />
-                    </label>
+                 </Styles.AdminChoice>
                 {error && <p>{error.message}</p>}
                 <button type="submit" disabled={isInvalid}>Sign Up</button>
 

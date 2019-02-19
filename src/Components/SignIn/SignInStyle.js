@@ -1,6 +1,6 @@
 
 import Styled from 'styled-components';
-import Background from '../../Graphics/Backgorunds/rawpixel-795617-unsplash.jpg'
+import Background from '../../Graphics/Backgorunds/mnm-all-551345-unsplash.jpg'
 
 
 export const ButtonContainer = Styled.div`
@@ -17,21 +17,23 @@ export const Main = Styled.div`
     justify-content:flex-start;
     align-items:center;
     flex-direction:column;
-    background:linear-gradient(rgba(0,0,0,0.9),rgba(80,80,80,0.8),rgba(255,255,255,0.5)), url(${Background});
+   
+    background:url(${Background});
     background-size:cover;
-    height:90vh;
+    height:100vh;
 `;
 
 export const ContainerTop = Styled.div`
 display:flex;
 flex-direction:column;
 
-margin-top:50px;
+margin-top:0px;
     h1{
        
         font-family: 'Berkshire Swash', cursive;
         font-size:45px;
-        color:Black;
+        color:gold;
+        text-shadow: 1px 1px black;
         margin:0;
         border-top:8px solid red;
         padding-top:5px;
@@ -52,13 +54,17 @@ margin-top:50px;
 `;
 
 export const ContainerBottom = Styled.div`
-display:flex;
-flex-direction:column;
+    display:flex;
+    flex-direction:column;
+    
+    margin-top:30px;
+    width:80%;
     h1{
        
         font-family: 'Berkshire Swash', cursive;
         font-size:55px;
         color:Black;
+       
         margin:0;
         border-top:8px solid red;
         padding-top:5px;
@@ -80,21 +86,24 @@ flex-direction:column;
 
         a{
             text-decoration:none;
-            color:DarkSlateGray;
+            color:gold;
             font-size:12px;
             font-weight:bold;
         }    
     }
 
     input{
-        font-size:16px;
-        width:300px;
+       
+        width:90%;
         margin:20px auto;
         border: none;
         background-color:transparent;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid white;
         display: block;
-        padding-top:2%;
+        padding-top:1%;
+        caret-color:white;
+        color:white;
+        transition:0.2s;
         @media(min-width: 1024px){
             width: 100%;
         }
@@ -106,6 +115,7 @@ flex-direction:column;
 
         &:focus{
             outline: none;
+            border-bottom: 1px solid red;
         }
     }
 
@@ -138,11 +148,46 @@ export const Logotype = Styled.div`
   
     text-align:center;
     img{
-        height:200px;
+        margin-top:20px;
+        height:180px;
         margin-bottom:10px;
     }
     
 `;
 
 
-       
+export const Container = Styled.div`
+      background-color:rgba(0,0,0, 0.6); 
+      border:2px solid white;
+      border-radius:4px;
+      width:80%;
+      margin-top:10px;
+      padding: 20px 0px 40px 0px;
+      display:flex;
+      flex-direction: column;
+      align-items:center;
+`;
+
+export const BottomButton = Styled.div`
+    margin-top:10px;
+    width:80.5%;
+    z-index:5;
+    button{border:none;
+        
+         cursor:pointer;
+         width:100%;
+         height:50px;
+         background-color:rgba(0,0,0, 0.7); 
+         color:white;
+         border:2px solid white;
+         border-radius:4px;
+         font-weight:bold;
+         font-size:18px;
+         transition:0.4s;
+         box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.55);}
+         
+
+         &:hover{
+            background-color:#cccccc;
+        }
+`;

@@ -7,8 +7,14 @@ import * as Styles from './PasswordForgetStyle';
 
 const PasswordForgetPage = () =>(
 <Styles.Main>
-    <h1>PasswordForget</h1>
-    <PasswordForgetForm/>
+    <Styles.Container>
+        <h1>Reset password</h1>
+        <PasswordForgetForm/>
+   </Styles.Container>
+
+   <Styles.BottomButton>
+            <Link to={ROUTES.SIGNIN}><button>Back</button></Link>
+    </Styles.BottomButton>
 </Styles.Main>
 
 );
