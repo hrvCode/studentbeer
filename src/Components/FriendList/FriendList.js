@@ -1,40 +1,72 @@
 import {withAuthorization} from '../Session'
 import * as Style from './FriendListStyle';
 import React, { Component } from 'react'
+import {withFirebase} from '../Firebase'
 
 
-class FriendList extends Component {
+const FriendPage = () => (
+  <Style.Container>
+    <Header/>
+    <FriendList />
+  </Style.Container>
+)
+
+class FriendListBase extends Component {
     state = {
-        active: false
+        active: false,
+        FriendList: []
     }
-  render(props) {
+
+    componentDidMount(){
+      this.props.Firebase.users()
+      .on('value', snapshot =>{
+        const friendObject = snapshot.val()
+        if(friendObject){
+          const FriendList = Object.keys(friendObject).map(friend => ({
+            username: friendObject[friend].username,
+            uid: friend,
+            position: friendObject[friend].position,
+            
+          }))
+          
+          this.setState({
+            FriendList: FriendList
+          })
+          console.log(this.state.FriendList)
+          
+        } else {
+          this.setState({
+            FriendList: ''
+          })
+          console.log(this.state.FriendList)
+        }
+      
+      })
+      
+    }
+
+    componentWillUnmount(){
+      this.props.Firebase.users()
+      .off()
+    }
+
+  render() {
+    const showFriends = this.state.FriendList.map(friend => {
+
+      return(
+        <Friend 
+          key={friend.uid}
+          username={friend.username}
+          position={friend.position}
+
+        />
+      )
+    })
     return (
-        <Style.Container>
-            <Header />
-            <Friend 
-            name="William Nordqvist" 
-            location="Hornhuset"/>
-         
-            <Friend 
-            name="Jonathan SilkeWall"
-            location="Västerås Bar"/>
-
-            <Friend 
-            name="Fredrik Dahlström"
-            location="Norrtälja resturang och kök"/>
-
-            <Friend 
-            name="Stavros Tsirlidis"
-            location="Farsta Nattklubb"/>
-
-            <Friend 
-            name="Roger Pontare"
-            location="Roger Schalger bar"/>
-
-            <Friend 
-            name="Häng Pung"
-            location="Golden hits"/>
-        </Style.Container>
+       
+       <div>
+            {showFriends}
+        </div>
     )
   }
 }
@@ -52,13 +84,14 @@ const Header = () => {
 }
 
 const Friend = (props) => {
+  const {latitude, longitude} = props.position
   return (
     <Style.Friend>
         <i className="far fa-user-circle" > </i>
         <div>
-            <p> <strong> {props.name}</strong></p>
+            <p> <strong> {props.username}</strong></p>
             <i className="fas fa-map-pin" >
-                <p className="locationText">{props.location}</p>
+                <p className="locationText">{latitude + '   ' + longitude}</p>
             </i>
         </div>
     </Style.Friend>
@@ -67,10 +100,10 @@ const Friend = (props) => {
 
 
 
-
+const FriendList = withFirebase(FriendListBase)
 
 // condition kollar om användaren är behörig då "authUser" inte ska vara null
 
 const condition = authUser => authUser != null;
-export default withAuthorization(condition)(FriendList);
+export default withAuthorization(condition)(FriendPage);
 

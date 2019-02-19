@@ -105,12 +105,11 @@ class LocatedTwo extends Component {
     
     return (
       <Styles.Mapp>
-      <h1>Map</h1>
         {this.state.browserCoords ? (
           <MyMap
             
             position={Object.values(this.state.browserCoords)}
-            zoom={15}
+            zoom={19}
           />
         ) : null}
         
@@ -169,7 +168,7 @@ const MyMap = props => (
 
                 <Dummy 
                 position = {[59.3315633, 18.0312097]} 
-                name = 'Hirschenkeller'/> import * as Styles from './MapStyle';
+                name = 'Hirschenkeller'/>
   </Map>
 );
 export default LocatedTwo;
