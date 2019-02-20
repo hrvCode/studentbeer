@@ -13,14 +13,12 @@ const profile = () => (
 
     <Styles.Main>
        <Styles.ContainerLeft>
-            <ProfileDefaultImg />
-            <ProfileImg />
+            <ProfileDefaultImg />         
+            <ProfileImg />          
             <RelationshipStatus />
        </Styles.ContainerLeft>       
         <Styles.ContainerRight>          
-          <Styles.ProfileText>
             <ProfileText />
-        </Styles.ProfileText>
         </Styles.ContainerRight>>
     </Styles.Main>
 )

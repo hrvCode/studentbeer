@@ -11,7 +11,7 @@ class RelationshipStatus extends Component {
     render() {
         return (
          <Styles.ProfileRelationshipStatusStyle>
-                 <form>
+                <form>
                     <div className="form-check">
                     <label>
                         <input
