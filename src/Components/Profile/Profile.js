@@ -7,6 +7,7 @@ import * as Styles from './ProfileStyle';
 import ProfileImg from './ProfileImg/ProfileImg';
 import RelationshipStatus from './ProfileRelationshipStatus/ProfileRelationshipStatus';
 import ProfileDefaultImg from './ProfileDefaultImg/ProfileDefaultImg'
+import ProfileText from './ProfileText/ProfileText'
 
 const profile = () => (
 
@@ -18,14 +19,7 @@ const profile = () => (
        </Styles.ContainerLeft>       
         <Styles.ContainerRight>          
           <Styles.ProfileText>
-          <div>
-          <header>
-                  <h2>Profil</h2>
-              </header>
-              <p>
-                  Skriv din profil text här...
-              </p>
-          </div>
+            <ProfileText />
         </Styles.ProfileText>
         </Styles.ContainerRight>>
     </Styles.Main>
