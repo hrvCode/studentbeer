@@ -9,3 +9,14 @@ export const Header = Styled.div`
     align-items: center;
     justify-content: center;
 `;
+export const HeaderLink = Styled.div`
+    cursor: pointer;
+    padding: 5px;
+    *{
+        display: inline-block;
+        padding: 0px 5px;
+    }
+    i{
+        font-size: 20px;
+    }
+`

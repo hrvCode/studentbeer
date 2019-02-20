@@ -53,6 +53,7 @@ export const Friend = Styled.div`
    
 `;
 export const onlineContainer = Styled.div `
+    cursor: pointer;
     display: flex;
     flex-flow: column wrap;
     align-items: center;

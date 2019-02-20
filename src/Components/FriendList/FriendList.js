@@ -123,12 +123,12 @@ const Friend = (props) => {
         <i style={color} className="far fa-user-circle" > </i>
         <p>{status}</p>
       </Style.onlineContainer>
-        <div>
-            <p> <strong> {props.username}</strong></p>
-            <i className="fas fa-map-pin" >
-                <p className="locationText">{latitude + '   ' + longitude}</p>
-            </i>
-        </div>
+      <div>
+          <p> <strong> {props.username}</strong></p>
+          <i className="fas fa-map-pin" >
+              <p className="locationText">{latitude + '   ' + longitude}</p>
+          </i>
+      </div>
     </Style.Friend>
 
   )

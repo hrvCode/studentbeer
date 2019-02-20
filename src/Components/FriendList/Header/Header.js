@@ -22,8 +22,10 @@ class Header extends React.Component{
 
         let display = (
             <Styles.Header>
-            <i  onClick={this.activetSearch} className="fas fa-search"></i>
-            <h2  onClick={this.activetSearch}>Sök</h2>
+                <Styles.HeaderLink onClick={this.activetSearch} >
+                    <i className="fas fa-search"></i>
+                    <h2>Sök</h2>
+                </Styles.HeaderLink>
             </Styles.Header>
         )
         const searchState = this.state.search;
