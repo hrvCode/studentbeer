@@ -64,3 +64,9 @@ export const Friend = Styled.div`
     }
    
 `;
+export const onlineContainer = Styled.div `
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    max-width: 40px;
+`

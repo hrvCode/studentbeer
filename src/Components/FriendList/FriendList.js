@@ -97,9 +97,11 @@ const Friend = (props) => {
   const {latitude, longitude} = props.position
   return (
     <Style.Friend>
+      <Style.onlineContainer>
         <i style={color} className="far fa-user-circle" > </i>
+        <p>{status}</p>
+      </Style.onlineContainer>
         <div>
-          <p >{status}</p>
             <p> <strong> {props.username}</strong></p>
             <i className="fas fa-map-pin" >
                 <p className="locationText">{latitude + '   ' + longitude}</p>
