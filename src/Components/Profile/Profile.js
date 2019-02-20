@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 
 import {withAuthorization} from '../Session';
-// import Avatar from 'react-avatar';
 
 import * as Styles from './ProfileStyle';
 import ProfileImg from './ProfileImg/ProfileImg';
