@@ -12,6 +12,7 @@ import PasswordForgetPage from '../PasswordForget/PasswordForget';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp'
 import NewOffer from '../Offers/AddOffer/AddOffer';
+import BarPage from '../Map/BarPage/BarPage';
 import {withAuthentication, AuthUserContext} from '../Session';
 
 
@@ -26,6 +27,10 @@ const App = () =>(
                 <Route path={ROUTES.SIGNUP} component={SignUp} />
                 <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
                 <Route exact path={ROUTES.ADD_OFFER} component={NewOffer} />
+                <Route
+                        path={ROUTES.BARPAGE}
+                        render={(props) => <BarPage {...props} name={props.name}/>}
+                />
   
                 <AuthUserContext.Consumer>
                 {authUser => <Navigation authUser={authUser} /> }

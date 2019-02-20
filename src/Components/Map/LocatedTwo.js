@@ -3,7 +3,6 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
 import Admin from './AdminDummys';
 import * as Styles from './MapStyle';
-import { auth } from "firebase";
 
 
 const myIcon = L.icon ({
@@ -122,7 +121,42 @@ class LocatedTwo extends Component {
 }
 
 
+const adminArr = [
+  {
+   position : [59.316659403640784, 18.033692836761475], 
+   name: 'Hornhuset'
+   },
 
+   {
+   position : [59.3247235, 18.0738668], 
+   name: 'Bistro & Grill Ruby'
+   },
+
+   {
+   position : [59.3139639, 18.1057867], 
+   name: 'Boule & Berså'
+   },
+
+   {
+   position : [59.3144622, 18.0745471], 
+   name: 'Kellys bar'
+   },    
+   
+   {
+   position : [59.3392438, 18.0813002], 
+   name: 'The Londoner'
+   }, 
+
+   {
+   position : [59.3431683, 18.049093], 
+   name: 'Tranan'
+   }, 
+
+   {
+   position : [59.3315633, 18.0312097], 
+   name: 'Hirschenkeller'
+   }, 
+]
 
 
 const MyMap = props => (
@@ -142,34 +176,19 @@ const MyMap = props => (
                     Här är din position.
                 </Popup>
                 </Marker>
+                {
+                  adminArr.map((item,i) => {
+                    return(
+                        <Admin 
+                          key={i}
+                          position={item.position}
+                          name={item.name}
+                         />
+                    )
 
-                <Admin 
-                position = {[59.316659403640784, 18.033692836761475]} 
-                name = 'Hornhuset'/>
-
-                <Admin 
-                position = {[59.3247235, 18.0738668]} 
-                name = 'Bistro & Grill Ruby'/>
-
-                <Admin 
-                position = {[59.3139639, 18.1057867]} 
-                name = 'Boule & Berså'/>
-
-                <Admin 
-                position = {[59.3144622, 18.0745471]} 
-                name = 'Kellys bar'/>  
-
-                <Admin 
-                position = {[59.3392438, 18.0813002]} 
-                name = 'The Londoner'/>  
-
-                <Admin 
-                position = {[59.3431683, 18.049093]} 
-                name = 'Tranan'/>  
-
-                <Admin 
-                position = {[59.3315633, 18.0312097]} 
-                name = 'Hirschenkeller'/>
+                  })
+                }
+               
   </Map>
 );
 export default LocatedTwo;

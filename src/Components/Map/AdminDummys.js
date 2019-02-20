@@ -3,7 +3,7 @@ import {withFirebase} from '../Firebase';
 import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import iconUrl from '../../Graphics/icons/beer.svg'; 
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import * as ROUTES from '../../Constants/routes';
 
 const AdminIcon = L.icon ({
@@ -14,7 +14,8 @@ const AdminIcon = L.icon ({
     popupAnchor: [0, -41],
     
 });
- 
+
+
 
 class Admin extends React.Component {
    state = {
@@ -22,6 +23,9 @@ class Admin extends React.Component {
           BarCords: '',
           dbCoords: null
         };
+
+        // den här funketionen ska hämta hem User kordinater från Firebase.
+        //Först måste vi komma åt UserId.
 
         // getUserPositionFromDB = () => {
         //     this.props.Firebase
@@ -34,13 +38,15 @@ class Admin extends React.Component {
         //       });
         //   };
 
-        checkIn = () => (
-            this.setState({
-                CheckedInBar:this.props.name,
-                BarCords:this.props.position 
-            })
+        // checkIn = () => (
+        //     this.setState({
+        //         CheckedInBar:this.props.name,
+        //         BarCords:this.props.position 
+        //     })
             
-        )
+        // )
+       // Den här funktionen ska räkna ut distansen mellan krogens kordinater och jämföra med User kordinater i AuthUser. 
+
         // calculateDistance = (lat1, lon1, lat2, lon2) => {
         //     var R = 6371; // km (change this constant to get miles)
         //     var dLat = ((lat2 - lat1) * Math.PI) / 180;
@@ -68,15 +74,21 @@ class Admin extends React.Component {
 }
       
     render(){
-    
+
         return(
             <Marker 
             position={this.props.position}
             icon={AdminIcon}>
-            <Popup>
-                {this.props.name} <br/>
-                <button onClick={()=> this.checkIn()}> TEST</button>
-                {/* <Link to={ROUTES.PROFILE}>Checka  in?</Link> */}
+            <Popup >
+            
+               {this.props.name}
+
+                <Redirect to={{
+            pathname: '/bar',
+            state: { name: this.props.name,
+                    position: this.props.position }
+        }}
+/>
             </Popup>
        </Marker>
         )
