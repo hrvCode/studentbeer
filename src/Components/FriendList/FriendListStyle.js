@@ -5,18 +5,6 @@ export const Container = Styled.div`
     height:90vh;
 `;
 
-
-export const Header = Styled.div`
-    text-align: center;
-    padding: 2% 0 2% 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-   
-`;
-
 export const Friend = Styled.div`
     padding: 3% 0 3% 5%;
     display: flex;
