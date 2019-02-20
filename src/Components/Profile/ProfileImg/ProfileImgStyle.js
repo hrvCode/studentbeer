@@ -2,7 +2,6 @@ import Styled from 'styled-components';
 
 export const ProfileImgStyle = Styled.div`
 display: flex;
-/* min-height: 100vh; */
 width: 25%;
 min-width: 100px;
 padding: 20px;
