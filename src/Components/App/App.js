@@ -12,7 +12,7 @@ import PasswordForgetPage from '../PasswordForget/PasswordForget';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp'
 import NewOffer from '../Offers/AddOffer/AddOffer';
-import BarPage from '../Map/BarPage/BarPage';
+import BarPage from '../BarPage/BarPage';
 import {withAuthentication, AuthUserContext} from '../Session';
 
 

@@ -77,7 +77,6 @@ class OfferBase extends Component {
                 this.setState({
                     currentUid: authUser.uid     
                 })
-                console.log(this.state.currentUid)
         })
     }
 

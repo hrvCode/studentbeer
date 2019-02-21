@@ -3,7 +3,7 @@ import {withFirebase} from '../Firebase';
 import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import iconUrl from '../../Graphics/icons/beer.svg'; 
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import * as ROUTES from '../../Constants/routes';
 
 const AdminIcon = L.icon ({
@@ -82,11 +82,13 @@ class Admin extends React.Component {
             <Popup >
             
                {this.props.name}
-
+                {/* redirect till barPage component, skickar vidare props. */}
                 <Redirect to={{
-            pathname: '/bar',
-            state: { name: this.props.name,
-                    position: this.props.position }
+                    pathname: ROUTES.BARPAGE,
+                    state: { name: this.props.name,
+                    position: this.props.position,
+                    uid: this.props.uid
+                }
         }}
 />
             </Popup>

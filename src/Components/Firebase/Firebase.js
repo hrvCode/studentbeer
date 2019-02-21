@@ -56,7 +56,8 @@ const config = {
         offer = uid => this.db.ref(`offers/${uid}`);
         offers = () => this.db.ref('offers');
 
-        // statusOnline API
+          // bar Api
+          bars = () => this.db.ref(`bars`);
 
 
         
