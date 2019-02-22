@@ -1,10 +1,12 @@
 import Styled from 'styled-components';
+
+
 export const Main = Styled.div`
     text-align: center;
     height:90vh;
     overflow-y: scroll;
     font-size: 17px;
-    font-color: #333333;
+    color: #333333;
     
 
     a{
@@ -26,6 +28,7 @@ export const Main = Styled.div`
         } 
     }
 `;
+
 export const MainContent = Styled.div`
     display:flex;
     justify-content:center;

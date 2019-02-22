@@ -4,16 +4,16 @@ import {withRouter} from 'react-router-dom';
 import * as ROUTES from '../../Constants/routes';
 import {withFirebase} from '../Firebase/'
 import BarOffers from './barOffers/barOffers'
+import {withAuthorization} from '../Session'
 
 
 
 const BarPage = (props) => (
-    <div>
+    <Style.Main>
         <MapHeader />
         <BarBioText />
 
         <BarOffers
-         Firebase={props.Firebase}
          uid={props.location.state.uid}
          />
 
@@ -22,7 +22,7 @@ const BarPage = (props) => (
         <p>{props.location.state.uid}</p>
 
         <CheckInButton />
-    </div>
+    </Style.Main>
 )
 
 const MapHeaderBase = (props) => (
@@ -80,6 +80,5 @@ class CheckInButton extends React.Component {
 
 const MapHeader = withRouter(MapHeaderBase)
 const BarBioText = withRouter(BarBioTextBase)
-export default withFirebase(BarPage) 
-
-
+const condition = authUser => authUser;
+export default withFirebase(withAuthorization(condition)(BarPage));
