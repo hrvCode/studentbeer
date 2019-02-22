@@ -6,6 +6,7 @@ import {withFirebase} from '../Firebase/'
 import BarOffers from './barOffers/barOffers'
 
 
+
 const BarPage = (props) => (
     <div>
         <MapHeader />
@@ -19,6 +20,8 @@ const BarPage = (props) => (
         <p>latidude:{props.location.state.position[0]}</p>
         <p>longitude:{props.location.state.position[1]}</p>
         <p>{props.location.state.uid}</p>
+
+        <CheckInButton />
     </div>
 )
 
@@ -42,6 +45,39 @@ const BarBioTextBase = (props) =>(
         </p>
     </Style.BioaBarText>
 )
+
+
+
+
+class CheckInButton extends React.Component {
+    state = {
+        CheckedIn: false   
+      };
+
+    Checkin() {
+        this.setState({
+          CheckedIn: !this.state.CheckedIn
+        })
+    }
+
+    render(){
+        let color = {
+            backgroundColor: "#4eb5f1",
+          }
+          if(this.state.CheckedIn){
+            color.backgroundColor = "green";
+          }
+
+    return(
+        <Style.CheckInButton>
+        <button style={color} onClick={()=> this.Checkin()}>
+            {!this.state.CheckedIn ? 'CHECKA IN' : 'LOGGA UT'} 
+        </button>
+    </Style.CheckInButton>
+    )
+    }
+}
+
 const MapHeader = withRouter(MapHeaderBase)
 const BarBioText = withRouter(BarBioTextBase)
 export default withFirebase(BarPage) 
