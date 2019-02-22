@@ -4,7 +4,7 @@ export const Main = Styled.div`
     height:90vh;
     overflow-y: scroll;
     font-size: 17px;
-    font-color: #333333;
+    color: #333333;
     
 
     a{

@@ -31,3 +31,12 @@ p{
 
 
 `;
+
+export const Main = Styled.div `
+    height: 90vh;
+    text-align: center;
+    height:90vh;
+    overflow-y: scroll;
+    font-size: 17px;
+    color: #333333;
+`

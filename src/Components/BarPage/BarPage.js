@@ -4,10 +4,11 @@ import {withRouter} from 'react-router-dom';
 import * as ROUTES from '../../Constants/routes';
 import {withFirebase} from '../Firebase/'
 import BarOffers from './barOffers/barOffers'
+import {withAuthorization} from '../Session'
 
 
 const BarPage = (props) => (
-    <div>
+    <Style.Main>
         <MapHeader />
         <BarBioText />
 
@@ -19,7 +20,7 @@ const BarPage = (props) => (
         <p>latidude:{props.location.state.position[0]}</p>
         <p>longitude:{props.location.state.position[1]}</p>
         <p>{props.location.state.uid}</p>
-    </div>
+    </Style.Main>
 )
 
 const MapHeaderBase = (props) => (
@@ -44,6 +45,5 @@ const BarBioTextBase = (props) =>(
 )
 const MapHeader = withRouter(MapHeaderBase)
 const BarBioText = withRouter(BarBioTextBase)
-export default withFirebase(BarPage) 
-
-
+const condition = authUser => authUser;
+export default withFirebase(withAuthorization(condition)(BarPage));
