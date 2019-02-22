@@ -1,6 +1,6 @@
-import app from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/database'
+import app from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
 
 
 const config = {
@@ -58,7 +58,9 @@ const config = {
         offer = uid => this.db.ref(`offers/${uid}`);
         offers = () => this.db.ref('offers');
 
-        // statusOnline API
+          // bar Api
+        bar = (uid) => this.db.ref(`bars/${uid}`);
+        bars = () => this.db.ref(`bars`);
 
 
         

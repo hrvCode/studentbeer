@@ -3,6 +3,52 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
 import Admin from './AdminDummys';
 import * as Styles from './MapStyle';
+import { auth } from "firebase";
+
+//hård kodade barer som pushas up till Firebase, ifall barer är tomt.
+const barArray =[
+  {
+    position: [59.316659403640784, 18.033692836761475], 
+    name: 'Hornhuset',
+    admin: "wIVcvMSvvObpeen2OqRvIvP14LI2",
+  },
+  {
+    position: [59.3247235, 18.0738668], 
+    name: 'Bistro & Grill Ruby',
+    admin: "NbL6fw59WtaIyhVc4xh0lmq7RV33",
+  },
+  {
+    position: [59.3139639, 18.1057867], 
+    name: 'Boule & Berså',
+    admin: "WJakdh2drUfZhDZucICHI4Ggs7o2",
+  },
+  {
+    position: [59.3144622, 18.0745471],
+    name: 'Kellys bar',
+    admin: "VFUEVd7TvPctFYzuCiEV2C9Gf922",
+  },
+  {
+    position: [59.3392438, 18.0813002], 
+    name: 'The Londoner',
+    admin: "1Et6Run2jPRwCgfae049JArp4ye2",
+  },
+  {
+    position: [59.3431683, 18.049093], 
+    name: 'Tranan',
+    admin: "JlgWZvT8hYXmnu2PqnB3lNAwz3Y2",
+  },
+  {
+    position: [59.3315633, 18.0312097], 
+    name: 'Hirschenkeller',
+    admin: "ffLhgkReXmZRu4tg9FDMFUfHIe82",
+  },
+  {
+    position:[59.6108993, 16.5338042],
+    name: 'Djäknebergets Restaurang',
+    admin: "3vF7ygvZFtMadipLDjfTNxceiQI3",
+  }
+]
+
 
 
 const myIcon = L.icon ({
@@ -18,7 +64,8 @@ class LocatedTwo extends Component {
     super(props);
     this.state = {
       browserCoords: null,
-      dbCoords: null
+      dbCoords: null,
+      bars: null,
     };
   }
  /*Functions*/
@@ -96,6 +143,38 @@ class LocatedTwo extends Component {
       }
 
     );
+
+    this.props.Firebase
+    .bars().once('value', snapshot => {
+      const barsObject = snapshot.val()
+    // ifall inte barerna finns i firebase databasen
+    // så loopas bar arrayen igenom och pushar upp dom till firebase
+      if(!barsObject){
+        barArray.forEach(bar => {
+          this.props.Firebase
+          .bars()
+          .push({
+            admin: bar.admin,
+            position: bar.position,
+            name: bar.name
+          })
+        })
+      }
+    });
+
+    this.props.Firebase
+    .bars().once('value', snapshot => {
+      const barsObject = snapshot.val()
+      if(barsObject){
+        const bArrey =  Object.keys(barsObject).map(key => ({
+          ...barsObject[key],
+          uid: key,
+        }))
+        this.setState({
+          bars: bArrey,
+        })
+      }
+    })
   }
 
   componentWillUnmount() {
@@ -103,65 +182,24 @@ class LocatedTwo extends Component {
   }
 
   render() {
-  
-    
+
     return (
       <Styles.Mapp>
         {this.state.browserCoords ? (
           <MyMap
-            
+            bars={this.state.bars}
             position={Object.values(this.state.browserCoords)}
             zoom={19}
           />
         ) : null}
-        
       </Styles.Mapp>
     );
   }
 }
 
 
-const adminArr = [
-  {
-   position : [59.316659403640784, 18.033692836761475], 
-   name: 'Hornhuset'
-   },
-
-   {
-   position : [59.3247235, 18.0738668], 
-   name: 'Bistro & Grill Ruby'
-   },
-
-   {
-   position : [59.3139639, 18.1057867], 
-   name: 'Boule & Berså'
-   },
-
-   {
-   position : [59.3144622, 18.0745471], 
-   name: 'Kellys bar'
-   },    
-   
-   {
-   position : [59.3392438, 18.0813002], 
-   name: 'The Londoner'
-   }, 
-
-   {
-   position : [59.3431683, 18.049093], 
-   name: 'Tranan'
-   }, 
-
-   {
-   position : [59.3315633, 18.0312097], 
-   name: 'Hirschenkeller'
-   }, 
-]
-
 
 const MyMap = props => (
-
-  
   <Map className="map" center={props.position} zoom={16}>
     Loading
                 <TileLayer
@@ -172,23 +210,24 @@ const MyMap = props => (
                 <Marker 
                 position={props.position}
                 icon={myIcon}>
-                <Popup>
-                    Här är din position.
-                </Popup>
+                  <Popup>
+                      Här är din position.
+                  </Popup>
                 </Marker>
-                {
-                  adminArr.map((item,i) => {
-                    return(
-                        <Admin 
-                          key={i}
-                          position={item.position}
-                          name={item.name}
-                         />
-                    )
 
-                  })
-                }
-               
+
+               {/* ternery operator behövs utifall att barerna inte har hunnit hämtats hem från db */}
+                { props.bars ? props.bars.map((bar, i)=> {
+                    return(
+                      <Admin
+                      key={i}
+                      position={bar.position}
+                      name={bar.name}
+                      uid={bar.uid} 
+                    />
+                    
+                  )
+                }) : null}
   </Map>
 );
 export default LocatedTwo;

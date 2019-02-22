@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {withAuthorization, AuthUserContext} from '../Session'
 import * as Styles from './OffersStyle';
+import OffersListItem from './OffersListItem/OffersListItem.js'
 import {AddOfferLink} from './AddOffer/AddOffer';
 import {withFirebase} from '../Firebase';
 import * as ROLES from '../../Constants/roles';
@@ -21,30 +22,6 @@ const Offer = (props) => (
     </Styles.Main>
 )
 
-
-const OffersListItem = (props) => {
-    const timeStamp = props.createdAt;
-    const createdAt = new Date(timeStamp).getFullYear() 
-    + "/" + new Date(timeStamp).getDate() 
-    + "/" + (new Date(timeStamp).getMonth() +1);
-
-    return(
-        <li>
-            <div>
-                <span>
-                    <h4>{props.name}</h4>
-                    <span>
-                        {props.isAdmin ? <i className="fas fa-times" onClick={()=> props.onDelete(props.offerUid)}></i> : null }
-                    </span> 
-                </span>
-
-                <p>{props.text}</p>
-                <p>{timeStamp ? "skapad: " + createdAt : null}</p>
-            </div>
-        </li>
-    )
-}
-
 class OfferBase extends Component {
     state = {
         loading:false,
@@ -63,26 +40,35 @@ class OfferBase extends Component {
                     OfferUid: key,
                     }));
 
+                    // sorterar på beroende på när de skapades
+                    offersList.sort((a,b)=>{
+                        return a.createdAt - b.createdAt
+                    })
+                    // vänder på sorteringen så nyaste hamnar högst upp
+                    offersList.reverse()
+                    // sätter offers till state och avaktiverar loading
                     this.setState({
                         loading:false,
-                        offers:offersList,
+                        offers: offersList
                     })  
             }else{
+                // finns inga meddelanden registerars null
                 this.setState({
-                    loading:true,
+                    loading:false,
                     offers: null,
                 })  
             } 
+            // hämtar current authUser
             const authUser = this.props.authUser;
                 this.setState({
                     currentUid: authUser.uid     
                 })
-                console.log(this.state.currentUid)
         })
     }
 
     componentWillUnmount(){
         this.props.Firebase.offers().off();
+        this.props.Firebase.userOffers().off()
 
     }
 
@@ -106,13 +92,13 @@ class OfferBase extends Component {
 
         })
     }
-    
-    render(props){
+
+    render(){
         return(
             <Styles.MainContent>
                 <Styles.List>
                     { this.state.offers ?
-                        this.state.offers.map(item => {
+                       this.state.offers.map(item => {
                             let uidMatch = this.state.currentUid === item.uidFromCreator ? true : false;
                         return(
                             <OffersListItem
