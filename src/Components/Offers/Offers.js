@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {withAuthorization, AuthUserContext} from '../Session'
 import * as Styles from './OffersStyle';
+import OffersListItem from './OffersListItem/OffersListItem.js'
 import {AddOfferLink} from './AddOffer/AddOffer';
 import {withFirebase} from '../Firebase';
 import * as ROLES from '../../Constants/roles';
@@ -20,30 +21,6 @@ const Offer = (props) => (
         
     </Styles.Main>
 )
-
-
-const OffersListItem = (props) => {
-    const timeStamp = props.createdAt;
-    const createdAt = new Date(timeStamp).getFullYear() 
-    + "/" + new Date(timeStamp).getDate() 
-    + "/" + (new Date(timeStamp).getMonth() +1);
-
-    return(
-        <li>
-            <div>
-                <span>
-                    <h4>{props.name}</h4>
-                    <span>
-                        {props.isAdmin ? <i className="fas fa-times" onClick={()=> props.onDelete(props.offerUid)}></i> : null }
-                    </span> 
-                </span>
-
-                <p>{props.text}</p>
-                <p>{timeStamp ? "skapad: " + createdAt : null}</p>
-            </div>
-        </li>
-    )
-}
 
 class OfferBase extends Component {
     state = {

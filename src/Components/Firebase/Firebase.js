@@ -57,7 +57,8 @@ const config = {
         offers = () => this.db.ref('offers');
 
           // bar Api
-          bars = () => this.db.ref(`bars`);
+        bar = (uid) => this.db.ref(`bars/${uid}`);
+        bars = () => this.db.ref(`bars`);
 
 
         

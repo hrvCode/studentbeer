@@ -14,12 +14,12 @@ const barArray =[
   },
   {
     position: [59.3247235, 18.0738668], 
-    name: 'Bistro &amp; Grill Ruby',
+    name: 'Bistro & Grill Ruby',
     admin: "NbL6fw59WtaIyhVc4xh0lmq7RV33",
   },
   {
     position: [59.3139639, 18.1057867], 
-    name: 'Boule &amp; Berså',
+    name: 'Boule & Berså',
     admin: "WJakdh2drUfZhDZucICHI4Ggs7o2",
   },
   {
@@ -42,6 +42,11 @@ const barArray =[
     name: 'Hirschenkeller',
     admin: "ffLhgkReXmZRu4tg9FDMFUfHIe82",
   },
+  {
+    position:[59.6108993, 16.5338042],
+    name: 'Djäknebergets Restaurang',
+    admin: "3vF7ygvZFtMadipLDjfTNxceiQI3",
+  }
 ]
 
 
@@ -149,6 +154,7 @@ class LocatedTwo extends Component {
           this.props.Firebase
           .bars()
           .push({
+            admin: bar.admin,
             position: bar.position,
             name: bar.name
           })
@@ -159,13 +165,15 @@ class LocatedTwo extends Component {
     this.props.Firebase
     .bars().once('value', snapshot => {
       const barsObject = snapshot.val()
-      const bArrey =  Object.keys(barsObject).map(key => ({
-        ...barsObject[key],
-        uid: key,
-      }))
-      this.setState({
-        bars: bArrey,
-      })
+      if(barsObject){
+        const bArrey =  Object.keys(barsObject).map(key => ({
+          ...barsObject[key],
+          uid: key,
+        }))
+        this.setState({
+          bars: bArrey,
+        })
+      }
     })
   }
 
@@ -184,7 +192,6 @@ class LocatedTwo extends Component {
             zoom={19}
           />
         ) : null}
-        
       </Styles.Mapp>
     );
   }
@@ -203,20 +210,20 @@ const MyMap = props => (
                 <Marker 
                 position={props.position}
                 icon={myIcon}>
-                <Popup>
-                    Här är din position.
-                </Popup>
+                  <Popup>
+                      Här är din position.
+                  </Popup>
                 </Marker>
 
 
                {/* ternery operator behövs utifall att barerna inte har hunnit hämtats hem från db */}
                 { props.bars ? props.bars.map((bar, i)=> {
-                  return(
-                    <Admin
-                    key={i}
-                    position={bar.position}
-                    name={bar.name}
-                    uid={bar.uid} 
+                    return(
+                      <Admin
+                      key={i}
+                      position={bar.position}
+                      name={bar.name}
+                      uid={bar.uid} 
                     />
                     
                   )
