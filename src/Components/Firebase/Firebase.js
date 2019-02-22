@@ -34,6 +34,8 @@ const config = {
         doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password)
 
+       
+
 
         // return timestamp
 

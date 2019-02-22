@@ -6,6 +6,7 @@ const BarPage = (props) => (
         
         <p>{props.location.state.position[0]}</p>
         <p>{props.location.state.position[1]}</p>
+        
     </div>
 )
 
