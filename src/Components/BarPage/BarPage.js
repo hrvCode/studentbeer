@@ -3,7 +3,7 @@ import * as Style from './BarpageStyle';
 import {withRouter} from 'react-router-dom';
 import * as ROUTES from '../../Constants/routes';
 import {withFirebase} from '../Firebase/'
-import BarOffers from './barOffers/barOffers'
+import BarOffers from './BarOffers/BarOffers'
 import {withAuthorization} from '../Session'
 
 
@@ -13,7 +13,6 @@ const BarPage = (props) => (
         <BarBioText />
 
         <BarOffers
-         Firebase={props.Firebase}
          uid={props.location.state.uid}
          />
 

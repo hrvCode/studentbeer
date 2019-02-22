@@ -1,7 +1,8 @@
-import React from 'react'
-
+import React from 'react';
+import {withFirebase} from '../../Firebase/';
 import OffersListItem  from '../../Offers/OffersListItem/OffersListItem';
-import * as Styles from './barOffersStyle';
+import * as Styles from './BarOffersStyle';
+import Arrow from './Arrow/Arrow';
 
 class BarOffers extends React.Component{
 
@@ -72,32 +73,35 @@ class BarOffers extends React.Component{
         let {offers} = this.state;
         return(
             <div>
-            <h1 onClick={this.showOffers}>Show</h1>
-            <Styles.List>
+                <h3 onClick={this.showOffers}>Visa erbjudanden</h3>
+                <Styles.offersbakgorund>
+                <Styles.List>
 
-            {/* tre nestade ternery operators:
-            1: kollar om offers ska visa.
-            2: kollar om det har laddats klart.
-            3: kollar om de finns erbjudanden. */}
+                {/* tre nestade ternery operators:
+                1: kollar om offers ska visa.
+                2: kollar om det har laddats klart.
+                3: kollar om de finns erbjudanden. */}
 
-            { this.state.showOffers ? 
-                this.state.loading ? <p>Laddar in erbjudanden</p>
-                : offers ?
-                     offers.map((offer,i) => (
-                        <OffersListItem
-                        key={i}
-                        name={offer.name}
-                        text={offer.text}
-                        profileOffer={true}
-                        /> 
-                    )) : 
-                    <h2>Finns inga erbjudanden</h2>
-            : null
-            }
-            </Styles.List>
-            </div>
+                { this.state.showOffers ? 
+                    this.state.loading ? <div><p>Laddar in erbjudanden</p></div>
+                    : offers ? 
+                        offers.map((offer,i) => (
+                            <OffersListItem
+                            key={i}
+                            name={offer.name}
+                            text={offer.text}
+                            profileOffer={true}
+                            createdAt={offer.createdAt}
+                            />            
+                        )) : 
+                        <h2>Finns inga erbjudanden</h2>
+                : null
+                }
+                </Styles.List>
+                </Styles.offersbakgorund>
+            </div>    
         )
     }
 }
 
-export default BarOffers;
+export default withFirebase(BarOffers);

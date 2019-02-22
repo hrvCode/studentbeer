@@ -1,4 +1,8 @@
 import Styled from 'styled-components'
+
+export const offersbakgorund = Styled.div`
+background-color: #f3f3f3;
+`
 export const List = Styled.ul`
     overflow:hidden;
     width: 100%;

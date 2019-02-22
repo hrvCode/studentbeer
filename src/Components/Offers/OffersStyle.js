@@ -1,4 +1,6 @@
 import Styled from 'styled-components';
+
+
 export const Main = Styled.div`
     text-align: center;
     height:90vh;
@@ -26,6 +28,7 @@ export const Main = Styled.div`
         } 
     }
 `;
+
 export const MainContent = Styled.div`
     display:flex;
     justify-content:center;
