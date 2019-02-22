@@ -37,9 +37,8 @@ class BarOffers extends React.Component{
                     this.setState({
                         offerUids: offerUidList,
                     })
-
+                    const offerList  = [];
                     this.state.offerUids.map(offer => {
-                        const offerList =[];
                         return(
                             this.props.Firebase.offer(offer.offerUid)
                             .on('value', snapshot =>{
@@ -49,7 +48,7 @@ class BarOffers extends React.Component{
                                     loading: false
                                 })
                             })
-                       ) 
+                        )
                     })
                 }
             })
@@ -74,8 +73,15 @@ class BarOffers extends React.Component{
             <div>
             <h1 onClick={this.showOffers}>Show</h1>
             <Styles.List>
-            { this.state.showOffers ?   
-                offers ?
+
+            {/* tre nestade ternery operators:
+            1: kollar om offers ska visa.
+            2: kollar om det har laddats klart.
+            3: kollar om de finns erbjudanden. */}
+
+            { this.state.showOffers ? 
+                this.state.loading ? <p>Laddar in erbjudanden</p>
+                : offers ?
                      offers.map((offer,i) => (
                         <OffersListItem
                         key={i}
@@ -83,8 +89,10 @@ class BarOffers extends React.Component{
                         text={offer.text}
                         profileOffer={true}
                         /> 
-                    )) : <h2>Finns inga erbjudanden</h2>
-            : null}
+                    )) : 
+                    <h2>Finns inga erbjudanden</h2>
+            : null
+            }
             </Styles.List>
             </div>
         )
