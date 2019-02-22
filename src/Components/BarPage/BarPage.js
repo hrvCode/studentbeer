@@ -2,12 +2,20 @@ import React from "react";
 import * as Style from './BarpageStyle';
 import {withRouter} from 'react-router-dom';
 import * as ROUTES from '../../Constants/routes';
+import {withFirebase} from '../Firebase/'
+import BarOffers from './barOffers/barOffers'
 
 
 const BarPage = (props) => (
     <div>
         <MapHeader />
         <BarBioText />
+
+        <BarOffers
+         Firebase={props.Firebase}
+         uid={props.location.state.uid}
+         />
+
         <p>latidude:{props.location.state.position[0]}</p>
         <p>longitude:{props.location.state.position[1]}</p>
         <p>{props.location.state.uid}</p>
@@ -36,4 +44,6 @@ const BarBioTextBase = (props) =>(
 )
 const MapHeader = withRouter(MapHeaderBase)
 const BarBioText = withRouter(BarBioTextBase)
-export default BarPage
+export default withFirebase(BarPage) 
+
+
