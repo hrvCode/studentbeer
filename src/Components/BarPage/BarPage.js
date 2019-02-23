@@ -10,7 +10,9 @@ import {withAuthorization} from '../Session'
 
 const BarPage = (props) => (
     <Style.Main>
+    
         <MapHeader />
+        
         <BarBioText />
 
         <BarOffers
