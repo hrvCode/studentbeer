@@ -6,26 +6,52 @@ import {withFirebase} from '../Firebase/'
 import BarOffers from './BarOffers/BarOffers'
 import {withAuthorization} from '../Session'
 
-
-
-const BarPage = (props) => (
-    <Style.Main>
+class BarPage extends React.Component {
     
-        <MapHeader />
-        
-        <BarBioText />
+    constructor(props) {
+        super(props);
+    
+    this.state = {
+        CheckedIn: false   
+      };
+    }
 
-        <BarOffers
-         uid={props.location.state.uid}
-         />
+    Checkin() {
+        this.setState({
+          CheckedIn: !this.state.CheckedIn
+        })
+        console.log(this.state.CheckedIn)
+    }
 
-        <p>latidude:{props.location.state.position[0]}</p>
-        <p>longitude:{props.location.state.position[1]}</p>
-        <p>{props.location.state.uid}</p>
+    render(){
+        return(
+            <Style.Main>
+    
+            <MapHeader />
+            
+            <BarBioText />
+            
+            {this.state.CheckedIn ?
+                <BarOffers
+             uid={this.props.location.state.uid}
+             /> :
+             null }
+    
+           
+    
+            <p>latidude:{this.props.location.state.position[0]}</p>
+            <p>longitude:{this.props.location.state.position[1]}</p>
+            <p>{this.props.location.state.uid}</p>
+    
+            <CheckInButton 
+                Checkin={()=>this.Checkin()}
+                IsCheckedIn={this.state.CheckedIn}
+            />
+        </Style.Main>
+        )
+    }
+}
 
-        <CheckInButton />
-    </Style.Main>
-)
 
 const MapHeaderBase = (props) => (
     <Style.HeaderContainer>
@@ -51,34 +77,24 @@ const BarBioTextBase = (props) =>(
 
 
 
-class CheckInButton extends React.Component {
-    state = {
-        CheckedIn: false   
-      };
-
-    Checkin() {
-        this.setState({
-          CheckedIn: !this.state.CheckedIn
-        })
-    }
-
-    render(){
+const CheckInButton = (props) => {
+   
         let color = {
             backgroundColor: "#4eb5f1",
           }
-          if(this.state.CheckedIn){
+          if(props.IsCheckedIn){
             color.backgroundColor = "green";
           }
 
     return(
-        <Style.CheckInButton>
-        <button style={color} onClick={()=> this.Checkin()}>
-            {!this.state.CheckedIn ? 'CHECKA IN' : 'LOGGA UT'} 
+    <Style.CheckInButton >
+        <button style={color} onClick={()=> props.Checkin()}>
+            {!props.IsCheckedIn ? 'CHECKA IN' : 'LOGGA UT'} 
         </button>
     </Style.CheckInButton>
     )
-    }
 }
+
 
 const MapHeader = withRouter(MapHeaderBase)
 const BarBioText = withRouter(BarBioTextBase)
