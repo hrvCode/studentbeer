@@ -1,9 +1,9 @@
 import React from "react";
-import * as Style from './BarpageStyle';
+import * as Style from './BarPageStyle';
 import {withRouter} from 'react-router-dom';
 import * as ROUTES from '../../Constants/routes';
 import {withFirebase} from '../Firebase/'
-import BarOffers from './barOffers/barOffers'
+import BarOffers from './BarOffers/BarOffers'
 import {withAuthorization} from '../Session'
 
 class BarPage extends React.Component {

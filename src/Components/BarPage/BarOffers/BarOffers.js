@@ -1,7 +1,7 @@
 import React from 'react';
 import {withFirebase} from '../../Firebase';
 import OffersListItem  from '../../Offers/OffersListItem/OffersListItem';
-import * as Styles from './barOffersStyle';
+import * as Styles from './BarOffersStyle';
 import Arrow from './Arrow/Arrow';
 
 class BarOffers extends React.Component{
