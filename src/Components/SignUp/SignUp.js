@@ -63,6 +63,7 @@ class SignUpFormBase extends Component{
                     civilStatus: '',
                     online: false, 
                     roles,
+                    CheckedInAt: '' ,
                 })
                 .then(() =>{
                     this.setState({...INITIAL_STATE});
@@ -141,15 +142,7 @@ class SignUpFormBase extends Component{
                 name="passwordTwo"
                 onChange={this.onChange}
                 placeholder="confirm password"
-                 />
-                 <Styles.AdminChoice>
-                    <label>Admin</label>
-                    <input 
-                        type="checkbox"
-                        name="isAdmin"
-                        onChange={this.onChangeCheckBox}
-                    />
-                 </Styles.AdminChoice>
+                 /> 
                 {error && <Styles.Error>{error.message}</Styles.Error>}
                 <button type="submit" disabled={isInvalid}>Sign Up</button>
 

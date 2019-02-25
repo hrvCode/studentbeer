@@ -10,7 +10,7 @@ const barArray =[
   {
     position: [59.316659403640784, 18.033692836761475], 
     name: 'Hornhuset',
-    admin: "wIVcvMSvvObpeen2OqRvIvP14LI2",
+    admin: "pfhoJ8HG62MenysG4XBjKWKz93E2",
   },
   {
     position: [59.3247235, 18.0738668], 
@@ -20,32 +20,32 @@ const barArray =[
   {
     position: [59.3139639, 18.1057867], 
     name: 'Boule & Berså',
-    admin: "WJakdh2drUfZhDZucICHI4Ggs7o2",
+    admin: "XzawmM7HvFeRqun6hZKXRNIo1fE3",
   },
   {
     position: [59.3144622, 18.0745471],
     name: 'Kellys bar',
-    admin: "VFUEVd7TvPctFYzuCiEV2C9Gf922",
+    admin: "Eov6yhl3S4ayndr29m17pXYy6zv2",
   },
   {
     position: [59.3392438, 18.0813002], 
     name: 'The Londoner',
-    admin: "1Et6Run2jPRwCgfae049JArp4ye2",
+    admin: "hndDnAQoCCXg5ntFJ5xUBK27YCP2",
   },
   {
     position: [59.3431683, 18.049093], 
     name: 'Tranan',
-    admin: "JlgWZvT8hYXmnu2PqnB3lNAwz3Y2",
+    admin: "vg4tGrfowCRZX4BiWH2bM2CX8k22",
   },
   {
     position: [59.3315633, 18.0312097], 
     name: 'Hirschenkeller',
-    admin: "ffLhgkReXmZRu4tg9FDMFUfHIe82",
+    admin: "0FjIerFHK7cMgnlAxweKkHfFepr2",
   },
   {
     position:[59.6108993, 16.5338042],
     name: 'Djäknebergets Restaurang',
-    admin: "3vF7ygvZFtMadipLDjfTNxceiQI3",
+    admin: "WwgL4Y8YgygiTmJCNSxeumIB7172",
   }
 ]
 

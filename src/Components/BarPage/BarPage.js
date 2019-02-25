@@ -12,15 +12,34 @@ class BarPage extends React.Component {
         super(props);
     
     this.state = {
-        CheckedIn: false   
+        CheckedIn: false,
+        CheckedInAt: ""  
       };
     }
 
     Checkin() {
-        this.setState({
-          CheckedIn: !this.state.CheckedIn
-        })
-        console.log(this.state.CheckedIn)
+        if(!this.state.CheckedIn){
+            this.setState({
+                CheckedIn: !this.state.CheckedIn,
+                CheckedInAt:this.props.location.state.name 
+              })
+        } else {
+            this.setState({
+                CheckedIn: !this.state.CheckedIn,
+                CheckedInAt:'' 
+              })
+        }
+
+
+       this.props.Firebase
+       .user(this.props.authUser.uid)
+       .update({
+        CheckedInAt:this.state.CheckedInAt
+       })
+
+       console.log(this.props.authUser.uid)
+    
+    
     }
 
     render(){
@@ -89,7 +108,7 @@ const CheckInButton = (props) => {
     return(
     <Style.CheckInButton >
         <button style={color} onClick={()=> props.Checkin()}>
-            {!props.IsCheckedIn ? 'CHECKA IN' : 'LOGGA UT'} 
+            {!props.IsCheckedIn ? 'CHECKA IN' : 'CHECKA UT'} 
         </button>
     </Style.CheckInButton>
     )
