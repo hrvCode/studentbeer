@@ -21,7 +21,24 @@ const NavigationNoneAuth = () => (
 )
 const NavigationAuth = ({authUser}) => (
     <Main>
-    
+        {/* om man är inloggad som admin har man en begränsad Navigation */}
+        {authUser.roles.includes('ADMIN') ? 
+        <ul>
+            <li>
+                <Link to={ROUTES.PROFILE}><i className="fas fa-user"></i></Link>
+            </li>
+            <li>
+                <Link to={ROUTES.MAP}><i className="fas fa-map-marked-alt"></i></Link>
+            </li>
+            <li>
+                <Link to={ROUTES.OFFERS}><i className="fas fa-gift"></i></Link>
+            </li>
+            <li>
+                <SignOutPage userId={authUser.uid}/>
+            </li>
+        </ul>
+        :
+        /* det här är navigationen som en vanlig user har */
         <ul>
             <li>
                 <Link to={ROUTES.PROFILE}><i className="fas fa-user"></i></Link>
@@ -38,7 +55,7 @@ const NavigationAuth = ({authUser}) => (
             <li>
                 <SignOutPage userId={authUser.uid}/>
             </li>
-        </ul>
+        </ul> }
     </Main>
 )
 const condition = authUser => authUser;

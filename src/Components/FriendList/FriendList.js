@@ -140,6 +140,6 @@ const FriendList = withFirebase(FriendListBase)
 
 // condition kollar om användaren är behörig då "authUser" inte ska vara null
 
-const condition = authUser => authUser != null;
+const condition = authUser => authUser != null && !authUser.roles.includes('ADMIN');
 export default withAuthorization(condition)(FriendPage);
 

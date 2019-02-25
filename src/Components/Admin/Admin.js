@@ -23,7 +23,7 @@ const AdminSignUp = () => (
 
 // initinal state till signupform baser state.
 const INITIAL_STATE = {
-    pubName: '',
+    username: '',
     email: '',
     passwordOne: '',
     passwordTwo: '',
@@ -41,7 +41,7 @@ class AdminSignUpFormBase extends Component{
 
     // skapa ny användare.
     onSubmit = event => {
-        const { pubName , email, passwordOne} = this.state;
+        const { username , email, passwordOne} = this.state;
         const roles = [];
         roles.push(ROLES.ADMIN)
         // anropar på firebase classen i firebase contexten.
@@ -53,7 +53,7 @@ class AdminSignUpFormBase extends Component{
                
                 this.props.Firebase.user(authUser.user.uid)
                 .set({
-                    pubName,
+                    username,
                     email,
                     position: {latitude:"0", longitude: "0"},
                     bioText: '',
@@ -85,12 +85,6 @@ class AdminSignUpFormBase extends Component{
         })
     }
 
-    onChangeCheckBox = event => {
-        this.setState({
-            [event.target.name]: event.target.checked
-        })
-    }
-
     componentDidMount(){
         this.setState({
             isLoading: false
@@ -116,9 +110,9 @@ class AdminSignUpFormBase extends Component{
             <form onSubmit={this.onSubmit}>
                 <input 
                 type="text"
-                name="pubName"
+                name="username"
                 onChange={this.onChange}
-                placeholder="Företags namn" />
+                placeholder="Företagsnamn" />
                                 
                 <input 
                 type="text"

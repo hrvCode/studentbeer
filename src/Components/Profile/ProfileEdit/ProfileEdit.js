@@ -67,7 +67,6 @@ class ProfileEdit extends React.Component{
           .update({ bioText:userBioText});
 
       };
-
       changeUserCivilStatusDB = () => {
         
         let userCivilStatus = this.state.civilStatus
@@ -129,7 +128,9 @@ class ProfileEdit extends React.Component{
                             onChange={this.onChange}
                             placeholder="Ändra användarnamn" 
                         />
-                        <h1>Bio text</h1>
+                        {this.props.authUser.roles.includes('ADMIN') ?
+                        <h1>Beskrivning</h1>:
+                        <h1>Bio text</h1>}
                         <textarea
                         row="10"
                         cols="40"
@@ -139,16 +140,18 @@ class ProfileEdit extends React.Component{
                             onChange={this.onChange}
                             placeholder="Skriv lite om dig själv...max 150 tecken" 
                         />
-                        <h1>Civil Status</h1>
-                        <select name="civilStatus" onChange={this.onChange}>
-                            <option value= "Vet ej">Vet ej</option>
-                            <option value= "Singel">Singel</option>
-                            <option value= "Upptagen">Upptagen</option>
-
-                        </select>
-
-                      
-                  
+                      {this.props.authUser.roles.includes('ADMIN') ? null:
+                       <div>
+                           <h1>Civil Status</h1>
+                              <select name="civilStatus" onChange={this.onChange}>
+                                  <option value= "Vet ej">Vet ej</option>
+                                  <option value= "Singel">Singel</option>
+                                  <option value= "Upptagen">Upptagen</option>
+      
+                            </select>
+                       </div>
+                        }
+   
                     </Styles.FormContainer>
 
                     <Styles.Button type="submit" >

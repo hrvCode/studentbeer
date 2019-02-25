@@ -90,17 +90,22 @@ class Profile extends React.Component{
                     <h1>{this.state.user}</h1>
                 </Styles.MiddleSection>
 
-                <Styles.StatusSection>
-                <h1>Inckeckad hos</h1>
+                {this.props.authUser.roles.includes('ADMIN') ?
+                <p>Admin info</p>:
+                 <Styles.StatusSection>
+                    <h1>Inckeckad hos</h1>
                     <p>Bara baren</p>
                     <h1>Civil Status</h1>
                     <p>{this.state.civilStatus}</p>
-                </Styles.StatusSection>
-            
+                  </Styles.StatusSection>
+                }
 
                 <Styles.BioSection>
                    <Styles.BioCard>
+                   {this.props.authUser.roles.includes('ADMIN') ?
+                    <h2>Beskrivning</h2>:
                     <h1>Min bio text</h1>
+                    }
                     <p>{this.state.bioText}</p>
                    </Styles.BioCard>
                 </Styles.BioSection>
