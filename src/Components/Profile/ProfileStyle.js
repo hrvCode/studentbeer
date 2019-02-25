@@ -103,8 +103,8 @@ export const BioCard = Styled.section`
     color:black;
     width: 90%;
     height: 80%;
-    box-shadow: 1px 1px 1px 1px #888888; 
-    border-radius:3px;
+  
+    border-radius:4px;
     background-color:white;
     display:flex;
     flex-direction:column;

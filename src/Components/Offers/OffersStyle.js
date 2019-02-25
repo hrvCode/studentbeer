@@ -1,5 +1,5 @@
 import Styled from 'styled-components';
-
+import Background from '../../Graphics/Backgorunds/mnm-all-551345-unsplash.jpg'
 
 export const Main = Styled.div`
     text-align: center;
@@ -7,7 +7,7 @@ export const Main = Styled.div`
     overflow-y: scroll;
     font-size: 17px;
     color: #333333;
-    
+    background:url(${Background});
 
     a{
         color:white;
@@ -33,7 +33,8 @@ export const MainContent = Styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
-    background-color:white;
+    background:url(${Background});
+    background-size:cover;
     
 `;
 
@@ -60,7 +61,7 @@ export const List = Styled.ul`
         width: 90%;
         margin: auto;
         div{
-            border-radius: 16px;
+            border-radius: 6px;
             padding: 10px;
             background-color: #F2F2F2;
             margin: 20px auto;
