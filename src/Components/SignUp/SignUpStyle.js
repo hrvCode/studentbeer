@@ -13,7 +13,7 @@ export const Main = Styled.div`
      
     h1{
         text-align:center;
-        color:gold;
+        color:var(--color-y);
     }
 
     p{
