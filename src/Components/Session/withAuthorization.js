@@ -10,10 +10,32 @@ const withAuthorization = (condition) => Component => {
     class WithAutorization extends React.Component{
         componentDidMount(){
             this.listener = this.props.Firebase.auth.onAuthStateChanged(
-                authuser =>{
-                    if(!condition(authuser)){
+                authUser =>{
+
+                    if(authUser){
+                        this.props.Firebase
+                        .user(authUser.uid)
+                        .once('value')
+                        .then( snapshot => {
+                            const dbUser = snapshot.val();
+
+                            if(!dbUser.roles){
+                                dbUser.roles = []
+                            }
+
+                            authUser = {
+                                uid: authUser.uid,
+                                email: authUser.email,
+                                ...dbUser
+                            }
+                            if(!condition(authUser)){
+                                this.props.history.push(ROUTES.SIGNIN)
+                            }
+                        });
+                    }else{
                         this.props.history.push(ROUTES.SIGNIN)
                     }
+                   
                 }
             )
             

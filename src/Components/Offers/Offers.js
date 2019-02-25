@@ -121,7 +121,6 @@ class OfferBase extends Component {
     }
 }
 
-
 const OffersList = withFirebase(OfferBase)
 const condition = authUser => authUser;
 export default withAuthorization(condition)(Offer);

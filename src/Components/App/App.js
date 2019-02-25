@@ -14,7 +14,8 @@ import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp'
 import NewOffer from '../Offers/AddOffer/AddOffer';
 import BarPage from '../BarPage/BarPage';
-import {withAuthentication, AuthUserContext} from '../Session';
+import Admin from '../Admin/Admin'
+import {withAuthentication} from '../Session';
 
 
 const App = () =>( 
@@ -33,10 +34,10 @@ const App = () =>(
                         path={ROUTES.BARPAGE}
                         render={(props) => <BarPage {...props} name={props.name}/>}
                 />
-  
-                <AuthUserContext.Consumer>
-                {authUser => <Navigation authUser={authUser} /> }
-                </AuthUserContext.Consumer>
+                <Route path={ROUTES.ADMIN} component={Admin} />
+               
+                <Navigation/>
+
             
             </div>
         </Router>

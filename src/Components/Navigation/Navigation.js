@@ -3,6 +3,7 @@ import SignOutPage from '../SignOut/SignOut';
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../../Constants/routes';
 import {Main,MainNoneAuth} from './NavigationStyle';
+import {withAuthorization} from '../Session'
 
 //Kollar om användaren är godkänd och anger navbar beroende på
 const Navigation = ({authUser}) => (
@@ -40,5 +41,5 @@ const NavigationAuth = ({authUser}) => (
         </ul>
     </Main>
 )
-
-export default Navigation;
+const condition = authUser => authUser;
+export default withAuthorization(condition)(Navigation);
