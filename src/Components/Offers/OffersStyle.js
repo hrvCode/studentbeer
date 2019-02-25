@@ -34,6 +34,7 @@ export const MainContent = Styled.div`
     justify-content:center;
     align-items:center;
     background:url(${Background});
+    background-attachment:fixed;
     background-size:cover;
     
 `;
@@ -41,21 +42,24 @@ export const MainContent = Styled.div`
 export const Header = Styled.header`
     width: 100%;
     height: 10vh;
-    border-bottom: 5px solid silver;
+    border-bottom: 5px solid var(--darkGrey);
     display:flex;
     justify-content:center;
     align-items: center;
-    background-color:var(--color-y);
+    background-color:var(--color-r);
     color:white;
+    position:fixed;
 `;
 export const List = Styled.ul`
     overflow:hidden;
     width: 100%;
     list-style-type: none;
-    margin:0;
-    padding:0;
+    margin:0px;
+    padding:60px 0px 0px 0px;
     background-color: none;
     text-align:left;
+
+  
 
     li{
         width: 90%;
@@ -63,7 +67,7 @@ export const List = Styled.ul`
         div{
             border-radius: 6px;
             padding: 10px;
-            background-color: #F2F2F2;
+            background-color:var(--transparent-Dark);
             margin: 20px auto;
                 h4{
                     display: inline-block;
@@ -71,11 +75,12 @@ export const List = Styled.ul`
                     font-size: 1.3em;
                     padding:0;
                     margin:5px 0;
-                    color:#B40000;
-                    font-family: 'open-sans';
+                    color:var(--color-y);
+                    font-family: var(--main-title-font);
                 }
                 p{
                     margin: 5px 0px;
+                    color:var(--text-lightColor);
                     padding:0;
 
                     strong{

@@ -3,14 +3,17 @@
  --color-r: rgb(139, 43, 43);
  --color-g:rgb(161, 196, 38);
  --color-b: rgb(43, 112, 139);
- --color-y:rgb(206, 162, 43);
- --darkGrey:rgb(68, 68, 68);
+ --color-y:rgb(233, 171, 14);
+ --darkGrey:rgb(43, 43, 43);
  --lightGrey:rgb(179, 179, 179);
- --transparentDark:rgba(0,0,0, 0.6); 
- --transparentLight:rgba(255, 255, 255, 0.26);
+ --transparent-Dark:rgba(0, 0, 0, 0.479); 
+ --transparent-Light:rgba(255, 255, 255, 0.4);
  --text-lightColor:white;
  --text-darkColor:black; 
+
+ --main-title-font:'Roboto', sans-serif;
 }
+
 
 html, body {
   margin: 0;
