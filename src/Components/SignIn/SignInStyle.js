@@ -32,7 +32,7 @@ margin-top:0px;
        
         font-family: 'Berkshire Swash', cursive;
         font-size:45px;
-        color:gold;
+        color:var(--color-y);
         text-shadow: 1px 1px black;
         margin:0;
         border-top:8px solid red;
@@ -44,7 +44,7 @@ margin-top:0px;
 
     h3{
         text-align:center;
-        color:red;
+        color:var(--color-r);
         font-weight:bold;
     }
    
@@ -66,7 +66,7 @@ export const ContainerBottom = Styled.div`
         color:Black;
        
         margin:0;
-        border-top:8px solid red;
+        border-top:8px solid var(--color-r);
         padding-top:5px;
         width:100%;
         
@@ -86,7 +86,7 @@ export const ContainerBottom = Styled.div`
 
         a{
             text-decoration:none;
-            color:gold;
+            color:var(--color-y);
             font-size:12px;
             font-weight:bold;
         }    
@@ -115,7 +115,7 @@ export const ContainerBottom = Styled.div`
 
         &:focus{
             outline: none;
-            border-bottom: 1px solid red;
+            border-bottom: 1px solid var(--color-g);
         }
     }
 
