@@ -80,7 +80,8 @@ export const BottomButton = Styled.div`
 
     width:81%;
     z-index:5;
-    button{border:none;
+    button{
+        border:none;
         
          cursor:pointer;
          width:100%;
@@ -99,4 +100,13 @@ export const BottomButton = Styled.div`
          &:hover{
             background-color:#cccccc;
         }
+`;
+
+export const Error = Styled.div`
+
+    color:red;
+    font-size:14px;
+    text-align:center;
+    margin-bottom:10px;
+    
 `;

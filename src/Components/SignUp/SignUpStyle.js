@@ -143,3 +143,12 @@ export const BottomButton = Styled.div`
             background-color:#cccccc;
         }
 `;
+
+export const Error = Styled.div`
+
+    color:red;
+    font-size:14px;
+    text-align:center;
+    margin-bottom:10px;
+    
+`;

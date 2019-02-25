@@ -150,7 +150,7 @@ class SignUpFormBase extends Component{
                         onChange={this.onChangeCheckBox}
                     />
                  </Styles.AdminChoice>
-                {error && <p>{error.message}</p>}
+                {error && <Styles.Error>{error.message}</Styles.Error>}
                 <button type="submit" disabled={isInvalid}>Sign Up</button>
 
                 {/* om det finns error i this.state.false så körs kodsnutten */}

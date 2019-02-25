@@ -68,7 +68,7 @@ class PasswordForgetFormBase extends Component {
             placeholder="Email Adress" 
         />
         <button diabled= {isInvalid} type="submit">Reset Password</button>
-        {error && <p>{error.message}</p>}
+        {error && <Styles.Error>{error.message}</Styles.Error>}
     </form>
     );
   }
