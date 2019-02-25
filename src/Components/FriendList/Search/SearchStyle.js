@@ -9,9 +9,10 @@ export const SearchMain = Styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:grey;
+    background-color:var(--color-r);
     color:white;
-    border-bottom: 5px solid silver;
+    border-bottom: 5px solid var(--darkGrey);
+ 
 `;
 export const Input = Styled.input `
     width: 80%;
@@ -19,11 +20,15 @@ export const Input = Styled.input `
     padding: 5px;
     font-size:18px;
     background: #333;
-    color: #fff;
+    color: white;
     border: none;
     outline: none;
     border-top-left-radius:4px;
     border-bottom-left-radius:4px;
+
+    &::placeholder{
+        color:white;
+    }
 
 
 `;
@@ -32,25 +37,25 @@ export const Button = Styled.button`
     width: 45px;
     height: 45px;
     border: none;
-    background: silver;
+    background: var(--lightGrey);
     border-top-right-radius:4px;
     border-bottom-right-radius:4px;
     color:black;
     &:hover{
-        background: #f3f3f3;
+        background:var(--lightGrey);
         span{
-            color: red;
+            color:var(--color-r);
             font-size: 20px;
          }
     }
     span{
-        color: #f3f3f3;
+        color:var(--color-r);
         font-size: 20px;
     }
     &:active{
-        background: #f3f3f3;
+        background:var(--lightGrey);
         span{
-            color: red;
+            color:var(--color-r);
             font-size: 20px;
          }
     }

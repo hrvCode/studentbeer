@@ -3,6 +3,13 @@ import Styled from 'styled-components';
 export const Container = Styled.div`
     background-color:#F8F8FF;
     height:90vh;
+  
+    overflow:scroll;
+    
+`;
+export const FriendListContainer = Styled.div`
+    background-color:#F8F8FF;
+    height:90vh;
     
     overflow:scroll;
     
@@ -11,7 +18,6 @@ export const Container = Styled.div`
 export const Friend = Styled.div`
     padding: 3% 0 3% 5%;
     display: flex;
-    
     border-bottom:1px solid black;
     
     
@@ -19,7 +25,7 @@ export const Friend = Styled.div`
 
     .far {
         font-size: 35px;
-        color:green;
+        color:var(--color-g);
         /* color:${props => props.color};
         color:  ${props => props.active ? 'green' : 'red' } */
     

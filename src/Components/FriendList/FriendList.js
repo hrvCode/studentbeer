@@ -9,7 +9,9 @@ import Header from './Header/Header'
 
 const FriendPage = () => (
   <Style.Container>
-    <FriendList />
+    <Style.FriendListContainer>
+      <FriendList />
+    </Style.FriendListContainer>
   </Style.Container>
 )
 
@@ -109,11 +111,11 @@ class FriendListBase extends Component {
 const Friend = (props) => {
   let status = "Offline"
   let color = {
-    color: "red",
+    color: "rgb(139, 43, 43)",
   }
   if(props.online){
     status = "Online";
-    color.color = "green";
+    color.color = "rgb(161, 196, 38)";
   }
 
   const {latitude, longitude} = props.position
