@@ -1,8 +1,9 @@
 import Styled from 'styled-components';
 
 export const Container = Styled.div`
-    background-color:silver;
+    background-color:#F8F8FF;
     height:90vh;
+    
     overflow:scroll;
     
 `;

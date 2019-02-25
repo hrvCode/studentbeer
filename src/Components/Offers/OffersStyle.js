@@ -34,15 +34,18 @@ export const MainContent = Styled.div`
     justify-content:center;
     align-items:center;
     background-color:white;
+    
 `;
 
 export const Header = Styled.header`
     width: 100%;
     height: 10vh;
-    border-bottom: 1px solid black;
+    border-bottom: 5px solid silver;
     display:flex;
     justify-content:center;
     align-items: center;
+    background-color:grey;
+    color:white;
 `;
 export const List = Styled.ul`
     overflow:hidden;

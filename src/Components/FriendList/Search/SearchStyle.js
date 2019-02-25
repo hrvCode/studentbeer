@@ -3,13 +3,15 @@ import Styled from 'styled-components';
 
 export const SearchMain = Styled.div`
     text-align: center;
-    height: 60px;
-    padding: 2% 0 2% 0;
+    height: 10vh;
     margin:0 auto;
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color:grey;
+    color:white;
+    border-bottom: 5px solid silver;
 `;
 export const Input = Styled.input `
     width: 80%;
@@ -20,6 +22,9 @@ export const Input = Styled.input `
     color: #fff;
     border: none;
     outline: none;
+    border-top-left-radius:4px;
+    border-bottom-left-radius:4px;
+
 
 `;
 export const Button = Styled.button`
@@ -27,7 +32,10 @@ export const Button = Styled.button`
     width: 45px;
     height: 45px;
     border: none;
-    background: #808080;
+    background: silver;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    color:black;
     &:hover{
         background: #f3f3f3;
         span{

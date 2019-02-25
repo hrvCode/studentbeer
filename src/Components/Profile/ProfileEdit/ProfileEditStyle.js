@@ -28,6 +28,11 @@ export const Header = Styled.header`
     justify-content:center;
     align-items: center;
     border-bottom:5px solid silver;
+    h1{
+
+        color:white;
+        font-size: 24px;
+    }
 
 `;
 
@@ -69,7 +74,7 @@ export const Button = Styled.button`
     width: calc(80% + 12px);
     margin-top: 5px;
     background-color: grey;
-    color: #fff;
+    color: white;
     font-size: 19px;
     padding: 15px 0;
     border:none;
