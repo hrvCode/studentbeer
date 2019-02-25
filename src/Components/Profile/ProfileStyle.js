@@ -21,12 +21,15 @@ export const MainContent = Styled.div`
 export const Header = Styled.header`
     width: 100%;
     height: 10vh;
-    background-color:grey;
+    background-color:var(--color-r);
+    border-bottom: 5px solid var(--darkGrey);
     flex-direction:row;
     display:flex;
     justify-content:flex-end;
     align-items: center;
-    border-bottom: 5px solid silver;
+    border-bottom: 5px solid var(--darkGrey);
+
+   
 
     a{
         background-color:transparent;
@@ -38,7 +41,7 @@ export const Header = Styled.header`
 
 export const MiddleSection = Styled.section`
     
-    color:white;
+    color:var(--color-y);
     width: 100%;
     height: 34vh;
     background:url(${Background});
@@ -47,7 +50,7 @@ export const MiddleSection = Styled.section`
     flex-direction:column;
     justify-content:center;
     align-items: center;
-    border-bottom:5px solid black;
+    border-bottom:5px solid var(--darkGrey);
     
     
     
@@ -57,10 +60,11 @@ export const StatusSection = Styled.section`
     
     color:black;
     width: 100%;
-    height: 20vh;
-    margin-top:20px;
-    display:flex;
+    height: 15vh;
     
+    padding-top:20px;
+    display:flex;
+    background-color:var(--color-y);
     flex-direction:column;
     justify-content:flex-start;
     align-items: center;
@@ -80,14 +84,13 @@ export const BioSection = Styled.section`
     
     color:black;
     width: 100%;
-    height: 30vh;
-    background-color:silver;
+    height: 35vh;
+    background-color:var(--color-y);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items: center;
-    border-top:5px solid grey;
-    border-bottom:5px solid grey;
+    border-bottom:5px solid var(--darkGrey);
     
     h1{
         margin:0px;
@@ -103,7 +106,7 @@ export const BioCard = Styled.section`
     color:black;
     width: 90%;
     height: 80%;
-  
+    
     border-radius:4px;
     background-color:white;
     display:flex;
@@ -127,7 +130,7 @@ export const Avatar = Styled.div`
   
   width:80px;
   height:80px;
-  border:5px solid grey;
+  border:5px solid var(--lightGrey);
   border-radius:50%;
   background-color:white;
   margin-top:20px;

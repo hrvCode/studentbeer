@@ -82,7 +82,8 @@ class Profile extends React.Component{
             <Styles.Main>
                 
                 <Styles.Header>
-                <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
+                    
+                    <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
                 </Styles.Header>
 
                 <Styles.MiddleSection>

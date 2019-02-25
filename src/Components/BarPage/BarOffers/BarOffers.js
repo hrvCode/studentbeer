@@ -76,7 +76,7 @@ class BarOffers extends React.Component{
 
         let {offers} = this.state;
         return(
-            <div>
+            <Styles.Main>
                 <h3 onClick={this.showOffers}>Visa erbjudanden</h3>
                 <Styles.offersbakgorund>
                 <Styles.List>
@@ -103,7 +103,7 @@ class BarOffers extends React.Component{
                 }
                 </Styles.List>
                 </Styles.offersbakgorund>
-            </div>    
+            </Styles.Main>    
         )
     }
 }

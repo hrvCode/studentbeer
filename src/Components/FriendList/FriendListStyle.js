@@ -1,22 +1,17 @@
 import Styled from 'styled-components';
 
 export const Container = Styled.div`
-    background-color:#F8F8FF;
+    background-color:silver;
     height:90vh;
   
     overflow:scroll;
     
 `;
-export const FriendListContainer = Styled.div`
-    background-color:#F8F8FF;
-    height:90vh;
-    
-    overflow:scroll;
-    
-`;
+
 
 export const Friend = Styled.div`
     padding: 3% 0 3% 5%;
+    
     display: flex;
     border-bottom:1px solid black;
     
@@ -42,7 +37,7 @@ export const Friend = Styled.div`
         
             p {
             margin:0;
-
+            
             }
                 .fas{
                     
@@ -50,6 +45,7 @@ export const Friend = Styled.div`
                 }
 
                     .locationText{
+                        color:var(--color-b);
                         padding-left:3%;
                         font-size: 0.9em;
                         width:100%;
@@ -58,7 +54,7 @@ export const Friend = Styled.div`
                     }
     }
     &:hover{
-            background-color: #E0E0E0;
+            background-color:var(--color-y);
     }
    
 `;

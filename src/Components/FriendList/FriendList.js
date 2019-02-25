@@ -9,9 +9,9 @@ import Header from './Header/Header'
 
 const FriendPage = () => (
   <Style.Container>
-    <Style.FriendListContainer>
+    
       <FriendList />
-    </Style.FriendListContainer>
+   
   </Style.Container>
 )
 
@@ -115,7 +115,7 @@ const Friend = (props) => {
   }
   if(props.online){
     status = "Online";
-    color.color = "rgb(161, 196, 38)";
+    color.color = "rgb(101, 124, 18)";
   }
 
   const {latitude, longitude} = props.position

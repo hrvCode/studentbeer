@@ -3,6 +3,14 @@ import Styled from 'styled-components'
 export const offersbakgorund = Styled.div`
 background-color: #f3f3f3;
 `
+
+export const Main = Styled.div`
+
+h3{
+color:var(--color-y);
+text-shadow:1px 1px 1px black;
+}
+`
 export const List = Styled.ul`
     overflow:hidden;
     width: 100%;
@@ -26,8 +34,8 @@ export const List = Styled.ul`
                     font-size: 1.3em;
                     padding:0;
                     margin:5px 0;
-                    color:#B40000;
-                    font-family: 'open-sans';
+                    color:var(--color-r);
+                    font-family: var(--main-title-font);
                 }
                 p{
                     margin: 5px 0px;
