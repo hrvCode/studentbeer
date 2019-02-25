@@ -1,3 +1,17 @@
+:root{
+ 
+ --color-r: rgb(139, 43, 43);
+ --color-g:rgb(161, 196, 38);
+ --color-b: rgb(43, 112, 139);
+ --color-y:rgb(206, 162, 43);
+ --darkGrey:rgb(68, 68, 68);
+ --lightGrey:rgb(179, 179, 179);
+ --transparentDark:rgba(0,0,0, 0.6); 
+ --transparentLight:rgba(255, 255, 255, 0.26);
+ --text-lightColor:white;
+ --text-darkColor:black; 
+}
+
 html, body {
   margin: 0;
   padding: 0;
