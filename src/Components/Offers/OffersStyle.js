@@ -45,7 +45,7 @@ export const Header = Styled.header`
     display:flex;
     justify-content:center;
     align-items: center;
-    background-color:grey;
+    background-color:var(--color-y);
     color:white;
 `;
 export const List = Styled.ul`
