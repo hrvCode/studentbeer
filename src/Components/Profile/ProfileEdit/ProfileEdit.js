@@ -139,7 +139,7 @@ class ProfileEdit extends React.Component{
                             onChange={this.onChange}
                             placeholder="Skriv lite om dig själv...max 150 tecken" 
                         />
-                        <h1>Civil</h1>
+                        <h1>Civil Status</h1>
                         <select name="civilStatus" onChange={this.onChange}>
                             <option value= "Vet ej">Vet ej</option>
                             <option value= "Singel">Singel</option>

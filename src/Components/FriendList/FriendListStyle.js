@@ -1,13 +1,16 @@
 import Styled from 'styled-components';
 
 export const Container = Styled.div`
-    background-color:#F8F8F8;
+    background-color:silver;
     height:90vh;
+    overflow:scroll;
+    
 `;
 
 export const Friend = Styled.div`
     padding: 3% 0 3% 5%;
     display: flex;
+    
     border-bottom:1px solid black;
     
     
