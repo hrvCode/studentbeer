@@ -44,7 +44,7 @@ const config = {
         )     
         
         // skapa user i databas **USER API**
-        user = uid => this.db.ref(`users/${uid}`);
+        user = (uid) => this.db.ref(`users/${uid}`);
         users = () => this.db.ref('users');
         userOffers = uid => this.db.ref(`users/${uid}/offers`)
 

@@ -1,51 +1,135 @@
-import React, { Component } from 'react';
-import {withAuthorization, AuthUserContext} from '../Session'
-import * as Styles from './ProfileStyle';
-
+import React from 'react';
 import {withFirebase} from '../Firebase';
-import * as ROLES from '../../Constants/roles';
+import {withAuthorization} from '../Session'
+import * as Styles from './ProfileStyle';
+import * as ROUTES from '../../Constants/routes';
+import {Link} from 'react-router-dom';
 
 
+class Profile extends React.Component{
 
-
-
-class ProfileBase extends Component {
     state = {
-        loading:false,
-        user: ''
-    }
-
-  
-
-    componentDidMount(){
-        this.setState({loading:true});
-        this.setState({user:this.props.authUser.username})
-      
-    
-        
-        
+        user: null,
+        civilStatus:null,
+        bioText:null,
+        loading: false,
        
     }
 
-    componentWillUnmount(){
-        this.props.Firebase.offers().off();
+    getUserNameFromDB = () => {
+       
+       
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            this.setState({
+                user: userObject.username
+            })
+ 
+            
+        })
+      };
 
+      getUserCivilStatusFromDB = () => {
+       
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            this.setState({
+                civilStatus: userObject.civilStatus
+            })
+ 
+            
+        })
+      };
+
+      getUserBioFromDB = () => {
+      
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            this.setState({
+                bioText: userObject.bioText
+            })
+ 
+            
+        })
+      };
+
+     
+      
+
+    componentDidMount(){
+        this.setState({loading: true,})
+        this.getUserNameFromDB();
+        this.getUserCivilStatusFromDB();
+        this.getUserBioFromDB();
     }
 
 
     
-    
+    componentWillUnmount(){
+        
+    }
+
     render(){
+
+       
         return(
-            <Styles.MainContent>
-            <h1>{this.state.user}</h1>
+            <Styles.Main>
+                
+                <Styles.Header>
+                <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
+                </Styles.Header>
+
+                <Styles.MiddleSection>
+                    <Styles.Avatar><i className="fas fa-user"></i></Styles.Avatar>
+                    <h1>{this.state.user}</h1>
+                </Styles.MiddleSection>
+
+                <Styles.StatusSection>
+                <h1>Inckeckad hos</h1>
+                    <p>Bara baren</p>
+                    <h1>Civil Status</h1>
+                    <p>{this.state.civilStatus}</p>
+                </Styles.StatusSection>
             
-            </Styles.MainContent>
+
+                <Styles.BioSection>
+                   <Styles.BioCard>
+                    <h1>Min bio text</h1>
+                    <p>{this.state.bioText}</p>
+                   </Styles.BioCard>
+                </Styles.BioSection>
+
+                
+                
+            </Styles.Main>    
         )
     }
 }
-
-
-const ProfileList = withFirebase(ProfileBase)
 const condition = authUser => authUser;
-export default withAuthorization(condition)(ProfileList);
+export default withFirebase(withAuthorization(condition)(Profile));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

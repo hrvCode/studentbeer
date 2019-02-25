@@ -1,7 +1,7 @@
 import React from 'react';
 import {withFirebase} from '../../Firebase';
 import OffersListItem  from '../../Offers/OffersListItem/OffersListItem';
-import * as Styles from './BarOffersStyle';
+import * as Styles from './barOffersStyle';
 import Arrow from './Arrow/Arrow';
 
 class BarOffers extends React.Component{
@@ -18,12 +18,12 @@ class BarOffers extends React.Component{
         this.setState({
             loading: true,
         })
-
+        console.log(this.props.uid);
         this.props.Firebase
         .bar(this.props.uid)
         .once('value', snapshot => {
             const offersObject = snapshot.val()
- 
+            
             this.props.Firebase
             .userOffers(offersObject.admin)
             .on('value', snapshot => {

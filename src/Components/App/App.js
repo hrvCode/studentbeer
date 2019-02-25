@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import * as ROUTES from '../../Constants/routes';
 import Navigation from '../Navigation/Navigation'
 import Profile from '../Profile/Profile'
+import ProfileEdit from '../Profile/ProfileEdit/ProfileEdit'
 import GeoMap from '../Map/Map'
 import Offers from '../Offers/Offers'
 import Friendlist from '../FriendList/FriendList'
@@ -21,6 +22,7 @@ const App = () =>(
             <div>
                 <Route exact path={ROUTES.SIGNIN} component={SignIn} />
                 <Route path={ROUTES.PROFILE} component={Profile} />
+                <Route path={ROUTES.PROFILEEDIT} component={ProfileEdit} />
                 <Route path={ROUTES.MAP} component={GeoMap} />
                 <Route path={ROUTES.OFFERS} component={Offers} />
                 <Route path={ROUTES.FRIENDLIST} component={Friendlist} />

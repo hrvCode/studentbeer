@@ -1,5 +1,6 @@
 export const SIGNIN = '/';
 export const PROFILE = '/profile';
+export const PROFILEEDIT = '/profile-edit';
 export const MAP = '/map';
 export const OFFERS = '/offers';
 export const FRIENDLIST = '/friendlist';
