@@ -52,6 +52,10 @@ class BarOffers extends React.Component{
                             })
                         )
                     })
+                }else{
+                    this.setState({
+                        loading: false,
+                    })
                 }
             })
         })

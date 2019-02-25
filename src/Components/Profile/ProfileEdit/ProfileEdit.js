@@ -51,8 +51,6 @@ class ProfileEdit extends React.Component{
             this.setState({
                 bioText: userObject.bioText
             })
- 
-            
         })
       };
     
@@ -113,7 +111,7 @@ class ProfileEdit extends React.Component{
             <Styles.Main>
 
               <Styles.Header>
-                    <h1> Profile Edit</h1>
+                    <h1>Redigera Profil</h1>
               </Styles.Header>
 
               <Styles.MiddleSection>
@@ -121,12 +119,12 @@ class ProfileEdit extends React.Component{
               <form onSubmit={this.onSubmit}>
                 
                     <Styles.FormContainer>
-                        <h1>Ändra namn</h1>
+                        <h1>Ändra Namn</h1>
                         <input 
                             type="text"
                             name="username"
                             onChange={this.onChange}
-                            placeholder="Ändra användarnamn" 
+                            placeholder="Ändra namn" 
                         />
                         {this.props.authUser.roles.includes('ADMIN') ?
                         <h1>Beskrivning</h1>:
