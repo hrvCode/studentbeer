@@ -11,7 +11,9 @@ export const Main = Styled.div`
     height:100vh;
     justify-content:center;
 
-    h1{color:gold;text-align:center;}
+    h1{
+        color:var(--color-y);
+        text-align:center;}
 
     button{
         background:${props => props.background};
@@ -58,7 +60,7 @@ export const Main = Styled.div`
 
         &:focus{
             outline: none;
-            border-bottom:1px solid red;
+            border-bottom:1px solid var(--color-g);
             
         }
     }

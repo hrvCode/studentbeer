@@ -162,10 +162,11 @@ export const Container = Styled.div`
       border-radius:4px;
       width:80%;
       margin-top:10px;
-      padding: 20px 0px 40px 0px;
+      padding: 0px 0px 30px 0px;
       display:flex;
       flex-direction: column;
       align-items:center;
+      justify-content:flex-start;
 `;
 
 export const BottomButton = Styled.div`
@@ -199,4 +200,13 @@ export const RegisterPub = Styled.div `
         color: #fff;
         text-decoration:none;
     }
+`;
+
+export const Error = Styled.div`
+
+    color:red;
+    font-size:14px;
+    text-align:center;
+    margin-bottom:10px;
+    
 `;

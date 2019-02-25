@@ -69,7 +69,7 @@ export const Main = Styled.div`
 
         &:focus{
             outline: none;
-            border-bottom: 1px solid red;
+            border-bottom: 1px solid var(--color-g);
         }
 
         &::selection{

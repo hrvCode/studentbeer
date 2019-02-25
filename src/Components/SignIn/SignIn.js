@@ -105,7 +105,7 @@ class SignInFormBase extends Component{
                         />
                     </div>
 
-                    {error && <p>{error.message}</p>}
+                    {error && <Styles.Error>{error.message}</Styles.Error>}
 
                     <Styles.ButtonContainer>
                         <button 
