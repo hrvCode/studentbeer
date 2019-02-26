@@ -29,7 +29,7 @@ export const Header = Styled.header`
     display:flex;
     justify-content:center;
     align-items: center;
-    border-bottom:5px solid var(--darkGrey);
+
     h1{
 
         color:white;

@@ -9,7 +9,8 @@ export const Main = Styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    
+    background:url(${Background});
+    background-size:cover;
 
    
 `;
@@ -24,12 +25,11 @@ export const Header = Styled.header`
     width: 100%;
     height: 10vh;
     background-color:var(--color-r);
-    border-bottom: 5px solid var(--darkGrey);
     flex-direction:row;
     display:flex;
     justify-content:flex-end;
     align-items: center;
-    border-bottom: 5px solid var(--darkGrey);
+
 
    
 
@@ -64,14 +64,15 @@ export const MiddleSection = Styled.section`
     
     color:var(--color-y);
     width: 100%;
-    height: 34vh;
-    background:url(${Background});
-    background-size:cover;
+    height: 30vh;
+ 
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items: center;
-    border-bottom:5px solid var(--darkGrey);
+
+    h1{margin:0px;font-size:36px;}
+
     
     /* Smartphones */
     @media (min-width:360px) {
@@ -96,24 +97,28 @@ export const MiddleSection = Styled.section`
 
 export const StatusSection = Styled.section`
     
-    color:black;
+    color:white;
     width: 100%;
-    height: 15vh;
+    height: 20vh;
     
-    padding-top:20px;
+    
     display:flex;
-    background-color:var(--color-y);
+    
     flex-direction:column;
     justify-content:flex-start;
     align-items: center;
     
     h1{
         margin:0px;
-        font-size:16px;
+        font-size:20px;
     }
     p{
         margin:0px;
-        font-size:14px;
+        font-size:16px;
+        font-style:italic;
+        color:var(--color-y);
+        font-weight:bold;
+
     }
 
     /* Smartphones */
@@ -139,21 +144,25 @@ export const StatusSection = Styled.section`
 
 export const BioSection = Styled.section`
     
-    color:black;
-    width: 100%;
-    height: 35vh;
-    background-color:var(--color-y);
+    color:white;
+    height: 30vh;
     display:flex;
     flex-direction:column;
-    justify-content:center;
-    align-items: center;
-    border-bottom:5px solid var(--darkGrey);
+    justify-content:flex-start;
+    align-items: flex-start;
+    background-color:var(--transparent-Dark);
+    
+    
+
     
     h1{
-        margin:0px;
+        margin:20px 0px 0px 30px;
+        font-size:24px;
     }
     p{
-        margin:0px;
+        word-break:break-all;
+        margin:5px 30px 10px 30px;
+        text-align:left;
     }
 
     /* Smartphones */
@@ -177,44 +186,21 @@ export const BioSection = Styled.section`
     
 `;
 
-export const BioCard = Styled.section`
-    
-    color:black;
-    width: 90%;
-    height: 80%;
-    
-    border-radius:4px;
-    background-color:white;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-items: flex-start;
-    padding:5px;
-   
-    
-    h1{
-        margin:0px;
-    }
-    p{
-        margin:0px;
-    }
 
-    
-`;
 
 
 export const Avatar = Styled.div`
   
   width:80px;
   height:80px;
-  border:5px solid var(--lightGrey);
+  border:5px solid var(--color-g);
   border-radius:50%;
   background-color:white;
   margin-top:20px;
   i{
-      color:black;
+    color:black;
     margin-top:20px;
-      font-size:46px;
+    font-size:46px;
   }
    
 `;

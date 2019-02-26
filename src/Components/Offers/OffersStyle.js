@@ -42,7 +42,6 @@ export const MainContent = Styled.div`
 export const Header = Styled.header`
     width: 100%;
     height: 10vh;
-    border-bottom: 5px solid var(--darkGrey);
     display:flex;
     justify-content:center;
     align-items: center;
@@ -69,7 +68,7 @@ export const List = Styled.ul`
             padding: 10px;
             background-color:var(--transparent-Dark);
             border:2px solid var(--transparent-Light);
-            border-bottom:2px solid var(--transparent-Light);
+      
             margin: 20px auto;
                 h4{
                     display: inline-block;

@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 
 export const Container = Styled.div`
-    background-color:silver;
+    background-color:white;
     height:90vh;
   
     overflow:scroll;

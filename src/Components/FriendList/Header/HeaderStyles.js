@@ -3,7 +3,6 @@ import Styled from 'styled-components';
 export const Header = Styled.div`
     text-align: center;
     height: 10vh;
-    border-bottom: 5px solid var(--darkGrey);
     width: 100%;
     display: flex;
     align-items: center;
