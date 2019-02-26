@@ -7,6 +7,8 @@ export const Main = Styled.div`
     font-size: 17px;
     display:flex;
     flex-direction:column;
+    justify-content:center;
+    align-items:center;
     
 
    
@@ -37,6 +39,25 @@ export const Header = Styled.header`
         color:white;
         margin-right:15px;
     }
+
+    /* Smartphones */
+    @media (min-width:360px) {
+    width: 100%;
+    }
+
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
+
+    @media (min-width:768px) {
+        width: 75%;
+    }
+
+    @media (min-width:1024px) {
+        width: 50%;
+    }
 `;
 
 export const MiddleSection = Styled.section`
@@ -52,7 +73,24 @@ export const MiddleSection = Styled.section`
     align-items: center;
     border-bottom:5px solid var(--darkGrey);
     
-    
+    /* Smartphones */
+    @media (min-width:360px) {
+    width: 100%;
+    }
+
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
+
+    @media (min-width:768px) {
+        width: 75%;
+    }
+
+    @media (min-width:1024px) {
+        width: 50%;
+    }
     
 `;
 
@@ -77,6 +115,25 @@ export const StatusSection = Styled.section`
         margin:0px;
         font-size:14px;
     }
+
+    /* Smartphones */
+    @media (min-width:360px) {
+    width: 100%;
+    }
+
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
+
+    @media (min-width:768px) {
+        width: 75%;
+    }
+
+    @media (min-width:1024px) {
+        width: 50%;
+    }
     
 `;
 
@@ -97,6 +154,25 @@ export const BioSection = Styled.section`
     }
     p{
         margin:0px;
+    }
+
+    /* Smartphones */
+    @media (min-width:360px) {
+    width: 100%;
+    }
+
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
+
+    @media (min-width:768px) {
+        width: 75%;
+    }
+
+    @media (min-width:1024px) {
+        width: 50%;
     }
     
 `;
@@ -122,6 +198,7 @@ export const BioCard = Styled.section`
     p{
         margin:0px;
     }
+
     
 `;
 
