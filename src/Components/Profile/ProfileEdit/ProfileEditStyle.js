@@ -42,10 +42,11 @@ export const MiddleSection = Styled.section`
     
     color:white;
     width: 100%;
-    height: 80vh;
-    border-bottom:5px solid grey;
-    background-size:cover;
+    height: 50vh;
+ 
+    padding-top:50px;
     display:flex;
+    
     flex-direction:column;
     justify-content:center;
     align-items: center;
@@ -57,9 +58,6 @@ export const FormContainer = Styled.div`
     color:white;
     width: 100%;
     height: 50vh;
-    background-color:var(--transparent-Dark);
-    border:2px solid var(--transparent-Light);
-    padding:10px;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;

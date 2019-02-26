@@ -64,10 +64,10 @@ export const List = Styled.ul`
         width: 90%;
         margin: auto;
         div{
-            border-radius: 6px;
+            border-radius: 4px;
             padding: 10px;
             background-color:var(--transparent-Dark);
-            border:2px solid var(--transparent-Light);
+      
       
             margin: 20px auto;
                 h4{

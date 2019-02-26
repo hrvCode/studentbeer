@@ -111,7 +111,7 @@ class ProfileEdit extends React.Component{
             <Styles.Main>
 
               <Styles.Header>
-                    <h1>Redigera Profil</h1>
+                <h1>Redigera Profil</h1>
               </Styles.Header>
 
               <Styles.MiddleSection>
