@@ -193,7 +193,7 @@ export const Avatar = Styled.div`
   
   width:80px;
   height:80px;
-  border:5px solid var(--color-g);
+  border:5px solid grey;
   border-radius:50%;
   background-color:white;
   margin-top:20px;
