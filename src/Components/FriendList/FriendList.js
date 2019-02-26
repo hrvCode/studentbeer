@@ -106,7 +106,7 @@ class FriendListBase extends Component {
 }
 
 
-const Friend = (props) => {
+export const Friend = (props) => {
   let status = "Offline"
   let color = {
     color: "red",

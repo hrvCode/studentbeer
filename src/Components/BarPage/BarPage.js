@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 import * as ROUTES from '../../Constants/routes';
 import {withFirebase} from '../Firebase/'
 import BarOffers from './BarOffers/BarOffers'
+import BarFriends from './BarFriends/BarFriends'
 import {withAuthorization} from '../Session'
 
 class BarPage extends React.Component {
@@ -50,6 +51,8 @@ class BarPage extends React.Component {
              uid={this.props.location.state.uid}
              /> :
              null }
+
+             <BarFriends BarName={this.props.location.state.name}/>
     
            
     
