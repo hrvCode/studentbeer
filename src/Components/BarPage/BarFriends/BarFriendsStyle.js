@@ -5,7 +5,7 @@ export const Friend = Styled.div`
     padding: 3% 0 3% 5%;
     display: flex;
     
-    border-bottom:1px solid black;
+    padding-left:10%;
     
   
 
@@ -13,14 +13,21 @@ export const Friend = Styled.div`
         font-size: 35px;
         color:green;
     } 
-    
+
     div{
-        padding-left:7%;
+        
         width:100%;
+    
         
             p {
             margin:0;
+            float:left;
+            padding-left:3%;
 
+            }
+            
+            p:nth-of-type(2){
+                font-Size:0.7em;
             }
                 .fas{
                     
@@ -35,9 +42,6 @@ export const Friend = Styled.div`
                         font-weight: 100;
                     }
     }
-    &:hover{
-            background-color: #E0E0E0;
-    }
    
 `;
 export const onlineContainer = Styled.div `
@@ -46,4 +50,7 @@ export const onlineContainer = Styled.div `
     flex-flow: column wrap;
     align-items: center;
     max-width: 40px;
+    i {
+        color:green;
+    }
 `

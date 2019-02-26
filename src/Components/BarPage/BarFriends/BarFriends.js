@@ -48,6 +48,7 @@ class BarFriends extends React.Component{
                         key={i}
                         username={friend.username}
                         CheckedInBar={friend.CheckedInBar}
+                        RelationshipStatus={friend.civilStatus}
                     />
                 )
             })
@@ -64,20 +65,14 @@ class BarFriends extends React.Component{
 
 
 export const Friend = (props) => {
-    let color = {
-      color: "red",
-    }
-    if(props.online){
-      color.color = "green";
-    }
-  
     return (  
       <Style.Friend>
         <Style.onlineContainer>
-          <i style={color} className="far fa-user-circle" > </i>
+          <i className="far fa-user-circle" > </i>
         </Style.onlineContainer>
         <div>
-            <p> <strong> {props.username}</strong></p>
+            <p> <strong> {props.username}</strong></p> <br />
+            <p>{props.RelationshipStatus ? props.RelationshipStatus : 'Ingen civilstatus anged'}</p>
         </div>
       </Style.Friend>
   
