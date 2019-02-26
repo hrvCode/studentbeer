@@ -13,34 +13,29 @@ class BarPage extends React.Component {
     
     this.state = {
         CheckedIn: false,
-        CheckedInAt: ""  
       };
     }
 
-    Checkin() {
+    CheckInFunction() {
         if(!this.state.CheckedIn){
             this.setState({
                 CheckedIn: !this.state.CheckedIn,
-                CheckedInAt:this.props.location.state.name 
               })
+              this.props.Firebase
+              .user(this.props.authUser.uid)
+              .update({CheckedInBar:this.props.location.state.name});
+       
+              
         } else {
             this.setState({
                 CheckedIn: !this.state.CheckedIn,
-                CheckedInAt:'' 
               })
+              this.props.Firebase
+            .user(this.props.authUser.uid)
+            .update({CheckedInBar:''});
         }
-
-
-       this.props.Firebase
-       .user(this.props.authUser.uid)
-       .update({
-        CheckedInAt:this.state.CheckedInAt
-       })
-
-       console.log(this.props.authUser.uid)
-    
-    
     }
+
 
     render(){
         return(
@@ -63,9 +58,11 @@ class BarPage extends React.Component {
             <p>{this.props.location.state.uid}</p>
     
             <CheckInButton 
-                Checkin={()=>this.Checkin()}
+                Checkin={()=>this.CheckInFunction()}
                 IsCheckedIn={this.state.CheckedIn}
             />
+
+            {/* <button onClick={()=> this.UpdateCheckIn()}>UPPDATERA </button> */}
         </Style.Main>
         )
     }

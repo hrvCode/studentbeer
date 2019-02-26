@@ -63,7 +63,7 @@ class SignUpFormBase extends Component{
                     civilStatus: '',
                     online: false, 
                     roles,
-                    CheckedInAt: '' ,
+                    CheckedInBar: '' ,
                 })
                 .then(() =>{
                     this.setState({...INITIAL_STATE});
