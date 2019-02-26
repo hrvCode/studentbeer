@@ -130,7 +130,7 @@ class ProfileEdit extends React.Component{
                         <h1>Beskrivning</h1>:
                         <h1>Bio text</h1>}
                         <textarea
-                        row="10"
+                        row="20"
                         cols="40"
                         maxLength="150"
                             type="text"
