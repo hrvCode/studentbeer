@@ -10,10 +10,32 @@ export const Main = Styled.div`
     justify-content:center;
     align-items:center;
     background:url(${Background});
-    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-size: auto 100%;
+    background-color: black;
 
-   
+    /* Smartphones */
+    @media (min-width:360px) {
+    background-size: 100% 100%;
+    }
+
+    @media (min-width:640px) {
+    background-size: 75% 100%;
+    }
+
+    /* Tablet */
+
+    @media (min-width:768px) {
+    background-size: 100% 100%;
+    }
+
+    @media (min-width:1024px) {
+    background-size: 75% 100%;   
+    }
 `;
+
 export const MainContent = Styled.div`
     display:flex;
     justify-content:center;
@@ -38,25 +60,6 @@ export const Header = Styled.header`
         font-size:24px;
         color:white;
         margin-right:15px;
-    }
-
-    /* Smartphones */
-    @media (min-width:360px) {
-    width: 100%;
-    }
-
-    @media (min-width:640px) {
-        width: 75%;
-    }
-
-    /* Tablet */
-
-    @media (min-width:768px) {
-        width: 75%;
-    }
-
-    @media (min-width:1024px) {
-        width: 50%;
     }
 `;
 
