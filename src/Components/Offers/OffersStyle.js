@@ -59,7 +59,7 @@ export const List = Styled.ul`
     margin:0px;
     padding:90px 0px 0px 0px;
     background-color: none;
-    text-align:center;
+    text-align:left;
 
     li{
         width: 90%;

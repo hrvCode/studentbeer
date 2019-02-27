@@ -3,6 +3,8 @@ import {withFirebase} from '../../Firebase';
 import {withAuthorization} from '../../Session'
 import * as Styles from './ProfileEditStyle'
 
+import ProfileImg from '../ProfileImg/ProfileImg';
+
 
 class ProfileEdit extends React.Component{
 
@@ -148,7 +150,7 @@ class ProfileEdit extends React.Component{
       
                             </select>
                        </div>
-                        }
+                        }               
    
                     </Styles.FormContainer>
 
