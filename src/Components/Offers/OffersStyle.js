@@ -3,11 +3,17 @@ import Background from '../../Graphics/Backgorunds/mnm-all-551345-unsplash.jpg'
 
 export const Main = Styled.div`
     text-align: center;
-    height:90vh;
+    height:100vh;
     overflow-y: scroll;
     font-size: 17px;
     color: white;
     background:url(${Background});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-size: auto 100%;
+    background-color: black;
+    
 
     a{
         color:white;
@@ -33,10 +39,6 @@ export const MainContent = Styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
-    background:url(${Background});
-    background-attachment:fixed;
-    background-size:cover;
-    
 `;
 
 export const Header = Styled.header`
@@ -49,6 +51,7 @@ export const Header = Styled.header`
     color:white;
     position:fixed;
 `;
+
 export const List = Styled.ul`
     overflow:hidden;
     width: 100%;
@@ -56,9 +59,7 @@ export const List = Styled.ul`
     margin:0px;
     padding:90px 0px 0px 0px;
     background-color: none;
-    text-align:left;
-
-  
+    text-align:center;
 
     li{
         width: 90%;
@@ -91,4 +92,24 @@ export const List = Styled.ul`
         }
    
     }
+
+    /* Smartphones */
+    @media (min-width:360px) {
+    width: 100%;
+    }
+
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
+    @media (min-width:768px) {
+        width: 75%;
+    }
+
+    @media (min-width:1024px) {
+        width: 50%;
+    }
+
 `;
+
