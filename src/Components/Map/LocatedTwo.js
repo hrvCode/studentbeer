@@ -54,9 +54,9 @@ const barArray =[
 const myIcon = L.icon ({
   iconUrl: dot,
   iconSize: [30, 30],
-  iconAnchor: [20, 41],
+  iconAnchor: [0, 41],
   // popupAnchor är relativt till iconAnchor
-  popupAnchor: [0, -41],
+  popupAnchor: [14, -30],
 });
 
 class LocatedTwo extends Component {
