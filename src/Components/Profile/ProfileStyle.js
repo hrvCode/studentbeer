@@ -1,8 +1,15 @@
 import Styled from 'styled-components';
 import Background from '../../Graphics/Backgorunds/fred-crandon-796719-unsplash.jpg'
+
+
+export const Container = Styled.div`
+    background-color:black;
+`;
+
+
 export const Main = Styled.div`
     text-align: center;
-    height:90vh;
+    height:auto;
     overflow-y: scroll;
     font-size: 17px;
     display:flex;
@@ -22,7 +29,7 @@ export const Main = Styled.div`
     }
 
     @media (min-width:640px) {
-    background-size: 75% 100%;
+    background-size: 100% 100%;
     }
 
     /* Tablet */
@@ -32,7 +39,8 @@ export const Main = Styled.div`
     }
 
     @media (min-width:1024px) {
-    background-size: 75% 100%;   
+    background-size: 75% 100%;
+    
     }
 `;
 
@@ -110,7 +118,7 @@ export const StatusSection = Styled.section`
     flex-direction:column;
     justify-content:flex-start;
     align-items: center;
-    
+
     h1{
         margin:0px;
         font-size:20px;
@@ -207,4 +215,3 @@ export const Avatar = Styled.div`
   }
    
 `;
-
