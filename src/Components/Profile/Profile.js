@@ -82,7 +82,7 @@ class Profile extends React.Component{
             <Styles.Main>
                 
                 <Styles.Header>
-                <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
+                    <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
                 </Styles.Header>
 
                 <Styles.MiddleSection>
@@ -101,13 +101,13 @@ class Profile extends React.Component{
                 }
 
                 <Styles.BioSection>
-                   <Styles.BioCard>
+                
                    {this.props.authUser.roles.includes('ADMIN') ?
                     <h2>Beskrivning</h2>:
                     <h1>Min bio text</h1>
                     }
                     <p>{this.state.bioText}</p>
-                   </Styles.BioCard>
+                  
                 </Styles.BioSection>
 
                 

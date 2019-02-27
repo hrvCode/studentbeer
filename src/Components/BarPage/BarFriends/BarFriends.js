@@ -16,8 +16,7 @@ class BarFriends extends React.Component{
                 const Friendslist = Object.keys(friendObject).map(friend => ({
                     username: friendObject[friend].username,
                     uid: friendObject[friend].uid,
-                    // position: friendObject[friend].position,
-                    // online: friendObject[friend].online,
+                    civilStatus: friendObject[friend].civilStatus,
                     CheckedInBar: friendObject[friend].CheckedInBar,
                 }))
                 this.setState({
@@ -49,6 +48,7 @@ class BarFriends extends React.Component{
                         username={friend.username}
                         CheckedInBar={friend.CheckedInBar}
                         RelationshipStatus={friend.civilStatus}
+                    
                     />
                 )
             })
@@ -72,7 +72,8 @@ export const Friend = (props) => {
         </Style.onlineContainer>
         <div>
             <p> <strong> {props.username}</strong></p> <br />
-            <p>{props.RelationshipStatus ? props.RelationshipStatus : 'Ingen civilstatus anged'}</p>
+            {/* <p>{c ? props.RelationshipStatus : 'Ingen civilstatus anged'}</p> */}
+            <p>{props.RelationshipStatus}</p>
         </div>
       </Style.Friend>
   

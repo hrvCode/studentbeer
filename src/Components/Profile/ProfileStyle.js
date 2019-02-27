@@ -7,7 +7,10 @@ export const Main = Styled.div`
     font-size: 17px;
     display:flex;
     flex-direction:column;
-    
+    justify-content:center;
+    align-items:center;
+    background:url(${Background});
+    background-size:cover;
 
    
 `;
@@ -21,12 +24,14 @@ export const MainContent = Styled.div`
 export const Header = Styled.header`
     width: 100%;
     height: 10vh;
-    background-color:grey;
+    background-color:var(--color-r);
     flex-direction:row;
     display:flex;
     justify-content:flex-end;
     align-items: center;
-    border-bottom: 5px solid silver;
+
+
+   
 
     a{
         background-color:transparent;
@@ -34,31 +39,69 @@ export const Header = Styled.header`
         color:white;
         margin-right:15px;
     }
+
+    /* Smartphones */
+    @media (min-width:360px) {
+    width: 100%;
+    }
+
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
+
+    @media (min-width:768px) {
+        width: 75%;
+    }
+
+    @media (min-width:1024px) {
+        width: 50%;
+    }
 `;
 
 export const MiddleSection = Styled.section`
     
-    color:white;
+    color:var(--color-y);
     width: 100%;
-    height: 34vh;
-    background:url(${Background});
-    background-size:cover;
+    height: 30vh;
+ 
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items: center;
-    border-bottom:5px solid black;
+
+    h1{margin:0px;font-size:36px;}
+
     
-    
+    /* Smartphones */
+    @media (min-width:360px) {
+    width: 100%;
+    }
+
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
+
+    @media (min-width:768px) {
+        width: 75%;
+    }
+
+    @media (min-width:1024px) {
+        width: 50%;
+    }
     
 `;
 
 export const StatusSection = Styled.section`
     
-    color:black;
+    color:white;
     width: 100%;
     height: 20vh;
-    margin-top:20px;
+    
+    
     display:flex;
     
     flex-direction:column;
@@ -67,60 +110,83 @@ export const StatusSection = Styled.section`
     
     h1{
         margin:0px;
-        font-size:16px;
+        font-size:20px;
     }
     p{
         margin:0px;
-        font-size:14px;
+        font-size:16px;
+        font-style:italic;
+        color:var(--color-y);
+        font-weight:bold;
+
+    }
+
+    /* Smartphones */
+    @media (min-width:360px) {
+    width: 100%;
+    }
+
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
+
+    @media (min-width:768px) {
+        width: 75%;
+    }
+
+    @media (min-width:1024px) {
+        width: 50%;
     }
     
 `;
 
 export const BioSection = Styled.section`
     
-    color:black;
-    width: 100%;
+    color:white;
     height: 30vh;
-    background-color:silver;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items: center;
-    border-top:5px solid grey;
-    border-bottom:5px solid grey;
-    
-    h1{
-        margin:0px;
-    }
-    p{
-        margin:0px;
-    }
-    
-`;
-
-export const BioCard = Styled.section`
-    
-    color:black;
-    width: 90%;
-    height: 80%;
-  
-    border-radius:4px;
-    background-color:white;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
     align-items: flex-start;
-    padding:5px;
-   
+    background-color:var(--transparent-Dark);
+    
+    
+
     
     h1{
-        margin:0px;
+        margin:20px 0px 0px 30px;
+        font-size:24px;
     }
     p{
-        margin:0px;
+        word-break:break-all;
+        margin:5px 30px 10px 30px;
+        text-align:left;
+    }
+
+    /* Smartphones */
+    @media (min-width:360px) {
+    width: 100%;
+    }
+
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
+
+    @media (min-width:768px) {
+        width: 75%;
+    }
+
+    @media (min-width:1024px) {
+        width: 50%;
     }
     
 `;
+
+
 
 
 export const Avatar = Styled.div`
@@ -132,9 +198,9 @@ export const Avatar = Styled.div`
   background-color:white;
   margin-top:20px;
   i{
-      color:black;
+    color:black;
     margin-top:20px;
-      font-size:46px;
+    font-size:46px;
   }
    
 `;

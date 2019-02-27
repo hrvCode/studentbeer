@@ -6,7 +6,7 @@ export const Main = Styled.div`
     height:90vh;
     overflow-y: scroll;
     font-size: 17px;
-    color: #333333;
+    color: white;
     background:url(${Background});
 
     a{
@@ -42,7 +42,6 @@ export const MainContent = Styled.div`
 export const Header = Styled.header`
     width: 100%;
     height: 10vh;
-    border-bottom: 5px solid var(--darkGrey);
     display:flex;
     justify-content:center;
     align-items: center;
@@ -55,7 +54,7 @@ export const List = Styled.ul`
     width: 100%;
     list-style-type: none;
     margin:0px;
-    padding:60px 0px 0px 0px;
+    padding:90px 0px 0px 0px;
     background-color: none;
     text-align:left;
 
@@ -65,9 +64,11 @@ export const List = Styled.ul`
         width: 90%;
         margin: auto;
         div{
-            border-radius: 6px;
+            border-radius: 4px;
             padding: 10px;
             background-color:var(--transparent-Dark);
+      
+      
             margin: 20px auto;
                 h4{
                     display: inline-block;

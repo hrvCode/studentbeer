@@ -23,6 +23,7 @@ export const Friend = Styled.div`
             margin:0;
             float:left;
             padding-left:3%;
+            color:white;
 
             }
             

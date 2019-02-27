@@ -111,7 +111,7 @@ class ProfileEdit extends React.Component{
             <Styles.Main>
 
               <Styles.Header>
-                    <h1>Redigera Profil</h1>
+                <h1>Redigera Profil</h1>
               </Styles.Header>
 
               <Styles.MiddleSection>
@@ -130,9 +130,9 @@ class ProfileEdit extends React.Component{
                         <h1>Beskrivning</h1>:
                         <h1>Bio text</h1>}
                         <textarea
-                        row="10"
+                        row="20"
                         cols="40"
-                        maxLength="150"
+                        maxLength="160"
                             type="text"
                             name="bioText"
                             onChange={this.onChange}

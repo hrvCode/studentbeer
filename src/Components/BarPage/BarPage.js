@@ -41,27 +41,30 @@ class BarPage extends React.Component {
     render(){
         return(
             <Style.Main>
-
-            <MapHeader />
-            <BarBioText />
-            <BarOffers
-             uid={this.props.location.state.uid}
-             />
-        
-             {this.state.CheckedIn ? 
-             <BarFriends BarName={this.props.location.state.name}/>
-             : null}
-           
-    
-            {/* <p>latidude:{this.props.location.state.position[0]}</p>
-            <p>longitude:{this.props.location.state.position[1]}</p>
-            <p>{this.props.location.state.uid}</p> */}
-    
-            <CheckInButton 
-                Checkin={()=>this.CheckInFunction()}
-                IsCheckedIn={this.state.CheckedIn}
-            />
+                <MapHeader />
+                    <Style.FlexContainer>
+                            <BarBioText />
+                            <BarOffers
+                            uid={this.props.location.state.uid}
+                            />
+                        
+                            {this.state.CheckedIn ? 
+                            <BarFriends BarName={this.props.location.state.name}/>
+                            : null}
+                        
+                    
+                            {/* <p>latidude:{this.props.location.state.position[0]}</p>
+                            <p>longitude:{this.props.location.state.position[1]}</p>
+                            <p>{this.props.location.state.uid}</p> */}
+                    
+                            <CheckInButton 
+                                Checkin={()=>this.CheckInFunction()}
+                                IsCheckedIn={this.state.CheckedIn}
+                            />
+                    </Style.FlexContainer>
         </Style.Main>
+
+
         )
     }
 }
@@ -69,7 +72,8 @@ class BarPage extends React.Component {
 
 const MapHeaderBase = (props) => (
     <Style.HeaderContainer>
-        <i className="fas fa-long-arrow-alt-left" onClick={()=> props.history.push(ROUTES.MAP)}>
+    
+        <i className="fas fa-caret-left" onClick={()=> props.history.push(ROUTES.MAP)}>
 
         </i>
         <h1>{props.location.state.name}</h1>
@@ -94,10 +98,10 @@ const BarBioTextBase = (props) =>(
 const CheckInButton = (props) => {
    
         let color = {
-            backgroundColor: "#4eb5f1",
+            backgroundColor: "rgb(43, 112, 139)",
           }
           if(props.IsCheckedIn){
-            color.backgroundColor = "green";
+            color.backgroundColor = "rgb(161, 196, 38)";
           }
 
     return(
