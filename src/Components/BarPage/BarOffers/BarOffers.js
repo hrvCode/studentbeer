@@ -40,6 +40,8 @@ class BarOffers extends React.Component{
                     })
                     const offerList  = [];
 
+
+                    //If** failsafe if offerUids contains data,
                     if(this.state.offerUids){
                         this.state.offerUids.map(offer => {
                             return(
