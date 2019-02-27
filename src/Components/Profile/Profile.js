@@ -84,7 +84,6 @@ class Profile extends React.Component{
                 <Styles.Header>
                     <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
                 </Styles.Header>
-
                 <Styles.MiddleSection>
                     <Styles.Avatar><i className="fas fa-user"></i></Styles.Avatar>
                     <h1>{this.state.user}</h1>
@@ -108,10 +107,7 @@ class Profile extends React.Component{
                     }
                     <p>{this.state.bioText}</p>
                   
-                </Styles.BioSection>
-
-                
-                
+                </Styles.BioSection>   
             </Styles.Main>    
         )
     }

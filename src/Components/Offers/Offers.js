@@ -50,7 +50,7 @@ class OfferBase extends Component {
                     this.setState({
                         loading:false,
                         offers: offersList
-                    })  
+                    }) 
             }else{
                 // finns inga meddelanden registerars null
                 this.setState({
@@ -94,18 +94,44 @@ class OfferBase extends Component {
     }
 
     render(){
+        let offersArray = this.state.offers;
+ 
+        const adminNames = offersArray.filter((x,i) => {
+            x.textArray = [];
+
+           if(i+1 < offersArray.length){
+
+                if(x.uidFromCreator === offersArray[i+1].uidFromCreator){
+              
+                };
+                
+                return x.uidFromCreator !== offersArray[i+1].uidFromCreator
+            }
+            return null;
+        })
+
+        const completeArray = adminNames.map(x => {
+            offersArray.forEach(y => {
+                if(y.name === x.name){
+                    x.textArray.push(y.text)
+                }
+            })
+           return x;
+        })
+        console.log(completeArray)
+
         return(
             <Styles.MainContent>
                 <Styles.List>
                     { this.state.offers ?
-                       this.state.offers.map(item => {
+                       completeArray.map(item => {
                             let uidMatch = this.state.currentUid === item.uidFromCreator ? true : false;
                         return(
                             <OffersListItem
                             isAdmin={uidMatch} 
                             name={item.name}
                             uid={item.uidFromCreator} 
-                            text={item.text} 
+                            text={item.textArray} 
                             key={item.OfferUid}
                             createdAt={item.createdAt}
                             offerUid={item.OfferUid}

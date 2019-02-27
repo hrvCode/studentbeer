@@ -8,6 +8,7 @@ const offersListItem = (props) => {
     + "/" + (new Date(timeStamp).getMonth() +1);
     const profileOffer = props.profileOffer;
 
+
     return(
         <li>
             <div>
@@ -22,10 +23,10 @@ const offersListItem = (props) => {
                         </span> 
                     }
                 </span>
-
-                <p>{props.text}</p>
-                <p>{timeStamp ? "skapad: " + createdAt : null}</p>
-            </div>
+                    { typeof props.text !== "string" ?
+                        props.text.map((t,i) => <p key={i}>* {t}</p>) : <p>{props.text}</p>}
+                    {/* <div><p>{timeStamp ? "skapad: " + createdAt : null}</p></div> */}
+              </div>
         </li>
     )
 }
