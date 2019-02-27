@@ -159,7 +159,7 @@ class ProfileEdit extends React.Component{
       
                             </select>
                        </div>
-                        }
+                        }               
    
                     </Styles.FormContainer>
 
