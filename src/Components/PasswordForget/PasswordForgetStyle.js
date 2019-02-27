@@ -68,9 +68,8 @@ export const Main = Styled.div`
 
 export const Container = Styled.div`
       background-color:rgba(0,0,0, 0.7); 
-      border:2px solid white;
       border-radius:4px;
-      width:80%;
+      width:100%;
       height:60%;
       margin-top:40px;
       padding: 20px 0px 0px 0px;
@@ -84,12 +83,12 @@ export const BottomButton = Styled.div`
         border:none;
         
          cursor:pointer;
-         width:100%;
+         width:200px;
          height:50px;
          background-color:rgba(0,0,0, 0.7); 
          color:white;
          border-radius:4px;
-         border:2px solid white;
+         
          font-weight:bold;
          font-size:18px;
          transition:0.4s;

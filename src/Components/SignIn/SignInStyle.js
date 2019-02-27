@@ -158,9 +158,9 @@ export const Logotype = Styled.div`
 
 export const Container = Styled.div`
       background-color:rgba(0,0,0, 0.6); 
-      border:2px solid white;
+     
       border-radius:4px;
-      width:80%;
+      width:100%;
       margin-top:10px;
       padding: 0px 0px 30px 0px;
       display:flex;
@@ -171,7 +171,7 @@ export const Container = Styled.div`
 
 export const BottomButton = Styled.div`
     margin-top:10px;
-    width:80.5%;
+    width:200px;
     z-index:5;
     button{border:none;
         
@@ -180,7 +180,7 @@ export const BottomButton = Styled.div`
          height:50px;
          background-color:rgba(0,0,0, 0.7); 
          color:white;
-         border:2px solid white;
+        
          border-radius:4px;
          font-weight:bold;
          font-size:18px;

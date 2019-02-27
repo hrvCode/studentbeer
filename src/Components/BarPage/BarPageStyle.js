@@ -38,16 +38,18 @@ export const HeaderContainer = Styled.div `
 
 
 export const BioaBarText = Styled.div `
+display:flex;
+justify-content:flex-start;
+
+
 
 p{
-    width: 80%;
+    width: 100%;
     color:white;
-    margin: auto;
+    margin:0px;
+    padding:20px 0px 20px 0px;
     text-align: center;
     background-color:var(--transparent-Dark);
-    border: 2px solid var(--transparent-Light);
-    border-radius:4px;
-    padding:15px;
     
 }
 `;
