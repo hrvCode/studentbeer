@@ -26,7 +26,7 @@ export const Main = Styled.div`
         justify-content:center;
         font-size:14px;
         font-weight:bold;
-        background-color:grey;
+        background-color:var(--color-b);
         border-radius:4px;
 
         &:hover{
