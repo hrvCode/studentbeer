@@ -21,7 +21,7 @@ export const Main = Styled.div`
         font-size:14px;
         font-weight:bold;
         background-color:grey;
-        border-radius:4px;
+        
 
         &:hover{
             background-color:silver;
