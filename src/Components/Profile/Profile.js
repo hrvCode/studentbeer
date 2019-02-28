@@ -12,6 +12,7 @@ class Profile extends React.Component{
         user: null,
         civilStatus:null,
         bioText:null,
+        checkedBar:null,
         loading: false,
     }
 
@@ -49,6 +50,18 @@ class Profile extends React.Component{
         })
       };
 
+      getUserCheckedInBar = () => {
+      
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            this.setState({
+                checkedBar: userObject.CheckedInBar
+            })
+        })
+      };
+
       
 
     componentDidMount(){
@@ -56,6 +69,7 @@ class Profile extends React.Component{
         this.getUserNameFromDB();
         this.getUserCivilStatusFromDB();
         this.getUserBioFromDB();
+        this.getUserCheckedInBar();
     }
 
 
@@ -78,7 +92,7 @@ class Profile extends React.Component{
                 <p>Admin info</p>:
                  <Styles.StatusSection>
                     <h1>Inckeckad hos</h1>
-                    <p>Bara baren</p>
+                    <p>{this.state.checkedBar}</p>
                     <h1>Civil Status</h1>
                     <p>{this.state.civilStatus}</p>
                   </Styles.StatusSection>
