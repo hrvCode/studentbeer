@@ -16,7 +16,6 @@ class BarPage extends React.Component {
     
     this.state = {
         CheckedIn: false,
-        CurrentTimeStamp:'',
         bioText:null
       };
     }
@@ -36,9 +35,6 @@ class BarPage extends React.Component {
 
     componentWillMount(){
         this.getUserBioFromDB();
-        this.setState({
-            CurrentTimeStamp:Date.now()
-        })
 
         this.props.Firebase
         .user(this.props.authUser.uid)
@@ -97,7 +93,7 @@ class BarPage extends React.Component {
                             {this.state.CheckedIn ? 
                             <BarFriends 
                             BarName={this.props.location.state.name}
-                            CurrentTimeStamp={this.state.CurrentTimeStamp}
+                            CurrentTimeStamp={this.props.authUser.CheckedInTime}
                             />
                             : null}
                         
