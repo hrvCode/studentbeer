@@ -64,13 +64,20 @@ export const FormContainer = Styled.div`
     align-items: flex-start;
 
     h1{
-    color:white;
-    font-size:14px;
+    color:var(--color-y);
+    font-size:16px;
     margin-bottom:5px;
     }
     textarea{
 
         height:15vh;
+        border:0px;
+    }
+
+    input{
+        border:0px;
+        width:100%;
+        height:20px;
     }
    
     
@@ -79,14 +86,14 @@ export const FormContainer = Styled.div`
 export const Button = Styled.button`
     width: calc(80% + 12px);
     margin-top: 5px;
-    background-color: grey;
+    background-color: var(--color-b);
     color: white;
     font-size: 19px;
     padding: 15px 0;
     border:none;
     border-radius:4px;
     &:hover{
-        background: #18b318;
+        background: grey;
     }
 `
 

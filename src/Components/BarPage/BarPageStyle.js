@@ -38,14 +38,14 @@ export const HeaderContainer = Styled.div `
 
 
 export const BioaBarText = Styled.div `
-
+display:flex;
+justify-content:center;
 p{
-    width: 80%;
+    width: 100%;
     color:white;
     margin: auto;
     text-align: center;
     background-color:var(--transparent-Dark);
-    border: 2px solid var(--transparent-Light);
     border-radius:4px;
     padding:15px;
     
@@ -53,21 +53,21 @@ p{
 `;
 
 export const CheckInButton = Styled.div `
-    width: 80%;
+    width: 200px;
+    
     margin: auto;
 
     button {
         width: 100%;
         
          display:inline-block;
-         padding: 1.0em 1.0em;
-         margin:10px 0.3em 0.3em 0;
+         height: 40px;
          border-radius:4px;
-         box-sizing: border-box;
          text-decoration:none;
          font-family:'Roboto',sans-serif;
          font-weight:300;
          color:white;
+         border:none;
          background-color:var( --transparent-Dark);
          text-align:center;
          transition: all 0.2s;

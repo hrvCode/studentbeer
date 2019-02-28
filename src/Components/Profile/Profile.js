@@ -13,12 +13,9 @@ class Profile extends React.Component{
         civilStatus:null,
         bioText:null,
         loading: false,
-       
     }
 
     getUserNameFromDB = () => {
-       
-       
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
@@ -26,13 +23,10 @@ class Profile extends React.Component{
             this.setState({
                 user: userObject.username
             })
- 
-            
         })
       };
 
       getUserCivilStatusFromDB = () => {
-       
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
@@ -40,8 +34,6 @@ class Profile extends React.Component{
             this.setState({
                 civilStatus: userObject.civilStatus
             })
- 
-            
         })
       };
 
@@ -54,12 +46,9 @@ class Profile extends React.Component{
             this.setState({
                 bioText: userObject.bioText
             })
- 
-            
         })
       };
 
-     
       
 
     componentDidMount(){
@@ -70,27 +59,22 @@ class Profile extends React.Component{
     }
 
 
-    
-    componentWillUnmount(){
-        
-    }
-
     render(){
-
-       
         return(
-            <Styles.Main>
-                
-                <Styles.Header>
+
+            <Styles.Container>
+                 <Styles.Header>
                     <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
                 </Styles.Header>
-
+                
+            <Styles.Main>           
                 <Styles.MiddleSection>
                     <Styles.Avatar><i className="fas fa-user"></i></Styles.Avatar>
                     <h1>{this.state.user}</h1>
                 </Styles.MiddleSection>
 
-                {this.props.authUser.roles.includes('ADMIN') ?
+                {
+                    this.props.authUser.roles.includes('ADMIN') ?
                 <p>Admin info</p>:
                  <Styles.StatusSection>
                     <h1>Inckeckad hos</h1>
@@ -100,22 +84,20 @@ class Profile extends React.Component{
                   </Styles.StatusSection>
                 }
 
-                <Styles.BioSection>
-                
+                <Styles.BioSection>             
                    {this.props.authUser.roles.includes('ADMIN') ?
                     <h2>Beskrivning</h2>:
                     <h1>Min bio text</h1>
                     }
-                    <p>{this.state.bioText}</p>
-                  
-                </Styles.BioSection>
+                    <p>{this.state.bioText}</p>                
+                </Styles.BioSection>  
 
-                
-                
-            </Styles.Main>    
+            </Styles.Main>
+            </Styles.Container>    
         )
     }
 }
+
 const condition = authUser => authUser;
 export default withFirebase(withAuthorization(condition)(Profile));
 

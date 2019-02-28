@@ -6,6 +6,7 @@ import * as Styles from './ProfileImgStyle'
 class ProfileImg extends Component {
     state = {
         selectedFile: null
+        
     }
     
     // fileSelectHandler
@@ -23,7 +24,7 @@ class ProfileImg extends Component {
     fileUploadHandler = () => {
 
         const fd = new FormData('image', this.state.selectedFile, this.state.selectedFile.name);
-        axios.post('https://beerhunter-d5aab.appspot.com/Profile-Images', fd)
+        axios.post('gs://beerhunter-d5aab.appspot.com/Profile-Images', fd)
         .then(res => {
             console.log(res);
         });

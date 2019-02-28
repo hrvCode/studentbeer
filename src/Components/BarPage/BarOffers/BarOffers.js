@@ -18,17 +18,16 @@ class BarOffers extends React.Component{
         this.setState({
             loading: true,
         })
-        console.log(this.props.uid);
+
         this.props.Firebase
         .bar(this.props.uid)
         .once('value', snapshot => {
             const offersObject = snapshot.val()
-            
+         
             this.props.Firebase
             .userOffers(offersObject.admin)
             .on('value', snapshot => {
                 const offerUidsObject = snapshot.val()
-
                 if(offerUidsObject){
 
                     const offerUidList = Object.keys(offerUidsObject)
@@ -40,18 +39,24 @@ class BarOffers extends React.Component{
                         offerUids: offerUidList,
                     })
                     const offerList  = [];
-                    this.state.offerUids.map(offer => {
-                        return(
-                            this.props.Firebase.offer(offer.offerUid)
-                            .on('value', snapshot =>{
-                                offerList.push(snapshot.val())
-                                this.setState({
-                                    offers: offerList,
-                                    loading: false
+
+
+                    //If** failsafe if offerUids contains data,
+                    if(this.state.offerUids){
+                        this.state.offerUids.map(offer => {
+                            return(
+                                this.props.Firebase.offer(offer.offerUid)
+                                .on('value', snapshot =>{
+                                    offerList.push(snapshot.val())
+                                    this.setState({
+                                        offers: offerList,
+                                        loading: false
+                                    })
                                 })
-                            })
-                        )
-                    })
+                            )
+                        })
+                    }
+                 
                 }else{
                     this.setState({
                         loading: false,
@@ -75,6 +80,7 @@ class BarOffers extends React.Component{
     render(){
 
         let {offers} = this.state;
+        console.log(offers)
         return(
             <Styles.Main>
                 <h3 onClick={this.showOffers}>Visa erbjudanden</h3>
