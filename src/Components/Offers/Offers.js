@@ -94,10 +94,10 @@ class OfferBase extends Component {
     }
 
     render(){
-        let offersArray = this.state.offers;
+     let offersArray = this.state.offers;
         let completeArray = [];
-
-        if(offersArray){
+        
+        if(this.state.offers){
             const adminNames = offersArray.filter((x,i) => {
                 x.textArray = [];
                if(i+1 < offersArray.length){
@@ -105,8 +105,7 @@ class OfferBase extends Component {
                     if(x.uidFromCreator === offersArray[i+1].uidFromCreator){
                         return null;
                     };
-                    
-                    return x.uidFromCreator !== offersArray[i+1].uidFromCreator
+                    return x;
                 }
                 return null;
             })
