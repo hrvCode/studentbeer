@@ -27,12 +27,19 @@ class FriendListBase extends Component {
       .on('value', snapshot =>{
         const friendObject = snapshot.val()
         if(friendObject){
-          const FriendList = Object.keys(friendObject).map(friend => ({
-            username: friendObject[friend].username,
-            uid: friend,
-            position: friendObject[friend].position,
-            online: friendObject[friend].online,
-          }))
+          const FriendList = Object.keys(friendObject).map(friend => {
+
+            return(
+              {
+              username: friendObject[friend].username,
+              uid: friend,
+              position: friendObject[friend].position,
+              online: friendObject[friend].online,
+              }
+            )
+          })
+
+
           this.setState({
             FriendList: FriendList
           })  
@@ -64,22 +71,23 @@ class FriendListBase extends Component {
     }
 
   render() {
-
     let showFriends = [];
+    
     if(this.state.search.length === 0){
-      showFriends = this.state.FriendList.map(friend => {
-        return(
-          <Friend 
-            key={friend.uid}
-            username={friend.username}
-            position={friend.position}
-            online={friend.online}
-          />
-        )
-      })
+      showFriends = this.state.FriendList.map(friend => (
+        <Friend 
+        key={friend.uid}
+        username={friend.username}
+        position={friend.position}
+        online={friend.online}
+        />
+      )) 
+
       showFriends.sort()
 
     }else{
+
+
       let condition = this.state.search.toLowerCase();
       showFriends = this.state.FriendList.map( friend => {
         return (friend.username.toLowerCase().includes(condition) ? 
