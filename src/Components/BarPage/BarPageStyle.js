@@ -4,7 +4,6 @@ import Background from '../../Graphics/Backgorunds/mnm-all-551345-unsplash.jpg'
 export const FlexContainer = Styled.div `
 display:flex;
 flex-direction:column;
-
 `
 
 
@@ -35,8 +34,6 @@ export const HeaderContainer = Styled.div `
         font-size:26px;
     }
 `;
-
-
 export const BioaBarText = Styled.div `
 display:flex;
 justify-content:center;
@@ -80,8 +77,8 @@ export const CheckInButton = Styled.div `
 
 export const Main = Styled.div `
     height: 90vh;
+    margin:0 auto;
     text-align: center;
-    height:90vh;
     overflow-y: scroll;
     font-size: 17px;
     color: #333333;
@@ -91,7 +88,14 @@ export const Main = Styled.div `
     display:flex;
     justify-content:center;
     align-items:center;
+    @media (min-width:768px) {
+        width: 75%;
+    }
 
+    @media (min-width:1024px) {
+        width: 50%;
+    }
+    
 `;
 
 export const Container = Styled.div `
@@ -101,7 +105,4 @@ export const Container = Styled.div `
     overflow-y: scroll;
     font-size: 17px;
     color: #333333;
-    background:url(${Background});
-    background-attachment:fixed;
-    background-size:cover;
 `;

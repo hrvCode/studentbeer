@@ -87,7 +87,7 @@ class Profile extends React.Component{
                 <Styles.BioSection>             
                    {this.props.authUser.roles.includes('ADMIN') ?
                     <h2>Beskrivning</h2>:
-                    <h1>Min bio text</h1>
+                    <h1>Profiltext</h1>
                     }
                     <p>{this.state.bioText}</p>                
                 </Styles.BioSection>  
