@@ -7,6 +7,8 @@ import BarOffers from './BarOffers/BarOffers'
 import BarFriends from './BarFriends/BarFriends'
 import {withAuthorization} from '../Session'
 
+
+
 class BarPage extends React.Component {
     
     constructor(props) {
@@ -14,27 +16,44 @@ class BarPage extends React.Component {
     
     this.state = {
         CheckedIn: false,
+        CurrentTimeStamp:'',
       };
+    }
+
+    componentWillMount(){
+        this.setState({
+            CurrentTimeStamp:Date.now()
+        })
     }
 
     CheckInFunction() {
         if(!this.state.CheckedIn){
             this.setState({
+                // Checked in blir true
                 CheckedIn: !this.state.CheckedIn,
               })
               this.props.Firebase
               .user(this.props.authUser.uid)
-              .update({CheckedInBar:this.props.location.state.name});
-       
+              .update({
+                  CheckedInBar:this.props.location.state.name,
+                  CheckedInTime:this.props.Firebase.timeStamp()
+            });
+        
+            console.log(Date.now())
               
         } else {
             this.setState({
+                // Checked in blir flase
                 CheckedIn: !this.state.CheckedIn,
               })
               this.props.Firebase
             .user(this.props.authUser.uid)
-            .update({CheckedInBar:''});
+            .update({
+                CheckedInBar:'',
+                CheckedInTime:''
+            });
         }
+        
     }
 
 
@@ -49,7 +68,10 @@ class BarPage extends React.Component {
                             />
                         
                             {this.state.CheckedIn ? 
-                            <BarFriends BarName={this.props.location.state.name}/>
+                            <BarFriends 
+                            BarName={this.props.location.state.name}
+                            CurrentTimeStamp={this.state.CurrentTimeStamp}
+                            />
                             : null}
                         
                     
@@ -57,10 +79,14 @@ class BarPage extends React.Component {
                             <p>longitude:{this.props.location.state.position[1]}</p>
                             <p>{this.props.location.state.uid}</p> */}
                     
+                            {!this.props.authUser.roles.includes('ADMIN') ?
                             <CheckInButton 
                                 Checkin={()=>this.CheckInFunction()}
                                 IsCheckedIn={this.state.CheckedIn}
-                            />
+                            /> 
+                            : null}
+                            
+                            
                     </Style.FlexContainer>
         </Style.Main>
 
