@@ -18,20 +18,43 @@ export const Main = Styled.div`
   
 
 `
+
+export const Header = Styled.header`
+    width: 100%;
+    height: 10vh;
+    background-color:var(--color-r);
+    flex-direction:row;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+
+    h2{
+
+        color:white;
+        font-size: 24px;
+    }
+
+`;
 export const TextArea = Styled.textarea`
     margin: 25px auto 0 auto;
     display:block;
     padding: 5px;
     min-width: 80%;
     min-height: 200px;
+    background-color:var(--transparent-Light);
+    border:none;
+
+    &::placeholder{
+        color:black;
+    }
 `
 export const Button = Styled.button`
-    width: calc(80% + 12px);
-    margin-top: 5px;
+    width: 200px;
+    height:40px
+    margin-top: 15px;
     background-color: var(--color-b);
     color: #fff;
     font-size: 19px;
-    padding: 15px 0;
     border:none;
     border-radius:4px;
     &:hover{
