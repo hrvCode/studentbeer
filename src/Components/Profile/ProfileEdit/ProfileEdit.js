@@ -5,6 +5,7 @@ import * as Styles from './ProfileEditStyle'
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../../../Constants/routes';
 import {Redirect} from 'react-router-dom';
+import ProfileImg from '../ProfileImg/ProfileImg';
 
 class ProfileEdit extends React.Component{
 
@@ -159,21 +160,21 @@ class ProfileEdit extends React.Component{
       
                             </select>
                        </div>
-                        }               
-   
-                    </Styles.FormContainer>
+                        }
+
+                    <h1>Ladda upp en bild</h1>
+                    <Styles.ProfileImgContainer>
+                        <ProfileImg />
+                    </Styles.ProfileImgContainer>  
+                    </Styles.FormContainer>      
 
                     <Styles.Button type="submit" >
                                 Save changes
                        
                     </Styles.Button>
-                    
-                       
-                
+                                  
             </form>
-
-              </Styles.MiddleSection>
-                
+              </Styles.MiddleSection>       
             </Styles.Main>    
         )
     }
