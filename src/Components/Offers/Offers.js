@@ -95,29 +95,32 @@ class OfferBase extends Component {
 
     render(){
         let offersArray = this.state.offers;
- 
-        const adminNames = offersArray.filter((x,i) => {
-            x.textArray = [];
-
-           if(i+1 < offersArray.length){
-
-                if(x.uidFromCreator === offersArray[i+1].uidFromCreator){
-              
-                };
-                
-                return x.uidFromCreator !== offersArray[i+1].uidFromCreator
-            }
-            return null;
-        })
-
-        const completeArray = adminNames.map(x => {
-            offersArray.forEach(y => {
-                if(y.name === x.name){
-                    x.textArray.push(y.text)
+        let completeArray = [];
+        
+        if(offersArray > 0){
+            const adminNames = offersArray.filter((x,i) => {
+                x.textArray = [];
+    
+               if(i+1 < offersArray.length){
+    
+                    if(x.uidFromCreator === offersArray[i+1].uidFromCreator){
+                  
+                    };
+                    
+                    return x.uidFromCreator !== offersArray[i+1].uidFromCreator
                 }
+                return null;
             })
-           return x;
-        })
+    
+           completeArray = adminNames.map(x => {
+                offersArray.forEach(y => {
+                    if(y.name === x.name){
+                        x.textArray.push(y.text)
+                    }
+                })
+               return x;
+            })
+        }
 
 
         return(
