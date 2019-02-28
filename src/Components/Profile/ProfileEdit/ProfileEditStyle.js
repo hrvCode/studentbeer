@@ -132,5 +132,5 @@ export const ProfileImgContainer = Styled.button`
     align-items: left;
     width:100%;
     background-color:var(--transparent-Light);
-    margin: 20px 0 0 0;
+    margin: 10px 0 0 0;
 `
