@@ -158,7 +158,10 @@ export const Logotype = Styled.div`
 
 export const Container = Styled.div`
       background-color:rgba(0,0,0, 0.6); 
+<<<<<<< HEAD
      
+=======
+>>>>>>> 7daa53f0bdbb02fdd8a77bc6c1c1c02a71632466
       border-radius:4px;
       width:100%;
       margin-top:10px;
@@ -177,10 +180,9 @@ export const BottomButton = Styled.div`
         
          cursor:pointer;
          width:100%;
-         height:50px;
-         background-color:rgba(0,0,0, 0.7); 
+         height:40px;
+         background-color:var(--color-b); 
          color:white;
-        
          border-radius:4px;
          font-weight:bold;
          font-size:18px;
@@ -193,11 +195,13 @@ export const BottomButton = Styled.div`
         }
 `;
 export const RegisterPub = Styled.div `
-    position: absolute;
-    right: 5px;
-    top:0;
+    margin-top:10px;
+    
     *{
-        color: #fff;
+        color:white;
+        font-weight:bold;
+        text-shadow: 0px 0px 4px 0px rgba(0,0,0,0.7);
+
         text-decoration:none;
     }
 `;

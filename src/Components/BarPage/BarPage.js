@@ -7,6 +7,8 @@ import BarOffers from './BarOffers/BarOffers'
 import BarFriends from './BarFriends/BarFriends'
 import {withAuthorization} from '../Session'
 
+
+
 class BarPage extends React.Component {
     
     constructor(props) {
@@ -14,27 +16,70 @@ class BarPage extends React.Component {
     
     this.state = {
         CheckedIn: false,
+        CurrentTimeStamp:'',
+        bioText:null
       };
+    }
+
+
+    getUserBioFromDB = () => {
+      
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            this.setState({
+                bioText: userObject.bioText
+            })
+        })
+      };
+
+    componentWillMount(){
+        this.getUserBioFromDB();
+        this.setState({
+            CurrentTimeStamp:Date.now()
+        })
+
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            if(userObject.CheckedInBar === this.props.location.state.name ){
+                this.setState({
+                    CheckedIn: true,
+                  })
+            }
+        })
     }
 
     CheckInFunction() {
         if(!this.state.CheckedIn){
             this.setState({
+                // Checked in blir true
                 CheckedIn: !this.state.CheckedIn,
               })
               this.props.Firebase
               .user(this.props.authUser.uid)
-              .update({CheckedInBar:this.props.location.state.name});
-       
+              .update({
+                  CheckedInBar:this.props.location.state.name,
+                  CheckedInTime:this.props.Firebase.timeStamp()
+            });
+        
+            console.log(Date.now())
               
         } else {
             this.setState({
+                // Checked in blir flase
                 CheckedIn: !this.state.CheckedIn,
               })
               this.props.Firebase
             .user(this.props.authUser.uid)
-            .update({CheckedInBar:''});
+            .update({
+                CheckedInBar:'',
+                CheckedInTime:''
+            });
         }
+        
     }
 
 
@@ -44,12 +89,16 @@ class BarPage extends React.Component {
                 <MapHeader />
                     <Style.FlexContainer>
                             <BarBioText />
+                            <div><p>{}</p>  </div>
                             <BarOffers
                             uid={this.props.location.state.uid}
                             />
                         
                             {this.state.CheckedIn ? 
-                            <BarFriends BarName={this.props.location.state.name}/>
+                            <BarFriends 
+                            BarName={this.props.location.state.name}
+                            CurrentTimeStamp={this.state.CurrentTimeStamp}
+                            />
                             : null}
                         
                     
@@ -57,10 +106,14 @@ class BarPage extends React.Component {
                             <p>longitude:{this.props.location.state.position[1]}</p>
                             <p>{this.props.location.state.uid}</p> */}
                     
+                            {!this.props.authUser.roles.includes('ADMIN') ?
                             <CheckInButton 
                                 Checkin={()=>this.CheckInFunction()}
                                 IsCheckedIn={this.state.CheckedIn}
-                            />
+                            /> 
+                            : null}
+                            
+                            
                     </Style.FlexContainer>
         </Style.Main>
 
@@ -86,8 +139,8 @@ const BarBioTextBase = (props) =>(
         <p>
             
         <span>Välkommen till {props.location.state.name}</span> <br /> 
-        Phasellus commodo ex sed enim volutpat accumsan. Donec vitae nisl ut dui hendrerit convallis. Proin at felis id nulla maximus ullamcorper sit amet quis nunc. Maecenas id accumsan nunc, vitae condimentum lectus. Phasellus ornare luctus cursus. Duis urna arcu, vehicula vel pharetra quis, auctor et nibh. Phasellus sit amet ultrices sem. 
-            
+        
+       
         </p>
     </Style.BioaBarText>
 )

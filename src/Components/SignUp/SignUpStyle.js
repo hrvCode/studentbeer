@@ -127,10 +127,11 @@ export const BottomButton = Styled.div`
         
          cursor:pointer;
          width:100%;
-         height:50px;
-         background-color:rgba(0,0,0, 0.7); 
+         height:40px;
+         background-color:var(--color-b); 
          color:white;
          border-radius:4px;
+        
          font-weight:bold;
          font-size:18px;
          transition:0.4s;

@@ -1,5 +1,13 @@
 import Styled from 'styled-components';
 import Background from '../../Graphics/Backgorunds/fred-crandon-796719-unsplash.jpg'
+
+
+export const Container = Styled.div`
+    background-color:black;
+    height:90vh;
+`;
+
+
 export const Main = Styled.div`
     text-align: center;
     height:90vh;
@@ -10,10 +18,41 @@ export const Main = Styled.div`
     justify-content:center;
     align-items:center;
     background:url(${Background});
-    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-size: auto 100%;
+<<<<<<< HEAD
+    background-color: black;
+    p{
+        color:white;
+        margin:0px 0px 110px 0px;
+    }
+=======
+    background-color: #222;
+>>>>>>> 2d360a94bf037bbebd84c3becac14cdb37f1908c
 
-   
+    /* Smartphones */
+    @media (min-width:360px) {
+    background-size: 100% 100%;
+    }
+
+    @media (min-width:640px) {
+    background-size: 100% 100%;
+    }
+
+    /* Tablet */
+
+    @media (min-width:768px) {
+    background-size: 100% 100%;
+    }
+
+    @media (min-width:1024px) {
+    background-size: 75% 100%;
+    
+    }
 `;
+
 export const MainContent = Styled.div`
     display:flex;
     justify-content:center;
@@ -39,25 +78,6 @@ export const Header = Styled.header`
         color:white;
         margin-right:15px;
     }
-
-    /* Smartphones */
-    @media (min-width:360px) {
-    width: 100%;
-    }
-
-    @media (min-width:640px) {
-        width: 75%;
-    }
-
-    /* Tablet */
-
-    @media (min-width:768px) {
-        width: 75%;
-    }
-
-    @media (min-width:1024px) {
-        width: 50%;
-    }
 `;
 
 export const MiddleSection = Styled.section`
@@ -72,7 +92,7 @@ export const MiddleSection = Styled.section`
     align-items: center;
 
     h1{margin:0px;font-size:36px;}
-
+   
     
     /* Smartphones */
     @media (min-width:360px) {
@@ -107,7 +127,7 @@ export const StatusSection = Styled.section`
     flex-direction:column;
     justify-content:flex-start;
     align-items: center;
-    
+
     h1{
         margin:0px;
         font-size:20px;
@@ -145,7 +165,7 @@ export const StatusSection = Styled.section`
 export const BioSection = Styled.section`
     
     color:white;
-    height: 30vh;
+    height: 35vh;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
@@ -156,7 +176,11 @@ export const BioSection = Styled.section`
 
     
     h1{
-        margin:20px 0px 0px 30px;
+        margin:15px 0px 0px 30px;
+        font-size:24px;
+    }
+    h2{
+        margin:15px 0px 0px 30px;
         font-size:24px;
     }
     p{
@@ -204,4 +228,3 @@ export const Avatar = Styled.div`
   }
    
 `;
-

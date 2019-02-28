@@ -64,6 +64,7 @@ class SignUpFormBase extends Component{
                     online: false, 
                     roles,
                     CheckedInBar: '' ,
+                    CheckedInTime: '' ,
                 })
                 .then(() =>{
                     this.setState({...INITIAL_STATE});

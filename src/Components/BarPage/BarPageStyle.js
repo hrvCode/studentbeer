@@ -4,7 +4,6 @@ import Background from '../../Graphics/Backgorunds/mnm-all-551345-unsplash.jpg'
 export const FlexContainer = Styled.div `
 display:flex;
 flex-direction:column;
-
 `
 
 
@@ -35,14 +34,9 @@ export const HeaderContainer = Styled.div `
         font-size:26px;
     }
 `;
-
-
 export const BioaBarText = Styled.div `
 display:flex;
-justify-content:flex-start;
-
-
-
+justify-content:center;
 p{
     width: 100%;
     color:white;
@@ -50,26 +44,28 @@ p{
     padding:20px 0px 20px 0px;
     text-align: center;
     background-color:var(--transparent-Dark);
+    border-radius:4px;
+    padding:15px;
     
 }
 `;
 
 export const CheckInButton = Styled.div `
-    width: 80%;
+    width: 200px;
+    
     margin: auto;
 
     button {
         width: 100%;
         
          display:inline-block;
-         padding: 1.0em 1.0em;
-         margin:10px 0.3em 0.3em 0;
+         height: 40px;
          border-radius:4px;
-         box-sizing: border-box;
          text-decoration:none;
          font-family:'Roboto',sans-serif;
          font-weight:300;
          color:white;
+         border:none;
          background-color:var( --transparent-Dark);
          text-align:center;
          transition: all 0.2s;
@@ -82,8 +78,8 @@ export const CheckInButton = Styled.div `
 
 export const Main = Styled.div `
     height: 90vh;
+    margin:0 auto;
     text-align: center;
-    height:90vh;
     overflow-y: scroll;
     font-size: 17px;
     color: #333333;
@@ -93,7 +89,22 @@ export const Main = Styled.div `
     display:flex;
     justify-content:center;
     align-items:center;
+    @media (min-width:360px) {
+    width: 100%;
+    }
 
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
+    @media (min-width:768px) {
+        width: 75%;
+    }
+
+    @media (min-width:1024px) {
+        width: 50%;
+    }
 `;
 
 export const Container = Styled.div `
@@ -103,7 +114,4 @@ export const Container = Styled.div `
     overflow-y: scroll;
     font-size: 17px;
     color: #333333;
-    background:url(${Background});
-    background-attachment:fixed;
-    background-size:cover;
 `;

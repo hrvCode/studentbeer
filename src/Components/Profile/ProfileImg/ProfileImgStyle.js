@@ -2,12 +2,12 @@ import Styled from 'styled-components';
 
 export const ProfileImgStyle = Styled.div`
 display: flex;
-width: 25%;
-min-width: 100px;
+width: 75%;
+min-width: 125px;
 padding: 20px;
 margin:0;
 align-items: left;
-justify-content: left;
+justify-content: center;
 flex-direction: column;
 border-style: solid;
 border-width: 2px;

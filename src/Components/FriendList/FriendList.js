@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import {withFirebase} from '../Firebase'
 import { auth } from "firebase";
 import Header from './Header/Header'
+import Profile from '../Profile/Profile'
+import {withRouter} from 'react-router-dom';
 
 
 
@@ -14,6 +16,7 @@ const FriendPage = () => (
    
   </Style.Container>
 )
+
 
 class FriendListBase extends Component {
     state = {
@@ -27,12 +30,19 @@ class FriendListBase extends Component {
       .on('value', snapshot =>{
         const friendObject = snapshot.val()
         if(friendObject){
-          const FriendList = Object.keys(friendObject).map(friend => ({
-            username: friendObject[friend].username,
-            uid: friend,
-            position: friendObject[friend].position,
-            online: friendObject[friend].online,
-          }))
+          const FriendList = Object.keys(friendObject).map((friend,i) => {
+            return(
+              {
+              roles: friendObject[friend].roles,
+              username: friendObject[friend].username,
+              uid: friend,
+              position: friendObject[friend].position,
+              online: friendObject[friend].online,
+              }
+            )
+          })
+
+
           this.setState({
             FriendList: FriendList
           })  
@@ -44,6 +54,14 @@ class FriendListBase extends Component {
         }
       })
     }
+
+    showProfile = (user) => {
+      this.props.history.push({
+        pathname:`profile/${user.username}`,
+        user: user,
+      })
+    }
+
 
     SearchInFriendList = (event) => {
         this.setState({
@@ -64,22 +82,43 @@ class FriendListBase extends Component {
     }
 
   render() {
-
     let showFriends = [];
+    
     if(this.state.search.length === 0){
+      // mappar ut användare och sorterar ut admin
       showFriends = this.state.FriendList.map(friend => {
-        return(
-          <Friend 
-            key={friend.uid}
-            username={friend.username}
-            position={friend.position}
-            online={friend.online}
+        if(!friend.roles){
+          return <Friend 
+          key={friend.uid}
+          username={friend.username}
+          position={friend.position}
+          online={friend.online}
+          onClick={ () => this.showProfile(friend)}
           />
-        )
+        }
+        return null;
       })
-      showFriends.sort()
+
+
+      // sorting friend tab,
+      // those with online true will get sorted to the top.
+      showFriends.sort((a,b) => {
+        if(a && b){
+          if(a.props.online && b.props.online === undefined){
+            return -1;
+          }
+          if(b.props.online && a.props.online === undefined){
+            return 1;
+          }
+          return -1;
+        }
+        return null;
+      })
+
 
     }else{
+
+
       let condition = this.state.search.toLowerCase();
       showFriends = this.state.FriendList.map( friend => {
         return (friend.username.toLowerCase().includes(condition) ? 
@@ -88,6 +127,7 @@ class FriendListBase extends Component {
         username={friend.username}
         position={friend.position}
         online={friend.online}
+        onClick={ () => this.showProfile(friend)}
         /> : null)
       })
       showFriends.sort()
@@ -121,7 +161,7 @@ export const Friend = (props) => {
   const {latitude, longitude} = props.position
   return (  
     <Style.Friend>
-      <Style.onlineContainer>
+      <Style.onlineContainer onClick={props.onClick}>
         <i style={color} className="far fa-user-circle" > </i>
         <p>{status}</p>
       </Style.onlineContainer>
@@ -138,7 +178,7 @@ export const Friend = (props) => {
 
 
 
-const FriendList = withFirebase(FriendListBase)
+const FriendList = withFirebase(withRouter(FriendListBase))
 
 // condition kollar om användaren är behörig då "authUser" inte ska vara null
 

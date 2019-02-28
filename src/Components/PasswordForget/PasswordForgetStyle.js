@@ -68,6 +68,7 @@ export const Main = Styled.div`
 
 export const Container = Styled.div`
       background-color:rgba(0,0,0, 0.7); 
+    
       border-radius:4px;
       width:100%;
       height:60%;
@@ -77,18 +78,18 @@ export const Container = Styled.div`
 
 export const BottomButton = Styled.div`
 
-    width:81%;
+    width:200px;
     z-index:5;
     button{
         border:none;
         
          cursor:pointer;
-         width:200px;
-         height:50px;
-         background-color:rgba(0,0,0, 0.7); 
+         width:100%;
+         height:40px;
+         background-color:var(--color-b); 
          color:white;
          border-radius:4px;
-         
+        
          font-weight:bold;
          font-size:18px;
          transition:0.4s;

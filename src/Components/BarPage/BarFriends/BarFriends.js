@@ -3,7 +3,6 @@ import {withFirebase} from '../../Firebase/';
 // import Friend from '../../FriendList/FriendList';
 import * as Style from './BarFriendsStyle';
 
-
 class BarFriends extends React.Component{
     state = {
         Friendslist: []
@@ -18,18 +17,22 @@ class BarFriends extends React.Component{
                     uid: friendObject[friend].uid,
                     civilStatus: friendObject[friend].civilStatus,
                     CheckedInBar: friendObject[friend].CheckedInBar,
+                    CheckedInTime:friendObject[friend].CheckedInTime
                 }))
                 this.setState({
                     Friendslist: Friendslist
+                    
                 })
             } else {
                 this.setState({
                     Friendslist: ''
                 })
             }
-        })
 
+        })
+        
     }
+
 
     componentWillUnmount(){
         this.props.Firebase.users()
@@ -41,25 +44,26 @@ class BarFriends extends React.Component{
         let showFriends = [];
 
         showFriends = this.state.Friendslist.filter(friend => 
-            friend.CheckedInBar === this.props.BarName).map((friend,i) =>{
+            friend.CheckedInBar === this.props.BarName && this.props.CurrentTimeStamp < friend.CheckedInTime + 43200000)
+            .map((friend,i) =>{
                 return(
                     <Friend 
                         key={i}
                         username={friend.username}
                         CheckedInBar={friend.CheckedInBar}
                         RelationshipStatus={friend.civilStatus}
+                        CheckedInTime={friend.CheckedInTime}
                     
                     />
                 )
             })
-        
-        console.log(showFriends)
         
         return(
           <div>
               {showFriends}
           </div>
         )
+        
     }
 }
 
@@ -72,8 +76,7 @@ export const Friend = (props) => {
         </Style.onlineContainer>
         <div>
             <p> <strong> {props.username}</strong></p> <br />
-            {/* <p>{c ? props.RelationshipStatus : 'Ingen civilstatus anged'}</p> */}
-            <p>{props.RelationshipStatus}</p>
+            <p>{props.RelationshipStatus ? props.RelationshipStatus : 'Ingen civilstatus anged'}</p>
         </div>
       </Style.Friend>
   
