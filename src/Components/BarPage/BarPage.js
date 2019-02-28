@@ -44,7 +44,7 @@ class BarPage extends React.Component {
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
             const userObject = snapshot.val()
-            if(userObject.CheckedInBar){
+            if(userObject.CheckedInBar === this.props.location.state.name){
                 this.setState({
                     CheckedIn: true,
                   })
