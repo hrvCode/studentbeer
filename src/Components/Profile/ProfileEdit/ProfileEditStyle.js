@@ -71,7 +71,7 @@ export const FormContainer = Styled.div`
     margin-bottom:5px;
     }
     textarea{
-
+        width:100%;
         height:15vh;
         border:0px;
         color:black;

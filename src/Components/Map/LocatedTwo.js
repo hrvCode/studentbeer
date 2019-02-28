@@ -11,41 +11,49 @@ const barArray =[
     position: [59.316659403640784, 18.033692836761475], 
     name: 'Hornhuset',
     admin: "18RDRcd5zOX7ThN1dMX1D5j4bX23",
+    bioText:'Detta vill du inte missa , kom och ta en öl och häng med gänget!'
   },
   {
     position: [59.3247235, 18.0738668], 
     name: 'Bistro & Grill Ruby',
     admin: "q9SQ2vj32CdN8v6QBrE5OUDR3Jp1",
+    bioText:'Vad mer kan man begära, gott kött och en öl till det!'
   },
   {
     position: [59.3139639, 18.1057867], 
     name: 'Boule & Berså',
     admin: "ULfvAiFawKNp05kOzFCVaghd3xy1",
+    bioText:'Ta en öl och lira boule ha en kul kväll ihop!'
   },
   {
     position: [59.3144622, 18.0745471],
     name: 'Kellys bar',
     admin: "EgmwqnzPAyXU5b86npG0TtoUcmy1",
+    bioText:'Öl så långt ögat kan nå! Kom inte ensam kom helst två och två!'
   },
   {
     position: [59.3392438, 18.0813002], 
     name: 'The Londoner',
     admin: "4J7flFS4dLdEBkleJcMGGU2o74J3",
+    bioText:'Vill du inte åka ända till London, kom in till oss och ta en öl!'
   },
   {
     position: [59.3431683, 18.049093], 
     name: 'Tranan',
     admin: "NRjc3Xq2ZSRcQnzU2IpE535SNUK2",
+    bioText:'En öl eller två hej och hå!'
   },
   {
     position: [59.3315633, 18.0312097], 
     name: 'Hirschenkeller',
     admin: "YhnTBUAt1tRZRhWRd5HSlquS6gt1",
+    bioText:'Ja woll ja woll ich trinke alcohol!!'
   },
   {
     position:[59.6108993, 16.5338042],
     name: 'Djäknebergets Restaurang',
     admin: "fhVky5X9frgk3JPosdMpEHDXX5F2",
+    bioText:'Grym mat grym öl grym kväll ta med dig vännerna och kom!'
   }
 ]
 
@@ -156,7 +164,9 @@ class LocatedTwo extends Component {
           .push({
             admin: bar.admin,
             position: bar.position,
-            name: bar.name
+            name: bar.name,
+            bioText:bar.bioText
+
           })
         })
       }
