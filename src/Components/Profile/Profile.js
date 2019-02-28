@@ -79,8 +79,8 @@ class Profile extends React.Component{
 
        
         return(
-            <Styles.Main>
-                
+            <Styles.Container>
+            <Styles.Main>           
                 <Styles.Header>
                     <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
                 </Styles.Header>
@@ -98,17 +98,15 @@ class Profile extends React.Component{
                     <p>{this.state.civilStatus}</p>
                   </Styles.StatusSection>
                 }
-
-                <Styles.BioSection>
-                
+                <Styles.BioSection>             
                    {this.props.authUser.roles.includes('ADMIN') ?
                     <h2>Beskrivning</h2>:
                     <h1>Min bio text</h1>
                     }
-                    <p>{this.state.bioText}</p>
-                  
+                    <p>{this.state.bioText}</p>                
                 </Styles.BioSection>   
-            </Styles.Main>    
+            </Styles.Main>
+            </Styles.Container>    
         )
     }
 }

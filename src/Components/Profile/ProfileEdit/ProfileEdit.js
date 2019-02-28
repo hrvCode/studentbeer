@@ -2,7 +2,9 @@ import React from 'react';
 import {withFirebase} from '../../Firebase';
 import {withAuthorization} from '../../Session'
 import * as Styles from './ProfileEditStyle'
-
+import {Link} from 'react-router-dom';
+import * as ROUTES from '../../../Constants/routes';
+import {Redirect} from 'react-router-dom';
 
 class ProfileEdit extends React.Component{
 
@@ -10,7 +12,8 @@ class ProfileEdit extends React.Component{
         username:null,
         bioText:null,
         civilStatus:null,
-        loading: false
+        loading: false,
+        redirect:false
     }
 
     getUserNameFromDB = () => {
@@ -94,8 +97,15 @@ class ProfileEdit extends React.Component{
        this.changeUserNameToDB();
        this.changeUserBioTextToDB();
        this.changeUserCivilStatusDB();
-        
-        
+       this.setState({redirect:true});
+        }
+
+        renderRedirect =() =>{
+
+            if(this.state.redirect){
+
+                return <Redirect to ={ROUTES.PROFILE}/>
+            }
         }
 
         componentDidMount(){
@@ -108,8 +118,9 @@ class ProfileEdit extends React.Component{
 
        
         return(
+            
             <Styles.Main>
-
+            {this.renderRedirect()}
               <Styles.Header>
                 <h1>Redigera Profil</h1>
               </Styles.Header>
@@ -148,7 +159,7 @@ class ProfileEdit extends React.Component{
       
                             </select>
                        </div>
-                        }
+                        }               
    
                     </Styles.FormContainer>
 
