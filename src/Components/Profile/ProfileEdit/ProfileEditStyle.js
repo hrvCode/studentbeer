@@ -10,8 +10,10 @@ export const Main = Styled.div`
     background:url(${Background});
     background-attachment:fixed;
     background-size:cover;
-
    
+    p{
+        color:white;
+    }
 `;
 
 export const MainContent = Styled.div`
@@ -50,7 +52,7 @@ export const MiddleSection = Styled.section`
     flex-direction:column;
     justify-content:center;
     align-items: center;
-    
+  
 `;
 
 export const FormContainer = Styled.div`
@@ -69,18 +71,41 @@ export const FormContainer = Styled.div`
     margin-bottom:5px;
     }
     textarea{
-
+        width:100%;
         height:15vh;
         border:0px;
+        color:black;
+        background-color:var(--transparent-Light);
+
+        &::placeholder{
+            color:black;
+        }
     }
 
     input{
         border:0px;
         width:100%;
         height:20px;
+        color:black;
+        background-color:var(--transparent-Light);
+
+        &::placeholder{
+            color:black;
+        }
     }
    
-    
+    select{
+        border:0px;
+        width:100%;
+        height:20px;
+        color:black;
+        background-color:var(--transparent-Light);
+
+        &::placeholder{
+            color:black;
+        }
+
+    }
 `;
 
 export const Button = Styled.button`
@@ -100,4 +125,14 @@ export const Button = Styled.button`
 export const BioTextInput = Styled.button`
      
      width:100%;
+`
+
+export const ProfileImgContainer = Styled.button`
+    
+    display: flex;
+    flex-direction:column;
+    align-items: left;
+    width:100%;
+    background-color:var(--transparent-Light);
+    margin: 10px 0 0 0;
 `

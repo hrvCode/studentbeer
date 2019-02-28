@@ -18,23 +18,28 @@ ul{
   padding:0;
     
     li{
-        margin:15px;
+        margin:15px 20px;
         display: inline;
         color:white;
         text-decoration:none;
           
         i{
-            font-size:36px;
+            font-size:30px;
             color:white;  
             &:hover{
                 color: var(--color-y);
             } 
             &:active{
                 color:Grey;
-            }   
-  
+            }
+            @media (max-width:360px) {
+                font-size: 25px;
+        }   
          }
-         
+          
+         @media (max-width:375px) {
+              margin:15px 15px;
+        }
     }   
 }
 `;

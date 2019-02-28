@@ -8,7 +8,10 @@ import {withFirebase} from '../../Firebase/index';
 
 const addOffer = () => (
     <Styles.Main>
+        <Styles.Header>
         <h2>Skapa ett nytt erbjudande!</h2>
+        </Styles.Header>
+       
         <AuthUserContext.Consumer>
         {
             authUser => <AddOfferForm authUser={authUser}/>

@@ -4,12 +4,13 @@ import Background from '../../Graphics/Backgorunds/fred-crandon-796719-unsplash.
 
 export const Container = Styled.div`
     background-color:black;
+    height:90vh;
 `;
 
 
 export const Main = Styled.div`
     text-align: center;
-    height:auto;
+    height:90vh;
     overflow-y: scroll;
     font-size: 17px;
     display:flex;
@@ -21,7 +22,15 @@ export const Main = Styled.div`
     background-position: center;
     background-size: cover;
     background-size: auto 100%;
+<<<<<<< HEAD
     background-color: black;
+    p{
+        color:white;
+        margin:0px 0px 110px 0px;
+    }
+=======
+    background-color: #222;
+>>>>>>> 2d360a94bf037bbebd84c3becac14cdb37f1908c
 
     /* Smartphones */
     @media (min-width:360px) {
@@ -83,7 +92,7 @@ export const MiddleSection = Styled.section`
     align-items: center;
 
     h1{margin:0px;font-size:36px;}
-
+   
     
     /* Smartphones */
     @media (min-width:360px) {
@@ -156,7 +165,7 @@ export const StatusSection = Styled.section`
 export const BioSection = Styled.section`
     
     color:white;
-    height: 30vh;
+    height: 35vh;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
@@ -167,7 +176,11 @@ export const BioSection = Styled.section`
 
     
     h1{
-        margin:20px 0px 0px 30px;
+        margin:15px 0px 0px 30px;
+        font-size:24px;
+    }
+    h2{
+        margin:15px 0px 0px 30px;
         font-size:24px;
     }
     p{

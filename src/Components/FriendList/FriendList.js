@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import {withFirebase} from '../Firebase'
 import { auth } from "firebase";
 import Header from './Header/Header'
+import Profile from '../Profile/Profile'
+import {withRouter} from 'react-router-dom';
 
 
 
@@ -14,6 +16,7 @@ const FriendPage = () => (
    
   </Style.Container>
 )
+
 
 class FriendListBase extends Component {
     state = {
@@ -52,6 +55,14 @@ class FriendListBase extends Component {
       })
     }
 
+    showProfile = (user) => {
+      this.props.history.push({
+        pathname:`profile/${user.username}`,
+        user: user,
+      })
+    }
+
+
     SearchInFriendList = (event) => {
         this.setState({
           [event.target.name]: event.target.value
@@ -82,12 +93,28 @@ class FriendListBase extends Component {
           username={friend.username}
           position={friend.position}
           online={friend.online}
+          onClick={ () => this.showProfile(friend)}
           />
         }
         return null;
       })
 
-      showFriends.sort()
+
+      // sorting friend tab,
+      // those with online true will get sorted to the top.
+      showFriends.sort((a,b) => {
+        if(a && b){
+          if(a.props.online && b.props.online === undefined){
+            return -1;
+          }
+          if(b.props.online && a.props.online === undefined){
+            return 1;
+          }
+          return -1;
+        }
+        return null;
+      })
+
 
     }else{
 
@@ -100,6 +127,7 @@ class FriendListBase extends Component {
         username={friend.username}
         position={friend.position}
         online={friend.online}
+        onClick={ () => this.showProfile(friend)}
         /> : null)
       })
       showFriends.sort()
@@ -133,7 +161,7 @@ export const Friend = (props) => {
   const {latitude, longitude} = props.position
   return (  
     <Style.Friend>
-      <Style.onlineContainer>
+      <Style.onlineContainer onClick={props.onClick}>
         <i style={color} className="far fa-user-circle" > </i>
         <p>{status}</p>
       </Style.onlineContainer>
@@ -150,7 +178,7 @@ export const Friend = (props) => {
 
 
 
-const FriendList = withFirebase(FriendListBase)
+const FriendList = withFirebase(withRouter(FriendListBase))
 
 // condition kollar om användaren är behörig då "authUser" inte ska vara null
 

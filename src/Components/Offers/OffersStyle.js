@@ -3,7 +3,7 @@ import Background from '../../Graphics/Backgorunds/mnm-all-551345-unsplash.jpg'
 
 export const Main = Styled.div`
     text-align: center;
-    height:100vh;
+    height:90vh;
     overflow-y: scroll;
     font-size: 17px;
     color: white;
@@ -12,7 +12,6 @@ export const Main = Styled.div`
     background-position: center;
     background-size: cover;
     background-size: auto 100%;
-    background-color: black;
     
 
     a{
@@ -26,7 +25,7 @@ export const Main = Styled.div`
         justify-content:center;
         font-size:14px;
         font-weight:bold;
-        background-color:grey;
+        background-color:var(--color-b);
         border-radius:4px;
 
         &:hover{
@@ -57,7 +56,7 @@ export const List = Styled.ul`
     width: 100%;
     list-style-type: none;
     margin:0px;
-    padding:90px 0px 0px 0px;
+    padding:60px 0px 60px 0px;
     background-color: none;
     text-align:left;
 
