@@ -72,15 +72,38 @@ export const FormContainer = Styled.div`
 
         height:15vh;
         border:0px;
+        color:black;
+        background-color:var(--transparent-Light);
+
+        &::placeholder{
+            color:black;
+        }
     }
 
     input{
         border:0px;
         width:100%;
         height:20px;
+        color:black;
+        background-color:var(--transparent-Light);
+
+        &::placeholder{
+            color:black;
+        }
     }
    
-    
+    select{
+        border:0px;
+        width:100%;
+        height:20px;
+        color:black;
+        background-color:var(--transparent-Light);
+
+        &::placeholder{
+            color:black;
+        }
+
+    }
 `;
 
 export const Button = Styled.button`

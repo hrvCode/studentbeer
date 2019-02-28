@@ -8,9 +8,7 @@ import Logo from '../../Graphics/bottle.png';
 import {Link} from 'react-router-dom';
 const SignInPage = () =>(
    <Styles.Main>
-    <Styles.RegisterPub>
-            <Link to={ROUTES.ADMIN}><buttoon>registrera din krog</buttoon></Link>
-    </Styles.RegisterPub>
+    
    <Styles.ContainerTop>
        <Styles.Logotype>
        <img src={Logo} alt="Logotype"></img>
@@ -29,6 +27,9 @@ const SignInPage = () =>(
    <Styles.BottomButton>
        <Link to={ROUTES.SIGNUP}><button>Sign up</button></Link>
    </Styles.BottomButton>
+   <Styles.RegisterPub>
+            <Link to={ROUTES.ADMIN}><buttoon>registrera din krog</buttoon></Link>
+    </Styles.RegisterPub>
 </Styles.Main>
 )
 

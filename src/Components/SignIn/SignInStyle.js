@@ -191,11 +191,13 @@ export const BottomButton = Styled.div`
         }
 `;
 export const RegisterPub = Styled.div `
-    position: absolute;
-    right: 5px;
-    top:0;
+    margin-top:10px;
+    
     *{
-        color: #fff;
+        color:white;
+        font-weight:bold;
+        text-shadow: 0px 0px 4px 0px rgba(0,0,0,0.7);
+
         text-decoration:none;
     }
 `;
