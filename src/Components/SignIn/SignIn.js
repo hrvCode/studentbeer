@@ -47,9 +47,10 @@ class SignInFormBase extends Component{
        this.listener = this.props.Firebase.auth.onAuthStateChanged(
            authUser =>{
                if(authUser){
-                   this.props.history.push({
-                       pathname:ROUTES.PROFILE+authUser.username
-                   })
+                   console.log(authUser.username)
+          /*          this.props.history.push({
+                       pathname: "/profile/"+authUser.username
+                   }) */
                }
            }
        )
