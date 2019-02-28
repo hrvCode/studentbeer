@@ -5,7 +5,7 @@ export const Container = Styled.div`
     height:90vh;
     margin:0 auto;
     overflow:scroll; 
-    background: #333;
+    background: #222;
 `;
 
 
@@ -47,6 +47,15 @@ export const Friend = Styled.div`
     &:hover{
             background-color:var(--color-y);
     }
+    @media (min-width:360px) {
+    width: 100%;
+    }
+
+    @media (min-width:640px) {
+        width: 75%;
+    }
+
+    /* Tablet */
     @media (min-width:768px) {
         width: 75%;
     }
@@ -54,6 +63,7 @@ export const Friend = Styled.div`
     @media (min-width:1024px) {
         width: 50%;
     }
+
    
 `;
 export const onlineContainer = Styled.div `

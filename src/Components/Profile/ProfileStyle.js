@@ -3,7 +3,7 @@ import Background from '../../Graphics/Backgorunds/fred-crandon-796719-unsplash.
 
 
 export const Container = Styled.div`
-    background-color:black;
+    background-color:inherit;
 `;
 
 
@@ -21,7 +21,7 @@ export const Main = Styled.div`
     background-position: center;
     background-size: cover;
     background-size: auto 100%;
-    background-color: black;
+    background-color: #222;
 
     /* Smartphones */
     @media (min-width:360px) {
