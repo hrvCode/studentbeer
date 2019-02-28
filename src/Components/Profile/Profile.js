@@ -48,25 +48,56 @@ class Profile extends React.Component{
             })
         })
       };
-
+      getOtherUserFromDb = (uid) =>{
+        this.props.Firebase
+        .user(uid)
+        .once('value', snaphot => {
+            const userObject = snaphot.val()
+            this.setState({
+                bioText: userObject.bioText,
+                civilStatus: userObject.civilStatus,
+                user: userObject.username,
+                uid: uid,
+            })
+        })
+      }
       
 
     componentDidMount(){
+        const { id } = this.props.match.params
+        console.log(id)
         this.setState({loading: true,})
-        this.getUserNameFromDB();
-        this.getUserCivilStatusFromDB();
-        this.getUserBioFromDB();
-    }
 
+        if(this.props.location.user){
+            this.getOtherUserFromDb(this.props.location.user.uid)
+            
+        }else{
+            this.getUserNameFromDB();
+            this.getUserCivilStatusFromDB();
+            this.getUserBioFromDB();
+        }
+    }
+    
+    componentWillReceiveProps(){
+        if(this.props.location.state!== undefined){
+            this.getUserNameFromDB();
+            this.getUserCivilStatusFromDB();
+            this.getUserBioFromDB();
+        }
+    }
 
     render(){
         return(
 
             <Styles.Container>
-                 <Styles.Header>
-                    <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
-                </Styles.Header>
-                
+         
+                    <Styles.Header>
+
+                        <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
+
+                    </Styles.Header>
+               
+
             <Styles.Main>           
                 <Styles.MiddleSection>
                     <Styles.Avatar><i className="fas fa-user"></i></Styles.Avatar>

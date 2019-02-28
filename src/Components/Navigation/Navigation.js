@@ -25,7 +25,8 @@ const NavigationAuth = ({authUser}) => (
         {authUser.roles.includes('ADMIN') ? 
         <ul>
             <li>
-                <Link to={ROUTES.PROFILE}><i className="fas fa-user"></i></Link>
+                <Link to={{pathname: "/profile"+authUser.username}}>
+                <i className="fas fa-user"></i></Link>
             </li>
             <li>
                 <Link to={ROUTES.MAP}><i className="fas fa-map-marked-alt"></i></Link>
@@ -41,7 +42,9 @@ const NavigationAuth = ({authUser}) => (
         /* det här är navigationen som en vanlig user har */
         <ul>
             <li>
-                <Link to={ROUTES.PROFILE}><i className="fas fa-user"></i></Link>
+                <Link to={{pathname: `/profile/${authUser.username}`,
+                state: {user: authUser}
+            }}><i className="fas fa-user"></i></Link>
             </li>
             <li>
                 <Link to={ROUTES.MAP}><i className="fas fa-map-marked-alt"></i></Link>
