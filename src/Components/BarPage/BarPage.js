@@ -17,10 +17,25 @@ class BarPage extends React.Component {
     this.state = {
         CheckedIn: false,
         CurrentTimeStamp:'',
+        bioText:null
       };
     }
 
+
+    getUserBioFromDB = () => {
+      
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            this.setState({
+                bioText: userObject.bioText
+            })
+        })
+      };
+
     componentWillMount(){
+        this.getUserBioFromDB();
         this.setState({
             CurrentTimeStamp:Date.now()
         })
@@ -63,6 +78,7 @@ class BarPage extends React.Component {
                 <MapHeader />
                     <Style.FlexContainer>
                             <BarBioText />
+                            <div><p>{}</p>  </div>
                             <BarOffers
                             uid={this.props.location.state.uid}
                             />
@@ -112,8 +128,8 @@ const BarBioTextBase = (props) =>(
         <p>
             
         <span>Välkommen till {props.location.state.name}</span> <br /> 
-        Phasellus commodo ex sed enim volutpat accumsan. Donec vitae nisl ut dui hendrerit convallis. Proin at felis id nulla maximus ullamcorper sit amet quis nunc. Maecenas id accumsan nunc, vitae condimentum lectus. Phasellus ornare luctus cursus. Duis urna arcu, vehicula vel pharetra quis, auctor et nibh. Phasellus sit amet ultrices sem. 
-            
+        
+       
         </p>
     </Style.BioaBarText>
 )
