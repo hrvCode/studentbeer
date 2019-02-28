@@ -27,10 +27,10 @@ class FriendListBase extends Component {
       .on('value', snapshot =>{
         const friendObject = snapshot.val()
         if(friendObject){
-          const FriendList = Object.keys(friendObject).map(friend => {
-
+          const FriendList = Object.keys(friendObject).map((friend,i) => {
             return(
               {
+              roles: friendObject[friend].roles,
               username: friendObject[friend].username,
               uid: friend,
               position: friendObject[friend].position,
@@ -74,14 +74,18 @@ class FriendListBase extends Component {
     let showFriends = [];
     
     if(this.state.search.length === 0){
-      showFriends = this.state.FriendList.map(friend => (
-        <Friend 
-        key={friend.uid}
-        username={friend.username}
-        position={friend.position}
-        online={friend.online}
-        />
-      )) 
+      // mappar ut användare och sorterar ut admin
+      showFriends = this.state.FriendList.map(friend => {
+        if(!friend.roles){
+          return <Friend 
+          key={friend.uid}
+          username={friend.username}
+          position={friend.position}
+          online={friend.online}
+          />
+        }
+        return null;
+      })
 
       showFriends.sort()
 
