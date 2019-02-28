@@ -87,7 +87,22 @@ class FriendListBase extends Component {
         return null;
       })
 
-      showFriends.sort()
+
+      // sorting friend tab,
+      // those with online true will get sorted to the top.
+      showFriends.sort((a,b) => {
+        if(a && b){
+          if(a.props.online && b.props.online === undefined){
+            return -1;
+          }
+          if(b.props.online && a.props.online === undefined){
+            return 1;
+          }
+          return -1;
+        }
+        return null;
+      })
+
 
     }else{
 
