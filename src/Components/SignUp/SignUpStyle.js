@@ -85,9 +85,9 @@ export const Main = Styled.div`
 
 export const Container = Styled.div`
       background-color:rgba(0,0,0, 0.6); 
-      border:2px solid white;
+     
       border-radius:4px;
-      width:80%;
+      width:100%;
       padding: 20px 0px 60px 0px;
 `;
 
@@ -121,17 +121,17 @@ export const AdminChoice = Styled.div`
 
 export const BottomButton = Styled.div`
     margin-top:10px;
-    width:81%;
+    width:200px;
     z-index:5;
     button{border:none;
         
          cursor:pointer;
          width:100%;
-         height:50px;
-         background-color:rgba(0,0,0, 0.7); 
+         height:40px;
+         background-color:var(--color-b); 
          color:white;
          border-radius:4px;
-         border:2px solid white;
+        
          font-weight:bold;
          font-size:18px;
          transition:0.4s;

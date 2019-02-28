@@ -4,6 +4,7 @@ import Background from '../../Graphics/Backgorunds/fred-crandon-796719-unsplash.
 
 export const Container = Styled.div`
     background-color:black;
+    height:90vh;
 `;
 
 

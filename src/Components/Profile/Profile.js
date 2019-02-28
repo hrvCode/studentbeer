@@ -80,10 +80,11 @@ class Profile extends React.Component{
        
         return(
             <Styles.Container>
-            <Styles.Main>           
-                <Styles.Header>
+            <Styles.Header>
                     <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
                 </Styles.Header>
+            <Styles.Main>           
+              
                 <Styles.MiddleSection>
                     <Styles.Avatar><i className="fas fa-user"></i></Styles.Avatar>
                     <h1>{this.state.user}</h1>
