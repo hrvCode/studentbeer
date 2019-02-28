@@ -124,3 +124,13 @@ export const BioTextInput = Styled.button`
      
      width:100%;
 `
+
+export const ProfileImgContainer = Styled.button`
+    
+    display: flex;
+    flex-direction:column;
+    align-items: left;
+    width:100%;
+    background-color:var(--transparent-Light);
+    margin: 20px 0 0 0;
+`
