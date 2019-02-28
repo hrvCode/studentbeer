@@ -86,14 +86,14 @@ export const FormContainer = Styled.div`
 export const Button = Styled.button`
     width: calc(80% + 12px);
     margin-top: 5px;
-    background-color: grey;
+    background-color: var(--color-b);
     color: white;
     font-size: 19px;
     padding: 15px 0;
     border:none;
     border-radius:4px;
     &:hover{
-        background: #18b318;
+        background: grey;
     }
 `
 

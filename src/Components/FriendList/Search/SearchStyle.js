@@ -36,19 +36,19 @@ export const Button = Styled.button`
     width: 45px;
     height: 45px;
     border: none;
-    background: var(--lightGrey);
+    background: var(--color-b);
     border-top-right-radius:4px;
     border-bottom-right-radius:4px;
     color:black;
     &:hover{
         background:var(--lightGrey);
         span{
-            color:var(--color-r);
+            color:white;
             font-size: 20px;
          }
     }
     span{
-        color:var(--color-r);
+        color:white;
         font-size: 20px;
     }
     &:active{
