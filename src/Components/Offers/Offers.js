@@ -118,7 +118,7 @@ class OfferBase extends Component {
             })
            return x;
         })
-        console.log(completeArray)
+
 
         return(
             <Styles.MainContent>

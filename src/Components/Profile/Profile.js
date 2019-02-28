@@ -13,6 +13,8 @@ class Profile extends React.Component{
         civilStatus:null,
         bioText:null,
         loading: false,
+        myProfile: false,
+        canEdit: true,
     }
 
     getUserNameFromDB = () => {
@@ -48,6 +50,7 @@ class Profile extends React.Component{
             })
         })
       };
+
       getOtherUserFromDb = (uid) =>{
         this.props.Firebase
         .user(uid)
@@ -58,32 +61,35 @@ class Profile extends React.Component{
                 civilStatus: userObject.civilStatus,
                 user: userObject.username,
                 uid: uid,
+                canEdit: false,
             })
         })
       }
       
 
     componentDidMount(){
-        const { id } = this.props.match.params
-        console.log(id)
-        this.setState({loading: true,})
-
+        this.setState({loading: true, myProfile:false})
+        // om user props skickat ifrån location (friendlist) ska den userns information hämtas istället
         if(this.props.location.user){
             this.getOtherUserFromDb(this.props.location.user.uid)
             
+            // annars ladda upp sin egen
         }else{
             this.getUserNameFromDB();
             this.getUserCivilStatusFromDB();
             this.getUserBioFromDB();
         }
     }
-    
+        // om man klickar på profil nere i navbar så ska man komma till sin egen
     componentWillReceiveProps(){
-        if(this.props.location.state!== undefined){
-            this.getUserNameFromDB();
-            this.getUserCivilStatusFromDB();
-            this.getUserBioFromDB();
-        }
+      this.setState({
+        myProfile: this.props.history.location.state.myProfile,
+        loading:true,
+        canEdit:true,
+      })
+      this.getUserNameFromDB();
+      this.getUserCivilStatusFromDB();
+      this.getUserBioFromDB();
     }
 
     render(){
@@ -92,9 +98,8 @@ class Profile extends React.Component{
             <Styles.Container>
          
                     <Styles.Header>
-
-                        <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link>
-
+                        {this.state.canEdit ? <Link to={ROUTES.PROFILEEDIT}><i className="fas fa-cog"></i></Link> : 
+                         null }
                     </Styles.Header>
                
 
