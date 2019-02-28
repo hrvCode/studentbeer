@@ -24,6 +24,17 @@ class BarPage extends React.Component {
         this.setState({
             CurrentTimeStamp:Date.now()
         })
+
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            if(userObject.CheckedInBar){
+                this.setState({
+                    CheckedIn: true,
+                  })
+            }
+        })
     }
 
     CheckInFunction() {
