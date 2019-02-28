@@ -11,7 +11,6 @@ export const SearchMain = Styled.div`
     justify-content: center;
     background-color:var(--color-r);
     color:white;
-    border-bottom: 5px solid var(--darkGrey);
  
 `;
 export const Input = Styled.input `

@@ -64,13 +64,20 @@ export const FormContainer = Styled.div`
     align-items: flex-start;
 
     h1{
-    color:white;
-    font-size:14px;
+    color:var(--color-y);
+    font-size:16px;
     margin-bottom:5px;
     }
     textarea{
 
         height:15vh;
+        border:0px;
+    }
+
+    input{
+        border:0px;
+        width:100%;
+        height:20px;
     }
    
     
