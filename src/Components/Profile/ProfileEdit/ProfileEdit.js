@@ -143,7 +143,7 @@ class ProfileEdit extends React.Component{
                         <textarea
                         row="20"
                         cols="40"
-                        maxLength="160"
+                        maxLength="150"
                             type="text"
                             name="bioText"
                             onChange={this.onChange}

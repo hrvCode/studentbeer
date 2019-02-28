@@ -10,8 +10,10 @@ export const Main = Styled.div`
     background:url(${Background});
     background-attachment:fixed;
     background-size:cover;
-
    
+    p{
+        color:white;
+    }
 `;
 
 export const MainContent = Styled.div`
@@ -50,7 +52,7 @@ export const MiddleSection = Styled.section`
     flex-direction:column;
     justify-content:center;
     align-items: center;
-    
+  
 `;
 
 export const FormContainer = Styled.div`

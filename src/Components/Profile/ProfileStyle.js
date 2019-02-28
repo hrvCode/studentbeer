@@ -10,7 +10,7 @@ export const Container = Styled.div`
 
 export const Main = Styled.div`
     text-align: center;
-    height:auto;
+    height:90vh;
     overflow-y: scroll;
     font-size: 17px;
     display:flex;
@@ -23,6 +23,10 @@ export const Main = Styled.div`
     background-size: cover;
     background-size: auto 100%;
     background-color: black;
+    p{
+        color:white;
+        margin:0px 0px 110px 0px;
+    }
 
     /* Smartphones */
     @media (min-width:360px) {
@@ -84,7 +88,7 @@ export const MiddleSection = Styled.section`
     align-items: center;
 
     h1{margin:0px;font-size:36px;}
-
+   
     
     /* Smartphones */
     @media (min-width:360px) {
@@ -157,7 +161,7 @@ export const StatusSection = Styled.section`
 export const BioSection = Styled.section`
     
     color:white;
-    height: 30vh;
+    height: 35vh;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
@@ -168,7 +172,11 @@ export const BioSection = Styled.section`
 
     
     h1{
-        margin:20px 0px 0px 30px;
+        margin:15px 0px 0px 30px;
+        font-size:24px;
+    }
+    h2{
+        margin:15px 0px 0px 30px;
         font-size:24px;
     }
     p{
