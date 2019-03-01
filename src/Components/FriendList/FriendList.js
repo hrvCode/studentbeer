@@ -49,7 +49,7 @@ class FriendListBase extends Component {
             FriendList: ''
           })
         }
-        console.log(this.state.FriendList)
+
       })
     }
 
@@ -68,10 +68,11 @@ class FriendListBase extends Component {
     }
 
 
-    ClearSearchField = () => {
+    ClearSearchField = (props) => {
       this.setState({
         search: "",
       })
+
     }
 
     componentWillUnmount(){
@@ -86,7 +87,7 @@ class FriendListBase extends Component {
       // mappar ut användare och sorterar ut admin
       showFriends = this.state.FriendList.map(friend => {
         if(!friend.roles){
-          console.log(friend)
+
           return <Friend 
           key={friend.uid}
           username={friend.username}
@@ -120,14 +121,15 @@ class FriendListBase extends Component {
 
       let condition = this.state.search.toLowerCase();
       showFriends = this.state.FriendList.map( friend => {
-        return (friend.username.toLowerCase().includes(condition) ? 
+        return (friend.username.toLowerCase().includes(condition) ?
+        !friend.roles ?
         <Friend 
         key={friend.uid}
         username={friend.username}
         position={friend.position}
         online={friend.online}
         onClick={ () => this.showProfile(friend)}
-        /> : null)
+        /> : null : null)
       })
       showFriends.sort()
     }

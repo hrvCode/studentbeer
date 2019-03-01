@@ -11,7 +11,7 @@ class Header extends React.Component{
         search: true,
     }
     // kollar om search baren ska visas eller inte
-    activetSearch = () =>{
+    activateSearch = () =>{
         
         this.setState({
             search: !this.state.search,
@@ -22,7 +22,7 @@ class Header extends React.Component{
 
         let display = (
             <Styles.Header>
-                <Styles.HeaderLink onClick={this.activetSearch} >
+                <Styles.HeaderLink onClick={this.activateSearch} >
                     <i className="fas fa-search"></i>
                     <h2>Sök</h2>
                 </Styles.HeaderLink>
@@ -32,7 +32,8 @@ class Header extends React.Component{
         
         return (
              searchState ? display : 
-             <Search 
+             <Search
+             onClick={this.activateSearch}
              searchFriend={(event) => this.props.searchFriend(event)}
              clearSearch={() => this.props.clearSearch()}
              searched={this.props.searched}
