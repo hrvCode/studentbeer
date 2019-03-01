@@ -24,7 +24,7 @@ class BarPage extends React.Component {
     getUserBioFromDB = () => {
       
         this.props.Firebase
-        .user(this.props.authUser.uid)
+        .bar(this.props.location.state.uid)
         .once('value', snapshot => {
             const userObject = snapshot.val()
             this.setState({
@@ -35,6 +35,7 @@ class BarPage extends React.Component {
 
     componentWillMount(){
         this.getUserBioFromDB();
+        
 
         this.props.Firebase
         .user(this.props.authUser.uid)
@@ -82,8 +83,8 @@ class BarPage extends React.Component {
             <Style.Main>
                 <MapHeader />
                     <Style.FlexContainer>
-                            <BarBioText />
-                            <div><p>{}</p>  </div>
+                            <BarBioText Bio={this.state.bioText} />
+                            
                             <BarOffers
                             uid={this.props.location.state.uid}
                             />
@@ -127,7 +128,7 @@ const BarBioTextBase = (props) =>(
         <p>
             
         <span>Välkommen till {props.location.state.name}</span> <br /> 
-        
+        {props.Bio}
        
         </p>
     </Style.BioaBarText>
