@@ -11,49 +11,49 @@ const barArray =[
     position: [59.316659403640784, 18.033692836761475], 
     name: 'Hornhuset',
     admin: "18RDRcd5zOX7ThN1dMX1D5j4bX23",
-    bioText:'Detta vill du inte missa , kom och ta en öl och häng med gänget!'
+    bioText:"Hos oss serveras mat sju dagar i veckan, både luncher och middagar. Vår avslappnade och färgstarka lokal är den perfekta mötesplatsen för allt från en AW med kollegorna till middag med kompisgänget!  På fredagar & lördagar förvandlar vi även lokalen till en spännande del av vårt nöjeshus där vi har öppet sent på natten med musik, dans & nyskapande cocktails."
   },
   {
     position: [59.3247235, 18.0738668], 
     name: 'Bistro & Grill Ruby',
     admin: "q9SQ2vj32CdN8v6QBrE5OUDR3Jp1",
-    bioText:'Vad mer kan man begära, gott kött och en öl till det!'
+    bioText:"Hos oss på Bistro & Grill Ruby erbjuder vi det bästa av två världar. I vår bistro så bjuder vi på både rätter och atmosfär från Paris, och på Grill Ruby frestar vi med Texas-inspirerade rätter från vår kolgrill.  Välkommen till Bistro & Grill Ruby på Österlånggatan 14 i Gamla Stan!"
   },
   {
     position: [59.3139639, 18.1057867], 
     name: 'Boule & Berså',
     admin: "ULfvAiFawKNp05kOzFCVaghd3xy1",
-    bioText:'Ta en öl och lira boule ha en kul kväll ihop!'
+    bioText:"Hos oss hittar ni mat och dryck. Det går bra att spela boule eller bara avnjuta den härliga atmosfären med båtar som passerar i kanalen.  Vi har flera spännande ölsorter på fat och flaska. Vi serverar vin, drinkar och självklart har vi alkoholfria alternativ. I vår fantastiska Munk-o-Mobil serveras kaffe, glass och nygräddade munkar för stora och små munnar."
   },
   {
     position: [59.3144622, 18.0745471],
     name: 'Kellys bar',
     admin: "EgmwqnzPAyXU5b86npG0TtoUcmy1",
-    bioText:'Öl så långt ögat kan nå! Kom inte ensam kom helst två och två!'
+    bioText:'Trevligt ställe att slinka in på för ett barhäng eller sitta ner och bekanta sig med övriga gäster. Alert personal som tipsade om olika dryckesalternativ.'
   },
   {
     position: [59.3392438, 18.0813002], 
     name: 'The Londoner',
     admin: "4J7flFS4dLdEBkleJcMGGU2o74J3",
-    bioText:'Vill du inte åka ända till London, kom in till oss och ta en öl!'
+    bioText:" Karlavägen går som ett skärp rakt över Östermalm och mitt på skärpet som ett vattenhål att spänna fast i ligger The Londoner. I lokaler vana vid nöjesliv tronar puben likt en engelsk herre vid bardisken.  Pubvågen böljade fram över staden under åttiotalet och nådde här sin östra utpost från city. På Londoner finns de nödvändiga detaljerna: ett stort utbud öl på fat för att skölja ned fisken och de friterade potatisbitarna som är givna inslag på den korta barmenyn. Eller varför inte pröva en Londonertoast."
   },
   {
     position: [59.3431683, 18.049093], 
     name: 'Tranan',
     admin: "NRjc3Xq2ZSRcQnzU2IpE535SNUK2",
-    bioText:'En öl eller två hej och hå!'
+    bioText:"Ett ställe att träffas på, kanske äta en bit och ta ett glas. Så såg Stockholmarna på Tranan år 1929 och gör det än idag, över 80 år senare. Tranan har varit öppet sju dagar i veckan och funnits på samma adress, Karlbergsvägen 14, under hela denna tid."
   },
   {
     position: [59.3315633, 18.0312097], 
     name: 'Hirschenkeller',
     admin: "YhnTBUAt1tRZRhWRd5HSlquS6gt1",
-    bioText:'Ja woll ja woll ich trinke alcohol!!'
+    bioText:"Välkommen in över en kall öl eller två, någon smaklig drink eller en bit god mat!  Våra restauranger är trivsamma och naturliga mötesplatser för alla!"
   },
   {
     position:[59.6108993, 16.5338042],
     name: 'Djäknebergets Restaurang',
     admin: "fhVky5X9frgk3JPosdMpEHDXX5F2",
-    bioText:'Grym mat grym öl grym kväll ta med dig vännerna och kom!'
+    bioText:"Djäknebergets restaurang erbjuder panoramautsikt över Västerås city.  I en harmonisk miljö erbjuder vi god och vällagad husmanskost både på lunch och till middag. Vi anpassar menyn efter säsongens råvaror och smaker.  Vi ger dig möjlighet att abonnera hela eller delar av restaurangen för bröllop, dop, minnesstund, födelsedagar, och andra högtidsdagar."
   }
 ]
 
