@@ -1,33 +1,45 @@
 import React from 'react'
+import * as Styles from './OffersListItemStyle'
 
 
-const offersListItem = (props) => {
-    const timeStamp = props.createdAt;
-    const createdAt = new Date(timeStamp).getFullYear() 
-    + "/" + new Date(timeStamp).getDate() 
-    + "/" + (new Date(timeStamp).getMonth() +1);
-    const profileOffer = props.profileOffer;
+class offersListItem extends React.Component{
+    state={
+        open: false,
+    }
 
+    
+    toggleOpenOffer = () =>{
+        this.setState({ open: !this.state.open });
+        console.log("clicked")
+    }
 
-    return(
-        <li>
-            <div>
-                <span>
-                    <h4>{props.name}</h4>
-                    {
-                        profileOffer ? null: 
-                        <span>
-                            {props.isAdmin ? <i className="fas fa-times" 
-                            onClick={()=> props.onDelete(props.offerUid)}></i> 
-                            : null }
-                        </span> 
-                    }
-                </span>
-                    { typeof props.text !== "string" ?
-                        props.text.map((t,i) => <p key={i}>* {t}</p>) : <p>{props.text}</p>}
-                    {/* <div><p>{timeStamp ? "skapad: " + createdAt : null}</p></div> */}
-              </div>
-        </li>
-    )
+    render(){
+       /*  const timeStamp = this.props.createdAt; */
+        /*const createdAt = new Date(timeStamp).getFullYear() 
+        + "/" + new Date(timeStamp).getDate() 
+        + "/" + (new Date(timeStamp).getMonth() +1); */
+
+        const profileOffer = this.props.profileOffer;
+        return(
+            <Styles.Li>
+                <Styles.trying open={this.state.open} onClick={this.toggleOpenOffer}>
+                    <span>
+                        <h4>{this.props.name}</h4>
+                        {
+                            profileOffer ? null: 
+                            <span>
+                                {this.props.isAdmin ? <i className="fas fa-times" 
+                                onClick={()=> this.props.onDelete(this.props.offerUid)}></i> 
+                                : null }
+                            </span> 
+                        }
+                    </span>
+                        { typeof this.props.text !== "string" ?
+                            this.props.text.map((t,i) => <p key={i}>* {t}</p>) : <p>{this.props.text}</p>}
+                        {/* <div><p>{timeStamp ? "skapad: " + createdAt : null}</p></div> */}
+                  </Styles.trying>
+            </Styles.Li>
+        )
+    }
 }
 export default offersListItem

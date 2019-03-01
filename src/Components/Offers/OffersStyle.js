@@ -1,6 +1,5 @@
 import Styled from 'styled-components';
 import Background from '../../Graphics/Backgorunds/mnm-all-551345-unsplash.jpg'
-
 export const Main = Styled.div`
     text-align: center;
     height:90vh;
@@ -60,38 +59,6 @@ export const List = Styled.ul`
     background-color: none;
     text-align:left;
 
-    li{
-        width: 90%;
-        margin: auto;
-        div{
-            border-radius: 4px;
-            padding: 10px;
-            background-color:var(--transparent-Dark);
-      
-      
-            margin: 20px auto;
-                h4{
-                    display: inline-block;
-                    font-weight: 200;
-                    font-size: 1.3em;
-                    padding:0;
-                    margin:5px 0;
-                    color:var(--color-y);
-                    font-family: var(--main-title-font);
-                }
-                p{
-                    margin: 10px 0px;
-                    color:var(--text-lightColor);
-                    padding: 5px 0;
-
-                    strong{
-                            font-size: 1.2em;
-                            }
-                }
-        }
-   
-    }
-
     /* Smartphones */
     @media (min-width:360px) {
     width: 100%;
@@ -109,6 +76,5 @@ export const List = Styled.ul`
     @media (min-width:1024px) {
         width: 50%;
     }
-
 `;
 
