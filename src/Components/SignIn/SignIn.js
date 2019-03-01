@@ -47,14 +47,14 @@ class SignInFormBase extends Component{
     componentDidMount(){
        this.listener = this.props.Firebase.onAuthUserListener(
            authUser =>{
+               // om usern är authentiserad och mergad om, skickas hen vidare till profile.
                if(authUser){
-                   console.log(authUser)
                        this.props.history.push({
                        pathname: "/profile/"+authUser.username
                    }) 
                }
            },
-           //callback incase user is not authenticated
+           //callback ifall att usern inte är authentiserad
            () => ( null)
        )
     }

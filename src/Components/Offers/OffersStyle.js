@@ -80,9 +80,9 @@ export const List = Styled.ul`
                     font-family: var(--main-title-font);
                 }
                 p{
-                    margin: 5px 0px;
+                    margin: 10px 0px;
                     color:var(--text-lightColor);
-                    padding:0;
+                    padding: 5px 0;
 
                     strong{
                             font-size: 1.2em;
