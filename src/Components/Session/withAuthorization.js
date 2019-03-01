@@ -9,13 +9,13 @@ import {AuthUserContext} from './index';
 const withAuthorization = (condition) => Component => {
     class WithAutorization extends React.Component{
 
-        state = ({
+/*         state = ({
             CurrentTimeStamp: ''
-        })
+        }) */
         componentDidMount(){
-            this.setState({
-                CurrentTimeStamp:Date.now()
-            })
+         
+             const time = Date.now()
+   
 
             this.listener = this.props.Firebase.auth.onAuthStateChanged(
                 authUser =>{
@@ -40,7 +40,7 @@ const withAuthorization = (condition) => Component => {
                                 this.props.history.push(ROUTES.SIGNIN)
                             }
 
-                            if(dbUser.CheckedInTime + 43200000 < this.state.CurrentTimeStamp){
+                            if(dbUser.CheckedInTime + 43200000 < time){
                          this.props.Firebase.user(authUser.uid).update({
                             CheckedInBar:'',
                             CheckedInTime:''
