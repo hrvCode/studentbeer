@@ -94,25 +94,16 @@ class OfferBase extends Component {
     }
 
     render(){
-     let offersArray = this.state.offers;
-        let completeArray = [];
-        
-        if(this.state.offers){
-            const adminNames = offersArray.filter((x,i) => {
-                x.textArray = [];
-               if(i+1 < offersArray.length){
-    
-                    if(x.uidFromCreator === offersArray[i+1].uidFromCreator){
-                        return null;
-                    };
-                    return x;
-                }
-                return null;
-            })
 
-            completeArray = adminNames.map(x => {
-                offersArray.forEach(y => {
-                    if(y.name === x.name){
+        let allOffersArray = this.state.offers;
+        let completeArray = [];
+        let uniqeBars = [];
+
+        if(allOffersArray){
+            completeArray = allOffersArray.map((x,i) => {
+                x.textArray = [];
+                allOffersArray.forEach(y => {
+                    if(y.uidFromCreator === x.uidFromCreator){
                         x.textArray.push(y.text)
                     }
                 })
@@ -120,11 +111,33 @@ class OfferBase extends Component {
             })
         }
 
+        // sparar uidfromcreater till uniqebars array där det bara ska finnas en av varje.
+        allOffersArray.forEach(x => {
+            if(!uniqeBars.length > 0){
+                uniqeBars.push(x.uidFromCreator)
+            }
+            if(!uniqeBars.includes(x.uidFromCreator)){
+                uniqeBars.push(x.uidFromCreator)
+            }
+        })
+
+        // går igenom hela arrayen och hämtar en offer  från varje uidfrom creator.
+        // och skapar en unik array med offers.
+        let uniqeBarsArray = []
+        for(var i = 0; i < uniqeBars.length; i++){
+            for(var j = 0; j < allOffersArray.length; j++){
+                if(uniqeBars[i] === allOffersArray[j].uidFromCreator){
+                    uniqeBarsArray.push(allOffersArray[j]);
+                    break;
+                }
+            }
+        }
+        
         return(
             <Styles.MainContent>
                 <Styles.List>
                     { this.state.offers ?
-                       completeArray.map(item => {
+                       uniqeBarsArray.map(item => {
                             let uidMatch = this.state.currentUid === item.uidFromCreator ? true : false;
                         return(
                             <OffersListItem

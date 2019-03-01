@@ -11,9 +11,9 @@ import {withRouter} from 'react-router-dom';
 
 const FriendPage = () => (
   <Style.Container>
-    
+  
       <FriendList />
-   
+
   </Style.Container>
 )
 
@@ -30,7 +30,7 @@ class FriendListBase extends Component {
       .on('value', snapshot =>{
         const friendObject = snapshot.val()
         if(friendObject){
-          const FriendList = Object.keys(friendObject).map((friend,i) => {
+          const FriendList = Object.keys(friendObject).map((friend) => {
             return(
               {
               roles: friendObject[friend].roles,
@@ -41,8 +41,6 @@ class FriendListBase extends Component {
               }
             )
           })
-
-
           this.setState({
             FriendList: FriendList
           })  
@@ -50,8 +48,8 @@ class FriendListBase extends Component {
           this.setState({
             FriendList: ''
           })
-
         }
+
       })
     }
 
@@ -70,10 +68,11 @@ class FriendListBase extends Component {
     }
 
 
-    ClearSearchField = () => {
+    ClearSearchField = (props) => {
       this.setState({
         search: "",
       })
+
     }
 
     componentWillUnmount(){
@@ -88,6 +87,7 @@ class FriendListBase extends Component {
       // mappar ut användare och sorterar ut admin
       showFriends = this.state.FriendList.map(friend => {
         if(!friend.roles){
+
           return <Friend 
           key={friend.uid}
           username={friend.username}
@@ -121,14 +121,15 @@ class FriendListBase extends Component {
 
       let condition = this.state.search.toLowerCase();
       showFriends = this.state.FriendList.map( friend => {
-        return (friend.username.toLowerCase().includes(condition) ? 
+        return (friend.username.toLowerCase().includes(condition) ?
+        !friend.roles ?
         <Friend 
         key={friend.uid}
         username={friend.username}
         position={friend.position}
         online={friend.online}
         onClick={ () => this.showProfile(friend)}
-        /> : null)
+        /> : null : null)
       })
       showFriends.sort()
     }
@@ -157,8 +158,8 @@ export const Friend = (props) => {
     status = "Online";
     color.color = "rgb(101, 124, 18)";
   }
-
   const {latitude, longitude} = props.position
+  
   return (  
     <Style.Friend>
       <Style.onlineContainer onClick={props.onClick}>
@@ -168,7 +169,7 @@ export const Friend = (props) => {
       <div>
           <p> <strong> {props.username}</strong></p>
           <i className="fas fa-map-pin" >
-              <p className="locationText">{latitude + '   ' + longitude}</p>
+              <p className="locationText">{props.position ? latitude + '   ' + longitude : null}</p>
           </i>
       </div>
     </Style.Friend>

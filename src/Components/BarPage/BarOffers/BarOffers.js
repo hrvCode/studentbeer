@@ -2,7 +2,6 @@ import React from 'react';
 import {withFirebase} from '../../Firebase';
 import OffersListItem  from '../../Offers/OffersListItem/OffersListItem';
 import * as Styles from './BarOffersStyle';
-import Arrow from './Arrow/Arrow';
 
 class BarOffers extends React.Component{
 
@@ -80,7 +79,7 @@ class BarOffers extends React.Component{
     render(){
 
         let {offers} = this.state;
-        console.log(offers)
+
         return(
             <Styles.Main>
                 <h3 onClick={this.showOffers}>Visa erbjudanden</h3>

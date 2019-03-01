@@ -44,7 +44,7 @@ class BarFriends extends React.Component{
         let showFriends = [];
 
         showFriends = this.state.Friendslist.filter(friend => 
-            friend.CheckedInBar === this.props.BarName && this.props.CurrentTimeStamp < friend.CheckedInTime + 43200000)
+            friend.CheckedInBar === this.props.BarName && Date.now() < friend.CheckedInTime + 43200000)
             .map((friend,i) =>{
                 return(
                     <Friend 
