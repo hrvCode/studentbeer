@@ -91,14 +91,8 @@ class BarPage extends React.Component {
                             {this.state.CheckedIn ? 
                             <BarFriends 
                             BarName={this.props.location.state.name}
-                            CurrentTimeStamp={this.props.authUser.CheckedInTime}
                             />
                             : null}
-                        
-                    
-                            {/* <p>latidude:{this.props.location.state.position[0]}</p>
-                            <p>longitude:{this.props.location.state.position[1]}</p>
-                            <p>{this.props.location.state.uid}</p> */}
                     
                             {!this.props.authUser.roles.includes('ADMIN') ?
                             <CheckInButton 
