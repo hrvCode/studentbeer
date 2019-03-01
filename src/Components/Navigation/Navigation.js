@@ -25,8 +25,9 @@ const NavigationAuth = ({authUser}) => (
         {authUser.roles.includes('ADMIN') ? 
         <ul>
             <li>
-                <Link to={{pathname:  `/profile/${authUser.username}`}}>
-                <i className="fas fa-user"></i></Link>
+                <Link to={{pathname: `/profile/${authUser.username}`,
+                state: {user: authUser, myProfile:true}
+            }}><i className="fas fa-user"></i></Link>
             </li>
             <li>
                 <Link to={ROUTES.MAP}><i className="fas fa-map-marked-alt"></i></Link>
