@@ -194,11 +194,14 @@ export const RegisterPub = Styled.div `
     margin-top:10px;
     
     *{
-        color:white;
+        color:black;
+        background-color:var(--color-y);
         font-weight:bold;
         text-shadow: 0px 0px 4px 0px rgba(0,0,0,0.7);
-
+        border-radius:4px;
         text-decoration:none;
+        border:none;
+        height:25px;
     }
 `;
 
