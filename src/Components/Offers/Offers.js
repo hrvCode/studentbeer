@@ -26,7 +26,8 @@ class OfferBase extends Component {
     state = {
         loading:false,
         offers: [],
-        currentUid: ''
+        currentUid: '',
+        open: false,
     }
 
     componentDidMount(){
@@ -92,13 +93,14 @@ class OfferBase extends Component {
 
         })
     }
-
     render(){
 
         let allOffersArray = this.state.offers;
         let completeArray = [];
         let uniqeBars = [];
 
+        // skapar en array med alla erbjudanden, och lägger ihop texten i en array från alla erbjudanden
+        // som har samma skapar uid. Här blir det dubbletter men filtreras ut senare.
         if(allOffersArray){
             completeArray = allOffersArray.map((x,i) => {
                 x.textArray = [];
@@ -121,8 +123,8 @@ class OfferBase extends Component {
             }
         })
 
-        // går igenom hela arrayen och hämtar en offer  från varje uidfrom creator.
-        // och skapar en unik array med offers.
+
+        //  skapar ny array med enbart en offer objekt per skapar uid. för att rensa bort dubbletter.
         let uniqeBarsArray = []
         for(var i = 0; i < uniqeBars.length; i++){
             for(var j = 0; j < allOffersArray.length; j++){
@@ -148,12 +150,13 @@ class OfferBase extends Component {
                             key={item.OfferUid}
                             createdAt={item.createdAt}
                             offerUid={item.OfferUid}
-                            onDelete={this.deleteOffer}
+                            onDelete={() => this.deleteOffer()}
                             /> 
-                        
                         )
                     }
+                    
                     ): <p>No offers atm</p>}
+                    {console.log(this.state.open)}
                 </Styles.List>
             </Styles.MainContent>
         )
