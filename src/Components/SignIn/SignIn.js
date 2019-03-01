@@ -28,7 +28,7 @@ const SignInPage = () =>(
        <Link to={ROUTES.SIGNUP}><button>Sign up</button></Link>
    </Styles.BottomButton>
    <Styles.RegisterPub>
-            <Link to={ROUTES.ADMIN}><buttoon>registrera din krog</buttoon></Link>
+            <Link to={ROUTES.ADMIN}><button>registrera din krog</button></Link>
     </Styles.RegisterPub>
 </Styles.Main>
 )
