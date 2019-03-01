@@ -44,15 +44,17 @@ class SignInFormBase extends Component{
     })
     
     componentDidMount(){
-       this.listener = this.props.Firebase.auth.onAuthStateChanged(
+       this.listener = this.props.Firebase.onAuthUserListener(
            authUser =>{
                if(authUser){
-                   console.log(authUser.username)
-          /*          this.props.history.push({
+                   console.log(authUser)
+                       this.props.history.push({
                        pathname: "/profile/"+authUser.username
-                   }) */
+                   }) 
                }
-           }
+           },
+           //callback incase user is not authenticated
+           () => ( null)
        )
     }
 
