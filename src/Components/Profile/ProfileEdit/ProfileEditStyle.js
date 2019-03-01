@@ -72,7 +72,7 @@ export const FormContainer = Styled.div`
     }
     textarea{
         width:100%;
-        height:15vh;
+        height:35vh;
         border:0px;
         color:black;
         background-color:var(--transparent-Light);
@@ -110,7 +110,7 @@ export const FormContainer = Styled.div`
 
 export const Button = Styled.button`
     width: calc(80% + 12px);
-    margin-top: 5px;
+    margin-top: 25px;
     background-color: var(--color-b);
     color: white;
     font-size: 19px;
@@ -125,6 +125,7 @@ export const Button = Styled.button`
 export const BioTextInput = Styled.button`
      
      width:100%;
+   
 `
 
 export const ProfileImgContainer = Styled.div`

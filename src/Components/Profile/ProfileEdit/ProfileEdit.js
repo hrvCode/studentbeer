@@ -163,9 +163,10 @@ class ProfileEdit extends React.Component{
                         }
 
                     <h1>Ladda upp en bild</h1>
-                    <Styles.ProfileImgContainer>
+                    
                         <ProfileImg />
-                    </Styles.ProfileImgContainer>  
+                    
+
                     </Styles.FormContainer>      
 
                     <Styles.Button type="submit" >
