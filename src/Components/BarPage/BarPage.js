@@ -60,8 +60,6 @@ class BarPage extends React.Component {
                   CheckedInBar:this.props.location.state.name,
                   CheckedInTime:this.props.Firebase.timeStamp()
             });
-        
-            console.log(Date.now())
               
         } else {
             this.setState({

@@ -94,23 +94,12 @@ class OfferBase extends Component {
     }
 
     render(){
-     let offersArray = this.state.offers;
+        let offersArray = this.state.offers;
         let completeArray = [];
-        
-        if(this.state.offers){
-            const adminNames = offersArray.filter((x,i) => {
-                x.textArray = [];
-               if(i+1 < offersArray.length){
-    
-                    if(x.uidFromCreator === offersArray[i+1].uidFromCreator){
-                        return null;
-                    };
-                    return x;
-                }
-                return null;
-            })
 
-            completeArray = adminNames.map(x => {
+        if(offersArray){
+            completeArray = offersArray.map(x => {
+                x.textArray = [];
                 offersArray.forEach(y => {
                     if(y.name === x.name){
                         x.textArray.push(y.text)
@@ -119,7 +108,7 @@ class OfferBase extends Component {
                return x;
             })
         }
-
+        console.log(completeArray)
         return(
             <Styles.MainContent>
                 <Styles.List>
