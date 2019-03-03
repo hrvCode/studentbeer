@@ -16,7 +16,10 @@ class BarPage extends React.Component {
     
     this.state = {
         CheckedIn: false,
-        bioText:null
+        bioText:null,
+        userPosition:null,
+        barPosition:null
+        
       };
     }
 
@@ -31,12 +34,42 @@ class BarPage extends React.Component {
                 bioText: userObject.bioText
             })
         })
+       
       };
+
+      getUserPositionFromDB = () => {
+      
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            this.setState({
+                userPosition: userObject.position
+            })
+        })
+       
+      };
+
+      getBarPositionFromDB = () => {
+      
+        this.props.Firebase
+        .bar(this.props.location.state.uid)
+        .once('value', snapshot => {
+            const barObject = snapshot.val()
+            this.setState({
+                barPosition: barObject.position
+            })
+        })
+       
+      };
+
 
     componentWillMount(){
         this.getUserBioFromDB();
+        this.getBarPositionFromDB();
+        this.getUserPositionFromDB();
         
-
+       
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
