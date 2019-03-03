@@ -16,9 +16,41 @@ class BarPage extends React.Component {
     
     this.state = {
         CheckedIn: false,
-        bioText:null
+        bioText:null,
+        userPosition:null,
+        barPosition:null,
+        user:null
+
       };
     }
+    getUserNameFromDB = () => {
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+
+            const userObject = snapshot.val()
+
+            this.setState({
+                user: userObject.username
+            })
+
+        })
+        console.log(this.state.user);
+      };
+
+      getBarPositionFromDB = () => {
+      
+        this.props.Firebase
+        .bar(this.props.location.state.uid)
+        .once('value', snapshot => {
+            const barPosition = snapshot.val()
+            this.setState({
+                barPosition: barPosition.position
+            })
+        })
+        console.log(this.state.barPosition);
+      };
+
 
 
     getUserBioFromDB = () => {
@@ -35,6 +67,9 @@ class BarPage extends React.Component {
 
     componentWillMount(){
         this.getUserBioFromDB();
+        this.getBarPositionFromDB();
+      
+        this.getUserNameFromDB();
         
 
         this.props.Firebase

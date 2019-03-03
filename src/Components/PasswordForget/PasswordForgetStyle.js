@@ -97,8 +97,6 @@ export const BottomButton = Styled.div`
          
          a{text-decoration:none;}
 
-         &:hover{
-            background-color:#cccccc;
         }
 `;
 

@@ -38,9 +38,7 @@ export const Main = Styled.div`
         height:30px; 
         cursor:pointer;
 
-        &:hover{
-            background:${props => props.backgroundHover};
-        }
+       
         &:focus{
             outline: none;
         }
@@ -139,9 +137,7 @@ export const BottomButton = Styled.div`
          
          a{text-decoration:none;}
 
-         &:hover{
-            background-color:#cccccc;
-        }
+        
 `;
 
 export const Error = Styled.div`

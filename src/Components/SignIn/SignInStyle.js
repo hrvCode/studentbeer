@@ -101,7 +101,7 @@ export const ContainerBottom = Styled.div`
         border-bottom: 1px solid white;
         display: block;
         padding-top:1%;
-        caret-color:black;
+        caret-color:white;
         color:white;
         transition:0.2s;
         @media(min-width: 1024px){
@@ -186,9 +186,7 @@ export const BottomButton = Styled.div`
          box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.55);}
          
 
-         &:hover{
-            background-color:#cccccc;
-        }
+        
 `;
 export const RegisterPub = Styled.div `
     margin-top:10px;
@@ -202,6 +200,7 @@ export const RegisterPub = Styled.div `
         text-decoration:none;
         border:none;
         height:25px;
+        cursor:pointer;
     }
 `;
 
