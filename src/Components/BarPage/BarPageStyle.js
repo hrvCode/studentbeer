@@ -40,7 +40,8 @@ justify-content:center;
 p{
     width: 100%;
     color:white;
-    margin: auto;
+    margin:0px;
+    padding:20px 0px 20px 0px;
     text-align: center;
     background-color:var(--transparent-Dark);
     border-radius:4px;

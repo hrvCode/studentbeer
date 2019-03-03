@@ -158,6 +158,10 @@ export const Logotype = Styled.div`
 
 export const Container = Styled.div`
       background-color:rgba(0,0,0, 0.6); 
+<<<<<<< HEAD
+     
+=======
+>>>>>>> 7daa53f0bdbb02fdd8a77bc6c1c1c02a71632466
       border-radius:4px;
       width:100%;
       margin-top:10px;

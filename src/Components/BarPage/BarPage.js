@@ -18,9 +18,14 @@ class BarPage extends React.Component {
         CheckedIn: false,
         bioText:null,
         userPosition:null,
+<<<<<<< HEAD
         barPosition:null,
         user:null
 
+=======
+        barPosition:null
+        
+>>>>>>> c166db2abbcfee571b664d82cf885f5657df7f8c
       };
     }
     getUserNameFromDB = () => {
@@ -63,15 +68,47 @@ class BarPage extends React.Component {
                 bioText: userObject.bioText
             })
         })
+       
       };
+
+      getUserPositionFromDB = () => {
+      
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            this.setState({
+                userPosition: userObject.position
+            })
+        })
+       
+      };
+
+      getBarPositionFromDB = () => {
+      
+        this.props.Firebase
+        .bar(this.props.location.state.uid)
+        .once('value', snapshot => {
+            const barObject = snapshot.val()
+            this.setState({
+                barPosition: barObject.position
+            })
+        })
+       
+      };
+
 
     componentWillMount(){
         this.getUserBioFromDB();
         this.getBarPositionFromDB();
+<<<<<<< HEAD
       
         this.getUserNameFromDB();
+=======
+        this.getUserPositionFromDB();
+>>>>>>> c166db2abbcfee571b664d82cf885f5657df7f8c
         
-
+       
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
