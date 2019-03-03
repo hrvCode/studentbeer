@@ -18,14 +18,8 @@ class BarPage extends React.Component {
         CheckedIn: false,
         bioText:null,
         userPosition:null,
-<<<<<<< HEAD
-        barPosition:null,
-        user:null
-
-=======
         barPosition:null
         
->>>>>>> c166db2abbcfee571b664d82cf885f5657df7f8c
       };
     }
     getUserNameFromDB = () => {
