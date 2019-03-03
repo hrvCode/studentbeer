@@ -95,12 +95,7 @@ class BarPage extends React.Component {
     componentWillMount(){
         this.getUserBioFromDB();
         this.getBarPositionFromDB();
-<<<<<<< HEAD
-      
-        this.getUserNameFromDB();
-=======
         this.getUserPositionFromDB();
->>>>>>> c166db2abbcfee571b664d82cf885f5657df7f8c
         
        
         this.props.Firebase
