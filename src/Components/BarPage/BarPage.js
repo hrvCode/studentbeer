@@ -18,7 +18,12 @@ class BarPage extends React.Component {
         CheckedIn: false,
         bioText:null,
         userPosition:null,
-        barPosition:null
+        barPosition:null,
+        barUserDistance:null,
+        lat1:null,
+        lng1:null,
+        lat2:null,
+        lng2:null,
         
       };
     }
@@ -65,6 +70,22 @@ class BarPage extends React.Component {
        
       };
 
+      calculateDistance = (lat1, lon1, lat2, lon2) => {
+        var R = 6371; // km (change this constant to get miles)
+        var dLat = ((lat2 - lat1) * Math.PI) / 180;
+        var dLon = ((lon2 - lon1) * Math.PI) / 180;
+        var a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos((lat1 * Math.PI) / 180) *
+            Math.cos((lat2 * Math.PI) / 180) *
+            Math.sin(dLon / 2) *
+            Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+    
+        return Math.round(d * 1000);
+      };
+
       getUserPositionFromDB = () => {
       
         this.props.Firebase
@@ -96,8 +117,21 @@ class BarPage extends React.Component {
         this.getUserBioFromDB();
         this.getBarPositionFromDB();
         this.getUserPositionFromDB();
-        
-       
+
+
+        const lat1 =22;
+        this.setState({lat1:lat1})
+        const lng1 = 2;
+        this.setState({lng1:lng1})
+        const lat2 = 2;
+        this.setState({lat2:lat2})
+        const lng2 = 2;
+        this.setState({lng2:lng2})
+
+        const dist =this.calculateDistance(lat1,lng1,lat2,lng2);
+
+        this.setState({barUserDistance:dist});
+
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
@@ -160,6 +194,7 @@ class BarPage extends React.Component {
                             <CheckInButton 
                                 Checkin={()=>this.CheckInFunction()}
                                 IsCheckedIn={this.state.CheckedIn}
+                                dist={this.state.barUserDistance}
                             /> 
                             : null}
                             
@@ -199,19 +234,35 @@ const BarBioTextBase = (props) =>(
 
 
 const CheckInButton = (props) => {
+
+    let comment ={
+        display:"none",
+        color:"red",
+        fontSize:"18px",
+        
+
+    }
    
-        let color = {
+        let button = {
             backgroundColor: "rgb(43, 112, 139)",
+            display:"initial"
           }
+          if (props.dist > 10)
+          {
+              button.display ="none"
+              comment.display="initial"  
+            }
+
           if(props.IsCheckedIn){
-            color.backgroundColor = "rgb(161, 196, 38)";
+            button.backgroundColor = "rgb(161, 196, 38)";
           }
 
     return(
     <Style.CheckInButton >
-        <button style={color} onClick={()=> props.Checkin()}>
+        <button style={button} onClick={()=> props.Checkin()}>
             {!props.IsCheckedIn ? 'CHECKA IN' : 'CHECKA UT'} 
         </button>
+        <p style={comment}>Du är {props.dist-50} meter för långt ifrån baren för att kunna checka in! </p>
     </Style.CheckInButton>
     )
 }

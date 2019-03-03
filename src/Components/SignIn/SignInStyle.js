@@ -101,7 +101,7 @@ export const ContainerBottom = Styled.div`
         border-bottom: 1px solid white;
         display: block;
         padding-top:1%;
-        caret-color:white;
+        caret-color:black;
         color:white;
         transition:0.2s;
         @media(min-width: 1024px){

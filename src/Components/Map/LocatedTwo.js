@@ -122,16 +122,7 @@ class LocatedTwo extends Component {
       });
 };
 
-  getUserNameFromDB = () => {
-    this.props.Firebase
-    .user(this.props.authUser.uid)
-    .once('value', snapshot => {
-        const userObject = snapshot.val()
-        this.setState({
-            user: userObject.username
-        })
-    })
-  };
+
 
   writeUserPositionToDB = position => {
     const { latitude, longitude } = position;
