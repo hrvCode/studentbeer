@@ -1,4 +1,10 @@
 import Styled from 'styled-components'
+export const antal = Styled.span`
+    color: #fff;
+    font-weight: 200;
+    font-size:15px;
+    vertical-align: middle;
+`
 
 export const Li = Styled.li`
     width: 90%;

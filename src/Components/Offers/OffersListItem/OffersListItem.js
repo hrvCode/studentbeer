@@ -24,7 +24,7 @@ class offersListItem extends React.Component{
             <Styles.Li>
                 <Styles.trying open={this.state.open} onClick={this.toggleOpenOffer}>
                     <span>
-                        <h4>{this.props.name}</h4>
+                        <h4>{this.props.name} <Styles.antal>{this.props.offerCount}</Styles.antal></h4>
                         {
                             profileOffer ? null: 
                             <span>

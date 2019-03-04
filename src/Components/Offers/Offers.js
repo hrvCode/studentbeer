@@ -103,9 +103,12 @@ class OfferBase extends Component {
         // som har samma skapar uid. Här blir det dubbletter men filtreras ut senare.
         if(allOffersArray){
             completeArray = allOffersArray.map((x,i) => {
+                let offerCount = 0;
                 x.textArray = [];
                 allOffersArray.forEach(y => {
                     if(y.uidFromCreator === x.uidFromCreator){
+                        offerCount++;
+                        x.offerCount = offerCount;
                         x.textArray.push(y.text)
                     }
                 })
@@ -143,6 +146,7 @@ class OfferBase extends Component {
                             let uidMatch = this.state.currentUid === item.uidFromCreator ? true : false;
                         return(
                             <OffersListItem
+                            offerCount={item.offerCount}
                             isAdmin={uidMatch} 
                             name={item.name}
                             uid={item.uidFromCreator} 
