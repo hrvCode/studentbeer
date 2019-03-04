@@ -204,7 +204,7 @@ const CheckInButton = (props) => {
             backgroundColor: "rgb(43, 112, 139)",
             display:"initial"
           }
-          if (props.dist > 50)
+          if (props.dist > 8000)
           {
               button.display ="none"
               comment.display="initial"  
@@ -219,7 +219,7 @@ const CheckInButton = (props) => {
         <button style={button} onClick={()=> props.Checkin()}>
             {!props.IsCheckedIn ? 'CHECKA IN' : 'CHECKA UT'} 
         </button>
-        <p style={comment}>{props.dist-50} meter kvar för att kunna checka in!</p>
+        <p style={comment}>{props.dist-8000} meter kvar för att kunna checka in!</p>
     </Style.CheckInButton>
     )
 }

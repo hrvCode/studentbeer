@@ -4,6 +4,11 @@ export const antal = Styled.span`
     font-weight: 200;
     font-size:15px;
     vertical-align: middle;
+    i{
+        font-size:22px;
+       
+
+    }
 `
 
 export const Li = Styled.li`
