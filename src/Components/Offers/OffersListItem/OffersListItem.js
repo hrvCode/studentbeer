@@ -19,12 +19,25 @@ class offersListItem extends React.Component{
             <Styles.Li>
                 <Styles.trying open={this.state.open} onClick={this.toggleOpenOffer}>
                     <span>
-                        <h4>{this.props.name} <Styles.antal>{this.props.offerCount}</Styles.antal></h4>
+                        <Styles.antal>
+                            {
+                                !this.state.open ? <i style={{padding: "0 10px",}} className="fas fa-sort-down"></i>:
+                                <i style={{padding: "0 10px",}} className="fas fa-sort-up"></i>
+                            }
+                            
+                        </Styles.antal>   
+                        <h4>
+                            {this.props.name} 
+                            <Styles.antal style={{padding: "0 10px"}}>
+                                {this.props.offerCount}
+                            </Styles.antal>
+                        </h4>
                         {
                             profileOffer ? null: 
                             <span>
                                 {this.props.authUser.roles.includes('ADMIN') && 
-                                this.props.authUser.uid === this.props.uid ? <i className="fas fa-times" 
+                                this.props.authUser.uid === this.props.uid ? <i className="fas fa-times"
+                                style={{padding:"0 20px",color:"red"}} 
                                 onClick={()=> this.props.onDelete(this.props.offerUid)}></i> 
                                 : null }
                             </span> 
