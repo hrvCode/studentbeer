@@ -51,6 +51,7 @@ class BarPage extends React.Component {
             this.setState({
                 barPosition: barPosition.position
             })
+
         })
         console.log(this.state.barPosition);
       };
@@ -63,6 +64,7 @@ class BarPage extends React.Component {
         .bar(this.props.location.state.uid)
         .once('value', snapshot => {
             const userObject = snapshot.val()
+            console.log("userObject: " + userObject);
             this.setState({
                 bioText: userObject.bioText
             })
@@ -92,19 +94,31 @@ class BarPage extends React.Component {
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
             const userObject = snapshot.val()
+            console.log("userObject: " + userObject);
             this.setState({
                 userPosition: userObject.position
             })
+            this.getUserBarDistance();
         })
        
       };
-
+getUserBarDistance = () =>{
+    const { barPosition, userPosition } = this.state;
+    if (barPosition && userPosition) {
+        const {latitude: lat1, longitude: lng1 } = userPosition;
+        const lat2 = barPosition[0];
+        const lng2 = barPosition[1];
+        const dist =this.calculateDistance(lat1,lng1,lat2,lng2);
+        this.setState({barUserDistance: dist});
+    }
+}
       getBarPositionFromDB = () => {
       
         this.props.Firebase
         .bar(this.props.location.state.uid)
         .once('value', snapshot => {
             const barObject = snapshot.val()
+            console.log("barObj: " + barObject);
             this.setState({
                 barPosition: barObject.position
             })
@@ -114,12 +128,13 @@ class BarPage extends React.Component {
 
 
     componentWillMount(){
+        
         this.getUserBioFromDB();
         this.getBarPositionFromDB();
         this.getUserPositionFromDB();
-
-
-        const lat1 =22;
+ 
+/*
+        const lat1 =2;
         this.setState({lat1:lat1})
         const lng1 = 2;
         this.setState({lng1:lng1})
@@ -127,10 +142,10 @@ class BarPage extends React.Component {
         this.setState({lat2:lat2})
         const lng2 = 2;
         this.setState({lng2:lng2})
+*/
+        //const dist =this.calculateDistance(lat1,lng1,lat2,lng2);
 
-        const dist =this.calculateDistance(lat1,lng1,lat2,lng2);
-
-        this.setState({barUserDistance:dist});
+        //this.setState({barUserDistance:dist});
 
         this.props.Firebase
         .user(this.props.authUser.uid)
@@ -146,10 +161,10 @@ class BarPage extends React.Component {
 
     CheckInFunction() {
         if(!this.state.CheckedIn){
-            this.setState({
+            this.setState(prevState => ({
                 // Checked in blir true
-                CheckedIn: !this.state.CheckedIn,
-              })
+                CheckedIn: !prevState.CheckedIn,
+              }));
               this.props.Firebase
               .user(this.props.authUser.uid)
               .update({
@@ -158,10 +173,10 @@ class BarPage extends React.Component {
             });
               
         } else {
-            this.setState({
+            this.setState(prevState => ({
                 // Checked in blir flase
-                CheckedIn: !this.state.CheckedIn,
-              })
+                CheckedIn: !prevState.CheckedIn,
+              }));
               this.props.Firebase
             .user(this.props.authUser.uid)
             .update({
@@ -174,6 +189,7 @@ class BarPage extends React.Component {
 
 
     render(){
+
         return(
             <Style.Main>
                 <MapHeader />

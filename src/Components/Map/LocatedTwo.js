@@ -226,8 +226,7 @@ const MyMap = props => (
                 </Marker>
              
                {/* ternery operator behövs utifall att barerna inte har hunnit hämtats hem från db */}
-                { props.bars ? props.bars.map((bar, i)=> {
-                    return(
+                { props.bars ? props.bars.map((bar, i) => (
                       <Admin
                       key={i}
                       position={bar.position}
@@ -236,7 +235,7 @@ const MyMap = props => (
                     />
                     
                   )
-                }) : null}
+                ) : null}
   </Map>
   
 );
