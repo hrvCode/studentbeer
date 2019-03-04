@@ -52,8 +52,7 @@ p{
 
 export const CheckInButton = Styled.div `
     width: 200px;
-    
-    margin: auto;
+    margin: 10px auto;
 
     button {
         width: 100%;

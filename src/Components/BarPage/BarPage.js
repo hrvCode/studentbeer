@@ -20,57 +20,8 @@ class BarPage extends React.Component {
         userPosition:null,
         barPosition:null,
         barUserDistance:null,
-        lat1:null,
-        lng1:null,
-        lat2:null,
-        lng2:null,
-        
       };
     }
-    getUserNameFromDB = () => {
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-
-            const userObject = snapshot.val()
-
-            this.setState({
-                user: userObject.username
-            })
-
-        })
-        console.log(this.state.user);
-      };
-
-      getBarPositionFromDB = () => {
-      
-        this.props.Firebase
-        .bar(this.props.location.state.uid)
-        .once('value', snapshot => {
-            const barPosition = snapshot.val()
-            this.setState({
-                barPosition: barPosition.position
-            })
-
-        })
-        console.log(this.state.barPosition);
-      };
-
-
-
-    getUserBioFromDB = () => {
-      
-        this.props.Firebase
-        .bar(this.props.location.state.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            console.log("userObject: " + userObject);
-            this.setState({
-                bioText: userObject.bioText
-            })
-        })
-       
-      };
 
       calculateDistance = (lat1, lon1, lat2, lon2) => {
         var R = 6371; // km (change this constant to get miles)
@@ -79,7 +30,7 @@ class BarPage extends React.Component {
         var a =
           Math.sin(dLat / 2) * Math.sin(dLat / 2) +
           Math.cos((lat1 * Math.PI) / 180) *
-            Math.cos((lat2 * Math.PI) / 180) *
+         Math.cos((lat2 * Math.PI) / 180) *
             Math.sin(dLon / 2) *
             Math.sin(dLon / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
@@ -102,7 +53,7 @@ class BarPage extends React.Component {
         })
        
       };
-getUserBarDistance = () =>{
+        getUserBarDistance = () =>{
     const { barPosition, userPosition } = this.state;
     if (barPosition && userPosition) {
         const {latitude: lat1, longitude: lng1 } = userPosition;
@@ -120,7 +71,8 @@ getUserBarDistance = () =>{
             const barObject = snapshot.val()
             console.log("barObj: " + barObject);
             this.setState({
-                barPosition: barObject.position
+                barPosition: barObject.position,
+                bioText: barObject.bioText
             })
         })
        
@@ -129,23 +81,11 @@ getUserBarDistance = () =>{
 
     componentWillMount(){
         
-        this.getUserBioFromDB();
+        
         this.getBarPositionFromDB();
         this.getUserPositionFromDB();
  
-/*
-        const lat1 =2;
-        this.setState({lat1:lat1})
-        const lng1 = 2;
-        this.setState({lng1:lng1})
-        const lat2 = 2;
-        this.setState({lat2:lat2})
-        const lng2 = 2;
-        this.setState({lng2:lng2})
-*/
-        //const dist =this.calculateDistance(lat1,lng1,lat2,lng2);
 
-        //this.setState({barUserDistance:dist});
 
         this.props.Firebase
         .user(this.props.authUser.uid)
@@ -253,17 +193,18 @@ const CheckInButton = (props) => {
 
     let comment ={
         display:"none",
-        color:"red",
-        fontSize:"18px",
-        
-
+        color:"var(--color-b)",
+        fontSize:"22px",
+        textShadow:"1px 1px 1px black",
+        fontWeight:"bold"
+  
     }
    
         let button = {
             backgroundColor: "rgb(43, 112, 139)",
             display:"initial"
           }
-          if (props.dist > 10)
+          if (props.dist > 50)
           {
               button.display ="none"
               comment.display="initial"  
@@ -278,7 +219,7 @@ const CheckInButton = (props) => {
         <button style={button} onClick={()=> props.Checkin()}>
             {!props.IsCheckedIn ? 'CHECKA IN' : 'CHECKA UT'} 
         </button>
-        <p style={comment}>Du är {props.dist-50} meter för långt ifrån baren för att kunna checka in! </p>
+        <p style={comment}>{props.dist-50} meter kvar för att kunna checka in!</p>
     </Style.CheckInButton>
     )
 }

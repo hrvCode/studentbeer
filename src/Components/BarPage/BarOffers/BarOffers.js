@@ -82,32 +82,31 @@ class BarOffers extends React.Component{
 
         return(
             <Styles.Main>
-                <h3 onClick={this.showOffers}>Visa erbjudanden</h3>
-                <Styles.offersbakgorund>
-                <Styles.List>
-
+                <Styles.offersContent>
                 {/* tre nestade ternery operators:
                 1: kollar om offers ska visa.
                 2: kollar om det har laddats klart.
                 3: kollar om de finns erbjudanden. */}
 
-                { this.state.showOffers ? 
-                    this.state.loading ? <div><p>Laddar in erbjudanden</p></div>
+                { this.state.loading ? <div><p>Laddar in erbjudanden</p></div>
+                    
                     : offers ? 
-                        offers.map((offer,i) => (
-                            <OffersListItem
-                            key={i}
-                            name={offer.name}
-                            text={offer.text}
-                            profileOffer={true}
-                            createdAt={offer.createdAt}
-                            />            
-                        )) : 
-                        <h2>Finns inga erbjudanden</h2>
-                : null
+                            offers.map((offer,i) => (
+                            <Styles.List>
+                                <h2>Erbjudanden</h2>
+                                    <OffersListItem
+                                    key={i}
+                                    name={offer.name}
+                                    text={offer.text}
+                                    profileOffer={true}
+                                    createdAt={offer.createdAt}
+                                    />   
+                            </Styles.List>         
+                        )) 
+                    : 
+                       <h2>Finns inga erbjudanden</h2>
                 }
-                </Styles.List>
-                </Styles.offersbakgorund>
+               </Styles.offersContent>
             </Styles.Main>    
         )
     }

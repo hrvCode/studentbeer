@@ -17,7 +17,7 @@ export const Li = Styled.li`
                 background-color:var(--transparent-Dark);
                 display: inline-block;
                 font-weight: 200;
-                font-size: 1.3em;
+                font-size: 1.2em;
                 padding:0 5px;
                 margin:5px 0;
                 color:var(--color-y);
@@ -36,7 +36,7 @@ export const Li = Styled.li`
 export const trying = Styled.div`
     background-color:var(--transparent-Dark);
     border-radius: 4px;
-    margin: 20px auto;
+    margin: 0px auto 20px auto;
     max-height: ${props => (props.open ? "100%" : "0")};
     padding: ${props => (props.open ? "10px 15px" : "0 15px")};
     transition: all 0.3s;
