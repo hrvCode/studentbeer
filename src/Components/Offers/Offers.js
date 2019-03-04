@@ -12,13 +12,7 @@ const Offer = (props) => (
              <h2>Erbjudanden</h2>
             {props.authUser.roles.includes(ROLES.ADMIN) ? <AddOfferLink/>: null} 
          </Styles.Header>
-
-         <AuthUserContext.Consumer>
-            {
-                authUser => <OffersList authUser={authUser} />
-            }
-         </AuthUserContext.Consumer>
-        
+          <OffersList authUser={props.authUser} />      
     </Styles.Main>
 )
 
@@ -29,7 +23,6 @@ class OfferBase extends Component {
         currentUid: '',
         open: false,
     }
-
     componentDidMount(){
         this.setState({loading:true});
 
@@ -96,13 +89,13 @@ class OfferBase extends Component {
     render(){
 
         let allOffersArray = this.state.offers;
-        let completeArray = [];
         let uniqeBars = [];
+
 
         // skapar en array med alla erbjudanden, och lägger ihop texten i en array från alla erbjudanden
         // som har samma skapar uid. Här blir det dubbletter men filtreras ut senare.
         if(allOffersArray){
-            completeArray = allOffersArray.map((x,i) => {
+          allOffersArray.map((x,i) => {
                 let offerCount = 0;
                 x.textArray = [];
                 allOffersArray.forEach(y => {
@@ -115,7 +108,6 @@ class OfferBase extends Component {
                return x;
             })
         }
-
         // sparar uidfromcreater till uniqebars array där det bara ska finnas en av varje.
         allOffersArray.forEach(x => {
             if(!uniqeBars.length > 0){
@@ -143,24 +135,22 @@ class OfferBase extends Component {
                 <Styles.List>
                     { this.state.offers ?
                        uniqeBarsArray.map(item => {
-                            let uidMatch = this.state.currentUid === item.uidFromCreator ? true : false;
                         return(
                             <OffersListItem
                             offerCount={item.offerCount}
-                            isAdmin={uidMatch} 
+                            authUser={this.props.authUser} 
                             name={item.name}
                             uid={item.uidFromCreator} 
                             text={item.textArray} 
                             key={item.OfferUid}
                             createdAt={item.createdAt}
                             offerUid={item.OfferUid}
-                            onDelete={() => this.deleteOffer()}
+                            onDelete={(uid) => this.deleteOffer(uid)}
                             /> 
                         )
                     }
                     
                     ): <p>No offers atm</p>}
-                    {console.log(this.state.open)}
                 </Styles.List>
             </Styles.MainContent>
         )
