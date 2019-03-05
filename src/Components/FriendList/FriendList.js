@@ -34,6 +34,7 @@ class FriendListBase extends Component {
               roles: friendObject[friend].roles,
               username: friendObject[friend].username,
               uid: friend,
+              CheckedInBar: friendObject[friend] ? friendObject[friend].CheckedInBar : null,
               position: friendObject[friend].position,
               online: friendObject[friend].online,
               CheckedInBar:friendObject[friend].CheckedInBar,
@@ -86,15 +87,14 @@ class FriendListBase extends Component {
       // mappar ut användare och sorterar ut admin
       showFriends = this.state.FriendList.map(friend => {
         if(!friend.roles){
-
           return <Friend 
-          key={friend.uid}
-          username={friend.username}
-          position={friend.position}
-          online={friend.online}
-          onClick={ () => this.showProfile(friend)}
-          CheckedInBar={friend.CheckedInBar}
-          />
+            key={friend.uid}
+            username={friend.username}
+            CheckedInBar={friend.CheckedInBar}
+            position={friend.position}
+            online={friend.online}
+            onClick={ () => this.showProfile(friend)}
+          />;
         }
         return null;
       })
@@ -124,6 +124,7 @@ class FriendListBase extends Component {
         key={friend.uid}
         username={friend.username}
         position={friend.position}
+        CheckedInBar={friend.CheckedInBar}
         online={friend.online}
         onClick={ () => this.showProfile(friend)}
         /> : null : null)
@@ -155,21 +156,22 @@ export const Friend = (props) => {
     status = "Online";
     color.color = "rgb(101, 124, 18)";
   }
-  // const {latitude, longitude} = props.position
-  
+
+  let checkedBar = {};
+  if(props.CheckedInBar !== "" && props.online){
+    checkedBar = {
+      text: `incheckad: ${props.CheckedInBar}`,
+    }
+  }
   return (  
     <Style.Friend>
       <Style.onlineContainer onClick={props.onClick}>
-        <i style={color} className="far fa-user-circle" > </i>
+        <i style={color} className="far fa-user-circle" ></i>
         <p>{status}</p>
       </Style.onlineContainer>
       <div>
-          <p> <strong> {props.username}</strong></p>
-          {props.online ? <i className="fas fa-map-pin" > 
-              {/* <p className="locationText">{props.position ? latitude + '   ' + longitude : null}</p> */}
-              <p>{props.CheckedInBar ? props.CheckedInBar : 'Inte Incheckad' }</p>
-          </i>
-          : null }
+          <p><strong>{props.username}</strong></p>
+          <p className="locationText"> {checkedBar.text}</p>
       </div>
     </Style.Friend>
 
