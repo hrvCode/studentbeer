@@ -25,10 +25,10 @@ const SignInPage = () =>(
    </Styles.ContainerBottom>
    </Styles.Container>
    <Styles.BottomButton>
-       <Link to={ROUTES.SIGNUP}><button>Sign up</button></Link>
+       <Link to={ROUTES.SIGNUP}><button>Registrera Konto</button></Link>
    </Styles.BottomButton>
    <Styles.RegisterPub>
-            <Link to={ROUTES.ADMIN}><button>Registrera din krog</button></Link>
+            <Link to={ROUTES.ADMIN}><button>Registrera Bar</button></Link>
     </Styles.RegisterPub>
 </Styles.Main>
 )
@@ -107,7 +107,7 @@ class SignInFormBase extends Component{
                             type="password"
                             name="password"
                             onChange={this.onChange}  
-                            placeholder="Password"
+                            placeholder="Lösenord"
                         />
                     </div>
 
@@ -117,7 +117,7 @@ class SignInFormBase extends Component{
                         <button 
                             type="submit" 
                             disabled={isInvalid}>
-                            Sign in
+                            Logga In
                         </button>
                     </Styles.ButtonContainer>
                 </div>

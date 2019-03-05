@@ -36,6 +36,7 @@ class FriendListBase extends Component {
               uid: friend,
               position: friendObject[friend].position,
               online: friendObject[friend].online,
+              CheckedInBar:friendObject[friend].CheckedInBar,
               }
             )
           })
@@ -92,6 +93,7 @@ class FriendListBase extends Component {
           position={friend.position}
           online={friend.online}
           onClick={ () => this.showProfile(friend)}
+          CheckedInBar={friend.CheckedInBar}
           />
         }
         return null;
@@ -153,7 +155,7 @@ export const Friend = (props) => {
     status = "Online";
     color.color = "rgb(101, 124, 18)";
   }
-  const {latitude, longitude} = props.position
+  // const {latitude, longitude} = props.position
   
   return (  
     <Style.Friend>
@@ -163,9 +165,11 @@ export const Friend = (props) => {
       </Style.onlineContainer>
       <div>
           <p> <strong> {props.username}</strong></p>
-          <i className="fas fa-map-pin" >
-              <p className="locationText">{props.position ? latitude + '   ' + longitude : null}</p>
+          {props.online ? <i className="fas fa-map-pin" > 
+              {/* <p className="locationText">{props.position ? latitude + '   ' + longitude : null}</p> */}
+              <p>{props.CheckedInBar ? props.CheckedInBar : 'Inte Incheckad' }</p>
           </i>
+          : null }
       </div>
     </Style.Friend>
 

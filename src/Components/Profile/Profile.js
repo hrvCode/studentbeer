@@ -129,9 +129,9 @@ class Profile extends React.Component{
                     this.props.authUser.roles.includes('ADMIN') ?
                 <p>ADMIN</p>:
                  <Styles.StatusSection>
-                    <h1>Inckeckad hos</h1>
+                    <h1>Inckeckad på</h1>
                     <p>{this.state.checkedBar}</p>
-                    <h1>Civil Status</h1>
+                    <h1>Civilstatus</h1>
                     <p>{this.state.civilStatus}</p>
                   </Styles.StatusSection>
                 }

@@ -139,7 +139,7 @@ class ProfileEdit extends React.Component{
                         />
                         {this.props.authUser.roles.includes('ADMIN') ?
                         <h1>Beskrivning</h1>:
-                        <h1>Bio text</h1>}
+                        <h1>Profil Beskrivning</h1>}
                         <textarea
                         row="20"
                         cols="40"
@@ -153,7 +153,7 @@ class ProfileEdit extends React.Component{
                        <div>
                            <h1>Civil Status</h1>
                               <select name="civilStatus" onChange={this.onChange}>
-                                  <option value= "Vet ej">Vet ej</option>
+                                  <option value= "Vet ej">Annat</option>
                                   <option value= "Singel">Singel</option>
                                   <option value= "Upptagen">Upptagen</option>
       
@@ -169,7 +169,7 @@ class ProfileEdit extends React.Component{
                     </Styles.FormContainer>      
 
                     <Styles.Button type="submit" >
-                                Save changes
+                                Spara Ändring
                        
                     </Styles.Button>
                                   

@@ -176,10 +176,8 @@ const MapHeaderBase = (props) => (
 const BarBioTextBase = (props) =>(
     <Style.BioaBarText>
         <p>
-            
-        <span>Välkommen till {props.location.state.name}</span> <br /> 
-        {props.Bio}
-       
+            <span>Välkommen till {props.location.state.name}</span> <br /> 
+            {props.Bio}
         </p>
     </Style.BioaBarText>
 )

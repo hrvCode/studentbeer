@@ -150,7 +150,7 @@ class OfferBase extends Component {
                         )
                     }
                     
-                    ): <p>No offers atm</p>}
+                    ): <p>Inga aktuella erbjudanden</p>}
                 </Styles.List>
             </Styles.MainContent>
         )

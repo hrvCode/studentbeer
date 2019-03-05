@@ -118,23 +118,23 @@ class AdminSignUpFormBase extends Component{
                 type="text"
                 name="email"
                 onChange={this.onChange}
-                placeholder="email" />
+                placeholder="Email" />
 
                 <input 
                 type="password" 
                 name="passwordOne"
                 onChange={this.onChange}
-                placeholder="password"
+                placeholder="Lösenord"
                  />
 
                 <input 
                 type="password" 
                 name="passwordTwo"
                 onChange={this.onChange}
-                placeholder="confirm password"
+                placeholder="Bekräfta Lösenord"
                  />
                 {error && <p>{error.message}</p>}
-                <button type="submit" disabled={isInvalid}>Sign Up</button>
+                <button type="submit" disabled={isInvalid}>Registrera</button>
 
                 {/* om det finns error i this.state.false så körs kodsnutten */}
 
