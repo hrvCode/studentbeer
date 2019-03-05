@@ -16,47 +16,61 @@ class ProfileEdit extends React.Component{
         redirect:false
     }
 
-    getUserNameFromDB = () => {
+    // getUserNameFromDB = () => {
        
        
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
-                username: userObject.username
-            })
+    //     this.props.Firebase
+    //     .user(this.props.authUser.uid)
+    //     .once('value', snapshot => {
+    //         const userObject = snapshot.val()
+    //         this.setState({
+    //             username: userObject.username
+    //         })
  
             
-        })
-      };
+    //     })
+    //   };
 
-      getUserCivilStatusFromDB = () => {
+    //   getUserCivilStatusFromDB = () => {
        
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
-                civilStatus: userObject.civilStatus
-            })
+    //     this.props.Firebase
+    //     .user(this.props.authUser.uid)
+    //     .once('value', snapshot => {
+    //         const userObject = snapshot.val()
+    //         this.setState({
+    //             civilStatus: userObject.civilStatus
+    //         })
  
             
-        })
-      };
+    //     })
+    //   };
 
-      getUserBioFromDB = () => {
+    //   getUserBioFromDB = () => {
+      
+    //     this.props.Firebase
+    //     .user(this.props.authUser.uid)
+    //     .once('value', snapshot => {
+    //         const userObject = snapshot.val()
+    //         this.setState({
+    //             bioText: userObject.bioText
+    //         })
+    //     })
+    //   };
+    
+
+      getUserDataFromDB = () => {
       
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
             const userObject = snapshot.val()
             this.setState({
+                username: userObject.username,
+                civilStatus: userObject.civilStatus,
                 bioText: userObject.bioText
             })
         })
       };
-    
 
     
 
@@ -122,9 +136,10 @@ class ProfileEdit extends React.Component{
 
         componentDidMount(){
             this.setState({loading: true,})
-            this.getUserNameFromDB();
-            this.getUserCivilStatusFromDB();
-            this.getUserBioFromDB();
+            // this.getUserNameFromDB();
+            // this.getUserCivilStatusFromDB();
+            // this.getUserBioFromDB();
+            this.getUserDataFromDB();
         }
     render(){
 
