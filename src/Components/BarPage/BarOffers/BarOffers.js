@@ -79,7 +79,47 @@ class BarOffers extends React.Component{
     render(){
 
         let {offers} = this.state;
+        let uniqeBarsArray = []
+        let uniqeBars = [];
+          
 
+        // skapar en array med alla erbjudanden, och lägger ihop texten i en array från alla erbjudanden
+        // som har samma skapar uid. 
+        if(offers){
+            offers.map((x,i) => {
+                  let offerCount = 0;
+                  x.textArray = [];
+                  offers.forEach(y => {
+                      if(y.uidFromCreator === x.uidFromCreator){
+                          offerCount++;
+                          x.offerCount = offerCount;
+                          x.textArray.push(y.text)
+                      }
+                  })
+                 return x;
+              })
+                // sparar uidfromcreater till uniqebars array där det bara ska finnas en av varje.
+              offers.forEach(x => {
+                if(!uniqeBars.length > 0){
+                    uniqeBars.push(x.uidFromCreator)
+                }
+                if(!uniqeBars.includes(x.uidFromCreator)){
+                    uniqeBars.push(x.uidFromCreator)
+                }
+            })
+            // sparar  ner uniqeBars i en array 
+            for(var i = 0; i < uniqeBars.length; i++){
+                for(var j = 0; j < offers.length; j++){
+                    if(uniqeBars[i] === offers[j].uidFromCreator){
+                        uniqeBarsArray.push(offers[j]);
+                        break;
+                    }
+                }
+            }
+          }
+        
+
+          
         return(
             <Styles.Main>
                 <Styles.offersContent>
@@ -91,15 +131,14 @@ class BarOffers extends React.Component{
                 { this.state.loading ? <div><p>Laddar in erbjudanden</p></div>
                     
                     : offers ? 
-                            offers.map((offer,i) => (
-                            <Styles.List>
-                                <h2>Erbjudan</h2>
+                    uniqeBarsArray.map((offer,i) => (
+                            <Styles.List   key={i}>
+                                <h2>Erbjudanden</h2>
                                     <OffersListItem
-                                    key={i}
-                                    name={offer.name}
-                                    text={offer.text}
-                                    profileOffer={true}
-                                    createdAt={offer.createdAt}
+                                        name={offer.name}
+                                        text={offer.textArray}
+                                        profileOffer={true}
+                                        createdAt={offer.createdAt}
                                     />   
                             </Styles.List>         
                         )) 

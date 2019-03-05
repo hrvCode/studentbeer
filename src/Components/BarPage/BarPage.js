@@ -40,12 +40,10 @@ class BarPage extends React.Component {
       };
 
       getUserPositionFromDB = () => {
-      
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
             const userObject = snapshot.val()
-            console.log("userObject: " + userObject);
             this.setState({
                 userPosition: userObject.position
             })
@@ -69,7 +67,7 @@ class BarPage extends React.Component {
         .bar(this.props.location.state.uid)
         .once('value', snapshot => {
             const barObject = snapshot.val()
-            console.log("barObj: " + barObject);
+
             this.setState({
                 barPosition: barObject.position,
                 bioText: barObject.bioText
@@ -178,10 +176,8 @@ const MapHeaderBase = (props) => (
 const BarBioTextBase = (props) =>(
     <Style.BioaBarText>
         <p>
-            
-        <span>Välkommen till {props.location.state.name}</span> <br /> 
-        {props.Bio}
-       
+            <span>Välkommen till {props.location.state.name}</span> <br /> 
+            {props.Bio}
         </p>
     </Style.BioaBarText>
 )

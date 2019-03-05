@@ -35,7 +35,7 @@ class PasswordForgetFormBase extends Component {
 
     onSubmit = event => {
         const { email } = this.state;
-        console.log(this.state.email);
+
         this.props.Firebase.doPasswordReset(email).then(() => {
 
                 this.setState({...INITIAL_STATE})
@@ -65,9 +65,9 @@ class PasswordForgetFormBase extends Component {
             value={this.state.email}
             onChange={this.onChange}
             type="text"
-            placeholder="Email Adress" 
+            placeholder="Email" 
         />
-        <button diabled= {isInvalid} type="submit">Reset Password</button>
+        <button disabled= {isInvalid} type="submit">Återställ Lösenord</button>
         {error && <Styles.Error>{error.message}</Styles.Error>}
     </form>
     );
@@ -76,7 +76,7 @@ class PasswordForgetFormBase extends Component {
 
 const PasswordForgetLink = () => (
     <p>
-        <Link to = {ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
+        <Link to = {ROUTES.PASSWORD_FORGET}>Glömt Lösenord?</Link>
     </p>
 );
 

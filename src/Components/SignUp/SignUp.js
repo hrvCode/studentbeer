@@ -11,11 +11,11 @@ import * as ROLES from '../../Constants/roles'
 const SignUpPage = () => (
     <Styles.Main>
         <Styles.Container>
-            <h1>Sign up</h1>
+            <h1>Skapa Konto</h1>
             <SignUpForm/> 
         </Styles.Container>
         <Styles.BottomButton>
-            <Link to={ROUTES.SIGNIN}><button>Back</button></Link>
+            <Link to={ROUTES.SIGNIN}><button>Tillbaks</button></Link>
         </Styles.BottomButton>
     </Styles.Main>
 )
@@ -117,35 +117,35 @@ class SignUpFormBase extends Component{
         username === '';
         
         return(
-            this.state.isLoading ? <div>loading</div> :
+            this.state.isLoading ? <div>Laddar</div> :
             <form onSubmit={this.onSubmit}>
                 <input 
                 type="text"
                 name="username"
                 onChange={this.onChange}
-                placeholder="Username" />
+                placeholder="Användarnamn" />
                                 
                 <input 
                 type="text"
                 name="email"
                 onChange={this.onChange}
-                placeholder="email" />
+                placeholder="Email" />
 
                 <input 
                 type="password" 
                 name="passwordOne"
                 onChange={this.onChange}
-                placeholder="password"
+                placeholder="Lösenord"
                  />
 
                 <input 
                 type="password" 
                 name="passwordTwo"
                 onChange={this.onChange}
-                placeholder="confirm password"
+                placeholder="Bekräfta Lösenord"
                  /> 
                 {error && <Styles.Error>{error.message}</Styles.Error>}
-                <button type="submit" disabled={isInvalid}>Sign Up</button>
+                <button type="submit" disabled={isInvalid}>Skapa Konto</button>
 
                 {/* om det finns error i this.state.false så körs kodsnutten */}
 

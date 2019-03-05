@@ -2,9 +2,7 @@ import {withAuthorization} from '../Session'
 import * as Style from './FriendListStyle';
 import React, { Component } from 'react'
 import {withFirebase} from '../Firebase'
-import { auth } from "firebase";
 import Header from './Header/Header'
-import Profile from '../Profile/Profile'
 import {withRouter} from 'react-router-dom';
 
 
@@ -36,8 +34,10 @@ class FriendListBase extends Component {
               roles: friendObject[friend].roles,
               username: friendObject[friend].username,
               uid: friend,
+              CheckedInBar: friendObject[friend] ? friendObject[friend].CheckedInBar : null,
               position: friendObject[friend].position,
               online: friendObject[friend].online,
+              CheckedInBar:friendObject[friend].CheckedInBar,
               }
             )
           })
@@ -87,14 +87,14 @@ class FriendListBase extends Component {
       // mappar ut användare och sorterar ut admin
       showFriends = this.state.FriendList.map(friend => {
         if(!friend.roles){
-
           return <Friend 
-          key={friend.uid}
-          username={friend.username}
-          position={friend.position}
-          online={friend.online}
-          onClick={ () => this.showProfile(friend)}
-          />
+            key={friend.uid}
+            username={friend.username}
+            CheckedInBar={friend.CheckedInBar}
+            position={friend.position}
+            online={friend.online}
+            onClick={ () => this.showProfile(friend)}
+          />;
         }
         return null;
       })
@@ -104,10 +104,10 @@ class FriendListBase extends Component {
       // those with online true will get sorted to the top.
       showFriends.sort((a,b) => {
         if(a && b){
-          if(a.props.online && b.props.online === undefined){
-            return -1;
+          if(a.props.online === undefined){
+            return 1;
           }
-          if(b.props.online && a.props.online === undefined){
+          if(b.props.online === undefined){
             return 1;
           }
           return -1;
@@ -115,10 +115,7 @@ class FriendListBase extends Component {
         return null;
       })
 
-
     }else{
-
-
       let condition = this.state.search.toLowerCase();
       showFriends = this.state.FriendList.map( friend => {
         return (friend.username.toLowerCase().includes(condition) ?
@@ -127,6 +124,7 @@ class FriendListBase extends Component {
         key={friend.uid}
         username={friend.username}
         position={friend.position}
+        CheckedInBar={friend.CheckedInBar}
         online={friend.online}
         onClick={ () => this.showProfile(friend)}
         /> : null : null)
@@ -158,19 +156,22 @@ export const Friend = (props) => {
     status = "Online";
     color.color = "rgb(101, 124, 18)";
   }
-  const {latitude, longitude} = props.position
-  
+
+  let checkedBar = {};
+  if(props.CheckedInBar !== "" && props.online){
+    checkedBar = {
+      text: `incheckad: ${props.CheckedInBar}`,
+    }
+  }
   return (  
     <Style.Friend>
       <Style.onlineContainer onClick={props.onClick}>
-        <i style={color} className="far fa-user-circle" > </i>
+        <i style={color} className="far fa-user-circle" ></i>
         <p>{status}</p>
       </Style.onlineContainer>
       <div>
-          <p> <strong> {props.username}</strong></p>
-          <i className="fas fa-map-pin" >
-              <p className="locationText">{props.position ? latitude + '   ' + longitude : null}</p>
-          </i>
+          <p><strong>{props.username}</strong></p>
+          <p className="locationText"> {checkedBar.text}</p>
       </div>
     </Style.Friend>
 

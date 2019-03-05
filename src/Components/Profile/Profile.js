@@ -18,39 +18,20 @@ class Profile extends React.Component{
         canEdit: true,
     }
 
-    getUserNameFromDB = () => {
+    getUserDataFromDB = () => {
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
             const userObject = snapshot.val()
             this.setState({
-                user: userObject.username
-            })
-        })
-      };
-
-      getUserCivilStatusFromDB = () => {
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
-                civilStatus: userObject.civilStatus
-            })
-        })
-      };
-
-      getUserBioFromDB = () => {
-      
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
+                user: userObject.username,
+                civilStatus: userObject.civilStatus,
                 bioText: userObject.bioText
             })
         })
-      };
+    };
+
+
 
       getUsercheckedIn = () => {
       
@@ -90,9 +71,7 @@ class Profile extends React.Component{
             
             // annars ladda upp sin egen
         }else{
-            this.getUserNameFromDB();
-            this.getUserCivilStatusFromDB();
-            this.getUserBioFromDB();
+            this.getUserDataFromDB();          
             this.getUsercheckedIn();
         }
     }
@@ -103,9 +82,7 @@ class Profile extends React.Component{
         loading:true,
         canEdit:true,
       })
-      this.getUserNameFromDB();
-      this.getUserCivilStatusFromDB();
-      this.getUserBioFromDB();
+         this.getUserDataFromDB(); 
     }
 
     render(){
@@ -129,9 +106,9 @@ class Profile extends React.Component{
                     this.props.authUser.roles.includes('ADMIN') ?
                 <p>ADMIN</p>:
                  <Styles.StatusSection>
-                    <h1>Inckeckad hos</h1>
+                    <h1>Inckeckad på</h1>
                     <p>{this.state.checkedBar}</p>
-                    <h1>Civil Status</h1>
+                    <h1>Civilstatus</h1>
                     <p>{this.state.civilStatus}</p>
                   </Styles.StatusSection>
                 }

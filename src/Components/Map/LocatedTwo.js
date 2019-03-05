@@ -219,11 +219,9 @@ const MyMap = props => (
                
                 <Marker 
                 position={props.position}
-                icon={myIcon}>
-                  <Popup>
-                      Här är din position.
-                  </Popup>
-                </Marker>
+                icon={myIcon} />
+        
+            
              
                {/* ternery operator behövs utifall att barerna inte har hunnit hämtats hem från db */}
                 { props.bars ? props.bars.map((bar, i) => (
