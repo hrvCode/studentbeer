@@ -60,7 +60,7 @@ class ProfileEdit extends React.Component{
 
     
 
-    changeUserBioTextToDB = () => {
+    changeUserDataToDB = () => {
         
     //     let userBioText = this.state.bioText
     //     this.props.Firebase
@@ -107,7 +107,7 @@ class ProfileEdit extends React.Component{
 
       onSubmit = () =>{
     //    this.changeUserNameToDB();
-       this.changeUserBioTextToDB();
+       this.changeUserDataToDB();
     //    this.changeUserCivilStatusDB();
        this.setState({redirect:true});
         }
