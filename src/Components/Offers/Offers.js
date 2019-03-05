@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withAuthorization, AuthUserContext} from '../Session'
+import {withAuthorization} from '../Session'
 import * as Styles from './OffersStyle';
 import OffersListItem from './OffersListItem/OffersListItem.js'
 import {AddOfferLink} from './AddOffer/AddOffer';

@@ -2,7 +2,6 @@ import React from 'react';
 import {withFirebase} from '../../Firebase';
 import {withAuthorization} from '../../Session'
 import * as Styles from './ProfileEditStyle'
-import {Link} from 'react-router-dom';
 import * as ROUTES from '../../../Constants/routes';
 import {Redirect} from 'react-router-dom';
 import ProfileImg from '../ProfileImg/ProfileImg';

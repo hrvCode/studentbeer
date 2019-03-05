@@ -2,9 +2,7 @@ import {withAuthorization} from '../Session'
 import * as Style from './FriendListStyle';
 import React, { Component } from 'react'
 import {withFirebase} from '../Firebase'
-import { auth } from "firebase";
 import Header from './Header/Header'
-import Profile from '../Profile/Profile'
 import {withRouter} from 'react-router-dom';
 
 
@@ -104,10 +102,10 @@ class FriendListBase extends Component {
       // those with online true will get sorted to the top.
       showFriends.sort((a,b) => {
         if(a && b){
-          if(a.props.online && b.props.online === undefined){
-            return -1;
+          if(a.props.online === undefined){
+            return 1;
           }
-          if(b.props.online && a.props.online === undefined){
+          if(b.props.online === undefined){
             return 1;
           }
           return -1;
@@ -115,10 +113,7 @@ class FriendListBase extends Component {
         return null;
       })
 
-
     }else{
-
-
       let condition = this.state.search.toLowerCase();
       showFriends = this.state.FriendList.map( friend => {
         return (friend.username.toLowerCase().includes(condition) ?
