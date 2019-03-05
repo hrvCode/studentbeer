@@ -93,7 +93,7 @@ class BarOffers extends React.Component{
                     : offers ? 
                             offers.map((offer,i) => (
                             <Styles.List>
-                                <h2>Erbjudanden</h2>
+                                <h2>Erbjudan</h2>
                                     <OffersListItem
                                     key={i}
                                     name={offer.name}
