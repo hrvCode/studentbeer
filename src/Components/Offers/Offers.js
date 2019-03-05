@@ -123,7 +123,7 @@ class OfferBase extends Component {
     }
 
      //  skapar ny array med enbart en offer objekt per skapar uid. för att rensa bort dubbletter.
-    deleteDublicates = (uniqeBars,allOffers) => {
+    deleteDuplicates = (uniqeBars,allOffers) => {
         let uniqeBarsArray = []
         for(var i = 0; i < uniqeBars.length; i++){
             for(var j = 0; j < allOffers.length; j++){
@@ -142,7 +142,7 @@ class OfferBase extends Component {
 
         allOffers = this.CreateOfferArray(this.state.offers)  
         uniqeBars = this.SortOffersUserUID(allOffers)
-        uniqeBarsArray = this.deleteDublicates(uniqeBars,allOffers);
+        uniqeBarsArray = this.deleteDuplicates(uniqeBars,allOffers);
 
         
 
