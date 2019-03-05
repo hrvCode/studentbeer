@@ -15,51 +15,9 @@ class ProfileEdit extends React.Component{
         loading: false,
         redirect:false
     }
-
-    // getUserNameFromDB = () => {
-       
-       
-    //     this.props.Firebase
-    //     .user(this.props.authUser.uid)
-    //     .once('value', snapshot => {
-    //         const userObject = snapshot.val()
-    //         this.setState({
-    //             username: userObject.username
-    //         })
- 
-            
-    //     })
-    //   };
-
-    //   getUserCivilStatusFromDB = () => {
-       
-    //     this.props.Firebase
-    //     .user(this.props.authUser.uid)
-    //     .once('value', snapshot => {
-    //         const userObject = snapshot.val()
-    //         this.setState({
-    //             civilStatus: userObject.civilStatus
-    //         })
- 
-            
-    //     })
-    //   };
-
-    //   getUserBioFromDB = () => {
-      
-    //     this.props.Firebase
-    //     .user(this.props.authUser.uid)
-    //     .once('value', snapshot => {
-    //         const userObject = snapshot.val()
-    //         this.setState({
-    //             bioText: userObject.bioText
-    //         })
-    //     })
-    //   };
     
 
-      getUserDataFromDB = () => {
-      
+      getUserDataFromDB = () => {     
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
@@ -70,34 +28,11 @@ class ProfileEdit extends React.Component{
                 bioText: userObject.bioText
             })
         })
-      };
+    };
 
     
 
     changeUserDataToDB = () => {
-        
-    //     let userBioText = this.state.bioText
-    //     this.props.Firebase
-    //       .user(this.props.authUser.uid)
-    //       .update({ bioText:userBioText});
-
-    //   };
-
-    //   changeUserCivilStatusDB = () => {
-        
-    //     let userCivilStatus = this.state.civilStatus
-    //     this.props.Firebase
-    //       .user(this.props.authUser.uid)
-    //       .update({ civilStatus:userCivilStatus});
-    //   };
-
-    //   changeUserNameToDB = () => {
-        
-    //     let username = this.state.username
-    //     this.props.Firebase
-    //       .user(this.props.authUser.uid)
-    //       .update({ username:username});
-    //   };
 
         let userBioText = this.state.bioText;
         let userCivilStatus = this.state.civilStatus;
@@ -106,8 +41,7 @@ class ProfileEdit extends React.Component{
         this.props.Firebase
         .user(this.props.authUser.uid)
         .update({ bioText:userBioText, civilStatus:userCivilStatus, username:username});
-
-        };
+    };
 
 
 
@@ -120,9 +54,7 @@ class ProfileEdit extends React.Component{
 
 
       onSubmit = () =>{
-    //    this.changeUserNameToDB();
        this.changeUserDataToDB();
-    //    this.changeUserCivilStatusDB();
        this.setState({redirect:true});
         }
 
@@ -136,9 +68,6 @@ class ProfileEdit extends React.Component{
 
         componentDidMount(){
             this.setState({loading: true,})
-            // this.getUserNameFromDB();
-            // this.getUserCivilStatusFromDB();
-            // this.getUserBioFromDB();
             this.getUserDataFromDB();
         }
     render(){
