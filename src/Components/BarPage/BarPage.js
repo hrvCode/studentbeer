@@ -206,7 +206,12 @@ const CheckInButton = (props) => {
             button.backgroundColor = "rgb(161, 196, 38)";
           }
 
-          let isInvalid = props.dist > 8000 ?  true :  false;   
+          let isInvalid = props.dist > 8000 ? true :  false;
+
+        // Kollar om användaren är inloggad, isåfall så skrivs InValid över och användaren kan använda knappen (för att logga ut)
+        if(props.IsCheckedIn) {
+            isInvalid = false;
+        }
           
 
     return(
