@@ -206,8 +206,13 @@ const CheckInButton = (props) => {
             button.backgroundColor = "rgb(161, 196, 38)";
           }
 
+
           let isInvalid = props.dist > 8000 ?  true :  false;   
           
+          if (isInvalid)
+          {
+            button.backgroundColor = "Dimgrey";
+          }
 
     return(
     <Style.CheckInButton >
