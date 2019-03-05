@@ -18,39 +18,20 @@ class Profile extends React.Component{
         canEdit: true,
     }
 
-    getUserNameFromDB = () => {
+    getUserDataFromDB = () => {
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
             const userObject = snapshot.val()
             this.setState({
-                user: userObject.username
-            })
-        })
-      };
-
-      getUserCivilStatusFromDB = () => {
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
-                civilStatus: userObject.civilStatus
-            })
-        })
-      };
-
-      getUserBioFromDB = () => {
-      
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
+                user: userObject.username,
+                civilStatus: userObject.civilStatus,
                 bioText: userObject.bioText
             })
         })
-      };
+    };
+
+
 
       getUsercheckedIn = () => {
       
@@ -90,9 +71,7 @@ class Profile extends React.Component{
             
             // annars ladda upp sin egen
         }else{
-            this.getUserNameFromDB();
-            this.getUserCivilStatusFromDB();
-            this.getUserBioFromDB();
+            this.getUserDataFromDB();          
             this.getUsercheckedIn();
         }
     }
@@ -103,9 +82,7 @@ class Profile extends React.Component{
         loading:true,
         canEdit:true,
       })
-      this.getUserNameFromDB();
-      this.getUserCivilStatusFromDB();
-      this.getUserBioFromDB();
+         this.getUserDataFromDB(); 
     }
 
     render(){
