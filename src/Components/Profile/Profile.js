@@ -26,26 +26,11 @@ class Profile extends React.Component{
             this.setState({
                 user: userObject.username,
                 civilStatus: userObject.civilStatus,
-                bioText: userObject.bioText
-            })
-        })
-    };
-
-
-
-      getUsercheckedIn = () => {
-      
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
+                bioText: userObject.bioText,
                 checkedBar: userObject.CheckedInBar
             })
         })
-      };
-
-      
+    };    
 
       getOtherUserFromDb = (uid) =>{
         this.props.Firebase
@@ -72,7 +57,6 @@ class Profile extends React.Component{
             // annars ladda upp sin egen
         }else{
             this.getUserDataFromDB();          
-            this.getUsercheckedIn();
         }
     }
         // om man klickar på profil nere i navbar så ska man komma till sin egen
