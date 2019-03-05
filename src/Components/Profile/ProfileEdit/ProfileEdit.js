@@ -62,29 +62,41 @@ class ProfileEdit extends React.Component{
 
     changeUserBioTextToDB = () => {
         
-        let userBioText = this.state.bioText
-        this.props.Firebase
-          .user(this.props.authUser.uid)
-          .update({ bioText:userBioText});
+    //     let userBioText = this.state.bioText
+    //     this.props.Firebase
+    //       .user(this.props.authUser.uid)
+    //       .update({ bioText:userBioText});
 
-      };
-      changeUserCivilStatusDB = () => {
+    //   };
+
+    //   changeUserCivilStatusDB = () => {
         
-        let userCivilStatus = this.state.civilStatus
-        this.props.Firebase
-          .user(this.props.authUser.uid)
-          .update({ civilStatus:userCivilStatus});
+    //     let userCivilStatus = this.state.civilStatus
+    //     this.props.Firebase
+    //       .user(this.props.authUser.uid)
+    //       .update({ civilStatus:userCivilStatus});
+    //   };
 
-      };
-
-      changeUserNameToDB = () => {
+    //   changeUserNameToDB = () => {
         
-        let username = this.state.username
-        this.props.Firebase
-          .user(this.props.authUser.uid)
-          .update({ username:username});
+    //     let username = this.state.username
+    //     this.props.Firebase
+    //       .user(this.props.authUser.uid)
+    //       .update({ username:username});
+    //   };
 
-      };
+        let userBioText = this.state.bioText;
+        let userCivilStatus = this.state.civilStatus;
+        let username = this.state.username;
+
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .update({ bioText:userBioText, civilStatus:userCivilStatus, username:username});
+
+        };
+
+
+
       
       onChange = event => {
         this.setState({
@@ -94,9 +106,9 @@ class ProfileEdit extends React.Component{
 
 
       onSubmit = () =>{
-       this.changeUserNameToDB();
+    //    this.changeUserNameToDB();
        this.changeUserBioTextToDB();
-       this.changeUserCivilStatusDB();
+    //    this.changeUserCivilStatusDB();
        this.setState({redirect:true});
         }
 
