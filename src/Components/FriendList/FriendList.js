@@ -123,6 +123,7 @@ class FriendListBase extends Component {
         key={friend.uid}
         username={friend.username}
         position={friend.position}
+        CheckedInBar={friend.CheckedInBar}
         online={friend.online}
         onClick={ () => this.showProfile(friend)}
         /> : null : null)
