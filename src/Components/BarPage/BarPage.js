@@ -200,15 +200,19 @@ const CheckInButton = (props) => {
             backgroundColor: "rgb(43, 112, 139)",
             display:"initial"
           }
-         
+        
+
           if(props.IsCheckedIn){
             button.backgroundColor = "rgb(161, 196, 38)";
           }
 
+          let isInvalid = props.dist > 8000 ?  true :  false;   
+          
+
     return(
     <Style.CheckInButton >
-        <button style={button} onClick={()=> props.Checkin()}>
-            {props.dist > 8000 ? props.dist-8000 && 'm': !props.IsCheckedIn ? 'CHECKA IN' : 'CHECKA UT'} 
+        <button style={button}  disabled={isInvalid} onClick={()=> props.Checkin()}>
+            {props.dist > 8000 ? props.dist-8000 + ' m till check in': !props.IsCheckedIn ? 'CHECKA IN' : 'CHECKA UT'} 
         </button>
         <p style={comment}>{props.dist-8000} meter kvar för att kunna checka in!</p>
     </Style.CheckInButton>

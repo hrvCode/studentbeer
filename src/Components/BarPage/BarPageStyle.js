@@ -56,7 +56,7 @@ export const CheckInButton = Styled.div `
 
     button {
         width: 100%;
-        
+         
          display:inline-block;
          height: 40px;
          border-radius:4px;
@@ -68,11 +68,15 @@ export const CheckInButton = Styled.div `
          background-color:var( --transparent-Dark);
          text-align:center;
          transition: all 0.2s;
+        cursor:pointer;
+        
     }
 
     button:hover {
          background-color:var( --transparent-Light);
     }
+
+   
 `;
 
 export const Main = Styled.div `
