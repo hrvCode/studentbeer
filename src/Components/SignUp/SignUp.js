@@ -15,7 +15,7 @@ const SignUpPage = () => (
             <SignUpForm/> 
         </Styles.Container>
         <Styles.BottomButton>
-            <Link to={ROUTES.SIGNIN}><button>Tillbaks</button></Link>
+            <Link to={ROUTES.SIGNIN}><button>Tillbaka</button></Link>
         </Styles.BottomButton>
     </Styles.Main>
 )

@@ -37,7 +37,7 @@ class FriendListBase extends Component {
               CheckedInBar: friendObject[friend] ? friendObject[friend].CheckedInBar : null,
               position: friendObject[friend].position,
               online: friendObject[friend].online,
-              CheckedInBar:friendObject[friend].CheckedInBar,
+              CheckedInTime:friendObject[friend].CheckedInTime,
               }
             )
           })
@@ -91,6 +91,7 @@ class FriendListBase extends Component {
             key={friend.uid}
             username={friend.username}
             CheckedInBar={friend.CheckedInBar}
+            CheckedInTime={friend.CheckedInTime}
             position={friend.position}
             online={friend.online}
             onClick={ () => this.showProfile(friend)}
@@ -158,7 +159,7 @@ export const Friend = (props) => {
   }
 
   let checkedBar = {};
-  if(props.CheckedInBar !== "" && props.online){
+  if(props.CheckedInBar !== "" && props.online && props.CheckedInTime + 43200000 > Date.now()){
     checkedBar = {
       text: `incheckad: ${props.CheckedInBar}`,
     }

@@ -15,7 +15,7 @@ const AdminSignUp = () => (
             <AdminSignUpForm/> 
         </Styles.Container>
         <Styles.BottomButton>
-            <Link to={ROUTES.SIGNIN}><button>Back</button></Link>
+            <Link to={ROUTES.SIGNIN}><button>Tillbaka</button></Link>
         </Styles.BottomButton>
     </Styles.Main>
 )
@@ -106,7 +106,7 @@ class AdminSignUpFormBase extends Component{
         username === '';
         
         return(
-            this.state.isLoading ? <div>loading</div> :
+            this.state.isLoading ? <div>Laddar</div> :
             <form onSubmit={this.onSubmit}>
                 <input 
                 type="text"
