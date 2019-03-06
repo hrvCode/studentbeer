@@ -132,16 +132,16 @@ class BarOffers extends React.Component{
                     
                     : offers ? 
                     uniqeBarsArray.map((offer,i) => (
-                            <Styles.List   key={i}>
-                                <h2>Erbjudanden</h2>
-                                    <OffersListItem
-                                        name={offer.name}
-                                        text={offer.textArray}
-                                        profileOffer={true}
-                                        createdAt={offer.createdAt}
-                                    />   
-                            </Styles.List>         
-                        )) 
+                        <Styles.List   key={i}>
+                            <h2>Erbjudanden</h2>
+                                <OffersListItem
+                                     name={offer.name}
+                                     text={offer.textArray}
+                                    profileOffer={true}
+                                    createdAt={offer.createdAt}
+                                />   
+                        </Styles.List>         
+                    )) 
                     : 
                        <h2>Finns inga erbjudanden</h2>
                 }

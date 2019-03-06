@@ -52,7 +52,7 @@ p{
 
 export const CheckInButton = Styled.div `
     width: 200px;
-    margin: 10px auto;
+    margin: 25px auto;
 
     button {
         width: 100%;
@@ -80,7 +80,9 @@ export const CheckInButton = Styled.div `
 `;
 
 export const Main = Styled.div `
-    height: 90vh;
+    position: relative;
+    top:10vh;
+    height: 80vh;
     margin:0 auto;
     text-align: center;
     overflow-y: scroll;

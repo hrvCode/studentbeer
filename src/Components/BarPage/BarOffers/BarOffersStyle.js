@@ -1,7 +1,6 @@
 import Styled from 'styled-components'
 
 export const Main = Styled.div`
-
 margin:0px;
 padding:0px;
 h3{
@@ -24,13 +23,12 @@ h2{
 
 
 export const List = Styled.div`
-    
     list-style-type: none;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    margin:0px;
+    margin:25px 0;
     padding:0px;
     
  
