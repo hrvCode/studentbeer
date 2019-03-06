@@ -23,6 +23,7 @@ class OfferBase extends Component {
         currentUid: '',
         open: false,
     }
+
     componentDidMount(){
         this.setState({loading:true});
 
@@ -133,10 +134,13 @@ class OfferBase extends Component {
         }
         return uniqeBarsArray;
     }
+    // en render funktion som innehåller logik.
     renderContent = () => {
         let allOffers = []
         let uniqeBars = []
         let uniqeBarsArray = []
+
+    // funktioner som strukturerar upp visning av erbjudanden.
         if(this.state.offers){
             allOffers = this.CreateOfferArray(this.state.offers)  
             uniqeBars = this.SortOffersUserUID(allOffers)
