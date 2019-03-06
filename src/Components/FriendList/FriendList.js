@@ -37,7 +37,6 @@ class FriendListBase extends Component {
               CheckedInBar: friendObject[friend] ? friendObject[friend].CheckedInBar : null,
               position: friendObject[friend].position,
               online: friendObject[friend].online,
-              CheckedInBar:friendObject[friend].CheckedInBar,
               }
             )
           })

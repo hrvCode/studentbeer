@@ -90,7 +90,6 @@ class OfferBase extends Component {
     // skapar en array med alla erbjudanden, och lägger ihop texten i en array från alla erbjudanden
     // som har samma skapar uid. Här blir det dubbletter men filtreras ut senare.
     CreateOfferArray = (allOffers) => {
-        if(allOffers){
            allOffers.map((x,i) => {
                   let offerCount = 0;
                   x.textArray = [];
@@ -103,7 +102,6 @@ class OfferBase extends Component {
                   })
                  return x;
               })
-          }
         return allOffers;
     }
 
@@ -139,11 +137,11 @@ class OfferBase extends Component {
         let allOffers = []
         let uniqeBars = []
         let uniqeBarsArray = []
-
-        allOffers = this.CreateOfferArray(this.state.offers)  
-        uniqeBars = this.SortOffersUserUID(allOffers)
-        uniqeBarsArray = this.deleteDuplicates(uniqeBars,allOffers);
-
+        if(this.state.offers){
+            allOffers = this.CreateOfferArray(this.state.offers)  
+            uniqeBars = this.SortOffersUserUID(allOffers)
+            uniqeBarsArray = this.deleteDuplicates(uniqeBars,allOffers);
+        }
         
 
         return this.state.offers ?
