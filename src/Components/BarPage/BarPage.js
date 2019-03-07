@@ -20,6 +20,7 @@ class BarPage extends React.Component {
         userPosition:null,
         barPosition:null,
         barUserDistance:null,
+<<<<<<< HEAD
         test:"test",
 
 
@@ -74,6 +75,10 @@ class BarPage extends React.Component {
         })
        
       };
+=======
+      };
+    }
+>>>>>>> 1f0dacbe6907d4e9bfe541ec773ac4c2acf0446a
 
       calculateDistance = (lat1, lon1, lat2, lon2) => {
         var R = 6371; // km (change this constant to get miles)
@@ -82,7 +87,7 @@ class BarPage extends React.Component {
         var a =
           Math.sin(dLat / 2) * Math.sin(dLat / 2) +
           Math.cos((lat1 * Math.PI) / 180) *
-            Math.cos((lat2 * Math.PI) / 180) *
+         Math.cos((lat2 * Math.PI) / 180) *
             Math.sin(dLon / 2) *
             Math.sin(dLon / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
@@ -91,27 +96,74 @@ class BarPage extends React.Component {
         return Math.round(d * 1000);
       };
 
+<<<<<<< HEAD
       
 
+=======
+      getUserPositionFromDB = () => {
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            this.setState({
+                userPosition: userObject.position
+            })
+            this.getUserBarDistance();
+        })
+       
+      };
+        getUserBarDistance = () =>{
+    const { barPosition, userPosition } = this.state;
+    if (barPosition && userPosition) {
+        const {latitude: lat1, longitude: lng1 } = userPosition;
+        const lat2 = barPosition[0];
+        const lng2 = barPosition[1];
+        const dist =this.calculateDistance(lat1,lng1,lat2,lng2);
+        this.setState({barUserDistance: dist});
+    }
+}
+      getBarPositionFromDB = () => {
+      
+        this.props.Firebase
+        .bar(this.props.location.state.uid)
+        .once('value', snapshot => {
+            const barObject = snapshot.val()
+
+            this.setState({
+                barPosition: barObject.position,
+                bioText: barObject.bioText
+            })
+        })
+       
+      };
+>>>>>>> 1f0dacbe6907d4e9bfe541ec773ac4c2acf0446a
 
 
  
 
     componentWillMount(){
-        this.getUserBioFromDB();
+        
+        
         this.getBarPositionFromDB();
         this.getUserPositionFromDB();
+<<<<<<< HEAD
      
       //const { latitude: lat2, longitude: lng2 } = this.state.userPosition;
        // const {[0]:lat1 ,[1]:lng1} = this.state.barPosition;
     console.log(this.state.userPosition)
        
        
+=======
+ 
+>>>>>>> 1f0dacbe6907d4e9bfe541ec773ac4c2acf0446a
 
       //  const dist =this.calculateDistance(lat1,lng1,lat2,lng2);
 
+<<<<<<< HEAD
      //   this.setState({barUserDistance:dist});
 
+=======
+>>>>>>> 1f0dacbe6907d4e9bfe541ec773ac4c2acf0446a
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
@@ -126,10 +178,10 @@ class BarPage extends React.Component {
 
     CheckInFunction() {
         if(!this.state.CheckedIn){
-            this.setState({
+            this.setState(prevState => ({
                 // Checked in blir true
-                CheckedIn: !this.state.CheckedIn,
-              })
+                CheckedIn: !prevState.CheckedIn,
+              }));
               this.props.Firebase
               .user(this.props.authUser.uid)
               .update({
@@ -138,10 +190,10 @@ class BarPage extends React.Component {
             });
               
         } else {
-            this.setState({
+            this.setState(prevState => ({
                 // Checked in blir flase
-                CheckedIn: !this.state.CheckedIn,
-              })
+                CheckedIn: !prevState.CheckedIn,
+              }));
               this.props.Firebase
             .user(this.props.authUser.uid)
             .update({
@@ -154,6 +206,7 @@ class BarPage extends React.Component {
 
 
     render(){
+
         return(
             <Style.Main>
                 <MapHeader />
@@ -202,10 +255,8 @@ const MapHeaderBase = (props) => (
 const BarBioTextBase = (props) =>(
     <Style.BioaBarText>
         <p>
-            
-        <span>Välkommen till {props.location.state.name}</span> <br /> 
-        {props.Bio}
-       
+            <span>Välkommen till {props.location.state.name}</span> <br /> 
+            {props.Bio}
         </p>
     </Style.BioaBarText>
 )
@@ -217,32 +268,42 @@ const CheckInButton = (props) => {
 
     let comment ={
         display:"none",
-        color:"red",
-        fontSize:"18px",
-        
-
+        color:"var(--color-b)",
+        fontSize:"22px",
+        textShadow:"1px 1px 1px black",
+        fontWeight:"bold"
+  
     }
    
         let button = {
             backgroundColor: "rgb(43, 112, 139)",
             display:"initial"
           }
-          if (props.dist > 10)
-          {
-              button.display ="none"
-              comment.display="initial"  
-            }
+        
 
           if(props.IsCheckedIn){
             button.backgroundColor = "rgb(161, 196, 38)";
           }
 
+
+          let isInvalid = props.dist > 8000 ?  true :  false;   
+          
+          if (isInvalid)
+          {
+            button.backgroundColor = "Dimgrey";
+          }
+
+        // Kollar om användaren är inloggad, isåfall så skrivs InValid över och användaren kan använda knappen (för att logga ut)
+        if(props.IsCheckedIn) {
+            isInvalid = false;
+        }
+
     return(
     <Style.CheckInButton >
-        <button style={button} onClick={()=> props.Checkin()}>
-            {!props.IsCheckedIn ? 'CHECKA IN' : 'CHECKA UT'} 
+        <button style={button}  disabled={isInvalid} onClick={()=> props.Checkin()}>
+            {props.dist > 8000 ? props.dist-8000 + ' m till check in': !props.IsCheckedIn ? 'CHECKA IN' : 'CHECKA UT'} 
         </button>
-        <p style={comment}>Du är {props.dist-50} meter för långt ifrån baren för att kunna checka in! </p>
+        <p style={comment}>{props.dist-8000} meter kvar för att kunna checka in!</p>
     </Style.CheckInButton>
     )
 }

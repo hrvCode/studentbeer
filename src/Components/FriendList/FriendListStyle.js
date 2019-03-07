@@ -27,8 +27,7 @@ export const Friend = Styled.div`
         width:100%;
         
             p {
-            margin:0;
-            
+            margin:0; 
             }
                 .fas{
                     
@@ -37,7 +36,6 @@ export const Friend = Styled.div`
 
                     .locationText{
                         color:var(--color-b);
-                        padding-left:3%;
                         font-size: 0.9em;
                         width:100%;
                         font-family: 'open-sans';

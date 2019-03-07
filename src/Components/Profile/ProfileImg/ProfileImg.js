@@ -34,7 +34,7 @@ class ProfileImg extends Component {
        return (
         <Styles.ProfileImgStyle>   
             <input type="file" onChange={this.fileSelectHandler}/>
-            <button onClick={this.fileUploadHandler}>Upload File</button>
+            <button onClick={this.fileUploadHandler}>Ladda Upp</button>
         </Styles.ProfileImgStyle>
        )
    }

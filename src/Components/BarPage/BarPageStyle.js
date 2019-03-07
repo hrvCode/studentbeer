@@ -52,12 +52,11 @@ p{
 
 export const CheckInButton = Styled.div `
     width: 200px;
-    
-    margin: auto;
+    margin: 25px auto;
 
     button {
         width: 100%;
-        
+         
          display:inline-block;
          height: 40px;
          border-radius:4px;
@@ -69,15 +68,21 @@ export const CheckInButton = Styled.div `
          background-color:var( --transparent-Dark);
          text-align:center;
          transition: all 0.2s;
+        cursor:pointer;
+        
     }
 
     button:hover {
          background-color:var( --transparent-Light);
     }
+
+   
 `;
 
 export const Main = Styled.div `
-    height: 90vh;
+    position: relative;
+    top:10vh;
+    height: 80vh;
     margin:0 auto;
     text-align: center;
     overflow-y: scroll;

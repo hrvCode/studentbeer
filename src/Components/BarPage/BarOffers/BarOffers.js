@@ -79,35 +79,73 @@ class BarOffers extends React.Component{
     render(){
 
         let {offers} = this.state;
+        let uniqeBarsArray = []
+        let uniqeBars = [];
+          
 
+        // skapar en array med alla erbjudanden, och lägger ihop texten i en array från alla erbjudanden
+        // som har samma skapar uid. 
+        if(offers){
+            offers.map((x,i) => {
+                  let offerCount = 0;
+                  x.textArray = [];
+                  offers.forEach(y => {
+                      if(y.uidFromCreator === x.uidFromCreator){
+                          offerCount++;
+                          x.offerCount = offerCount;
+                          x.textArray.push(y.text)
+                      }
+                  })
+                 return x;
+              })
+                // sparar uidfromcreater till uniqebars array där det bara ska finnas en av varje.
+              offers.forEach(x => {
+                if(!uniqeBars.length > 0){
+                    uniqeBars.push(x.uidFromCreator)
+                }
+                if(!uniqeBars.includes(x.uidFromCreator)){
+                    uniqeBars.push(x.uidFromCreator)
+                }
+            })
+            // sparar  ner uniqeBars i en array 
+            for(var i = 0; i < uniqeBars.length; i++){
+                for(var j = 0; j < offers.length; j++){
+                    if(uniqeBars[i] === offers[j].uidFromCreator){
+                        uniqeBarsArray.push(offers[j]);
+                        break;
+                    }
+                }
+            }
+          }
+        
+
+          
         return(
             <Styles.Main>
-                <h3 onClick={this.showOffers}>Visa erbjudanden</h3>
-                <Styles.offersbakgorund>
-                <Styles.List>
-
+                <Styles.offersContent>
                 {/* tre nestade ternery operators:
                 1: kollar om offers ska visa.
                 2: kollar om det har laddats klart.
                 3: kollar om de finns erbjudanden. */}
 
-                { this.state.showOffers ? 
-                    this.state.loading ? <div><p>Laddar in erbjudanden</p></div>
+                { this.state.loading ? <div><p>Laddar in erbjudanden</p></div>
+                    
                     : offers ? 
-                        offers.map((offer,i) => (
-                            <OffersListItem
-                            key={i}
-                            name={offer.name}
-                            text={offer.text}
-                            profileOffer={true}
-                            createdAt={offer.createdAt}
-                            />            
-                        )) : 
-                        <h2>Finns inga erbjudanden</h2>
-                : null
+                    uniqeBarsArray.map((offer,i) => (
+                        <Styles.List   key={i}>
+                            <h2>Erbjudanden</h2>
+                                <OffersListItem
+                                     name={offer.name}
+                                     text={offer.textArray}
+                                    profileOffer={true}
+                                    createdAt={offer.createdAt}
+                                />   
+                        </Styles.List>         
+                    )) 
+                    : 
+                       <h2>Finns inga erbjudanden</h2>
                 }
-                </Styles.List>
-                </Styles.offersbakgorund>
+               </Styles.offersContent>
             </Styles.Main>    
         )
     }

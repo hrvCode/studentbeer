@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withAuthorization, AuthUserContext} from '../Session'
+import {withAuthorization} from '../Session'
 import * as Styles from './OffersStyle';
 import OffersListItem from './OffersListItem/OffersListItem.js'
 import {AddOfferLink} from './AddOffer/AddOffer';
@@ -12,13 +12,7 @@ const Offer = (props) => (
              <h2>Erbjudanden</h2>
             {props.authUser.roles.includes(ROLES.ADMIN) ? <AddOfferLink/>: null} 
          </Styles.Header>
-
-         <AuthUserContext.Consumer>
-            {
-                authUser => <OffersList authUser={authUser} />
-            }
-         </AuthUserContext.Consumer>
-        
+          <OffersList authUser={props.authUser} />      
     </Styles.Main>
 )
 
@@ -93,70 +87,89 @@ class OfferBase extends Component {
 
         })
     }
-    render(){
 
-        let allOffersArray = this.state.offers;
-        let completeArray = [];
+    // skapar en array med alla erbjudanden, och lägger ihop texten i en array från alla erbjudanden
+    // som har samma skapar uid. Här blir det dubbletter men filtreras ut senare.
+    CreateOfferArray = (allOffers) => {
+           allOffers.map((x,i) => {
+                  let offerCount = 0;
+                  x.textArray = [];
+                  allOffers.forEach(y => {
+                      if(y.uidFromCreator === x.uidFromCreator){
+                          offerCount++;
+                          x.offerCount = offerCount;
+                          x.textArray.push(y.text)
+                      }
+                  })
+                 return x;
+              })
+        return allOffers;
+    }
+
+    // sparar uidfromcreater till uniqebars array där det bara ska finnas en av varje.
+    SortOffersUserUID = (allOffer) => {
         let uniqeBars = [];
 
-        // skapar en array med alla erbjudanden, och lägger ihop texten i en array från alla erbjudanden
-        // som har samma skapar uid. Här blir det dubbletter men filtreras ut senare.
-        if(allOffersArray){
-            completeArray = allOffersArray.map((x,i) => {
-                x.textArray = [];
-                allOffersArray.forEach(y => {
-                    if(y.uidFromCreator === x.uidFromCreator){
-                        x.textArray.push(y.text)
-                    }
-                })
-               return x;
+            allOffer.forEach(x => {
+                if(!uniqeBars.length > 0){
+                    uniqeBars.push(x.uidFromCreator)
+                }
+                if(!uniqeBars.includes(x.uidFromCreator)){
+                    uniqeBars.push(x.uidFromCreator)
+                }
             })
-        }
+        return uniqeBars;
+    }
 
-        // sparar uidfromcreater till uniqebars array där det bara ska finnas en av varje.
-        allOffersArray.forEach(x => {
-            if(!uniqeBars.length > 0){
-                uniqeBars.push(x.uidFromCreator)
-            }
-            if(!uniqeBars.includes(x.uidFromCreator)){
-                uniqeBars.push(x.uidFromCreator)
-            }
-        })
-
-
-        //  skapar ny array med enbart en offer objekt per skapar uid. för att rensa bort dubbletter.
+     //  skapar ny array med enbart en offer objekt per skapar uid. för att rensa bort dubbletter.
+    deleteDuplicates = (uniqeBars,allOffers) => {
         let uniqeBarsArray = []
         for(var i = 0; i < uniqeBars.length; i++){
-            for(var j = 0; j < allOffersArray.length; j++){
-                if(uniqeBars[i] === allOffersArray[j].uidFromCreator){
-                    uniqeBarsArray.push(allOffersArray[j]);
+            for(var j = 0; j < allOffers.length; j++){
+                if(uniqeBars[i] === allOffers[j].uidFromCreator){
+                    uniqeBarsArray.push(allOffers[j]);
                     break;
                 }
             }
         }
+        return uniqeBarsArray;
+    }
+    // en render funktion som innehåller logik.
+    renderContent = () => {
+        let allOffers = []
+        let uniqeBars = []
+        let uniqeBarsArray = []
+
+    // funktioner som strukturerar upp visning av erbjudanden.
+        if(this.state.offers){
+            allOffers = this.CreateOfferArray(this.state.offers)  
+            uniqeBars = this.SortOffersUserUID(allOffers)
+            uniqeBarsArray = this.deleteDuplicates(uniqeBars,allOffers);
+        }
         
+
+        return this.state.offers ?
+            uniqeBarsArray.map(item => {
+             return(
+                 <OffersListItem
+                 offerCount={item.offerCount}
+                 authUser={this.props.authUser} 
+                 name={item.name}
+                 uid={item.uidFromCreator} 
+                 text={item.textArray} 
+                 key={item.OfferUid}
+                 createdAt={item.createdAt}
+                 offerUid={item.OfferUid}
+                 onDelete={(uid) => this.deleteOffer(uid)}
+                 /> 
+             )
+         }): <p>No offers atm</p>
+    }
+    render(){
         return(
             <Styles.MainContent>
                 <Styles.List>
-                    { this.state.offers ?
-                       uniqeBarsArray.map(item => {
-                            let uidMatch = this.state.currentUid === item.uidFromCreator ? true : false;
-                        return(
-                            <OffersListItem
-                            isAdmin={uidMatch} 
-                            name={item.name}
-                            uid={item.uidFromCreator} 
-                            text={item.textArray} 
-                            key={item.OfferUid}
-                            createdAt={item.createdAt}
-                            offerUid={item.OfferUid}
-                            onDelete={() => this.deleteOffer()}
-                            /> 
-                        )
-                    }
-                    
-                    ): <p>No offers atm</p>}
-                    {console.log(this.state.open)}
+                    {this.renderContent()}
                 </Styles.List>
             </Styles.MainContent>
         )

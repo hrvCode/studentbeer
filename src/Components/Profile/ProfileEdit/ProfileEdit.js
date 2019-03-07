@@ -2,7 +2,6 @@ import React from 'react';
 import {withFirebase} from '../../Firebase';
 import {withAuthorization} from '../../Session'
 import * as Styles from './ProfileEditStyle'
-import {Link} from 'react-router-dom';
 import * as ROUTES from '../../../Constants/routes';
 import {Redirect} from 'react-router-dom';
 import ProfileImg from '../ProfileImg/ProfileImg';
@@ -16,76 +15,36 @@ class ProfileEdit extends React.Component{
         loading: false,
         redirect:false
     }
+    
 
-    getUserNameFromDB = () => {
-       
-       
+      getUserDataFromDB = () => {     
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
             const userObject = snapshot.val()
             this.setState({
-                username: userObject.username
-            })
- 
-            
-        })
-      };
-
-      getUserCivilStatusFromDB = () => {
-       
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
-                civilStatus: userObject.civilStatus
-            })
- 
-            
-        })
-      };
-
-      getUserBioFromDB = () => {
-      
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
+                username: userObject.username,
+                civilStatus: userObject.civilStatus,
                 bioText: userObject.bioText
             })
         })
-      };
-    
+    };
 
     
 
-    changeUserBioTextToDB = () => {
-        
-        let userBioText = this.state.bioText
+    changeUserDataToDB = () => {
+
+        let userBioText = this.state.bioText;
+        let userCivilStatus = this.state.civilStatus;
+        let username = this.state.username;
+
         this.props.Firebase
-          .user(this.props.authUser.uid)
-          .update({ bioText:userBioText});
+        .user(this.props.authUser.uid)
+        .update({ bioText:userBioText, civilStatus:userCivilStatus, username:username});
+    };
 
-      };
-      changeUserCivilStatusDB = () => {
-        
-        let userCivilStatus = this.state.civilStatus
-        this.props.Firebase
-          .user(this.props.authUser.uid)
-          .update({ civilStatus:userCivilStatus});
 
-      };
 
-      changeUserNameToDB = () => {
-        
-        let username = this.state.username
-        this.props.Firebase
-          .user(this.props.authUser.uid)
-          .update({ username:username});
-
-      };
       
       onChange = event => {
         this.setState({
@@ -95,9 +54,7 @@ class ProfileEdit extends React.Component{
 
 
       onSubmit = () =>{
-       this.changeUserNameToDB();
-       this.changeUserBioTextToDB();
-       this.changeUserCivilStatusDB();
+       this.changeUserDataToDB();
        this.setState({redirect:true});
         }
 
@@ -111,9 +68,7 @@ class ProfileEdit extends React.Component{
 
         componentDidMount(){
             this.setState({loading: true,})
-            this.getUserNameFromDB();
-            this.getUserCivilStatusFromDB();
-            this.getUserBioFromDB();
+            this.getUserDataFromDB();
         }
     render(){
 
@@ -140,7 +95,7 @@ class ProfileEdit extends React.Component{
                         />
                         {this.props.authUser.roles.includes('ADMIN') ?
                         <h1>Beskrivning</h1>:
-                        <h1>Bio text</h1>}
+                        <h1>Profil Beskrivning</h1>}
                         <textarea
                         row="20"
                         cols="40"
@@ -154,7 +109,7 @@ class ProfileEdit extends React.Component{
                        <div>
                            <h1>Civil Status</h1>
                               <select name="civilStatus" onChange={this.onChange}>
-                                  <option value= "Vet ej">Vet ej</option>
+                                  <option value= "Vet ej">Annat</option>
                                   <option value= "Singel">Singel</option>
                                   <option value= "Upptagen">Upptagen</option>
       
@@ -170,7 +125,7 @@ class ProfileEdit extends React.Component{
                     </Styles.FormContainer>      
 
                     <Styles.Button type="submit" >
-                                Save changes
+                                Spara Ändring
                        
                     </Styles.Button>
                                   

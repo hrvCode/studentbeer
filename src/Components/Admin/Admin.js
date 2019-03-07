@@ -15,7 +15,7 @@ const AdminSignUp = () => (
             <AdminSignUpForm/> 
         </Styles.Container>
         <Styles.BottomButton>
-            <Link to={ROUTES.SIGNIN}><button>Back</button></Link>
+            <Link to={ROUTES.SIGNIN}><button>Tillbaka</button></Link>
         </Styles.BottomButton>
     </Styles.Main>
 )
@@ -106,7 +106,7 @@ class AdminSignUpFormBase extends Component{
         username === '';
         
         return(
-            this.state.isLoading ? <div>loading</div> :
+            this.state.isLoading ? <div>Laddar</div> :
             <form onSubmit={this.onSubmit}>
                 <input 
                 type="text"
@@ -118,23 +118,23 @@ class AdminSignUpFormBase extends Component{
                 type="text"
                 name="email"
                 onChange={this.onChange}
-                placeholder="email" />
+                placeholder="Email" />
 
                 <input 
                 type="password" 
                 name="passwordOne"
                 onChange={this.onChange}
-                placeholder="password"
+                placeholder="Lösenord"
                  />
 
                 <input 
                 type="password" 
                 name="passwordTwo"
                 onChange={this.onChange}
-                placeholder="confirm password"
+                placeholder="Bekräfta Lösenord"
                  />
                 {error && <p>{error.message}</p>}
-                <button type="submit" disabled={isInvalid}>Sign Up</button>
+                <button type="submit" disabled={isInvalid}>Registrera</button>
 
                 {/* om det finns error i this.state.false så körs kodsnutten */}
 
