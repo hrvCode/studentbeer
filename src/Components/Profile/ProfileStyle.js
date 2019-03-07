@@ -10,7 +10,7 @@ export const Container = Styled.div`
 
 export const Main = Styled.div`
     text-align: center;
-    height:90vh;
+    height:80vh;
     overflow-y: scroll;
     font-size: 17px;
     display:flex;
@@ -157,7 +157,7 @@ export const StatusSection = Styled.section`
 export const BioSection = Styled.section`
     
     color:white;
-    height: 40vh;
+    height: 45vh;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
