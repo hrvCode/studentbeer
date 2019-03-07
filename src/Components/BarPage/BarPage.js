@@ -20,65 +20,8 @@ class BarPage extends React.Component {
         userPosition:null,
         barPosition:null,
         barUserDistance:null,
-<<<<<<< HEAD
-        test:"test",
-
-
-        lat1:null,
-        lng1:null,
-        lat2:null,
-        lng2:null,
-        
-        
       };
     }
-  
-
-      getBarPositionFromDB = () => {
-      
-        this.props.Firebase
-        .bar(this.props.location.state.uid)
-        .once('value', snapshot => {
-            const barPosition = snapshot.val()
-            this.setState({
-                lat1: barPosition.position[0],
-                lng1:barPosition.position[1]
-            })
-        })
-  
-      };
-
-      getUserPositionFromDB = () => {
-      
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
-                lat2: userObject.position[0],
-                lat2: userObject.position[1],
-            })
-        })
-       
-      };
-
-    getUserBioFromDB = () => {
-      
-        this.props.Firebase
-        .bar(this.props.location.state.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
-            bioText: userObject.bioText
-           })
-           
-        })
-       
-      };
-=======
-      };
-    }
->>>>>>> 1f0dacbe6907d4e9bfe541ec773ac4c2acf0446a
 
       calculateDistance = (lat1, lon1, lat2, lon2) => {
         var R = 6371; // km (change this constant to get miles)
