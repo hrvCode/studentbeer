@@ -20,27 +20,18 @@ class BarPage extends React.Component {
         userPosition:null,
         barPosition:null,
         barUserDistance:null,
+        test:"test",
+
+
         lat1:null,
         lng1:null,
         lat2:null,
         lng2:null,
         
+        
       };
     }
-    getUserNameFromDB = () => {
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-
-            const userObject = snapshot.val()
-
-            this.setState({
-                user: userObject.username
-            })
-
-        })
-        console.log(this.state.user);
-      };
+  
 
       getBarPositionFromDB = () => {
       
@@ -49,13 +40,26 @@ class BarPage extends React.Component {
         .once('value', snapshot => {
             const barPosition = snapshot.val()
             this.setState({
-                barPosition: barPosition.position
+                lat1: barPosition.position[0],
+                lng1:barPosition.position[1]
             })
         })
-        console.log(this.state.barPosition);
+  
       };
 
-
+      getUserPositionFromDB = () => {
+      
+        this.props.Firebase
+        .user(this.props.authUser.uid)
+        .once('value', snapshot => {
+            const userObject = snapshot.val()
+            this.setState({
+                lat2: userObject.position[0],
+                lat2: userObject.position[1],
+            })
+        })
+       
+      };
 
     getUserBioFromDB = () => {
       
@@ -64,8 +68,9 @@ class BarPage extends React.Component {
         .once('value', snapshot => {
             const userObject = snapshot.val()
             this.setState({
-                bioText: userObject.bioText
-            })
+            bioText: userObject.bioText
+           })
+           
         })
        
       };
@@ -86,51 +91,26 @@ class BarPage extends React.Component {
         return Math.round(d * 1000);
       };
 
-      getUserPositionFromDB = () => {
       
-        this.props.Firebase
-        .user(this.props.authUser.uid)
-        .once('value', snapshot => {
-            const userObject = snapshot.val()
-            this.setState({
-                userPosition: userObject.position
-            })
-        })
-       
-      };
 
-      getBarPositionFromDB = () => {
-      
-        this.props.Firebase
-        .bar(this.props.location.state.uid)
-        .once('value', snapshot => {
-            const barObject = snapshot.val()
-            this.setState({
-                barPosition: barObject.position
-            })
-        })
-       
-      };
 
+
+ 
 
     componentWillMount(){
         this.getUserBioFromDB();
         this.getBarPositionFromDB();
         this.getUserPositionFromDB();
+     
+      //const { latitude: lat2, longitude: lng2 } = this.state.userPosition;
+       // const {[0]:lat1 ,[1]:lng1} = this.state.barPosition;
+    console.log(this.state.userPosition)
+       
+       
 
+      //  const dist =this.calculateDistance(lat1,lng1,lat2,lng2);
 
-        const lat1 =22;
-        this.setState({lat1:lat1})
-        const lng1 = 2;
-        this.setState({lng1:lng1})
-        const lat2 = 2;
-        this.setState({lat2:lat2})
-        const lng2 = 2;
-        this.setState({lng2:lng2})
-
-        const dist =this.calculateDistance(lat1,lng1,lat2,lng2);
-
-        this.setState({barUserDistance:dist});
+     //   this.setState({barUserDistance:dist});
 
         this.props.Firebase
         .user(this.props.authUser.uid)
