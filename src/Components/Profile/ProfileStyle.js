@@ -22,15 +22,7 @@ export const Main = Styled.div`
     background-position: center;
     background-size: cover;
     background-size: auto 100%;
-<<<<<<< HEAD
-    background-color: black;
-    p{
-        color:white;
-        margin:0px 0px 110px 0px;
-    }
-=======
     background-color: #222;
->>>>>>> 2d360a94bf037bbebd84c3becac14cdb37f1908c
 
     /* Smartphones */
     @media (min-width:360px) {
@@ -165,7 +157,7 @@ export const StatusSection = Styled.section`
 export const BioSection = Styled.section`
     
     color:white;
-    height: 35vh;
+    height: 40vh;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;

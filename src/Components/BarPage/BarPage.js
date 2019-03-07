@@ -39,10 +39,6 @@ class BarPage extends React.Component {
         return Math.round(d * 1000);
       };
 
-<<<<<<< HEAD
-      
-
-=======
       getUserPositionFromDB = () => {
         this.props.Firebase
         .user(this.props.authUser.uid)
@@ -79,7 +75,6 @@ class BarPage extends React.Component {
         })
        
       };
->>>>>>> 1f0dacbe6907d4e9bfe541ec773ac4c2acf0446a
 
 
  
@@ -89,24 +84,10 @@ class BarPage extends React.Component {
         
         this.getBarPositionFromDB();
         this.getUserPositionFromDB();
-<<<<<<< HEAD
-     
-      //const { latitude: lat2, longitude: lng2 } = this.state.userPosition;
-       // const {[0]:lat1 ,[1]:lng1} = this.state.barPosition;
-    console.log(this.state.userPosition)
-       
-       
-=======
  
->>>>>>> 1f0dacbe6907d4e9bfe541ec773ac4c2acf0446a
 
       //  const dist =this.calculateDistance(lat1,lng1,lat2,lng2);
 
-<<<<<<< HEAD
-     //   this.setState({barUserDistance:dist});
-
-=======
->>>>>>> 1f0dacbe6907d4e9bfe541ec773ac4c2acf0446a
         this.props.Firebase
         .user(this.props.authUser.uid)
         .once('value', snapshot => {
@@ -229,7 +210,7 @@ const CheckInButton = (props) => {
           }
 
 
-          let isInvalid = props.dist > 8000 ?  true :  false;   
+          let isInvalid = props.dist > 3000 ?  true :  false;   
           
           if (isInvalid)
           {
@@ -244,9 +225,9 @@ const CheckInButton = (props) => {
     return(
     <Style.CheckInButton >
         <button style={button}  disabled={isInvalid} onClick={()=> props.Checkin()}>
-            {props.dist > 8000 ? props.dist-8000 + ' m till check in': !props.IsCheckedIn ? 'CHECKA IN' : 'CHECKA UT'} 
+            {props.dist > 3000 ? props.dist-3000 + ' m till check in': !props.IsCheckedIn ? 'CHECKA IN' : 'CHECKA UT'} 
         </button>
-        <p style={comment}>{props.dist-8000} meter kvar för att kunna checka in!</p>
+        <p style={comment}>{props.dist-3000} meter kvar för att kunna checka in!</p>
     </Style.CheckInButton>
     )
 }
